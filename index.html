@@ -793,14 +793,23 @@ ul { list-style: none; }
 .content-card-thumb {
   height: 180px; background: var(--bg-dark); position: relative; overflow: hidden;
   display: flex; align-items: center; justify-content: center;
+  background-size: cover; background-position: center;
+}
+.content-card-thumb-overlay {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(180deg, rgba(11,11,18,0.3) 0%, rgba(11,11,18,0.7) 100%);
+  z-index: 0;
+}
+.content-card:hover .content-card-thumb-overlay {
+  background: linear-gradient(180deg, rgba(11,11,18,0.2) 0%, rgba(11,11,18,0.6) 100%);
 }
 .content-card-thumb-inner {
   font-family: var(--font-head); font-size: 2.8rem; font-weight: 800;
-  color: rgba(255,255,255,0.06); letter-spacing: -0.03em;
-  position: absolute; white-space: nowrap;
+  color: rgba(255,255,255,0.1); letter-spacing: -0.03em;
+  position: absolute; white-space: nowrap; z-index: 1;
 }
 .content-card-thumb-icon {
-  position: relative; z-index: 1; width: 64px; height: 64px; border-radius: 16px;
+  position: relative; z-index: 2; width: 64px; height: 64px; border-radius: 16px;
   background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
   backdrop-filter: blur(12px); display: flex; align-items: center; justify-content: center;
   color: var(--accent-light);
@@ -1396,7 +1405,8 @@ ul { list-style: none; }
     <div class="content-grid">
       <!-- Article 1 -->
       <a href="content/ai-hp-guide.html" class="content-card reveal reveal-delay-1">
-        <div class="content-card-thumb">
+        <div class="content-card-thumb" style="background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&q=80'); background-color: #1a2030;">
+          <div class="content-card-thumb-overlay"></div>
           <span class="content-card-thumb-inner">AI × HP</span>
           <div class="content-card-thumb-icon">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
@@ -1415,7 +1425,8 @@ ul { list-style: none; }
 
       <!-- Article 2 -->
       <a href="content/ai-sns-strategy.html" class="content-card reveal reveal-delay-2">
-        <div class="content-card-thumb">
+        <div class="content-card-thumb" style="background-image: url('https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&q=80'); background-color: #1a2e2a;">
+          <div class="content-card-thumb-overlay"></div>
           <span class="content-card-thumb-inner">AI × SNS</span>
           <div class="content-card-thumb-icon">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
