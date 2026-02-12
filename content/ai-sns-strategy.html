@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1記事から5チャネルへ — AI×SNS集客の全体設計 | RAFTEL Inc.</title>
+<meta name="description" content="HP記事を起点に、X・YouTube・Instagramへ自動展開するAI活用のコンテンツ戦略。起業プロセスそのものをコンテンツにする実践ガイド。">
+<!-- OGP -->
+<meta property="og:title" content="1記事から5チャネルへ — AI×SNS集客の全体設計 | RAFTEL Inc.">
+<meta property="og:description" content="HP記事を起点にAIでSNS展開を自動化する、コンテンツ×集客の全体設計を公開。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="RAFTEL Inc.">
+<meta property="article:published_time" content="2026-02-12">
+<meta property="article:author" content="RAFTEL Inc.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="1記事から5チャネルへ — AI×SNS集客の全体設計">
+<meta name="twitter:description" content="HP記事を起点にAIでSNS展開を自動化する戦略設計を全公開。">
+<!-- Structured Data: Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "1記事から5チャネルへ — AI×SNS集客の全体設計",
+  "description": "HP記事を起点に、X・YouTube・Instagramへ自動展開するAI活用のコンテンツ戦略。",
+  "datePublished": "2026-02-12",
+  "author": { "@type": "Organization", "name": "RAFTEL Inc." },
+  "publisher": { "@type": "Organization", "name": "RAFTEL Inc." }
+}
+</script>
+<!-- Structured Data: Breadcrumb -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "RAFTEL", "item": "../index.html" },
+    { "@type": "ListItem", "position": 2, "name": "Content", "item": "./" },
+    { "@type": "ListItem", "position": 3, "name": "1記事から5チャネルへ — AI×SNS集客の全体設計" }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Antique&family=Sora:wght@300;400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ========================================
+   Design Tokens (RAFTEL共通)
+   ======================================== */
+:root {
+  --bg-primary: #f6f3ee;
+  --bg-secondary: #edeae4;
+  --bg-tertiary: #e3dfd8;
+  --bg-hero: #0a0a14;
+  --bg-dark: #0b0b12;
+  --bg-card: rgba(255,255,255,0.7);
+  --bg-card-hover: rgba(255,255,255,0.92);
+  --text-primary: #1a1a24;
+  --text-secondary: #4a4a5a;
+  --text-muted: #8a8a9a;
+  --text-on-dark: #f0ece6;
+  --text-on-dark-sub: rgba(240,236,230,0.7);
+  --accent: #d4782f;
+  --accent-light: #e8944a;
+  --accent-dark: #b85e1a;
+  --accent-glow: rgba(212,120,47,0.12);
+  --accent2: #2a7a6e;
+  --gradient-hero: linear-gradient(135deg, #e8944a 0%, #d4582f 50%, #c04040 100%);
+  --border: rgba(26,26,36,0.08);
+  --border-accent: rgba(212,120,47,0.25);
+  --shadow-sm: 0 2px 8px rgba(26,26,36,0.04);
+  --shadow-md: 0 8px 32px rgba(26,26,36,0.06);
+  --shadow-lg: 0 16px 48px rgba(26,26,36,0.08);
+  --font-head: 'Sora', 'Inter', sans-serif;
+  --font-brush: 'Zen Antique', 'Yu Mincho', serif;
+  --font-ja: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+  --font-en: 'Sora', 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --max-width: 860px;
+}
+
+/* ========================================
+   Reset & Base
+   ======================================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body {
+  font-family: var(--font-ja);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+/* ========================================
+   Navigation
+   ======================================== */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(246,243,238,0.92);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  padding: 14px 0; border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.nav-inner {
+  max-width: 1200px; margin: 0 auto; padding: 0 40px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.nav-logo {
+  font-family: var(--font-head); font-weight: 800; font-size: 1.3rem;
+  letter-spacing: 0.08em;
+  background: var(--gradient-hero); -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; background-clip: text;
+}
+.nav-back {
+  font-size: 0.82rem; font-weight: 500; color: var(--text-muted);
+  font-family: var(--font-en); transition: color 0.3s;
+  display: flex; align-items: center; gap: 6px;
+}
+.nav-back:hover { color: var(--accent); }
+.nav-links {
+  display: flex; gap: 28px; align-items: center;
+}
+.nav-links a {
+  font-size: 0.82rem; font-weight: 500; color: var(--text-muted);
+  font-family: var(--font-en); transition: color 0.3s; text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.nav-links a:hover { color: var(--accent); }
+.nav-links a.active { color: var(--accent); }
+.nav-contact {
+  padding: 8px 24px; border: 1px solid var(--accent);
+  color: var(--accent) !important; border-radius: 4px; transition: all 0.3s;
+  -webkit-text-fill-color: var(--accent) !important;
+}
+.nav-contact:hover {
+  background: var(--accent) !important; color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+.hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+.hamburger span { display: block; width: 24px; height: 2px; background: var(--text-primary); transition: all 0.3s; }
+/* Breadcrumb */
+.breadcrumb {
+  max-width: var(--max-width); margin: 0 auto; padding: 20px 40px;
+  font-size: 0.78rem; color: var(--text-muted); font-family: var(--font-en);
+  display: flex; align-items: center; gap: 8px; background: var(--bg-primary);
+}
+.breadcrumb a { color: var(--text-muted); transition: color 0.2s; }
+.breadcrumb a:hover { color: var(--accent); }
+
+/* ========================================
+   Article Hero
+   ======================================== */
+.article-hero {
+  padding: 40px 40px 80px;
+  background: var(--bg-dark); color: var(--text-on-dark);
+  position: relative; overflow: hidden;
+}
+.article-hero::before {
+  content: ''; position: absolute; top: -30%; right: -15%;
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,148,74,0.15) 0%, transparent 65%);
+}
+.article-hero-inner {
+  max-width: var(--max-width); margin: 0 auto; position: relative; z-index: 1;
+}
+.article-tag {
+  display: inline-block; font-family: var(--font-head);
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--accent-light);
+  padding: 6px 16px; border: 1px solid rgba(232,148,74,0.3);
+  border-radius: 20px; margin-bottom: 28px;
+}
+.article-title {
+  font-family: var(--font-head);
+  font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 800;
+  line-height: 1.4; margin-bottom: 20px;
+}
+.article-subtitle {
+  font-size: 1rem; color: var(--text-on-dark-sub);
+  line-height: 1.9; max-width: 640px;
+}
+.article-meta {
+  margin-top: 32px; display: flex; gap: 24px; align-items: center;
+  font-size: 0.8rem; color: var(--text-on-dark-sub);
+  font-family: var(--font-en);
+}
+
+/* ========================================
+   Article Body
+   ======================================== */
+.article-body {
+  max-width: var(--max-width); margin: 0 auto;
+  padding: 80px 40px 120px;
+}
+
+/* Flow diagram */
+.flow-diagram {
+  display: flex; flex-direction: column; gap: 0;
+  margin: 48px 0;
+}
+.flow-step {
+  display: flex; align-items: stretch; gap: 24px;
+  position: relative;
+}
+.flow-step-line {
+  display: flex; flex-direction: column; align-items: center;
+  width: 48px; flex-shrink: 0;
+}
+.flow-step-num {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--gradient-hero); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-head); font-weight: 800; font-size: 0.85rem;
+  flex-shrink: 0; position: relative; z-index: 1;
+}
+.flow-step-connector {
+  width: 2px; flex-grow: 1; background: var(--border);
+  min-height: 20px;
+}
+.flow-step:last-child .flow-step-connector { display: none; }
+.flow-step-content {
+  flex: 1; padding-bottom: 40px;
+}
+.flow-step-title {
+  font-family: var(--font-head); font-size: 1.1rem; font-weight: 700;
+  margin-bottom: 4px; padding-top: 10px;
+}
+.flow-step-role {
+  font-size: 0.82rem; color: var(--text-muted); margin-bottom: 12px;
+}
+.flow-step-desc {
+  font-size: 0.92rem; color: var(--text-secondary); line-height: 1.85;
+}
+
+/* Section headers */
+.section-label {
+  font-family: var(--font-head); font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent);
+  margin-bottom: 16px;
+}
+.section-label::before {
+  content: ''; display: inline-block; width: 24px; height: 1px;
+  background: var(--accent); margin-right: 12px; vertical-align: middle;
+}
+.section-title {
+  font-family: var(--font-head);
+  font-size: clamp(1.4rem, 3vw, 1.8rem); font-weight: 800;
+  line-height: 1.4; margin-bottom: 32px;
+}
+
+.content-section {
+  margin-bottom: 72px;
+}
+.content-section p {
+  font-size: 0.95rem; color: var(--text-secondary); line-height: 2;
+  margin-bottom: 20px;
+}
+.content-section p strong {
+  color: var(--text-primary); font-weight: 700;
+}
+
+/* Highlight box */
+.highlight-box {
+  background: #fff; border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 8px 8px 0; padding: 24px 28px;
+  margin: 24px 0;
+}
+.highlight-box p {
+  margin-bottom: 0; font-size: 0.92rem;
+}
+
+/* ========================================
+   Accordion
+   ======================================== */
+.accordion {
+  margin: 20px 0;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+}
+.accordion + .accordion { margin-top: 12px; }
+.accordion-trigger {
+  width: 100%; padding: 20px 24px;
+  background: none; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: space-between;
+  font-family: var(--font-ja); font-size: 0.92rem; font-weight: 600;
+  color: var(--text-primary); text-align: left;
+  transition: background 0.2s;
+}
+.accordion-trigger:hover { background: rgba(212,120,47,0.04); }
+.accordion-trigger .acc-icon {
+  display: flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--accent-glow); color: var(--accent);
+  font-size: 1.1rem; font-weight: 400;
+  transition: transform 0.3s;
+  flex-shrink: 0;
+}
+.accordion.open .accordion-trigger .acc-icon {
+  transform: rotate(45deg);
+}
+.accordion-content {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.accordion.open .accordion-content {
+  max-height: 3000px;
+}
+.accordion-inner {
+  padding: 0 24px 24px;
+  font-size: 0.88rem; color: var(--text-secondary); line-height: 1.9;
+}
+.accordion-inner p { font-size: 0.88rem; margin-bottom: 14px; }
+.accordion-inner strong { color: var(--text-primary); }
+
+/* Code block inside accordion */
+.code-block {
+  background: #1a1a24; color: #e0dcd6;
+  border-radius: 8px; padding: 20px 24px;
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 0.82rem; line-height: 1.7;
+  overflow-x: auto; margin: 16px 0;
+  white-space: pre-wrap; word-break: break-all;
+}
+
+/* Table inside accordion */
+.acc-table {
+  width: 100%; border-collapse: collapse; margin: 16px 0;
+  font-size: 0.85rem;
+}
+.acc-table th {
+  background: var(--bg-secondary); font-weight: 600;
+  padding: 10px 14px; text-align: left;
+  border-bottom: 2px solid var(--border);
+  font-size: 0.82rem;
+}
+.acc-table td {
+  padding: 10px 14px; border-bottom: 1px solid var(--border);
+  color: var(--text-secondary); vertical-align: top;
+}
+.acc-table tr:last-child td { border-bottom: none; }
+
+/* Mini tag */
+.mini-tag {
+  display: inline-block; padding: 2px 10px; border-radius: 12px;
+  font-size: 0.72rem; font-weight: 600;
+  background: var(--accent-glow); color: var(--accent);
+  margin-right: 6px;
+}
+.mini-tag.teal {
+  background: rgba(42,122,110,0.1); color: var(--accent2);
+}
+.mini-tag.blue {
+  background: rgba(59,130,246,0.1); color: #3b82f6;
+}
+
+/* ========================================
+   Channel Cards
+   ======================================== */
+.channel-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  margin: 28px 0;
+}
+.channel-card {
+  background: #fff; border: 1px solid var(--border);
+  border-radius: 12px; padding: 24px; box-shadow: var(--shadow-sm);
+}
+.channel-card-head {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+}
+.channel-card-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; flex-shrink: 0;
+}
+.channel-card-icon.x { background: #0f1419; color: #fff; }
+.channel-card-icon.yt { background: #ff0000; color: #fff; }
+.channel-card-icon.ig { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: #fff; }
+.channel-card-icon.hp { background: var(--gradient-hero); color: #fff; }
+.channel-card h4 {
+  font-family: var(--font-head); font-size: 0.95rem; font-weight: 700;
+}
+.channel-card p {
+  font-size: 0.85rem !important; color: var(--text-secondary);
+  line-height: 1.8; margin-bottom: 12px !important;
+}
+.channel-card .card-meta {
+  font-size: 0.78rem; color: var(--text-muted); font-family: var(--font-en);
+}
+
+/* ========================================
+   Comparison Card
+   ======================================== */
+.compare-cards {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+  margin: 28px 0;
+}
+.compare-card {
+  background: #fff; border: 1px solid var(--border);
+  border-radius: 12px; padding: 28px; box-shadow: var(--shadow-sm);
+}
+.compare-card.recommended {
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-md), 0 0 0 1px var(--border-accent);
+}
+.compare-card-badge {
+  font-family: var(--font-head); font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 12px;
+}
+.compare-card h4 {
+  font-family: var(--font-head); font-size: 1.05rem; font-weight: 700;
+  margin-bottom: 16px;
+}
+.compare-card p {
+  font-size: 0.85rem !important; color: var(--text-secondary);
+  line-height: 1.8; margin-bottom: 16px !important;
+}
+.compare-card ul {
+  list-style: none; padding: 0;
+}
+.compare-card ul li {
+  font-size: 0.85rem; color: var(--text-secondary);
+  padding: 5px 0 5px 20px; position: relative;
+}
+.compare-card ul li::before {
+  content: ''; position: absolute; left: 0; top: 13px;
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent);
+}
+
+/* ========================================
+   Principle Box
+   ======================================== */
+.principle-box {
+  background: var(--bg-dark); color: var(--text-on-dark);
+  border-radius: 16px; padding: 48px 40px;
+  margin: 48px 0; position: relative; overflow: hidden;
+}
+.principle-box::before {
+  content: ''; position: absolute; top: -30%; right: -10%;
+  width: 400px; height: 400px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,148,74,0.1) 0%, transparent 65%);
+}
+.principle-box p {
+  position: relative; z-index: 1;
+  font-family: var(--font-head);
+  font-size: clamp(1rem, 2.5vw, 1.3rem); font-weight: 700;
+  line-height: 1.8; color: var(--text-on-dark) !important;
+  margin-bottom: 0 !important;
+}
+.principle-box .em { color: var(--accent-light); }
+
+/* ========================================
+   CTA
+   ======================================== */
+.article-cta {
+  text-align: center; padding: 80px 40px;
+  background: var(--bg-secondary); border-top: 1px solid var(--border);
+}
+.article-cta h3 {
+  font-family: var(--font-head);
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem); font-weight: 800;
+  margin-bottom: 16px;
+}
+.article-cta p {
+  font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 36px;
+}
+.cta-button {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 16px 44px; background: var(--gradient-hero); color: #fff;
+  font-family: var(--font-head);
+  font-weight: 700; font-size: 0.95rem; border-radius: 4px;
+  transition: all 0.3s;
+}
+.cta-button:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(232,148,74,0.35); }
+
+/* Footer */
+.footer {
+  padding: 36px 0; border-top: 1px solid var(--border);
+  background: var(--bg-primary); text-align: center;
+}
+.footer-copy {
+  font-family: var(--font-en); font-size: 0.75rem;
+  color: var(--text-muted); letter-spacing: 0.05em;
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+@media (max-width: 768px) {
+  .article-hero { padding: 30px 24px 60px; }
+  .article-body { padding: 60px 24px 80px; }
+  .nav-inner { padding: 0 24px; }
+  .nav-back { display: none; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .nav-links.active {
+    display: flex; flex-direction: column; position: absolute;
+    top: 100%; left: 0; right: 0; background: rgba(246,243,238,0.98);
+    backdrop-filter: blur(20px); padding: 24px 40px 32px; gap: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .compare-cards { grid-template-columns: 1fr; }
+  .channel-grid { grid-template-columns: 1fr; }
+  .flow-step { gap: 16px; }
+  .flow-step-line { width: 40px; }
+  .flow-step-num { width: 40px; height: 40px; font-size: 0.75rem; }
+  .principle-box { padding: 36px 24px; }
+  .article-cta { padding: 60px 24px; }
+  .accordion-trigger { padding: 16px 20px; font-size: 0.93rem; }
+  .accordion-inner { padding: 0 20px 20px; }
+  .breadcrumb { padding: 16px 24px; }
+  /* モバイル視認性向上 (+5% バンプ) */
+  .content-section p { font-size: 1rem; line-height: 2.05; }
+  .accordion-inner, .accordion-inner p { font-size: 0.93rem; }
+  .flow-step-desc { font-size: 0.97rem; }
+  .compare-card p, .compare-card ul li { font-size: 0.9rem; }
+  .channel-card p { font-size: 0.9rem !important; }
+  .highlight-box p { font-size: 0.97rem; }
+  .acc-table { font-size: 0.88rem; }
+  .acc-table th { font-size: 0.85rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">RAFTEL</a>
+    <div class="nav-links" id="navLinks">
+      <a href="../index.html#philosophy">Philosophy</a>
+      <a href="../index.html#service">Service</a>
+      <a href="../index.html#approach">Approach</a>
+      <a href="../index.html#profile">Profile</a>
+      <a href="./" class="active">Content</a>
+      <a href="../index.html#contact" class="nav-contact">Contact</a>
+    </div>
+    <a href="../index.html" class="nav-back">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Top
+    </a>
+    <div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('active')">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- Breadcrumb -->
+<div class="breadcrumb" style="padding-top: 80px;">
+  <a href="../index.html">RAFTEL</a>
+  <span>/</span>
+  <a href="./">Content</a>
+  <span>/</span>
+  <span>AI×SNS集客の全体設計</span>
+</div>
+
+<!-- ========================================
+     Article Hero
+     ======================================== -->
+<header class="article-hero">
+  <div class="article-hero-inner">
+    <span class="article-tag">Content Strategy</span>
+    <h1 class="article-title">1記事から5チャネルへ<br>AI×SNS集客の全体設計</h1>
+    <p class="article-subtitle">
+      HP記事を1本書いたら、あとはAIがX・YouTube・Instagramへ自動展開。<br>
+      起業プロセスそのものをコンテンツにしていく、実践型の集客設計を公開します。
+    </p>
+    <div class="article-meta">
+      <span>2026.02</span>
+      <span>Reading time: 10 min</span>
+    </div>
+  </div>
+</header>
+
+<!-- ========================================
+     Article Body
+     ======================================== -->
+<main class="article-body">
+
+  <!-- ===== イントロ ===== -->
+  <section class="content-section">
+    <p class="section-label">Introduction</p>
+    <h2 class="section-title">「発信しなきゃ」のストレスを仕組みで解決する</h2>
+
+    <p>
+      起業したら「SNSで発信しましょう」と誰もが言う。でも正直、毎日Xに投稿して、YouTubeも撮って、Instagramもやって……と考えると、それだけで一日が終わってしまいそうですよね。
+    </p>
+    <p>
+      そこで僕がたどり着いたのが、<strong>「記事を1本書いたら、残りはAIが全チャネルに展開してくれる」</strong>という仕組み。この記事では、その全体像を設計段階から公開します。
+    </p>
+    <p>
+      ちなみにこの戦略設計自体も、AIとの壁打ちから生まれたもの。まさに「起業プロセスそのものをコンテンツにする」の第一歩です。
+    </p>
+
+    <div class="highlight-box">
+      <p><strong>この記事の前提:</strong> すでにHP（自社サイト）は構築済み。前回の記事「<a href="ai-hp-guide.html" style="color:var(--accent);text-decoration:underline;">AI×プロンプトだけでプロ品質のHPを作る完全ガイド</a>」で、そのプロセスを公開しています。</p>
+    </div>
+  </section>
+
+  <!-- ===== 全体コンセプト ===== -->
+  <section class="content-section">
+    <p class="section-label">Concept</p>
+    <h2 class="section-title">コンセプト: 「やっていること」が最強のコンテンツ</h2>
+
+    <p>
+      よくある企業ブログは「〇〇のやり方5選」みたいなまとめ記事。悪くないけど、誰でも書ける。
+    </p>
+    <p>
+      僕が選んだのは違うアプローチ。<strong>実際に起業していく過程――HP制作、商品設計、SNS戦略、SEO、集客改善――そのリアルなプロセスをそのままコンテンツにする。</strong>
+    </p>
+    <p>
+      「AIを使ってHP作ったよ」ではなく「今まさにこうやって作った。プロンプトはこれ。失敗したのはここ」という実践記録。評論とケーススタディでは、読み手に伝わる解像度がまったく違います。
+    </p>
+
+    <div class="highlight-box">
+      <p><strong>コンテンツの源泉 = 自分の行動。</strong>つまり、事業を前に進めることそのものがコンテンツ制作になる。「発信のために何か別のことをする」必要がないのがこの戦略の本質です。</p>
+    </div>
+  </section>
+
+  <!-- ===== パイプライン ===== -->
+  <section class="content-section">
+    <p class="section-label">Pipeline</p>
+    <h2 class="section-title">コンテンツ・パイプライン — 1記事が5チャネルに展開される流れ</h2>
+
+    <p>
+      全体の流れはシンプル。自分がやるのは「記事を書く」ことだけ。あとはAIが変換・展開してくれます。
+    </p>
+
+    <div class="flow-diagram">
+      <div class="flow-step">
+        <div class="flow-step-line">
+          <div class="flow-step-num">1</div>
+          <div class="flow-step-connector"></div>
+        </div>
+        <div class="flow-step-content">
+          <h3 class="flow-step-title">HP記事を書く</h3>
+          <p class="flow-step-role">人間がやること（唯一の手作業）</p>
+          <p class="flow-step-desc">実際の作業プロセスを記録しながら記事化。1記事 = 1テーマ。<strong>これがすべてのコンテンツの「原液」になる。</strong></p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-line">
+          <div class="flow-step-num">2</div>
+          <div class="flow-step-connector"></div>
+        </div>
+        <div class="flow-step-content">
+          <h3 class="flow-step-title">AIが各チャネル用に自動変換</h3>
+          <p class="flow-step-role">Claude / GPTが一括生成</p>
+          <p class="flow-step-desc">記事テキストを入力 → Xスレッド、YouTube台本、Instagramキャプションなどを自動で生成。</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-line">
+          <div class="flow-step-num">3</div>
+          <div class="flow-step-connector"></div>
+        </div>
+        <div class="flow-step-content">
+          <h3 class="flow-step-title">動画・音声を自動生成</h3>
+          <p class="flow-step-role">ElevenLabs + Canva / Gamma</p>
+          <p class="flow-step-desc">台本 → AI音声ナレーション → スライド動画を自動生成。BGMもAI（Suno）で作れる。</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-line">
+          <div class="flow-step-num">4</div>
+          <div class="flow-step-connector"></div>
+        </div>
+        <div class="flow-step-content">
+          <h3 class="flow-step-title">各チャネルに配信</h3>
+          <p class="flow-step-role">最終確認 → 予約投稿</p>
+          <p class="flow-step-desc">動画は目視チェック後にアップロード。Xはスケジューリングツールで予約投稿。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== チャネル設計 ===== -->
+  <section class="content-section">
+    <p class="section-label">Channels</p>
+    <h2 class="section-title">各チャネルの役割設計</h2>
+
+    <p>
+      全SNSに同じことを投げるのではなく、それぞれに明確な「役割」を持たせます。水が高い所から低い所に流れるように、認知から信頼構築までの導線を設計する。
+    </p>
+
+    <div class="channel-grid">
+      <div class="channel-card">
+        <div class="channel-card-head">
+          <div class="channel-card-icon hp">HP</div>
+          <h4>HP記事</h4>
+        </div>
+        <p>SEO資産・信頼構築の基盤。検索からの流入を長期的に積み上げる。すべてのコンテンツの「原液」。</p>
+        <div class="card-meta">週1更新 / KPI: オーガニック流入</div>
+      </div>
+      <div class="channel-card">
+        <div class="channel-card-head">
+          <div class="channel-card-icon x">X</div>
+          <h4>X (Twitter)</h4>
+        </div>
+        <p>認知拡大と反応テスト。擬人化キャラで気軽に発信し、反応が良いものを実名アカウントに展開。</p>
+        <div class="card-meta">毎日投稿 / KPI: インプレッション</div>
+      </div>
+      <div class="channel-card">
+        <div class="channel-card-head">
+          <div class="channel-card-icon yt">YT</div>
+          <h4>YouTube</h4>
+        </div>
+        <p>ショートで「発見」、通常動画で「深掘り」。スライド×AI音声で顔出し不要の量産体制。</p>
+        <div class="card-meta">ショート×3/記事 + 通常月2本</div>
+      </div>
+      <div class="channel-card">
+        <div class="channel-card-head">
+          <div class="channel-card-icon ig">IG</div>
+          <h4>Instagram</h4>
+        </div>
+        <p>YouTubeショートをそのまま転用。異なるユーザー層へのリーチを広げる。</p>
+        <div class="card-meta">ショートと同時配信</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== X戦略 ===== -->
+  <section class="content-section">
+    <p class="section-label">X Strategy</p>
+    <h2 class="section-title">X (Twitter) — 2アカウント戦略</h2>
+
+    <p>
+      Xの運用で意外と大事なのが、<strong>「気軽さ」と「信頼感」のバランス</strong>。毎日の発信は気軽にやりたいけど、実名アカウントでカジュアルすぎるのも違う。そこで2アカウント体制を採用します。
+    </p>
+
+    <div class="compare-cards">
+      <div class="compare-card recommended">
+        <p class="compare-card-badge">日常発信・テスト用</p>
+        <h4>擬人化キャラアカウント</h4>
+        <p>AIやデータをテーマにした擬人化キャラを作成。日々の気づき・学び・作業過程をカジュアルに発信。</p>
+        <ul>
+          <li>発信のハードルが圧倒的に低い</li>
+          <li>キャラの口調でトーンが安定する</li>
+          <li>失敗談やぶっちゃけ話もしやすい</li>
+          <li>投稿の「反応テスト」の場として機能</li>
+        </ul>
+      </div>
+      <div class="compare-card">
+        <p class="compare-card-badge">権威性・HP連動用</p>
+        <h4>実名アカウント</h4>
+        <p>キャラアカウントで反応が良かったテーマや、HP記事と連動したスレッドを厳選して投稿。</p>
+        <ul>
+          <li>反応実証済みのコンテンツだけを配信</li>
+          <li>HP記事のスレッド展開で誘導</li>
+          <li>専門性・実績をストレートに伝える</li>
+          <li>ビジネス上の信頼構築に特化</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-trigger" onclick="toggleAccordion(this)">
+        <span>2アカウント運用の具体的なフロー</span>
+        <span class="acc-icon">+</span>
+      </button>
+      <div class="accordion-content">
+        <div class="accordion-inner">
+          <p><strong>Step 1: キャラアカウントで毎日発信</strong></p>
+          <p>日々の作業で感じたこと、発見したこと、失敗したことをカジュアルにポスト。AIに下書きを作らせて、キャラの口調に調整。1日3〜5投稿が目安。</p>
+          <p style="margin-top:16px;"><strong>Step 2: 反応の良い投稿をピックアップ</strong></p>
+          <p>週末にインプレッション・いいね・リプライを確認。反応が良かった投稿のテーマ・切り口をストックしておく。</p>
+          <p style="margin-top:16px;"><strong>Step 3: 実名アカウントで磨いて再配信</strong></p>
+          <p>反応の良かったテーマを、より構造的に・深く・実名のトーンで再構成して投稿。HP記事がある場合はスレッド形式で誘導リンク付き。</p>
+          <p style="margin-top:16px;"><strong>Step 4: HP記事連動スレッド</strong></p>
+          <p>新しいHP記事を公開したら、実名アカウントで5〜8ツイートのスレッドを投稿。記事の要点を凝縮し、最後にHP記事リンクを添える。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-trigger" onclick="toggleAccordion(this)">
+        <span>擬人化キャラの設計ポイント</span>
+        <span class="acc-icon">+</span>
+      </button>
+      <div class="accordion-content">
+        <div class="accordion-inner">
+          <p><strong>なぜ擬人化キャラ？</strong></p>
+          <p>実名だと「ちゃんとしたことを言わなきゃ」というプレッシャーで発信頻度が落ちる。キャラなら「今日も実験失敗した〜」みたいなカジュアルな投稿がしやすい。結果として、投稿量が増えて、テストできるネタも増える。</p>
+          <p style="margin-top:16px;"><strong>キャラ設計のコツ:</strong></p>
+          <table class="acc-table">
+            <tr><th>要素</th><th>設計方針</th></tr>
+            <tr><td>名前</td><td>覚えやすく、テーマが想像できる名前</td></tr>
+            <tr><td>口調</td><td>フレンドリーだけど知的。「〜だよね」「〜してみた」系</td></tr>
+            <tr><td>アイコン</td><td>AI画像生成で作成。親しみやすいイラスト系推奨</td></tr>
+            <tr><td>発信テーマ</td><td>AI活用・データ駆動・起業プロセスに特化</td></tr>
+            <tr><td>人格</td><td>好奇心旺盛、失敗も隠さない、実験好き</td></tr>
+          </table>
+          <p style="margin-top:16px;">アイコンはMidjourney/DALL-Eで生成。一貫したビジュアルがあると、タイムラインで認識されやすくなる。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 動画戦略 ===== -->
+  <section class="content-section">
+    <p class="section-label">Video</p>
+    <h2 class="section-title">YouTube — AIで動画を「書く」時代</h2>
+
+    <p>
+      「動画制作」と聞くと身構えてしまいますが、今のAIを使えば、テキスト記事を書くのとほとんど同じ感覚で動画が作れます。撮影も編集技術も不要。
+    </p>
+
+    <div class="compare-cards">
+      <div class="compare-card recommended">
+        <p class="compare-card-badge">Recommended</p>
+        <h4>スライド × AI音声型</h4>
+        <p>記事からAIが台本生成 → AI音声ナレーション → スライドアニメーション。顔出し不要で量産可能。</p>
+        <ul>
+          <li>記事1本から30分で動画3本生成</li>
+          <li>ビジネス系YouTubeとして十分な品質</li>
+          <li>声質・話速をブランドに合わせて固定</li>
+          <li>字幕もCapCutで自動付与</li>
+        </ul>
+      </div>
+      <div class="compare-card">
+        <p class="compare-card-badge">将来的に</p>
+        <h4>顔出し + AI編集型</h4>
+        <p>台本はAI生成、撮影は5分、編集はCapCut AIが自動処理。信頼性を最大化したいフェーズ向け。</p>
+        <ul>
+          <li>人となりが伝わり、信頼性が段違い</li>
+          <li>コメント・質問が生まれやすい</li>
+          <li>AI編集で手間は最小限</li>
+          <li>まず量産体制を確立してから移行</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-trigger" onclick="toggleAccordion(this)">
+        <span>AI動画制作の具体的なツールチェーン</span>
+        <span class="acc-icon">+</span>
+      </button>
+      <div class="accordion-content">
+        <div class="accordion-inner">
+          <table class="acc-table">
+            <tr><th>工程</th><th>ツール</th><th>自動化度</th><th>備考</th></tr>
+            <tr><td>記事→台本</td><td>Claude / GPT</td><td>90%</td><td>プロンプトで一発変換</td></tr>
+            <tr><td>台本→音声</td><td>ElevenLabs</td><td>90%</td><td>日本語品質は実用レベル</td></tr>
+            <tr><td>スライド生成</td><td>Gamma / Canva AI</td><td>85%</td><td>テンプレートで統一感</td></tr>
+            <tr><td>BGM生成</td><td>Suno / Udio</td><td>85%</td><td>ロイヤリティフリーで高品質</td></tr>
+            <tr><td>字幕付与</td><td>CapCut</td><td>95%</td><td>自動文字起こし+デザイン</td></tr>
+            <tr><td>サムネイル</td><td>Canva AI</td><td>80%</td><td>テンプレで量産</td></tr>
+          </table>
+          <p style="margin-top:16px;"><strong>フルAI映像生成（Runway / Sora等）について:</strong> 現時点では「ショート動画なら許容範囲、通常動画にはまだ粗い」という評価。スライド×音声型の方がビジネス用途では安定します。ただし進化が速いので、半年後には状況が変わる可能性大。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-trigger" onclick="toggleAccordion(this)">
+        <span>YouTube台本をAIに生成させるプロンプト例</span>
+        <span class="acc-icon">+</span>
+      </button>
+      <div class="accordion-content">
+        <div class="accordion-inner">
+          <p><strong>ショート動画（60秒）用:</strong></p>
+          <div class="code-block">以下のHP記事から、YouTubeショート動画の台本を3本作成して。
+
+条件:
+- 1本あたり60秒以内（約180文字）
+- 冒頭3秒でフックとなる問いかけ or 衝撃的な事実
+- 「続きはプロフィールのリンクから」で締める
+- 話し言葉で、テンポよく
+
+記事URL or テキスト:
+（ここに記事を貼り付け）</div>
+          <p style="margin-top:16px;"><strong>通常動画（10分）用:</strong></p>
+          <div class="code-block">以下のHP記事を、YouTube動画の台本に変換して。
+
+条件:
+- 10〜12分の尺（約3,000文字）
+- 構成: フック(30秒) → 結論(30秒) → 本編(8分) → まとめ+CTA(1分)
+- 「〜なんですよね」「〜してみたんですが」等の語り口調
+- 適切な箇所に「ここでスライド切り替え」の指示を入れて
+
+記事URL or テキスト:
+（ここに記事を貼り付け）</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 自動化の現実 ===== -->
+  <section class="content-section">
+    <p class="section-label">Automation</p>
+    <h2 class="section-title">自動化のリアル — 何ができて、何に人間が必要か</h2>
+
+    <p>
+      「全部AIに任せたい」という気持ちはわかります（僕もそうです）。ただ、正直に言うと、完全自動化にはまだ限界がある。大事なのは<strong>「どこまで自動化できるか」を正確に知って、人間の時間を最もインパクトの大きい場所に集中させる</strong>こと。
+    </p>
+
+    <div class="accordion">
+      <button class="accordion-trigger" onclick="toggleAccordion(this)">
+        <span>自動化レベル一覧（工程別の正直な評価）</span>
+        <span class="acc-icon">+</span>
+      </button>
+      <div class="accordion-content">
+        <div class="accordion-inner">
+          <table class="acc-table">
+            <tr><th>工程</th><th>AI自動化度</th><th>人間の関与</th></tr>
+            <tr><td>記事→Xスレッド変換</td><td><span class="mini-tag">95%</span></td><td>トーン最終チェック</td></tr>
+            <tr><td>記事→YouTube台本</td><td><span class="mini-tag">90%</span></td><td>フック部分の微調整</td></tr>
+            <tr><td>台本→AI音声合成</td><td><span class="mini-tag">90%</span></td><td>初期設定のみ</td></tr>
+            <tr><td>スライド動画生成</td><td><span class="mini-tag teal">85%</span></td><td>テンプレ初期構築</td></tr>
+            <tr><td>BGM生成</td><td><span class="mini-tag teal">85%</span></td><td>雰囲気の選択</td></tr>
+            <tr><td>サムネイル生成</td><td><span class="mini-tag teal">80%</span></td><td>ブランド整合チェック</td></tr>
+            <tr><td>投稿スケジュール管理</td><td><span class="mini-tag">95%</span></td><td>初期設定のみ</td></tr>
+          </table>
+          <p style="margin-top:16px;"><strong>人間がやるべきこと（代替不可）:</strong></p>
+          <p>・記事の企画・執筆 — 実体験がコンテンツの核。ここがAIだとバレる</p>
+          <p>・動画の最終チェック — 5分の目視確認で品質事故を防ぐ</p>
+          <p>・コメント返信 — 人間味が信頼につながる。下書きはAI、投稿は手動</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== コンテンツロードマップ ===== -->
+  <section class="content-section">
+    <p class="section-label">Roadmap</p>
+    <h2 class="section-title">コンテンツ・ロードマップ — 起業プロセスがそのまま記事になる</h2>
+
+    <p>
+      「何を書けばいいかわからない」という悩みとは無縁。なぜなら、起業で実際にやることがそのまま記事テーマになるから。時系列に沿って自然にコンテンツが生まれていく設計です。
+    </p>
+
+    <div class="flow-diagram">
+      <div class="flow-step">
+        <div class="flow-step-line">
+          <div class="flow-step-num">01</div>
+          <div class="flow-step-connector"></div>
+        </div>
+        <div class="flow-step-content">
+          <h3 class="flow-step-title">AI×プロンプトでプロ品質HP</h3>
+          <p class="flow-step-role"><span class="mini-tag">公開済み</span></p>
+          <p class="flow-step-desc">コーディング知識ゼロからのHP制作プロセスを全公開。</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-line">
+          <div class="flow-step-num">02</div>
+          <div class="flow-step-connector"></div>
+        </div>
+        <div class="flow-step-content">
+          <h3 class="flow-step-title">AI×SNS集客の全体設計</h3>
+          <p class="flow-step-role"><span class="mini-tag">この記事</span></p>
+          <p class="flow-step-desc">1記事→5チャネル展開の仕組みとX2アカウント戦略。</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-line">
+          <div class="flow-step-num">03</div>
+          <div class="flow-step-connector"></div>
+        </div>
+        <div class="flow-step-content">
+          <h3 class="flow-step-title">AIと壁打ちして商品コンセプトを磨く</h3>
+          <p class="flow-step-role"><span class="mini-tag teal">次回予定</span></p>
+          <p class="flow-step-desc">AIに100回壁打ちして商品設計を研ぎ澄ます方法。</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-line">
+          <div class="flow-step-num">04</div>
+          <div class="flow-step-connector"></div>
+        </div>
+        <div class="flow-step-content">
+          <h3 class="flow-step-title">構造化データ×AI記事でSEOを狙う</h3>
+          <p class="flow-step-role"><span class="mini-tag teal">予定</span></p>
+          <p class="flow-step-desc">技術的SEOの設計とAI記事の最適化戦略。</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-line">
+          <div class="flow-step-num">05</div>
+          <div class="flow-step-connector"></div>
+        </div>
+        <div class="flow-step-content">
+          <h3 class="flow-step-title">SNS運用の完全自動化オペレーション</h3>
+          <p class="flow-step-role"><span class="mini-tag teal">予定</span></p>
+          <p class="flow-step-desc">記事公開→全チャネル配信の自動化パイプライン構築記。</p>
+        </div>
+      </div>
+    </div>
+
+    <p>
+      ポイントは、「記事を書くために事業を止める」のではなく、<strong>「事業を進めた結果として記事が生まれる」</strong>サイクル。このリズムができれば、コンテンツ制作が負荷ではなく、事業推進のアクセラレーターになります。
+    </p>
+  </section>
+
+  <!-- ===== 原則 ===== -->
+  <div class="principle-box">
+    <p>
+      <span class="em">記事は1本だけ、本気で書く。</span><br>
+      残りは、AIが全チャネルに届けてくれる。<br><br>
+      「やっていること」をそのまま発信する。<br>
+      それが最もリアルで、最も<span class="em">刺さるコンテンツ</span>になる。
+    </p>
+  </div>
+
+  <!-- ===== 実装ロードマップ ===== -->
+  <section class="content-section">
+    <p class="section-label">Implementation</p>
+    <h2 class="section-title">実装の優先順位 — まず何から始めるか</h2>
+
+    <p>
+      戦略を描いたら、あとは順番に実装していくだけ。一気にやろうとせず、効果とハードルのバランスで優先順位をつけます。
+    </p>
+
+    <div class="accordion">
+      <button class="accordion-trigger" onclick="toggleAccordion(this)">
+        <span>Phase 1〜3の実装ステップ</span>
+        <span class="acc-icon">+</span>
+      </button>
+      <div class="accordion-content">
+        <div class="accordion-inner">
+          <p><strong>Phase 1: 今すぐ（記事→X自動生成）</strong></p>
+          <p>HP記事をClaude / GPTに渡してXスレッドを自動生成。擬人化キャラのアカウントを開設。ツールの導入なしで今日から始められる。</p>
+          <p style="margin-top:16px;"><strong>Phase 2: 1〜2週間後（YouTube台本+AI音声）</strong></p>
+          <p>ElevenLabsアカウント開設 → 音声プロファイル設定 → 台本変換プロンプトを確立。テンプレートが固まれば、1本30分で動画化できる体制に。</p>
+          <p style="margin-top:16px;"><strong>Phase 3: 1ヶ月後（フル自動パイプライン）</strong></p>
+          <p>Canvaテンプレート確立 → 動画量産体制 → Buffer/Hootsuiteで予約投稿自動化。ここまで来ると「記事を書く」以外の作業時間がほぼゼロに。</p>
+        </div>
+      </div>
+    </div>
+
+    <p>
+      次回の記事では、実際に擬人化キャラを作ってX運用を始めたプロセス、あるいは商品設計のAI壁打ちプロセスをお届けする予定です。この記事自体が、まさにロードマップの「02」でした。
+    </p>
+  </section>
+
+</main>
+
+<!-- ========================================
+     CTA
+     ======================================== -->
+<section class="article-cta">
+  <h3>AI×データ活用のご相談、お気軽にどうぞ。</h3>
+  <p>コンテンツ戦略・SNS集客・AI活用まで、事業の課題に合わせてご提案します。</p>
+  <a href="../index.html#contact" class="cta-button">
+    お問い合わせ
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <span class="footer-copy">&copy; 2026 RAFTEL Inc. All Rights Reserved.</span>
+</footer>
+
+<!-- ========================================
+     JavaScript
+     ======================================== -->
+<script>
+function toggleAccordion(trigger) {
+  const accordion = trigger.closest('.accordion');
+  accordion.classList.toggle('open');
+}
+</script>
+</body>
+</html>
