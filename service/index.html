@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Content | RAFTEL Inc. — AI活用ナレッジ</title>
-<meta name="description" content="RAFTEL Inc.が発信するAI活用・データドリブン経営・DXに関するナレッジコンテンツ。実践に基づいたノウハウを公開しています。">
+<title>Service | RAFTEL Inc. — サービス一覧</title>
+<meta name="description" content="RAFTEL Inc.が提供するサービス一覧。起業・新規事業のデジタル戦略パートナーとして、ビジョン策定からHP制作・SNS運用まで一気通貫で支援します。">
 <!-- OGP -->
-<meta property="og:title" content="Content | RAFTEL Inc. — AI活用ナレッジ">
-<meta property="og:description" content="AI活用・データドリブン経営・DXに関するナレッジコンテンツ。実践に基づいたノウハウを公開しています。">
+<meta property="og:title" content="Service | RAFTEL Inc. — サービス一覧">
+<meta property="og:description" content="起業・新規事業のデジタル戦略パートナー。ビジョン策定からHP制作・SNS運用まで一気通貫で支援します。">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="RAFTEL Inc.">
 <meta name="twitter:card" content="summary_large_image">
@@ -20,8 +20,8 @@
 {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  "name": "RAFTEL Content — AI活用ナレッジ",
-  "description": "AI活用・データドリブン経営・DXに関するナレッジコンテンツ",
+  "name": "RAFTEL Service — サービス一覧",
+  "description": "起業・新規事業のデジタル戦略パートナーとして、ビジョン策定からHP制作・SNS運用まで支援",
   "publisher": {
     "@type": "Organization",
     "name": "RAFTEL Inc."
@@ -91,6 +91,7 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: 0.06em;
 }
 .nav-links a:hover { color: var(--accent); }
+.nav-links a.active { color: var(--accent); }
 .nav-contact {
   padding: 8px 24px; border: 1px solid var(--accent);
   color: var(--accent) !important; border-radius: 4px; transition: all 0.3s;
@@ -132,71 +133,64 @@ a { color: inherit; text-decoration: none; }
 }
 .breadcrumb a { color: var(--text-muted); transition: color 0.2s; }
 .breadcrumb a:hover { color: var(--accent); }
-.breadcrumb span { color: var(--text-muted); }
 
-/* Content Grid */
-.content-body {
+/* Service Grid */
+.service-body {
   max-width: var(--max-width); margin: 0 auto; padding: 40px 40px 120px;
 }
-.content-grid {
+.service-grid {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   gap: 28px;
 }
-.content-card {
+.service-card {
   background: #fff; border: 1px solid var(--border); border-radius: 16px;
   overflow: hidden; transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
   box-shadow: var(--shadow-sm); display: flex; flex-direction: column;
 }
-.content-card:hover {
+.service-card:hover {
   transform: translateY(-6px);
   box-shadow: var(--shadow-lg); border-color: var(--border-accent);
 }
-.content-card-thumb {
+.service-card-thumb {
   height: 200px; background: var(--bg-dark); position: relative; overflow: hidden;
   display: flex; align-items: center; justify-content: center;
 }
-.content-card-thumb-inner {
+.service-card-thumb-inner {
   font-family: var(--font-head); font-size: 3rem; font-weight: 800;
   color: rgba(255,255,255,0.06); letter-spacing: -0.03em;
   position: absolute; white-space: nowrap;
 }
-.content-card-thumb-icon {
+.service-card-thumb-icon {
   position: relative; z-index: 1; width: 72px; height: 72px; border-radius: 18px;
   background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
   backdrop-filter: blur(12px); display: flex; align-items: center; justify-content: center;
   color: var(--accent-light);
 }
-.content-card-body { padding: 32px; flex: 1; display: flex; flex-direction: column; }
-.content-card-tag {
+.service-card-body { padding: 32px; flex: 1; display: flex; flex-direction: column; }
+.service-card-tag {
   display: inline-block; font-family: var(--font-head);
   font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
   color: var(--accent); background: var(--accent-glow);
   padding: 4px 12px; border-radius: 12px; margin-bottom: 14px; width: fit-content;
 }
-.content-card-title {
+.service-card-title {
   font-family: var(--font-head); font-size: 1.1rem; font-weight: 700;
   line-height: 1.5; margin-bottom: 12px;
 }
-.content-card-desc {
+.service-card-desc {
   font-size: 0.88rem; color: var(--text-secondary); line-height: 1.85;
   margin-bottom: 24px; flex: 1;
 }
-.content-card-meta {
+.service-card-meta {
   font-family: var(--font-en); font-size: 0.78rem; color: var(--text-muted);
   display: flex; justify-content: space-between; align-items: center;
 }
-.content-card-link {
+.service-card-link {
   font-family: var(--font-head); font-size: 0.8rem; font-weight: 600;
   color: var(--accent); display: flex; align-items: center; gap: 4px;
   transition: gap 0.3s;
 }
-.content-card:hover .content-card-link { gap: 8px; }
-
-/* Empty state for future */
-.content-coming {
-  text-align: center; padding: 60px 40px;
-  color: var(--text-muted); font-size: 0.9rem;
-}
+.service-card:hover .service-card-link { gap: 8px; }
 
 /* Footer */
 .footer {
@@ -228,8 +222,8 @@ a { color: inherit; text-decoration: none; }
   }
   .page-hero { padding: 120px 24px 60px; }
   .breadcrumb { padding: 16px 24px; }
-  .content-body { padding: 24px 24px 80px; }
-  .content-grid { grid-template-columns: 1fr; }
+  .service-body { padding: 24px 24px 80px; }
+  .service-grid { grid-template-columns: 1fr; }
   .nav-inner { padding: 0 24px; }
 }
 </style>
@@ -242,10 +236,10 @@ a { color: inherit; text-decoration: none; }
     <a href="../index.html" class="nav-logo">RAFTEL</a>
     <div class="nav-links" id="navLinks">
       <a href="../index.html#philosophy">Philosophy</a>
-      <a href="../service/">Service</a>
+      <a href="./" class="active">Service</a>
       <a href="../index.html#approach">Approach</a>
       <a href="../index.html#profile">Profile</a>
-      <a href="./">Content</a>
+      <a href="../content/">Content</a>
       <a href="../index.html#contact" class="nav-contact">Contact</a>
     </div>
     <div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('active')">
@@ -257,8 +251,8 @@ a { color: inherit; text-decoration: none; }
 <!-- Hero -->
 <header class="page-hero">
   <div class="page-hero-inner">
-    <h1>Content</h1>
-    <p>AI活用・データドリブン経営・DXに関するナレッジを、実践に基づいて発信しています。</p>
+    <h1>Service</h1>
+    <p>起業・新規事業のデジタル戦略パートナー。ビジョンの言語化からHP・SNS・集客導線まで、一気通貫で支援します。</p>
   </div>
 </header>
 
@@ -266,47 +260,28 @@ a { color: inherit; text-decoration: none; }
 <div class="breadcrumb">
   <a href="../index.html">RAFTEL</a>
   <span>/</span>
-  <span>Content</span>
+  <span>Service</span>
 </div>
 
-<!-- Content Grid -->
-<main class="content-body">
-  <div class="content-grid">
+<!-- Service Grid -->
+<main class="service-body">
+  <div class="service-grid">
 
-    <!-- Article 1 -->
-    <a href="ai-hp-guide.html" class="content-card reveal">
-      <div class="content-card-thumb">
-        <span class="content-card-thumb-inner">AI × HP</span>
-        <div class="content-card-thumb-icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+    <!-- Service 1: Growth Partner -->
+    <a href="growth-partner.html" class="service-card reveal">
+      <div class="service-card-thumb">
+        <span class="service-card-thumb-inner">Growth Partner</span>
+        <div class="service-card-thumb-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
         </div>
       </div>
-      <div class="content-card-body">
-        <span class="content-card-tag">AI Knowledge</span>
-        <h2 class="content-card-title">AI×プロンプトだけで「プロ品質のHP」を作る完全ガイド</h2>
-        <p class="content-card-desc">コーディング知識ゼロでもAIとの対話だけで洗練されたホームページを作る方法を、実際のプロセスとプロンプト例つきで解説。Claude Code / Gemini 2パターン対応。</p>
-        <div class="content-card-meta">
-          <span>2026.02 / 8 min read</span>
-          <span class="content-card-link">Read more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-        </div>
-      </div>
-    </a>
-
-    <!-- Article 2 -->
-    <a href="ai-sns-strategy.html" class="content-card reveal reveal-delay-1">
-      <div class="content-card-thumb">
-        <span class="content-card-thumb-inner">AI × SNS</span>
-        <div class="content-card-thumb-icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        </div>
-      </div>
-      <div class="content-card-body">
-        <span class="content-card-tag">Content Strategy</span>
-        <h2 class="content-card-title">1記事から5チャネルへ — AI×SNS集客の全体設計</h2>
-        <p class="content-card-desc">HP記事を起点にX・YouTube・Instagramへ自動展開。起業プロセスそのものをコンテンツにする実践型の集客戦略。</p>
-        <div class="content-card-meta">
-          <span>2026.02 / 10 min read</span>
-          <span class="content-card-link">Read more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      <div class="service-card-body">
+        <span class="service-card-tag">Growth Partner Program</span>
+        <h2 class="service-card-title">創業3ヶ月集中 デジタル戦略パートナー</h2>
+        <p class="service-card-desc">ビジョンの言語化からHP制作・SNS運用まで、起業初期の3ヶ月を共に走る伴走型プログラム。コーチング×コンサル×実装を一気通貫で。</p>
+        <div class="service-card-meta">
+          <span>&yen;200,000/月 &times; 3ヶ月</span>
+          <span class="service-card-link">View details <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
         </div>
       </div>
     </a>

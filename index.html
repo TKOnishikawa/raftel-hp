@@ -830,6 +830,19 @@ ul { list-style: none; }
   transition: gap 0.3s;
 }
 .content-card:hover .content-card-link { gap: 8px; }
+.service-more-wrap { text-align: center; margin-top: 48px; }
+.service-more {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-head); font-size: 0.88rem; font-weight: 600;
+  color: var(--accent-light); padding: 12px 32px;
+  border: 1px solid rgba(232,148,74,0.35); border-radius: 4px;
+  transition: all 0.3s;
+}
+.service-more:hover {
+  background: var(--accent); color: #fff;
+  box-shadow: 0 4px 20px rgba(212,120,47,0.25);
+  -webkit-text-fill-color: #fff;
+}
 .content-more-wrap { text-align: center; margin-top: 48px; }
 .content-more {
   display: inline-flex; align-items: center; gap: 8px;
@@ -1214,6 +1227,13 @@ ul { list-style: none; }
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="service-more-wrap reveal">
+      <a href="service/" class="service-more">
+        サービス詳細を見る
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
     </div>
   </div>
 </section>
