@@ -558,9 +558,10 @@ ul { list-style: none; }
   background: rgba(212,120,47,0.06); font-weight: 700; color: var(--accent-dark);
 }
 .rtb-table tr:last-child td { border-bottom: none; }
-.rtb-table .check { color: var(--accent2); font-size: 1.2rem; font-weight: 800; }
-.rtb-table .partial { color: #b8a040; font-size: 1.1rem; font-weight: 700; }
-.rtb-table .none { color: #ccc; font-size: 1.1rem; font-weight: 700; }
+.rtb-table .check { color: #fff; font-size: 0.75rem; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: var(--accent2); }
+.rtb-table .partial { color: #fff; font-size: 0.75rem; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: #c4a840; }
+.rtb-table .none { color: #fff; font-size: 0.75rem; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: #d4d4d4; }
+.rtb-table .raftel { color: #fff; font-size: 0.75rem; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: var(--accent); }
 
 /* ========================================
    Profile
@@ -965,9 +966,9 @@ ul { list-style: none; }
     <!-- Solution -->
     <div class="principle-box reveal">
       <p>
-        <span class="em">コーチに頼むと、言葉にはなるけど形にならない。</span><br>
-        制作会社に頼むと、形にはなるけど想いが抜ける。<br>
-        コンサルに頼むと、戦略は出るけど実装されない。<br>
+        <span class="em">コンサルに頼むと、高いし、想いが抜ける。</span><br>
+        コーチに頼むと、言葉にはなるけど形にならない。<br>
+        制作会社に頼むと、形にはなるけど戦略が抜ける。<br>
         システム会社に頼むと、納品されても使われない。<br><br>
         <span class="em">RAFTELは、全部一人でやります。</span>
       </p>
@@ -1120,52 +1121,52 @@ ul { list-style: none; }
       <tbody>
         <tr>
           <td>ビジョン・MVV策定</td>
-          <td class="check">&#9675;</td>
-          <td class="partial">&#9651;</td>
-          <td class="none">&times;</td>
-          <td>&#9675;</td>
+          <td><span class="check">&#9675;</span></td>
+          <td><span class="partial">&#9651;</span></td>
+          <td><span class="none">&times;</span></td>
+          <td><span class="raftel">&#9675;</span></td>
         </tr>
         <tr>
           <td>市場調査・競合分析</td>
-          <td class="none">&times;</td>
-          <td class="check">&#9675;</td>
-          <td class="none">&times;</td>
-          <td>&#9675;</td>
+          <td><span class="none">&times;</span></td>
+          <td><span class="check">&#9675;</span></td>
+          <td><span class="none">&times;</span></td>
+          <td><span class="raftel">&#9675;</span></td>
         </tr>
         <tr>
           <td>戦略・ロードマップ</td>
-          <td class="none">&times;</td>
-          <td class="check">&#9675;</td>
-          <td class="none">&times;</td>
-          <td>&#9675;</td>
+          <td><span class="none">&times;</span></td>
+          <td><span class="check">&#9675;</span></td>
+          <td><span class="none">&times;</span></td>
+          <td><span class="raftel">&#9675;</span></td>
         </tr>
         <tr>
           <td>HP・SNS実装</td>
-          <td class="none">&times;</td>
-          <td class="none">&times;</td>
-          <td class="check">&#9675;</td>
-          <td>&#9675;</td>
+          <td><span class="none">&times;</span></td>
+          <td><span class="none">&times;</span></td>
+          <td><span class="check">&#9675;</span></td>
+          <td><span class="raftel">&#9675;</span></td>
         </tr>
         <tr>
           <td>データ分析・KPI設計</td>
-          <td class="none">&times;</td>
-          <td class="check">&#9675;</td>
-          <td class="none">&times;</td>
-          <td>&#9675;</td>
+          <td><span class="none">&times;</span></td>
+          <td><span class="check">&#9675;</span></td>
+          <td><span class="none">&times;</span></td>
+          <td><span class="raftel">&#9675;</span></td>
         </tr>
         <tr>
           <td>DX・プロセス自動化</td>
-          <td class="none">&times;</td>
-          <td class="partial">&#9651;</td>
-          <td class="none">&times;</td>
-          <td>&#9675;</td>
+          <td><span class="none">&times;</span></td>
+          <td><span class="partial">&#9651;</span></td>
+          <td><span class="none">&times;</span></td>
+          <td><span class="raftel">&#9675;</span></td>
         </tr>
         <tr>
           <td>価格</td>
-          <td class="partial">&#9651;</td>
-          <td class="none">&times;</td>
-          <td class="partial">&#9651;</td>
-          <td>&#9675;</td>
+          <td><span class="partial">&#9651;</span></td>
+          <td><span class="none">&times;</span></td>
+          <td><span class="partial">&#9651;</span></td>
+          <td><span class="raftel">&#9675;</span></td>
         </tr>
       </tbody>
     </table>
