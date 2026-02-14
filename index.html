@@ -592,6 +592,13 @@ ul { list-style: none; }
   border-color: rgba(212,120,47,0.3);
   color: rgba(255,255,255,0.7);
 }
+.service-card-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 16px; font-size: 0.82rem; font-weight: 600;
+  color: var(--accent-light); font-family: var(--font-ja);
+  transition: color 0.3s, gap 0.3s;
+}
+.service-card-link:hover { color: #fff; gap: 12px; }
 
 /* ========================================
    Approach Section — Lighter with energy
@@ -1185,6 +1192,10 @@ ul { list-style: none; }
             <span class="service-tag">GTM策定</span>
             <span class="service-tag">CRM/LTV最大化</span>
           </div>
+          <a href="service/growth-sprint.html" class="service-card-link">
+            Growth Sprint（3ヶ月集中）を見る
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
         </div>
       </div>
 
