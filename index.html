@@ -558,9 +558,9 @@ ul { list-style: none; }
   background: rgba(212,120,47,0.06); font-weight: 700; color: var(--accent-dark);
 }
 .rtb-table tr:last-child td { border-bottom: none; }
-.rtb-table .check { color: var(--accent2); }
-.rtb-table .partial { color: var(--text-muted); }
-.rtb-table .none { color: rgba(26,26,36,0.15); }
+.rtb-table .check { color: var(--accent2); font-size: 1.2rem; font-weight: 800; }
+.rtb-table .partial { color: #b8a040; font-size: 1.1rem; font-weight: 700; }
+.rtb-table .none { color: #ccc; font-size: 1.1rem; font-weight: 700; }
 
 /* ========================================
    Profile
@@ -935,8 +935,8 @@ ul { list-style: none; }
       <div class="problem-cards enterprise">
         <div class="problem-card">
           <div class="problem-card-num">PAIN 04</div>
-          <h4>データはあるのに、<br>売上の「なぜ」が説明できない</h4>
-          <p>「数字は集まっている。でもその裏側が見えず、次の打ち手が出てこない。」</p>
+          <h4>売上や顧客価値の最大化のために、<br>データを活かしきれていない</h4>
+          <p>「データは集まっている。でも、分析→施策→成果のループが回っていない。」</p>
         </div>
         <div class="problem-card">
           <div class="problem-card-num">PAIN 05</div>
@@ -956,7 +956,8 @@ ul { list-style: none; }
       <p>
         <span class="em">コーチに頼むと、言葉にはなるけど形にならない。</span><br>
         制作会社に頼むと、形にはなるけど想いが抜ける。<br>
-        コンサルに頼むと、戦略は出るけど実装されない。<br><br>
+        コンサルに頼むと、戦略は出るけど実装されない。<br>
+        システム会社に頼むと、納品されても使われない。<br><br>
         <span class="em">RAFTELは、全部一人でやります。</span>
       </p>
     </div>
@@ -981,7 +982,7 @@ ul { list-style: none; }
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
         </div>
         <h4>Engineering</h4>
-        <p>AI&times;実装でHP制作・SNS戦略・BI構築・CRM最適化。戦略を「動くもの」に変える。</p>
+        <p>HP制作・SNS構築からBI・CRM最適化、DX・プロセス自動化まで。戦略を「動くもの」に変える。</p>
       </div>
     </div>
   </div>
@@ -1073,21 +1074,21 @@ ul { list-style: none; }
   <div class="container">
     <div class="section-header reveal">
       <p class="section-label">Track Record</p>
-      <h2 class="section-title">数字が語る、実績。</h2>
+      <h2 class="section-title">支援実績</h2>
     </div>
 
     <div class="stat-grid reveal">
       <div class="stat-card">
         <div class="stat-number">0&rarr;10億</div>
-        <div class="stat-desc">新規事業を初年度で<br>10億円規模に成長（MTG）</div>
+        <div class="stat-desc">新規ブランドを立ち上げから<br>初年度10億円規模に成長（事業会社）</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number">YoY+35%</div>
-        <div class="stat-desc">支援前-4%の売上を<br>1年で反転（Accenture）</div>
+        <div class="stat-number">+7億円</div>
+        <div class="stat-desc">YoY -4%の売上を+35%にV字回復<br>（外資コンサル案件）</div>
       </div>
       <div class="stat-card">
         <div class="stat-number">LTV 1.4x</div>
-        <div class="stat-desc">データ分析&times;CRM施策で<br>顧客生涯価値を1.4倍に</div>
+        <div class="stat-desc">年商数十億規模の事業で<br>データ&times;CRM施策によりLTV1.4倍に改善</div>
       </div>
       <div class="stat-card">
         <div class="stat-number">月340万</div>
@@ -1102,7 +1103,7 @@ ul { list-style: none; }
           <th>コーチ</th>
           <th>コンサル</th>
           <th>制作会社</th>
-          <th>西川太雄</th>
+          <th>RAFTEL</th>
         </tr>
       </thead>
       <tbody>
@@ -1137,8 +1138,22 @@ ul { list-style: none; }
         <tr>
           <td>データ分析・KPI設計</td>
           <td class="none">&times;</td>
+          <td class="check">&#9675;</td>
+          <td class="none">&times;</td>
+          <td>&#9675;</td>
+        </tr>
+        <tr>
+          <td>DX・プロセス自動化</td>
+          <td class="none">&times;</td>
           <td class="partial">&#9651;</td>
           <td class="none">&times;</td>
+          <td>&#9675;</td>
+        </tr>
+        <tr>
+          <td>価格</td>
+          <td class="partial">&#9651;</td>
+          <td class="none">&times;</td>
+          <td class="partial">&#9651;</td>
           <td>&#9675;</td>
         </tr>
       </tbody>
@@ -1170,30 +1185,30 @@ ul { list-style: none; }
 
       <div class="profile-detail">
         <blockquote class="profile-quote reveal">
-          論理と情熱の両輪で、<br>事業の非連続な成長を実現する。
+          戦略だけでなく、実装まで。<br>一人で完結するから、速い。
         </blockquote>
 
         <div class="profile-subsection reveal">
           <h3 class="profile-subsection-title">Career</h3>
           <p class="profile-career-text">
-            マクロミル（リサーチ）&rarr; MTG（新規事業0&rarr;10億・MVP受賞）&rarr; アクセンチュア（DX・V字回復YoY+35%）を経て独立。一貫して「顧客理解&times;データ活用」を軸に、戦略から実装まで一気通貫でリードしてきました。
+            リサーチ会社で顧客理解の基盤を築き、事業会社で新規ブランド0&rarr;10億円を推進（MVP受賞）。外資コンサルではDX戦略&times;データ活用でYoY -4%の売上を+35%にV字回復させた後、独立。一貫して「戦略&times;実装」の両輪でリードしてきた経験が、RAFTELのサービスの基盤です。
           </p>
         </div>
 
         <div class="profile-subsection reveal">
-          <h3 class="profile-subsection-title">Strengths</h3>
+          <h3 class="profile-subsection-title">Why RAFTEL Can</h3>
           <div class="strengths-grid">
             <div class="strength-item">
-              <p class="strength-en">Cross-Functional Management</p>
-              <p class="strength-text">ビジネス・クリエイティブ・エンジニアリングの壁を越え、プロジェクトを前に進める推進力。</p>
+              <p class="strength-en">Cross-Functional</p>
+              <p class="strength-text">ビジネス・クリエイティブ・エンジニアリングを一人で横断。プロジェクトが分断されないから、伝言ゲームが発生しない。</p>
             </div>
             <div class="strength-item">
-              <p class="strength-en">Hybrid Skill Set</p>
-              <p class="strength-text">マーケティング戦略から、SQL/Pythonによる分析、React/JSによるプロトタイプ実装まで、戦略と実装を一人で完結できるスキル。</p>
+              <p class="strength-en">Strategy &times; Execution</p>
+              <p class="strength-text">マーケティング戦略からデータ分析（SQL/Python）、プロトタイプ実装（React/JS）まで完結。戦略と実装のギャップが生まれない。</p>
             </div>
             <div class="strength-item">
-              <p class="strength-en">Commitment</p>
-              <p class="strength-text">どんな困難な状況でも、事業の「Outcome（成果）」に執着し、泥臭くやり切る姿勢。</p>
+              <p class="strength-en">Outcome Driven</p>
+              <p class="strength-text">納品物ではなく事業成果にコミット。月次顧問・伴走型だからこそ、数字が動くまでやり切れる。</p>
             </div>
           </div>
         </div>
@@ -1204,10 +1219,11 @@ ul { list-style: none; }
             <div class="personal-why-inner">
               <p class="personal-why-title">「熱狂は、一人では生まれない。」</p>
               <p>
-                新規事業の立ち上げで、ユーザーの感動の声を聞いた時。仲間と苦しい局面を乗り越えた時。一人では絶対に到達できないエネルギーが湧いた。
+                新規事業の立ち上げで、ユーザーの感動の声を聞いた時。組織変革の現場で、数字が動き始めた瞬間。どちらにも共通していたのは、<strong>一人では絶対に到達できないエネルギー</strong>だった。
               </p>
               <p>
-                想いを持って起業する人のビジョンが、はじめて<strong>「誰かに届く」</strong>瞬間を一緒に味わいたい。だからRAFTELを作りました。
+                戦略だけでは動かない。実装だけでは方向を見失う。想いだけでは形にならない。<br>
+                コーチング、コンサルティング、エンジニアリング &mdash; この<strong>3つを横断しながら、事業の成長と熱狂を一緒に創っていく。</strong>それがRAFTELの存在理由です。
               </p>
             </div>
           </div>
