@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RAFTEL Inc. | データ×AIに魂を込め、事業と人の「可能性」を解放する</title>
-<meta name="description" content="戦略・実装・自走支援を融合した、Visionドリブンなグロースパートナー。中小企業・ベンチャーのCMO/CDO代行として事業成長を牽引します。">
+<title>RAFTEL Inc. | 想いを、仕組みに。</title>
+<meta name="description" content="コーチング×コンサル×エンジニアリングの三刀流で、ビジョン策定からHP・SNS・集客導線、データ活用まで一気通貫で支援するグロースパートナー。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Antique&family=Sora:wght@300;400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 /* ========================================
-   CSS Custom Properties — V3 Dynamic + Tech
+   CSS Custom Properties
    ======================================== */
 :root {
   --bg-primary: #f6f3ee;
@@ -86,7 +86,6 @@ ul { list-style: none; }
 .reveal-delay-1 { transition-delay: 0.1s; }
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
-.reveal-delay-4 { transition-delay: 0.4s; }
 
 /* ========================================
    Navigation
@@ -138,7 +137,7 @@ ul { list-style: none; }
 .hamburger span { display: block; width: 24px; height: 2px; background: var(--text-primary); transition: all 0.3s; }
 
 /* ========================================
-   Hero — Dark zone with energy
+   Hero
    ======================================== */
 .hero {
   position: relative; min-height: 100vh; display: flex; align-items: center;
@@ -198,7 +197,6 @@ ul { list-style: none; }
   100% { transform: translate(80px, 80px); }
 }
 
-/* Scanline overlay for tech feel */
 .hero-scanlines {
   position: absolute; inset: 0; z-index: 0; pointer-events: none;
   background: repeating-linear-gradient(
@@ -228,7 +226,6 @@ ul { list-style: none; }
   line-height: 1.3; letter-spacing: -0.02em; color: var(--text-on-dark);
   margin-bottom: 32px; opacity: 0; animation: hero-fade-in 1s 0.5s forwards;
 }
-/* デバイス幅別の改行制御 */
 .hero-catch .br-desktop { display: inline; }
 .hero-catch .br-mobile { display: none; }
 .hero-catch .accent-text {
@@ -240,17 +237,30 @@ ul { list-style: none; }
   line-height: 2; max-width: 640px; margin-bottom: 48px;
   opacity: 0; animation: hero-fade-in 1s 0.7s forwards;
 }
+.hero-cta-group {
+  display: flex; gap: 16px; flex-wrap: wrap;
+  opacity: 0; animation: hero-fade-in 1s 0.9s forwards;
+}
 .hero-cta {
   display: inline-flex; align-items: center; gap: 12px;
   padding: 16px 40px; background: var(--gradient-hero); color: #fff;
   font-family: var(--font-head);
   font-weight: 700; font-size: 0.95rem; border-radius: 4px;
-  transition: all 0.3s; opacity: 0; animation: hero-fade-in 1s 0.9s forwards;
+  transition: all 0.3s;
 }
-.hero-cta-wrap { text-align: center; }
 .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(232,148,74,0.35); }
 .hero-cta svg { transition: transform 0.3s; }
 .hero-cta:hover svg { transform: translateX(4px); }
+.hero-cta-secondary {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 16px 40px; border: 1px solid rgba(255,255,255,0.3);
+  color: #fff; font-family: var(--font-head);
+  font-weight: 600; font-size: 0.95rem; border-radius: 4px;
+  transition: all 0.3s;
+}
+.hero-cta-secondary:hover {
+  border-color: var(--accent-light); background: rgba(255,255,255,0.08);
+}
 @keyframes hero-fade-in {
   from { opacity: 0; transform: translateY(24px); }
   to { opacity: 1; transform: translateY(0); }
@@ -300,178 +310,93 @@ ul { list-style: none; }
 .section-title .thin { font-weight: 300; color: var(--text-secondary); }
 
 /* ========================================
-   Philosophy — Cinematic Visual
+   Pain & Solution
    ======================================== */
-.philosophy { background: var(--bg-primary); }
-
-/* Vision block — text only, brush font */
-.vision-block {
-  position: relative; border-radius: 16px; padding: 72px 60px;
-  margin-bottom: 60px; overflow: hidden;
-  background: var(--bg-primary);
-  border-bottom: 3px solid var(--accent);
+.problem-row { margin-bottom: 40px; }
+.problem-row:last-of-type { margin-bottom: 0; }
+.problem-row-label {
+  font-family: var(--font-head); font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 16px; padding-left: 4px;
 }
-.vision-block .block-label {
+.problem-row-label.enterprise { color: var(--accent2); }
+
+.problem-cards {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+}
+.problem-card {
+  background: #fff; border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+  border-radius: 0 0 12px 12px; padding: 28px 24px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.problem-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.problem-card-num {
   font-family: var(--font-head); font-size: 0.7rem; font-weight: 700;
-  letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 32px;
+  color: var(--accent); letter-spacing: 0.1em; margin-bottom: 12px;
 }
-.vision-block .block-text {
-  font-family: var(--font-brush);
-  font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 400; line-height: 2.2;
-  color: var(--text-primary); letter-spacing: 0.06em;
+.problem-card h4 {
+  font-family: var(--font-head); font-size: 0.95rem; font-weight: 700;
+  line-height: 1.5; margin-bottom: 14px;
 }
-.vision-block .block-text .em { color: var(--accent); }
+.problem-card p {
+  font-size: 0.85rem; color: var(--text-secondary);
+  line-height: 1.8; font-style: italic;
+}
 
-/* Mission image block */
-.mission-image-block {
-  margin-bottom: 60px; text-align: center;
+.problem-cards.enterprise .problem-card { border-top-color: var(--accent2); }
+.problem-cards.enterprise .problem-card-num { color: var(--accent2); }
+
+.principle-box {
+  background: var(--bg-dark); color: var(--text-on-dark);
+  border-radius: 16px; padding: 48px 40px;
+  margin: 56px 0 48px; position: relative; overflow: hidden;
 }
-.mission-hero-img {
-  width: 100%; max-width: 900px; margin: 0 auto;
-  border-radius: 12px;
+.principle-box::before {
+  content: ''; position: absolute; top: -30%; right: -10%;
+  width: 400px; height: 400px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,148,74,0.1) 0%, transparent 65%);
 }
-.block-label {
-  font-family: var(--font-head); font-size: 0.7rem; font-weight: 700;
-  letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px;
-}
-.mission-statement {
+.principle-box p {
+  position: relative; z-index: 1;
   font-family: var(--font-head);
-  font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-weight: 800; line-height: 1.6; margin-bottom: 24px;
+  font-size: clamp(1rem, 2.5vw, 1.3rem); font-weight: 700;
+  line-height: 1.8; color: var(--text-on-dark);
 }
-.mission-statement .em { color: var(--accent); }
-.mission-desc { font-size: 0.95rem; color: var(--text-secondary); line-height: 2; }
+.principle-box .em { color: var(--accent-light); }
 
-/* ---- 4 Approaches: Photo-based cinematic cards ---- */
-.infographic-approaches {
-  position: relative; margin-bottom: 80px;
+.solution-pillars {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
 }
-
-.approach-flow {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
-  position: relative;
+.solution-pillar {
+  background: #fff; border: 1px solid var(--border);
+  border-radius: 12px; padding: 28px 24px; text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
-
-.approach-photo-card {
-  position: relative; border-radius: 16px; overflow: hidden;
-  min-height: 420px; cursor: pointer;
-  transition: all 0.6s cubic-bezier(0.16,1,0.3,1);
-}
-.approach-photo-card:hover {
-  transform: translateY(-8px) scale(1.01);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 40px rgba(212,120,47,0.15);
-}
-
-/* Photo background */
-.approach-photo-card .card-bg {
-  position: absolute; inset: 0; z-index: 0;
-  background-size: cover; background-position: center;
-  transition: transform 0.8s cubic-bezier(0.16,1,0.3,1);
-}
-.approach-photo-card:hover .card-bg {
-  transform: scale(1.08);
-}
-
-/* Gradient overlay */
-.approach-photo-card .card-overlay {
-  position: absolute; inset: 0; z-index: 1;
-  transition: opacity 0.4s;
-}
-.approach-photo-card:nth-child(1) .card-overlay {
-  background: linear-gradient(180deg, rgba(10,10,20,0.2) 0%, rgba(10,10,20,0.5) 40%, rgba(184,94,26,0.85) 100%);
-}
-.approach-photo-card:nth-child(2) .card-overlay {
-  background: linear-gradient(180deg, rgba(10,10,20,0.2) 0%, rgba(10,10,20,0.5) 40%, rgba(42,122,110,0.85) 100%);
-}
-.approach-photo-card:nth-child(3) .card-overlay {
-  background: linear-gradient(180deg, rgba(10,10,20,0.2) 0%, rgba(10,10,20,0.5) 40%, rgba(90,60,160,0.85) 100%);
-}
-.approach-photo-card:nth-child(4) .card-overlay {
-  background: linear-gradient(180deg, rgba(10,10,20,0.2) 0%, rgba(10,10,20,0.5) 40%, rgba(192,64,64,0.85) 100%);
-}
-
-/* Content */
-.approach-photo-card .card-content {
-  position: relative; z-index: 2;
-  display: flex; flex-direction: column; justify-content: flex-end;
-  height: 100%; padding: 40px 36px;
-  color: #fff;
-}
-.approach-photo-card .card-num {
-  font-family: var(--font-head); font-size: 0.65rem; font-weight: 700;
-  letter-spacing: 0.2em; text-transform: uppercase;
-  opacity: 0.7; margin-bottom: 12px;
-}
-.approach-photo-card .card-title {
-  font-family: var(--font-head);
-  font-size: 1.3rem; font-weight: 800; line-height: 1.5;
-  margin-bottom: 16px;
-}
-.approach-photo-card .card-desc {
-  font-size: 0.88rem; line-height: 1.9; opacity: 0.85;
-  max-height: 0; overflow: hidden;
-  transition: max-height 0.6s cubic-bezier(0.16,1,0.3,1), opacity 0.4s;
-  opacity: 0;
-}
-.approach-photo-card:hover .card-desc {
-  max-height: 200px; opacity: 0.85;
-}
-
-/* Accent line */
-.approach-photo-card .card-accent-line {
-  position: absolute; bottom: 0; left: 0; width: 0; height: 3px;
-  z-index: 3; transition: width 0.6s cubic-bezier(0.16,1,0.3,1);
-}
-.approach-photo-card:nth-child(1) .card-accent-line { background: var(--accent-light); }
-.approach-photo-card:nth-child(2) .card-accent-line { background: #5ec4b6; }
-.approach-photo-card:nth-child(3) .card-accent-line { background: #a882e8; }
-.approach-photo-card:nth-child(4) .card-accent-line { background: #f07060; }
-.approach-photo-card:hover .card-accent-line { width: 100%; }
-
-/* Floating icon badge */
-.approach-photo-card .card-icon-badge {
-  position: absolute; top: 24px; right: 24px; z-index: 2;
-  width: 56px; height: 56px; border-radius: 14px;
-  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.15);
+.solution-pillar:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.solution-pillar-icon {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: var(--accent-glow); color: var(--accent);
   display: flex; align-items: center; justify-content: center;
-  transition: all 0.4s;
+  margin: 0 auto 16px; font-size: 1.2rem;
 }
-.approach-photo-card:hover .card-icon-badge {
-  background: rgba(255,255,255,0.2);
-  transform: rotate(5deg) scale(1.05);
+.solution-pillar h4 {
+  font-family: var(--font-head); font-size: 0.92rem; font-weight: 700;
+  margin-bottom: 8px;
 }
-
-/* Values */
-.values-section { border-top: 1px solid var(--border); padding-top: 60px; }
-.values-header {
-  font-family: var(--font-head); font-size: 0.72rem; font-weight: 700;
-  letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 48px;
+.solution-pillar p {
+  font-size: 0.82rem; color: var(--text-secondary); line-height: 1.7;
 }
-.values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-.value-item {
-  background: #fff; border-radius: 12px; padding: 32px; border: 1px solid var(--border);
-  box-shadow: var(--shadow-sm); transition: all 0.3s;
-}
-.value-item:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
-.value-en {
-  font-family: var(--font-head); font-size: 0.7rem; font-weight: 700;
-  letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px;
-}
-.value-title {
-  font-family: var(--font-head);
-  font-size: 1.05rem; font-weight: 700; margin-bottom: 12px;
-}
-.value-text { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.85; }
 
 /* ========================================
-   Service — Black Background + Photo Cards
+   Service — 2-Path Design
    ======================================== */
 .service-section {
   background: var(--bg-dark); position: relative; overflow: hidden;
   color: var(--text-on-dark);
 }
-
-/* Ambient glow particles */
 .service-ambient {
   position: absolute; inset: 0; z-index: 0; overflow: hidden;
 }
@@ -488,61 +413,38 @@ ul { list-style: none; }
   animation: float-orb 15s ease-in-out infinite reverse;
 }
 
-/* Grid pattern overlay */
-.service-grid-pattern {
-  position: absolute; inset: 0; z-index: 0; opacity: 0.03;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
-  background-size: 60px 60px;
-}
-
 .service-section .section-label { color: var(--accent-light); }
 .service-section .section-label::before { background: var(--accent-light); }
 .service-section .section-title { color: #fff; }
 
-.service-lead {
-  font-family: var(--font-head);
-  font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 700; line-height: 1.9;
-  margin-bottom: 16px; max-width: 700px; position: relative; z-index: 1;
-  color: rgba(255,255,255,0.95);
-}
-.service-sublead {
-  font-size: 0.95rem; color: rgba(255,255,255,0.55); line-height: 2;
-  margin-bottom: 60px; max-width: 700px; position: relative; z-index: 1;
-}
-
-.service-infographic {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+.service-path-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
   position: relative; z-index: 1;
 }
 
-.service-info-card {
+.service-path-card {
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 16px; overflow: hidden;
   transition: all 0.5s cubic-bezier(0.16,1,0.3,1);
   backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
 }
-.service-info-card:hover {
+.service-path-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(212,120,47,0.08);
   border-color: rgba(212,120,47,0.2);
   background: rgba(255,255,255,0.06);
 }
 
-/* Photo header */
 .service-card-header {
-  position: relative; height: 200px; overflow: hidden;
+  position: relative; height: 220px; overflow: hidden;
 }
 .service-card-header-bg {
   position: absolute; inset: 0;
   background-size: cover; background-position: center;
   transition: transform 0.6s cubic-bezier(0.16,1,0.3,1);
 }
-.service-info-card:hover .service-card-header-bg {
-  transform: scale(1.08);
-}
+.service-path-card:hover .service-card-header-bg { transform: scale(1.08); }
 .service-card-header-overlay {
   position: absolute; inset: 0;
   background: linear-gradient(180deg, rgba(11,11,18,0.35) 0%, rgba(11,11,18,0.92) 85%, rgba(11,11,18,0.97) 100%);
@@ -552,7 +454,6 @@ ul { list-style: none; }
   height: 100%; display: flex; flex-direction: column; justify-content: flex-end;
   text-shadow: 0 1px 4px rgba(0,0,0,0.4);
 }
-
 .service-card-icon-large {
   width: 52px; height: 52px; border-radius: 14px;
   display: flex; align-items: center; justify-content: center;
@@ -561,14 +462,13 @@ ul { list-style: none; }
   background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
 }
 .service-card-icon-large svg { color: #fff; }
-
 .service-card-num {
   font-family: var(--font-head); font-size: 0.6rem; font-weight: 800;
   letter-spacing: 0.15em; margin-bottom: 8px; color: var(--accent-light);
 }
 .service-card-title-main {
   font-family: var(--font-head);
-  font-size: 1.2rem; font-weight: 800; line-height: 1.4; color: #fff;
+  font-size: 1.3rem; font-weight: 800; line-height: 1.4; color: #fff;
   text-shadow: 0 2px 8px rgba(0,0,0,0.5);
 }
 .service-card-en-sub {
@@ -576,7 +476,7 @@ ul { list-style: none; }
   color: rgba(255,255,255,0.45); letter-spacing: 0.03em; margin-top: 4px;
 }
 
-.service-card-body { padding: 24px 28px 32px; }
+.service-card-body { padding: 28px 28px 32px; }
 .service-card-desc-text {
   font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.85; margin-bottom: 20px;
 }
@@ -588,119 +488,79 @@ ul { list-style: none; }
   color: rgba(255,255,255,0.5); transition: all 0.3s;
   background: rgba(255,255,255,0.03);
 }
-.service-info-card:hover .service-tag {
+.service-path-card:hover .service-tag {
   border-color: rgba(212,120,47,0.3);
   color: rgba(255,255,255,0.7);
 }
-.service-card-link {
-  display: inline-flex; align-items: center; gap: 8px;
-  margin-top: 16px; font-size: 0.82rem; font-weight: 600;
-  color: var(--accent-light); font-family: var(--font-ja);
-  transition: color 0.3s, gap 0.3s;
+.service-path-price {
+  font-family: var(--font-head); font-size: 0.9rem; font-weight: 700;
+  color: var(--accent-light); margin-top: 20px; margin-bottom: 4px;
 }
-.service-card-link:hover { color: #fff; gap: 12px; }
+.service-path-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-head); font-size: 0.82rem; font-weight: 600;
+  color: rgba(255,255,255,0.5); transition: gap 0.3s, color 0.3s;
+  margin-top: 8px;
+}
+.service-path-cta svg { transition: transform 0.3s; }
+.service-path-card:hover .service-path-cta { gap: 12px; color: var(--accent-light); }
+.service-path-card:hover .service-path-cta svg { transform: translateX(3px); }
 
 /* ========================================
-   Approach Section — Lighter with energy
+   Numbers / RTB
    ======================================== */
-.approach-section {
-  background: var(--bg-primary); position: relative; overflow: hidden;
+.stat-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+  margin-bottom: 48px;
 }
-.approach-bg-energy {
-  position: absolute; inset: 0; z-index: 0; opacity: 0.35;
-  background:
-    radial-gradient(ellipse at 20% 50%, rgba(212,120,47,0.08), transparent 60%),
-    radial-gradient(ellipse at 80% 50%, rgba(42,122,110,0.06), transparent 60%);
-  animation: energy-breathe 8s ease-in-out infinite;
+.stat-card {
+  background: #fff; border: 1px solid var(--border);
+  border-radius: 12px; padding: 28px 20px; text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
-@keyframes energy-breathe {
-  0%, 100% { opacity: 0.35; transform: scale(1); }
-  50% { opacity: 0.55; transform: scale(1.02); }
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+.stat-number {
+  font-family: var(--font-head); font-weight: 800;
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  background: var(--gradient-hero); -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; background-clip: text;
+  margin-bottom: 8px; line-height: 1.2;
+}
+.stat-desc {
+  font-size: 0.78rem; color: var(--text-secondary); line-height: 1.6;
 }
 
-.approach-content {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
-  position: relative; z-index: 1;
+.rtb-table {
+  width: 100%; border-collapse: collapse;
+  font-size: 0.85rem; max-width: 900px; margin: 0 auto;
 }
-.approach-main-text {
-  font-size: 1rem; color: var(--text-secondary); line-height: 2; margin-bottom: 48px;
+.rtb-table th {
+  background: var(--bg-dark); color: var(--text-on-dark);
+  font-family: var(--font-head); font-weight: 600;
+  padding: 12px 14px; text-align: center;
+  font-size: 0.78rem; letter-spacing: 0.05em;
 }
-
-.approach-feature {
-  display: flex; gap: 20px; margin-bottom: 32px;
-  background: #fff; border-radius: 12px; padding: 24px;
-  border: 1px solid var(--border); box-shadow: var(--shadow-sm);
-  transition: all 0.3s;
+.rtb-table th:first-child { text-align: left; border-radius: 8px 0 0 0; }
+.rtb-table th:last-child { border-radius: 0 8px 0 0; }
+.rtb-table td {
+  padding: 12px 14px; border-bottom: 1px solid var(--border);
+  text-align: center; vertical-align: middle;
 }
-.approach-feature:hover { box-shadow: var(--shadow-md); transform: translateX(4px); }
-
-.approach-feature-icon {
-  flex-shrink: 0; width: 48px; height: 48px; border-radius: 12px;
-  display: flex; align-items: center; justify-content: center;
-  background: linear-gradient(135deg, #fef3e2, #fde4c5); color: var(--accent);
+.rtb-table td:first-child {
+  text-align: left; font-weight: 600; color: var(--text-primary);
+  background: var(--bg-secondary);
 }
-.approach-feature:nth-child(2) .approach-feature-icon {
-  background: linear-gradient(135deg, #e6f5f3, #c8ece6); color: var(--accent2);
+.rtb-table td:last-child {
+  background: rgba(212,120,47,0.06); font-weight: 700; color: var(--accent-dark);
 }
-.approach-feature-title {
-  font-family: var(--font-head);
-  font-size: 1rem; font-weight: 700; margin-bottom: 6px;
-}
-.approach-feature-desc { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.85; }
-
-/* Visual: Agile cycle diagram */
-.agile-visual {
-  position: relative; height: 480px; display: flex;
-  align-items: center; justify-content: center;
-}
-.agile-visual-inner { position: relative; width: 400px; height: 400px; }
-
-.cycle-ring {
-  position: absolute; inset: 0; border: 2px dashed rgba(212,120,47,0.2);
-  border-radius: 50%; animation: cycle-spin 30s linear infinite;
-}
-.cycle-ring-inner {
-  position: absolute; inset: 60px; border: 2px solid rgba(42,122,110,0.15);
-  border-radius: 50%; animation: cycle-spin 20s linear infinite reverse;
-}
-@keyframes cycle-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
-.cycle-node {
-  position: absolute; background: #fff; border-radius: 12px;
-  padding: 14px 20px; box-shadow: var(--shadow-md); border: 1px solid var(--border);
-  font-family: var(--font-head);
-  font-size: 0.78rem; font-weight: 700; white-space: nowrap;
-  transition: all 0.3s;
-}
-.cycle-node:hover { box-shadow: var(--shadow-glow); transform: scale(1.05); }
-.cycle-node-icon { margin-right: 6px; }
-.cycle-node:nth-child(3) { top: -10px; left: 50%; transform: translateX(-50%); }
-.cycle-node:nth-child(4) { right: -30px; top: 50%; transform: translateY(-50%); }
-.cycle-node:nth-child(5) { bottom: -10px; left: 50%; transform: translateX(-50%); }
-.cycle-node:nth-child(6) { left: -30px; top: 50%; transform: translateY(-50%); }
-
-.cycle-arrow {
-  position: absolute; color: var(--accent); opacity: 0.4; font-size: 1.2rem;
-}
-.cycle-arrow:nth-child(7) { top: 18%; right: 12%; transform: rotate(45deg); }
-.cycle-arrow:nth-child(8) { bottom: 18%; right: 12%; transform: rotate(135deg); }
-.cycle-arrow:nth-child(9) { bottom: 18%; left: 12%; transform: rotate(225deg); }
-.cycle-arrow:nth-child(10) { top: 18%; left: 12%; transform: rotate(315deg); }
-
-.cycle-center {
-  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-  width: 100px; height: 100px; border-radius: 50%;
-  background: var(--gradient-hero); display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  box-shadow: 0 0 50px rgba(212,120,47,0.2), 0 0 100px rgba(212,120,47,0.08);
-}
-.cycle-center-label {
-  font-family: var(--font-head); font-weight: 900; font-size: 0.65rem;
-  letter-spacing: 0.1em; color: #fff;
-}
-.cycle-center-sub {
-  font-size: 0.55rem; color: rgba(255,255,255,0.7); margin-top: 2px;
-}
+.rtb-table tr:last-child td { border-bottom: none; }
+.rtb-table .check { color: var(--accent2); }
+.rtb-table .partial { color: var(--text-muted); }
+.rtb-table .none { color: rgba(26,26,36,0.15); }
 
 /* ========================================
    Profile
@@ -750,13 +610,9 @@ ul { list-style: none; }
   letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent);
   margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid var(--border);
 }
-
-.profile-career-item { margin-bottom: 28px; }
-.profile-company {
-  font-family: var(--font-head);
-  font-size: 1rem; font-weight: 700; margin-bottom: 8px;
+.profile-career-text {
+  font-size: 0.9rem; color: var(--text-secondary); line-height: 2;
 }
-.profile-career-desc { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.85; }
 
 .strengths-grid { display: grid; gap: 16px; }
 .strength-item {
@@ -770,20 +626,36 @@ ul { list-style: none; }
 }
 .strength-text { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.85; }
 
-.profile-message {
-  background: #fff; border: 1px solid var(--border); border-radius: 12px;
-  padding: 40px; position: relative; overflow: hidden; box-shadow: var(--shadow-sm);
+/* Personal Why */
+.personal-why {
+  background: var(--bg-dark); color: var(--text-on-dark);
+  border-radius: 16px; padding: 56px 48px;
+  position: relative; overflow: hidden;
 }
-.profile-message::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0;
-  height: 4px; background: var(--gradient-hero); border-radius: 12px 12px 0 0;
+.personal-why::before {
+  content: ''; position: absolute; bottom: -30%; left: -10%;
+  width: 500px; height: 500px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,148,74,0.08) 0%, transparent 65%);
 }
-.profile-message p { font-size: 0.95rem; color: var(--text-secondary); line-height: 2.1; }
+.personal-why-inner { position: relative; z-index: 1; }
+.personal-why-title {
+  font-family: var(--font-brush); font-size: clamp(1.4rem, 3vw, 1.8rem);
+  color: var(--accent-light); margin-bottom: 32px;
+  line-height: 1.6;
+}
+.personal-why p {
+  font-size: 0.95rem; color: var(--text-on-dark-sub);
+  line-height: 2.1; margin-bottom: 20px;
+}
+.personal-why p:last-child { margin-bottom: 0; }
+.personal-why p strong {
+  color: var(--text-on-dark); font-weight: 700;
+}
 
 /* ========================================
    Featured Content
    ======================================== */
-.content-section-home { background: var(--bg-secondary); }
+.content-section-home { background: var(--bg-primary); }
 .content-grid {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   gap: 28px;
@@ -846,19 +718,6 @@ ul { list-style: none; }
   transition: gap 0.3s;
 }
 .content-card:hover .content-card-link { gap: 8px; }
-.service-more-wrap { text-align: center; margin-top: 48px; }
-.service-more {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-family: var(--font-head); font-size: 0.88rem; font-weight: 600;
-  color: var(--accent-light); padding: 12px 32px;
-  border: 1px solid rgba(232,148,74,0.35); border-radius: 4px;
-  transition: all 0.3s;
-}
-.service-more:hover {
-  background: var(--accent); color: #fff;
-  box-shadow: 0 4px 20px rgba(212,120,47,0.25);
-  -webkit-text-fill-color: #fff;
-}
 .content-more-wrap { text-align: center; margin-top: 48px; }
 .content-more {
   display: inline-flex; align-items: center; gap: 8px;
@@ -890,7 +749,18 @@ ul { list-style: none; }
   margin-bottom: 24px; position: relative;
 }
 .cta-desc {
-  font-size: 1rem; color: var(--text-on-dark-sub); margin-bottom: 48px; position: relative;
+  font-size: 1rem; color: var(--text-on-dark-sub); margin-bottom: 32px;
+  position: relative; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 2;
+}
+.cta-details {
+  display: flex; justify-content: center; gap: 16px;
+  margin-bottom: 40px; position: relative;
+}
+.cta-details span {
+  font-family: var(--font-head); font-size: 0.82rem; font-weight: 600;
+  color: var(--accent-light); letter-spacing: 0.05em;
+  padding: 8px 20px; border: 1px solid rgba(232,148,74,0.3);
+  border-radius: 20px;
 }
 .cta-button {
   display: inline-flex; align-items: center; gap: 12px;
@@ -921,14 +791,9 @@ ul { list-style: none; }
    Responsive
    ======================================== */
 @media (max-width: 1024px) {
-  .approach-flow { grid-template-columns: 1fr; }
-  .approach-photo-card { min-height: 320px; }
-  .service-infographic { grid-template-columns: 1fr; max-width: 500px; }
-  .approach-content { grid-template-columns: 1fr; }
-  .agile-visual { display: none; }
+  .service-path-grid { grid-template-columns: 1fr; max-width: 560px; }
   .profile-content { grid-template-columns: 1fr; }
   .profile-photo-area { position: static; max-width: 280px; }
-  .values-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 768px) {
@@ -945,26 +810,31 @@ ul { list-style: none; }
   .nav:not(.scrolled) .nav-links.active { background: rgba(28,30,42,0.98); }
   .hero-content { padding-top: 100px; padding-bottom: 120px; }
   .hero-catch { font-size: clamp(1.7rem, 7vw, 2.4rem); line-height: 1.45; text-align: center; }
-  .section-header { text-align: center; }
-  .profile-name-card { text-align: center; }
   .hero-catch .br-desktop { display: none; }
   .hero-catch .br-mobile { display: inline; }
+  .hero-sub { text-align: center; }
   .hero-sub br { display: none; }
+  .hero-cta-group { justify-content: center; }
   .scroll-indicator { bottom: 24px; }
-  .vision-block { padding: 40px 28px; }
-  .approach-flow { grid-template-columns: 1fr; }
-  .approach-photo-card { min-height: 280px; }
-  .approach-photo-card .card-desc { max-height: 200px; opacity: 0.85; }
-  .service-infographic { grid-template-columns: 1fr; }
+  .section-header { text-align: center; }
+  .problem-cards { grid-template-columns: 1fr; }
+  .problem-row-label { text-align: center; }
+  .solution-pillars { grid-template-columns: 1fr; }
+  .principle-box { padding: 36px 24px; }
+  .service-path-grid { grid-template-columns: 1fr; max-width: 100%; }
+  .stat-grid { grid-template-columns: 1fr 1fr; }
+  .rtb-table { font-size: 0.78rem; }
+  .rtb-table th, .rtb-table td { padding: 8px 8px; }
   .profile-content { gap: 40px; }
   .profile-photo-area { max-width: 220px; margin: 0 auto; }
+  .profile-name-card { text-align: center; }
   .profile-quote { font-size: 1.1rem; padding-left: 16px; }
-  .profile-message { padding: 28px 24px; }
+  .personal-why { padding: 40px 24px; }
+  .cta-details { flex-direction: column; align-items: center; gap: 12px; }
   .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
   .nav-inner { padding: 0 24px; }
 }
 
-/* 小型スマホ (iPhone SE, 375px以下) */
 @media (max-width: 375px) {
   .hero-catch { font-size: 1.55rem; }
 }
@@ -979,9 +849,8 @@ ul { list-style: none; }
   <div class="nav-inner">
     <a href="#" class="nav-logo">RAFTEL</a>
     <div class="nav-links" id="navLinks">
-      <a href="#philosophy">Philosophy</a>
+      <a href="#solution">Solution</a>
       <a href="#service">Service</a>
-      <a href="#approach">Approach</a>
       <a href="#profile">Profile</a>
       <a href="content/">Content</a>
       <a href="#contact" class="nav-contact">Contact</a>
@@ -1002,17 +871,22 @@ ul { list-style: none; }
   <div class="hero-scanlines"></div>
   <div class="hero-particles" id="particles"></div>
   <div class="hero-content">
-    <span class="hero-label">Vision-Driven Growth Partner</span>
+    <span class="hero-label">Growth Partner for Founders &amp; Enterprises</span>
     <h1 class="hero-catch">
-      データ×AIに<span class="accent-text">魂</span>を込め、<br class="br-desktop"><br class="br-mobile">事業と人の<br class="br-mobile"><span class="accent-text">「可能性」</span>を解放する。
+      <span class="accent-text">想い</span>を、<br class="br-mobile"><span class="accent-text">仕組み</span>に。
     </h1>
     <p class="hero-sub">
-      正解のない未来へ、迷いなくフルスイングできる組織へ。<br>
-      戦略・実装・自走支援を融合した、Visionドリブンなグロースパートナー。
+      ビジョンの言語化から、HP・SNS・集客導線、データ活用まで。<br>
+      コーチング&times;コンサル&times;エンジニアリングの三刀流で、<br>
+      事業の「伝わる仕組み」を一気通貫で構築します。
     </p>
-    <div class="hero-cta-wrap">
+    <div class="hero-cta-group">
       <a href="#contact" class="hero-cta">
-        お問い合わせ
+        無料相談に申し込む
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#service" class="hero-cta-secondary">
+        サービス詳細を見る
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
     </div>
@@ -1024,183 +898,141 @@ ul { list-style: none; }
 </section>
 
 <!-- ========================================
-     Philosophy
+     Pain & Solution
      ======================================== -->
-<section class="section section-light philosophy" id="philosophy">
+<section class="section section-light" id="solution">
   <div class="container">
     <div class="section-header reveal">
-      <p class="section-label">Philosophy</p>
-      <h2 class="section-title">理念体系</h2>
+      <p class="section-label">Pain &amp; Solution</p>
+      <h2 class="section-title">こんな課題、ありませんか？</h2>
     </div>
 
-    <!-- Vision — テキストのみ筆文字 -->
-    <div class="vision-block reveal">
-      <p class="block-label">Vision &mdash; 実現したい世界観</p>
-      <p class="block-text">
-        データ×AIに魂を込め、<br>
-        事業と顧客の<span class="em">『可能性』</span>を確信に変え続ける。<br>
-        組織が迷いなく未来へ<span class="em">熱狂</span>できる、ビジョンドリブンな世界。
-      </p>
-    </div>
-
-    <!-- Mission — 画像差し込み -->
-    <div class="mission-image-block reveal">
-      <img src="https://i.ibb.co/KRNByZs/mission.png" alt="不確実性を「確信」に変え、組織の熱狂をエンジニアリングする。" class="mission-hero-img">
-    </div>
-
-    <!-- 4 Approaches: Photo-based cinematic cards -->
-    <div class="infographic-approaches reveal">
-      <div class="approach-flow">
-
-        <!-- Approach 01 -->
-        <div class="approach-photo-card reveal reveal-delay-1">
-          <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80'); background-color: #1a2030;"></div>
-          <div class="card-overlay"></div>
-          <div class="card-icon-badge">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
-            </svg>
-          </div>
-          <div class="card-content">
-            <p class="card-num">APPROACH 01</p>
-            <h4 class="card-title">現在地と道筋の<br>「確信化」</h4>
-            <p class="card-desc">データを起点に「正しい現在地」と「向かうべきWhy」を常に照らし出し、全員がベクトルを揃えてフルスイングできる環境を作ります。</p>
-          </div>
-          <div class="card-accent-line"></div>
+    <!-- Founders Pain -->
+    <div class="problem-row reveal">
+      <p class="problem-row-label">For Founders &mdash; 起業・創業期の方</p>
+      <div class="problem-cards">
+        <div class="problem-card">
+          <div class="problem-card-num">PAIN 01</div>
+          <h4>想いはあるのに、<br>「何がいいの？」に答えられない</h4>
+          <p>「サービスに自信はある。でも、それをどう伝えればいいかわからない。」</p>
         </div>
-
-        <!-- Approach 02 -->
-        <div class="approach-photo-card reveal reveal-delay-2">
-          <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80'); background-color: #1a2e2a;"></div>
-          <div class="card-overlay"></div>
-          <div class="card-icon-badge">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/>
-            </svg>
-          </div>
-          <div class="card-content">
-            <p class="card-num">APPROACH 02</p>
-            <h4 class="card-title">未活用データから<br>顧客・従業員の熱狂を創る</h4>
-            <p class="card-desc">KPI管理を超え、現場以上の解像度で顧客の決断と変化を捉えることで、組織の視座と戦略の質を引き上げます。</p>
-          </div>
-          <div class="card-accent-line"></div>
+        <div class="problem-card">
+          <div class="problem-card-num">PAIN 02</div>
+          <h4>HP・SNS、やらなきゃと思うけど<br>何を書けばいいかわからない</h4>
+          <p>「作らなきゃ。始めなきゃ。...で、結局何も進んでいない。」</p>
         </div>
-
-        <!-- Approach 03 -->
-        <div class="approach-photo-card reveal reveal-delay-3">
-          <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80'); background-color: #1e1a2e;"></div>
-          <div class="card-overlay"></div>
-          <div class="card-icon-badge">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
-            </svg>
-          </div>
-          <div class="card-content">
-            <p class="card-num">APPROACH 03</p>
-            <h4 class="card-title">「コンサル×コーチング<br>×技術」の融合</h4>
-            <p class="card-desc">自ら介入して課題を突破する「コンサルティング」と、現場起点で改善が回り続ける仕組みを作る「コーチング」を、エンジニアリング技術で実装します。</p>
-          </div>
-          <div class="card-accent-line"></div>
+        <div class="problem-card">
+          <div class="problem-card-num">PAIN 03</div>
+          <h4>本業に集中したいのに、<br>デジタルの&ldquo;わからない&rdquo;に時間を奪われる</h4>
+          <p>「本当は商品づくりと営業に集中したい。なのにデジタル周りで手が止まる。」</p>
         </div>
-
-        <!-- Approach 04 -->
-        <div class="approach-photo-card reveal reveal-delay-4">
-          <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80'); background-color: #2e1a1a;"></div>
-          <div class="card-overlay"></div>
-          <div class="card-icon-badge">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
-            </svg>
-          </div>
-          <div class="card-content">
-            <p class="card-num">APPROACH 04</p>
-            <h4 class="card-title">AIによる「仕組みの再発明」<br>と「魂の解放」</h4>
-            <p class="card-desc">AI前提でプロセスをリデザインし、非連続なブレイクスルーを創出。人が創造性や意思決定、熱狂の伝播といった「魂を込めるべき価値」に全集中できる状態を実現します。</p>
-          </div>
-          <div class="card-accent-line"></div>
-        </div>
-
       </div>
     </div>
 
-    <!-- Values -->
-    <div class="values-section reveal">
-      <p class="values-header">Value / Action Guidelines &mdash; 行動指針</p>
-      <div class="values-grid">
-        <div class="value-item">
-          <p class="value-en">Outcome Obsession</p>
-          <h4 class="value-title">成果への執着</h4>
-          <p class="value-text">綺麗なドキュメントや納品物ではなく、事業の成長という「結果」にこだわる。</p>
+    <!-- Enterprise Pain -->
+    <div class="problem-row reveal reveal-delay-1">
+      <p class="problem-row-label enterprise">For Enterprises &mdash; 成長企業・中堅企業の方</p>
+      <div class="problem-cards enterprise">
+        <div class="problem-card">
+          <div class="problem-card-num">PAIN 04</div>
+          <h4>データはあるのに、<br>売上の「なぜ」が説明できない</h4>
+          <p>「数字は集まっている。でもその裏側が見えず、次の打ち手が出てこない。」</p>
         </div>
-        <div class="value-item">
-          <p class="value-en">Data with Soul</p>
-          <h4 class="value-title">データに魂を</h4>
-          <p class="value-text">数字の向こう側にいる「人」を想像し、現場を泥臭く這いずり回って解像度を高める。</p>
+        <div class="problem-card">
+          <div class="problem-card-num">PAIN 05</div>
+          <h4>外部ベンダーに頼むと、<br>納品物は来るが成果につながらない</h4>
+          <p>「外注の資料はきれい。でも、売上は動かない。」</p>
         </div>
-        <div class="value-item">
-          <p class="value-en">Agile &amp; Breakthrough</p>
-          <h4 class="value-title">爆速と刷新</h4>
-          <p class="value-text">まずはMVPで形にし、走りながら精度を高める。同時にAIを活用して既存の枠組みを破壊し、再発明する。</p>
+        <div class="problem-card">
+          <div class="problem-card-num">PAIN 06</div>
+          <h4>DXの号令はかけたが、<br>現場が動かない</h4>
+          <p>「推進チームは作った。でも現場は何をすればいいかわからない。」</p>
         </div>
+      </div>
+    </div>
+
+    <!-- Solution -->
+    <div class="principle-box reveal">
+      <p>
+        <span class="em">コーチに頼むと、言葉にはなるけど形にならない。</span><br>
+        制作会社に頼むと、形にはなるけど想いが抜ける。<br>
+        コンサルに頼むと、戦略は出るけど実装されない。<br><br>
+        <span class="em">RAFTELは、全部一人でやります。</span>
+      </p>
+    </div>
+
+    <div class="solution-pillars reveal">
+      <div class="solution-pillar">
+        <div class="solution-pillar-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+        </div>
+        <h4>Coaching</h4>
+        <p>認知科学ベースのコーチングでビジョン・MVVを言語化。あなたの中にある「想い」を引き出し、構造化する。</p>
+      </div>
+      <div class="solution-pillar">
+        <div class="solution-pillar-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+        </div>
+        <h4>Consulting</h4>
+        <p>リサーチ&times;データで市場調査・競合分析・KPI設計。感覚ではなく根拠のある戦略を作る。</p>
+      </div>
+      <div class="solution-pillar">
+        <div class="solution-pillar-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <h4>Engineering</h4>
+        <p>AI&times;実装でHP制作・SNS戦略・BI構築・CRM最適化。戦略を「動くもの」に変える。</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ========================================
-     Service — Black Background + Photo Cards
+     Service — 2-Path Design
      ======================================== -->
 <section class="section section-dark service-section" id="service">
   <div class="service-ambient"></div>
-  <div class="service-grid-pattern"></div>
   <div class="container">
     <div class="section-header reveal">
       <p class="section-label">Service</p>
-      <h2 class="section-title">事業内容</h2>
+      <h2 class="section-title">サービス</h2>
     </div>
 
-    <div class="reveal">
-      <p class="service-lead">
-        「伴走」を超えた「実装・変革」パートナーとして、<br>
-        マーケティング・データ・DXの側面から事業成長を牽引します。
-      </p>
-      <p class="service-sublead">
-        中小企業・ベンチャー企業の「CMO」「CDO」代行として、戦略から手元の実装まで一気通貫で支援します。
-      </p>
-    </div>
-
-    <div class="service-infographic">
-      <!-- Service 1 -->
-      <div class="service-info-card reveal reveal-delay-1">
+    <div class="service-path-grid">
+      <!-- Path A: Growth Sprint -->
+      <div class="service-path-card reveal reveal-delay-1">
         <div class="service-card-header">
-          <div class="service-card-header-bg" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80'); background-color: #1a2030;"></div>
+          <div class="service-card-header-bg" style="background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&q=80'); background-color: #1a2030;"></div>
           <div class="service-card-header-overlay"></div>
           <div class="service-card-header-content">
             <div class="service-card-icon-large">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
             </div>
-            <p class="service-card-num">SERVICE 01</p>
-            <h3 class="service-card-title-main">事業成長支援</h3>
-            <p class="service-card-en-sub">Growth Consulting</p>
+            <p class="service-card-num">FOR FOUNDERS</p>
+            <h3 class="service-card-title-main">Growth Sprint</h3>
+            <p class="service-card-en-sub">3&#x30F6;&#x6708;&#x96C6;&#x4E2D;&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;</p>
           </div>
         </div>
         <div class="service-card-body">
-          <p class="service-card-desc-text">現状のボトルネックをデータ起点で特定し、最短でゴールへ進むためのロードマップを策定・実行します。</p>
+          <p class="service-card-desc-text">
+            想いの言語化からHP制作・SNS構築・集客導線まで、デジタル領域をすべて整える3ヶ月伴走型プログラム。間に誰も挟まないから、想いがそのまま形になる。
+          </p>
           <div class="service-tag-list">
-            <span class="service-tag">KGI/KPI設計</span>
-            <span class="service-tag">マーケ戦略</span>
-            <span class="service-tag">GTM策定</span>
-            <span class="service-tag">CRM/LTV最大化</span>
+            <span class="service-tag">ビジョン言語化</span>
+            <span class="service-tag">HP制作</span>
+            <span class="service-tag">SNS構築</span>
+            <span class="service-tag">自走化</span>
           </div>
-          <a href="service/growth-sprint.html" class="service-card-link">
-            Growth Sprint（3ヶ月集中）を見る
+          <p class="service-path-price">&yen;200,000/月 &times; 3ヶ月</p>
+          <a href="service/growth-sprint.html" class="service-path-cta">
+            詳しく見る
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
         </div>
       </div>
 
-      <!-- Service 2 -->
-      <div class="service-info-card reveal reveal-delay-2">
+      <!-- Path B: Growth Advisory -->
+      <div class="service-path-card reveal reveal-delay-2">
         <div class="service-card-header">
           <div class="service-card-header-bg" style="background-image: url('https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=600&q=80'); background-color: #1a2e2a;"></div>
           <div class="service-card-header-overlay"></div>
@@ -1208,120 +1040,109 @@ ul { list-style: none; }
             <div class="service-card-icon-large">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><path d="M6 10l3 3 4-5 5 4"/></svg>
             </div>
-            <p class="service-card-num">SERVICE 02</p>
-            <h3 class="service-card-title-main">データ活用・AI実装</h3>
-            <p class="service-card-en-sub">Data &amp; AI Engineering</p>
+            <p class="service-card-num">FOR ENTERPRISES</p>
+            <h3 class="service-card-title-main">Growth Advisory</h3>
+            <p class="service-card-en-sub">&#x30C7;&#x30FC;&#x30BF;&#x99C6;&#x52D5;&#x578B;&#x30B0;&#x30ED;&#x30FC;&#x30B9;&#x652F;&#x63F4;</p>
           </div>
         </div>
         <div class="service-card-body">
-          <p class="service-card-desc-text">絵に描いた餅で終わらせず、現場で使える「武器」としてデータやAIを実装します。</p>
+          <p class="service-card-desc-text">
+            KPI設計・BI構築・CRM最適化・AI実装で、成長企業のグロースを加速。戦略から実装、組織の自走化まで一気通貫で伴走します。
+          </p>
           <div class="service-tag-list">
-            <span class="service-tag">BIダッシュボード</span>
-            <span class="service-tag">MA導入</span>
-            <span class="service-tag">AI自動化</span>
-            <span class="service-tag">MVP開発</span>
+            <span class="service-tag">KPI設計</span>
+            <span class="service-tag">BI構築</span>
+            <span class="service-tag">CRM最適化</span>
+            <span class="service-tag">AI実装</span>
           </div>
+          <p class="service-path-price">月次顧問 &yen;300,000〜</p>
+          <a href="#contact" class="service-path-cta">
+            お問い合わせ
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
         </div>
       </div>
-
-      <!-- Service 3 -->
-      <div class="service-info-card reveal reveal-delay-3">
-        <div class="service-card-header">
-          <div class="service-card-header-bg" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80'); background-color: #1e1a2e;"></div>
-          <div class="service-card-header-overlay"></div>
-          <div class="service-card-header-content">
-            <div class="service-card-icon-large">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
-            </div>
-            <p class="service-card-num">SERVICE 03</p>
-            <h3 class="service-card-title-main">組織変革・自走支援</h3>
-            <p class="service-card-en-sub">Organization Coaching</p>
-          </div>
-        </div>
-        <div class="service-card-body">
-          <p class="service-card-desc-text">外部人材がいなくても回る「強い現場」を作ります。</p>
-          <div class="service-tag-list">
-            <span class="service-tag">意思決定フロー定着</span>
-            <span class="service-tag">内製化研修</span>
-            <span class="service-tag">PDCA会議体設計</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="service-more-wrap reveal">
-      <a href="service/" class="service-more">
-        サービス詳細を見る
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
     </div>
   </div>
 </section>
 
 <!-- ========================================
-     Approach
+     Numbers / RTB
      ======================================== -->
-<section class="section section-light approach-section" id="approach">
-  <div class="approach-bg-energy"></div>
+<section class="section section-light" id="numbers">
   <div class="container">
     <div class="section-header reveal">
-      <p class="section-label">Our Approach</p>
-      <h2 class="section-title">
-        <span class="thin">「Outcome（成果）」起点の</span><br>
-        アジャイル・グロース
-      </h2>
+      <p class="section-label">Track Record</p>
+      <h2 class="section-title">数字が語る、実績。</h2>
     </div>
 
-    <div class="approach-content">
-      <div class="reveal">
-        <p class="approach-main-text">
-          私たちは、最初から完璧なシステムや計画を作りません。<br>
-          事業のゴールに対し、今必要な最小限の機能（MVP）をアジャイルに開発・投入し、実際のフィードバックとデータをもとに高速で改善を繰り返します。
-        </p>
-
-        <div class="approach-feature">
-          <div class="approach-feature-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-          </div>
-          <div>
-            <h4 class="approach-feature-title">泥臭い「現場解像度」</h4>
-            <p class="approach-feature-desc">現場に入り込み、顧客の声や一次情報に触れ、データの裏付けをとります。</p>
-          </div>
-        </div>
-        <div class="approach-feature">
-          <div class="approach-feature-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a4 4 0 014 4c0 1.95-2 4-4 7-2-3-4-5.05-4-7a4 4 0 014-4z"/><path d="M4.93 10.93a10 10 0 002.17 6.36L12 22l4.9-4.71a10 10 0 002.17-6.36"/></svg>
-          </div>
-          <div>
-            <h4 class="approach-feature-title">AIによる「無駄の排除」</h4>
-            <p class="approach-feature-desc">単純作業やオペレーションはAIで徹底的に効率化し、思考と創造の時間を捻出します。</p>
-          </div>
-        </div>
+    <div class="stat-grid reveal">
+      <div class="stat-card">
+        <div class="stat-number">0&rarr;10億</div>
+        <div class="stat-desc">新規事業を初年度で<br>10億円規模に成長（MTG）</div>
       </div>
-
-      <!-- Agile Cycle Diagram -->
-      <div class="agile-visual reveal reveal-delay-2">
-        <div class="agile-visual-inner">
-          <div class="cycle-ring"></div>
-          <div class="cycle-ring-inner"></div>
-
-          <div class="cycle-node"><span class="cycle-node-icon">&#x1F3AF;</span>Goal設定</div>
-          <div class="cycle-node"><span class="cycle-node-icon">&#x1F680;</span>MVP投入</div>
-          <div class="cycle-node"><span class="cycle-node-icon">&#x1F4CA;</span>Data計測</div>
-          <div class="cycle-node"><span class="cycle-node-icon">&#x1F504;</span>高速改善</div>
-
-          <span class="cycle-arrow">&#x27A4;</span>
-          <span class="cycle-arrow">&#x27A4;</span>
-          <span class="cycle-arrow">&#x27A4;</span>
-          <span class="cycle-arrow">&#x27A4;</span>
-
-          <div class="cycle-center">
-            <span class="cycle-center-label">OUTCOME</span>
-            <span class="cycle-center-sub">成果起点</span>
-          </div>
-        </div>
+      <div class="stat-card">
+        <div class="stat-number">YoY+35%</div>
+        <div class="stat-desc">支援前-4%の売上を<br>1年で反転（Accenture）</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">LTV 1.4x</div>
+        <div class="stat-desc">データ分析&times;CRM施策で<br>顧客生涯価値を1.4倍に</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">月340万</div>
+        <div class="stat-desc">一人常駐で<br>2年契約更新中</div>
       </div>
     </div>
+
+    <table class="rtb-table reveal">
+      <thead>
+        <tr>
+          <th></th>
+          <th>コーチ</th>
+          <th>コンサル</th>
+          <th>制作会社</th>
+          <th>西川太雄</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ビジョン・MVV策定</td>
+          <td class="check">&#9675;</td>
+          <td class="partial">&#9651;</td>
+          <td class="none">&times;</td>
+          <td>&#9675;</td>
+        </tr>
+        <tr>
+          <td>市場調査・競合分析</td>
+          <td class="none">&times;</td>
+          <td class="check">&#9675;</td>
+          <td class="none">&times;</td>
+          <td>&#9675;</td>
+        </tr>
+        <tr>
+          <td>戦略・ロードマップ</td>
+          <td class="none">&times;</td>
+          <td class="check">&#9675;</td>
+          <td class="none">&times;</td>
+          <td>&#9675;</td>
+        </tr>
+        <tr>
+          <td>HP・SNS実装</td>
+          <td class="none">&times;</td>
+          <td class="none">&times;</td>
+          <td class="check">&#9675;</td>
+          <td>&#9675;</td>
+        </tr>
+        <tr>
+          <td>データ分析・KPI設計</td>
+          <td class="none">&times;</td>
+          <td class="partial">&#9651;</td>
+          <td class="none">&times;</td>
+          <td>&#9675;</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </section>
 
@@ -1354,21 +1175,9 @@ ul { list-style: none; }
 
         <div class="profile-subsection reveal">
           <h3 class="profile-subsection-title">Career</h3>
-          <p style="font-size:0.9rem;color:var(--text-secondary);line-height:2;margin-bottom:28px;">
-            マクロミル（リサーチ）、MTG（事業会社）、アクセンチュア（総合コンサル）を経て現職。一貫して「顧客理解」と「データ活用」を軸に、事業の立ち上げからグロース、大規模組織の変革までをリード。
+          <p class="profile-career-text">
+            マクロミル（リサーチ）&rarr; MTG（新規事業0&rarr;10億・MVP受賞）&rarr; アクセンチュア（DX・V字回復YoY+35%）を経て独立。一貫して「顧客理解&times;データ活用」を軸に、戦略から実装まで一気通貫でリードしてきました。
           </p>
-          <div class="profile-career-item">
-            <p class="profile-company">株式会社マクロミル</p>
-            <p class="profile-career-desc">コンサルティング営業・リサーチャーとして、定性・定量の両面から顧客インサイトを発掘する調査設計・分析に従事。</p>
-          </div>
-          <div class="profile-career-item">
-            <p class="profile-company">株式会社MTG</p>
-            <p class="profile-career-desc">コロナ禍においてオンラインフィットネス事業（SIXPAD HOME GYM）の立ち上げに参画。PMOとして事業を牽引し、マーケティング責任者として初年度売上10億円達成に貢献。MVPを受賞。</p>
-          </div>
-          <div class="profile-career-item">
-            <p class="profile-company">アクセンチュア株式会社</p>
-            <p class="profile-career-desc">データエンジニアリングとマーケティングを横断するアソシエイトマネージャーとして、大企業のDXやD2CブランドのV字回復（売上YoY+35%）を実現。</p>
-          </div>
         </div>
 
         <div class="profile-subsection reveal">
@@ -1380,7 +1189,7 @@ ul { list-style: none; }
             </div>
             <div class="strength-item">
               <p class="strength-en">Hybrid Skill Set</p>
-              <p class="strength-text">マーケティング戦略から、SQL/Pythonによる分析、React/JSによるプロトタイプ実装まで、戦略と手を動かす実装を一人で完結できるスキル。</p>
+              <p class="strength-text">マーケティング戦略から、SQL/Pythonによる分析、React/JSによるプロトタイプ実装まで、戦略と実装を一人で完結できるスキル。</p>
             </div>
             <div class="strength-item">
               <p class="strength-en">Commitment</p>
@@ -1390,12 +1199,17 @@ ul { list-style: none; }
         </div>
 
         <div class="profile-subsection reveal">
-          <h3 class="profile-subsection-title">Message</h3>
-          <div class="profile-message">
-            <p>
-              AI技術の進化により、ビジネスのあり方は劇的に変わりつつあります。しかし、最後に人を動かし、事業を動かすのは「熱狂」や「確信」といった人間ならではのエネルギーです。<br><br>
-              私はデータとAIという強力な武器を使いこなしながらも、あくまで「人」にフォーカスし、皆様の事業が持つ可能性を最大限に引き出すお手伝いをさせていただきます。
-            </p>
+          <h3 class="profile-subsection-title">Personal Why</h3>
+          <div class="personal-why">
+            <div class="personal-why-inner">
+              <p class="personal-why-title">「熱狂は、一人では生まれない。」</p>
+              <p>
+                新規事業の立ち上げで、ユーザーの感動の声を聞いた時。仲間と苦しい局面を乗り越えた時。一人では絶対に到達できないエネルギーが湧いた。
+              </p>
+              <p>
+                想いを持って起業する人のビジョンが、はじめて<strong>「誰かに届く」</strong>瞬間を一緒に味わいたい。だからRAFTELを作りました。
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -1418,14 +1232,14 @@ ul { list-style: none; }
       <a href="content/ai-hp-guide.html" class="content-card reveal reveal-delay-1">
         <div class="content-card-thumb" style="background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&q=80'); background-color: #1a2030;">
           <div class="content-card-thumb-overlay"></div>
-          <span class="content-card-thumb-inner">AI × HP</span>
+          <span class="content-card-thumb-inner">AI &times; HP</span>
           <div class="content-card-thumb-icon">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
           </div>
         </div>
         <div class="content-card-body">
           <span class="content-card-tag">AI Knowledge</span>
-          <h3 class="content-card-title">AI×プロンプトだけで「プロ品質のHP」を作る完全ガイド</h3>
+          <h3 class="content-card-title">AI&times;プロンプトだけで「プロ品質のHP」を作る完全ガイド</h3>
           <p class="content-card-desc">コーディング知識ゼロでもAIとの対話だけで洗練されたHPを作る方法を、実際のプロセスとプロンプト例つきで解説。</p>
           <div class="content-card-meta">
             <span>2026.02</span>
@@ -1438,14 +1252,14 @@ ul { list-style: none; }
       <a href="content/ai-sns-strategy.html" class="content-card reveal reveal-delay-2">
         <div class="content-card-thumb" style="background-image: url('https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&q=80'); background-color: #1a2e2a;">
           <div class="content-card-thumb-overlay"></div>
-          <span class="content-card-thumb-inner">AI × SNS</span>
+          <span class="content-card-thumb-inner">AI &times; SNS</span>
           <div class="content-card-thumb-icon">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           </div>
         </div>
         <div class="content-card-body">
           <span class="content-card-tag">Content Strategy</span>
-          <h3 class="content-card-title">1記事から5チャネルへ — AI×SNS集客の全体設計</h3>
+          <h3 class="content-card-title">1記事から5チャネルへ &mdash; AI&times;SNS集客の全体設計</h3>
           <p class="content-card-desc">HP記事を起点にX・YouTube・Instagramへ自動展開。起業プロセスそのものをコンテンツにする集客戦略。</p>
           <div class="content-card-meta">
             <span>2026.02</span>
@@ -1465,7 +1279,7 @@ ul { list-style: none; }
         </div>
         <div class="content-card-body">
           <span class="content-card-tag">SNS Account Design</span>
-          <h3 class="content-card-title">起業SNS設計の全体像 — 5アカウント×不安解消リレー</h3>
+          <h3 class="content-card-title">起業SNS設計の全体像 &mdash; 5アカウント&times;不安解消リレー</h3>
           <p class="content-card-desc">ターゲットの不安マッピングから各チャネルの役割分担、プロフィール設計、導線設計まで全公開。</p>
           <div class="content-card-meta">
             <span>2026.02</span>
@@ -1489,12 +1303,18 @@ ul { list-style: none; }
      ======================================== -->
 <section class="cta-section" id="contact">
   <div class="container">
-    <h2 class="cta-title reveal">まずは、お気軽にご相談ください。</h2>
+    <h2 class="cta-title reveal">まずは30分、お話しませんか。</h2>
     <p class="cta-desc reveal reveal-delay-1">
-      事業の課題やご状況をヒアリングし、最適なアプローチをご提案いたします。
+      「何から始めればいいかわからない」で大丈夫です。<br>
+      現状をお聞きして、最適なアプローチをご提案します。相談だけでも構いません。
     </p>
+    <div class="cta-details reveal reveal-delay-1">
+      <span>30分</span>
+      <span>オンライン</span>
+      <span>無料</span>
+    </div>
     <a href="mailto:info@raftel.co.jp" class="cta-button reveal reveal-delay-2">
-      お問い合わせ
+      無料相談に申し込む
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
   </div>
@@ -1560,23 +1380,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       document.getElementById('navLinks').classList.remove('active');
     }
-  });
-});
-
-// Parallax effect on approach photo cards
-document.querySelectorAll('.approach-photo-card').forEach(card => {
-  card.addEventListener('mousemove', (e) => {
-    const rect = card.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    const bg = card.querySelector('.card-bg');
-    if (bg) {
-      bg.style.transform = `scale(1.08) translate(${x * -10}px, ${y * -10}px)`;
-    }
-  });
-  card.addEventListener('mouseleave', () => {
-    const bg = card.querySelector('.card-bg');
-    if (bg) bg.style.transform = 'scale(1)';
   });
 });
 </script>
