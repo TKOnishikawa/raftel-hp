@@ -417,6 +417,58 @@ ul { list-style: none; }
 .service-section .section-label::before { background: var(--accent-light); }
 .service-section .section-title { color: #fff; }
 
+/* Quick Launch Entry Card */
+.service-entry-card {
+  position: relative; z-index: 1;
+  display: flex; align-items: center; gap: 32px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px; padding: 28px 32px;
+  margin-bottom: 28px;
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  transition: all 0.5s cubic-bezier(0.16,1,0.3,1);
+  color: inherit;
+}
+.service-entry-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.3), 0 0 32px rgba(212,120,47,0.06);
+  border-color: rgba(212,120,47,0.2);
+  background: rgba(255,255,255,0.06);
+}
+.service-entry-icon {
+  width: 56px; height: 56px; border-radius: 14px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+}
+.service-entry-icon svg { color: var(--accent-light); }
+.service-entry-body { flex: 1; min-width: 0; }
+.service-entry-num {
+  font-family: var(--font-head); font-size: 0.6rem; font-weight: 800;
+  letter-spacing: 0.15em; color: var(--accent-light); margin-bottom: 4px;
+}
+.service-entry-title {
+  font-family: var(--font-head); font-size: 1.1rem; font-weight: 800;
+  color: #fff; margin-bottom: 6px;
+}
+.service-entry-desc {
+  font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.7;
+}
+.service-entry-right {
+  display: flex; flex-direction: column; align-items: flex-end; gap: 8px;
+  flex-shrink: 0;
+}
+.service-entry-price {
+  font-family: var(--font-head); font-size: 1.2rem; font-weight: 800;
+  color: var(--accent-light);
+}
+.service-entry-cta {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-head); font-size: 0.78rem; font-weight: 600;
+  color: rgba(255,255,255,0.45); transition: gap 0.3s, color 0.3s;
+}
+.service-entry-card:hover .service-entry-cta { gap: 10px; color: var(--accent-light); }
+
 .service-path-grid {
   display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
   position: relative; z-index: 1;
@@ -793,6 +845,7 @@ ul { list-style: none; }
    ======================================== */
 @media (max-width: 1024px) {
   .service-path-grid { grid-template-columns: 1fr; max-width: 560px; }
+  .service-entry-card { max-width: 560px; }
   .profile-content { grid-template-columns: 1fr; }
   .profile-photo-area { position: static; max-width: 280px; }
 }
@@ -827,6 +880,8 @@ ul { list-style: none; }
   .problem-card p { font-size: 0.92rem; }
   .solution-pillar p { font-size: 0.9rem; }
   .service-path-grid { grid-template-columns: 1fr; max-width: 100%; }
+  .service-entry-card { flex-direction: column; align-items: flex-start; gap: 20px; max-width: 100%; }
+  .service-entry-right { flex-direction: row; align-items: center; gap: 16px; }
   .service-card-desc-text { font-size: 0.95rem; }
   .stat-grid { grid-template-columns: 1fr 1fr; }
   .stat-desc { font-size: 0.85rem; }
@@ -1010,6 +1065,25 @@ ul { list-style: none; }
       <p class="section-label">Service</p>
       <h2 class="section-title">サービス</h2>
     </div>
+
+    <!-- Entry: Quick Launch -->
+    <a href="service/quick-launch.html" class="service-entry-card reveal">
+      <div class="service-entry-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4z"/></svg>
+      </div>
+      <div class="service-entry-body">
+        <p class="service-entry-num">ENTRY PLAN</p>
+        <h3 class="service-entry-title">Quick Launch &mdash; 1日HP制作プラン</h3>
+        <p class="service-entry-desc">30分の壁打ちで事業の強みを言語化し、プロ品質のHPをその日に納品。まずはここから。</p>
+      </div>
+      <div class="service-entry-right">
+        <span class="service-entry-price">&yen;10,000</span>
+        <span class="service-entry-cta">
+          詳しく見る
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </a>
 
     <div class="service-path-grid">
       <!-- Path A: Growth Sprint -->
