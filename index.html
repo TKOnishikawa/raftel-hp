@@ -916,6 +916,67 @@ ul { list-style: none; }
 @media (max-width: 375px) {
   .hero-catch { font-size: 1.55rem; }
 }
+
+/* ========================================
+   Project Experience
+   ======================================== */
+.project-company-block {
+  margin-bottom: 48px;
+}
+.project-company-block:last-child {
+  margin-bottom: 0;
+}
+.project-company-title {
+  font-family: var(--font-head);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--accent);
+}
+.project-item {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 16px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.project-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+.project-item:last-child {
+  margin-bottom: 0;
+}
+.project-name {
+  font-family: var(--font-head);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+.project-desc {
+  font-size: 0.92rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+  .project-company-title {
+    font-size: 1.1rem;
+  }
+  .project-name {
+    font-size: 0.95rem;
+  }
+  .project-desc {
+    font-size: 0.88rem;
+  }
+  .project-item {
+    padding: 20px;
+  }
+}
 </style>
 </head>
 <body>
@@ -950,7 +1011,7 @@ ul { list-style: none; }
   <div class="hero-particles" id="particles"></div>
   <div class="hero-content">
     <h1 class="hero-catch">
-      根拠のない確信を育て、<br>論理的な熱狂でぶち抜く。
+      根拠のない<span class="accent-text">確信</span>を育て、<br>論理的な<span class="accent-text">熱狂</span>でぶち抜く。
     </h1>
     <p class="hero-sub">
       ビジョンの言語化から、戦略設計、HP・データ基盤の構築まで。<br>
@@ -1265,6 +1326,94 @@ ul { list-style: none; }
 </section>
 
 <!-- ========================================
+     Project Experience
+     ======================================== -->
+<section class="section section-light" id="projects">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2 class="section-title">プロジェクト実績</h2>
+      <p class="section-subtitle" style="font-size: 0.92rem; color: var(--text-secondary); margin-top: 8px;">マクロミル・MTG・アクセンチュアを経て</p>
+    </div>
+
+    <p class="reveal" style="text-align: center; font-size: 1rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 48px;">
+      リサーチ・事業会社・外資コンサルの3領域で、<br>
+      戦略策定からデータ分析、実装・内製化支援まで一貫して手を動かしてきました。
+    </p>
+
+    <!-- Accenture Projects -->
+    <div class="project-company-block reveal">
+      <h3 class="project-company-title">アクセンチュア（2022年〜2025年）</h3>
+
+      <div class="project-item">
+        <h4 class="project-name">外資ペットフード D2C｜グロース＆データ基盤構築</h4>
+        <p class="project-desc">
+          一人常駐で、データ分析・CRM戦略・MA実装・BI構築を一気通貫で推進。<br>
+          売上YoY+35%、新規LTV1.4倍、定期注文率1.5倍。2年契約更新中。
+        </p>
+      </div>
+
+      <div class="project-item">
+        <h4 class="project-name">健康食品・化粧品EC｜サイトUI改善</h4>
+        <p class="project-desc">
+          サイト分析→課題優先順位付け→ABテスト実装を3ヶ月で完結。<br>
+          6施策中4施策でCVRリフト。年間売上効果+7億円。内製化フローも整備。
+        </p>
+      </div>
+
+      <div class="project-item">
+        <h4 class="project-name">食品EC｜顧客育成戦略策定</h4>
+        <p class="project-desc">
+          購買データ分析でLTV向上のゴールデンパスを定義。<br>
+          役員報告で方針合意を得た上で、次フェーズの施策実行も受注。
+        </p>
+      </div>
+
+      <div class="project-item">
+        <h4 class="project-name">通信企業｜KPI設計＆ダッシュボード構築</h4>
+        <p class="project-desc">
+          事業移管直後の回線サービスでPDCA基盤を構築。<br>
+          KPI設計からTableauダッシュボード開発まで担当。
+        </p>
+      </div>
+
+      <div class="project-item">
+        <h4 class="project-name">大手通信キャリア｜次世代DMP構想・要件定義</h4>
+        <p class="project-desc">
+          PMOとして5部門以上のステークホルダーを取りまとめ。<br>
+          経営会議にて5億円の開発予算承認を獲得。
+        </p>
+      </div>
+    </div>
+
+    <!-- MTG Projects -->
+    <div class="project-company-block reveal">
+      <h3 class="project-company-title">MTG（2019年〜2022年）</h3>
+
+      <div class="project-item">
+        <h4 class="project-name">新規事業立ち上げ〜グロース</h4>
+        <p class="project-desc">
+          市場調査・GTM戦略からマーケ実行・リテンション改善まで一気通貫。<br>
+          初年度売上10億円規模を達成。チームMVP・個人MVP受賞。<br>
+          CAC▲70%、新規購入者数+300%、月解約率10%→6%。
+        </p>
+      </div>
+    </div>
+
+    <!-- Macromill Projects -->
+    <div class="project-company-block reveal">
+      <h3 class="project-company-title">マクロミル（〜2019年）</h3>
+
+      <div class="project-item">
+        <h4 class="project-name">リサーチ・顧客理解</h4>
+        <p class="project-desc">
+          顧客調査・市場調査を通じて、データに基づく意思決定の基盤を築く。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
      Profile
      ======================================== -->
 <section class="section section-warm profile-section" id="profile">
@@ -1294,7 +1443,7 @@ ul { list-style: none; }
         <div class="profile-subsection reveal">
           <h3 class="profile-subsection-title">Career</h3>
           <p class="profile-career-text">
-            コンサル、マーケ、アナリスト、エンジニア、事業開発　を経験しているからこそ、リサーチ会社で顧客理解の基盤を築き、事業会社で新規ブランド0&rarr;10億円を推進（MVP受賞）。外資コンサルではDX戦略&times;データ活用でYoY -4%の売上を+35%にV字回復させた後、独立。一貫して「戦略&times;実装」の両輪でリードしてきた経験が、RAFTELのサービスの基盤です。
+            マクロミルでリサーチャーとして顧客理解・市場調査の基盤を築き、MTGにて新規事業の立ち上げからグロースまでを一気通貫で推進、初年度10億円を達成（MVP受賞）。アクセンチュアではDX戦略&times;データ活用で複数のEC事業を支援し、売上V字回復・LTV改善などの成果を上げた後、独立。一貫して「戦略と実装の両輪」でリードしてきた経験が、RAFTELのサービスの基盤です。
           </p>
         </div>
 
