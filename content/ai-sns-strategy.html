@@ -530,35 +530,36 @@ a { color: inherit; text-decoration: none; }
 <body>
 
 <!-- Navigation -->
-<nav class="nav">
+<nav class="nav" id="nav">
   <div class="nav-inner">
     <a href="../index.html" class="nav-logo">RAFTEL</a>
     <div class="nav-links" id="navLinks">
-      <a href="../index.html#philosophy">Philosophy</a>
-      <a href="../service/">Service</a>
-      <a href="../index.html#approach">Approach</a>
-      <a href="../index.html#profile">Profile</a>
-      <a href="./" class="active">Content</a>
-      <a href="../index.html#contact" class="nav-contact">Contact</a>
+      <a href="../index.html#solution">課題と解決</a>
+      <a href="../service/">サービス</a>
+      <a href="../index.html#profile">代表紹介</a>
+      <a href="./">ナレッジ</a>
+      <a href="../index.html#contact" class="nav-contact">お問い合わせ</a>
     </div>
     <a href="../index.html" class="nav-back">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
       Top
     </a>
-    <div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('active')">
+    <div class="hamburger" id="hamburger">
       <span></span><span></span><span></span>
     </div>
   </div>
 </nav>
 
 <!-- Breadcrumb -->
-<div class="breadcrumb" style="padding-top: 80px;">
-  <a href="../index.html">RAFTEL</a>
-  <span>/</span>
-  <a href="./">Content</a>
-  <span>/</span>
-  <span>AI×SNS集客の全体設計</span>
-</div>
+<nav class="breadcrumb" style="padding-top: 80px;">
+  <div class="breadcrumb-inner">
+    <a href="../index.html">RAFTEL</a>
+    <span class="breadcrumb-separator">/</span>
+    <a href="./">Content</a>
+    <span class="breadcrumb-separator">/</span>
+    <span class="breadcrumb-current">AI×SNS集客の全体設計</span>
+  </div>
+</nav>
 
 <!-- ========================================
      Article Hero
@@ -1066,6 +1067,35 @@ function toggleAccordion(trigger) {
   const accordion = trigger.closest('.accordion');
   accordion.classList.toggle('open');
 }
+
+// Navigation: Hamburger menu toggle
+document.getElementById('hamburger')?.addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('active');
+});
+
+// Navigation: Scroll behavior for nav background
+const nav = document.getElementById('nav');
+if (nav) {
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+}
+
+// Navigation: Current page highlight
+const currentPath = window.location.pathname;
+document.querySelectorAll('.nav-links a').forEach(link => {
+  const linkPath = new URL(link.href, window.location.origin).pathname;
+  if (currentPath.includes('/content/') && link.textContent.trim() === 'ナレッジ') {
+    link.classList.add('active');
+  }
+});
+
+// Navigation: Mobile menu auto-close
+document.querySelectorAll('.nav-links a').forEach(anchor => {
+  anchor.addEventListener('click', () => {
+    document.getElementById('navLinks').classList.remove('active');
+  });
+});
 </script>
 </body>
 </html>
