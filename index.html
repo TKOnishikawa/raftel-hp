@@ -124,7 +124,12 @@ ul { list-style: none; }
 }
 .nav-links a:hover { color: var(--accent); }
 .nav-contact {
-  padding: 10px 28px; border: 1px solid var(--accent);
+  padding: 12px 28px;
+  min-height: 44px;
+  min-width: 120px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center; border: 1px solid var(--accent);
   color: var(--accent) !important; border-radius: 4px; transition: all 0.3s;
   -webkit-text-fill-color: var(--accent) !important; background: transparent !important;
   font-family: var(--font-en);
@@ -133,7 +138,10 @@ ul { list-style: none; }
   background: var(--accent) !important; color: #fff !important;
   -webkit-text-fill-color: #fff !important;
 }
-.hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+.hamburger {
+  display: none; cursor: pointer; flex-direction: column; gap: 5px;
+  background: transparent; border: none; padding: 8px;
+}
 .hamburger span { display: block; width: 24px; height: 2px; background: var(--text-primary); transition: all 0.3s; }
 
 /* ========================================
@@ -977,6 +985,56 @@ ul { list-style: none; }
     padding: 20px;
   }
 }
+
+/* ========================================
+   Focus & Keyboard Navigation
+   ======================================== */
+:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Navigation links */
+.nav-links a:focus-visible {
+  outline-color: var(--accent-light);
+  outline-offset: 4px;
+}
+
+/* Buttons */
+.nav-contact:focus-visible,
+.hero-cta:focus-visible,
+.cta-button:focus-visible,
+.btn:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+  box-shadow: 0 0 0 6px var(--accent-glow);
+}
+
+/* Hamburger menu */
+.hamburger:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 6px;
+  border-radius: 6px;
+}
+
+/* Cards and interactive elements */
+.card:focus-visible,
+.service-card:focus-visible,
+.content-card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+/* Remove focus styles for mouse/touch interactions */
+:focus:not(:focus-visible) {
+  outline: none;
+}
 </style>
 </head>
 <body>
@@ -994,9 +1052,13 @@ ul { list-style: none; }
       <a href="content/">ナレッジ</a>
       <a href="#contact" class="nav-contact">お問い合わせ</a>
     </div>
-    <div class="hamburger" id="hamburger">
+    <button class="hamburger"
+            id="hamburger"
+            aria-label="メニューを開く"
+            aria-expanded="false"
+            aria-controls="navLinks">
       <span></span><span></span><span></span>
-    </div>
+    </button>
   </div>
 </nav>
 
@@ -1162,7 +1224,7 @@ ul { list-style: none; }
       <!-- Path A: Growth Sprint -->
       <a href="service/growth-partner.html" class="service-path-card reveal reveal-delay-1">
         <div class="service-card-header">
-          <div class="service-card-header-bg" style="background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&q=80'); background-color: #1a2030;"></div>
+          <div class="service-card-header-bg" style="background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&q=80&fm=webp'); background-color: #1a2030;"></div>
           <div class="service-card-header-overlay"></div>
           <div class="service-card-header-content">
             <div class="service-card-icon-large">
@@ -1194,7 +1256,7 @@ ul { list-style: none; }
       <!-- Path B: Growth Advisory -->
       <a href="#contact" class="service-path-card reveal reveal-delay-2">
         <div class="service-card-header">
-          <div class="service-card-header-bg" style="background-image: url('https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=600&q=80'); background-color: #1a2e2a;"></div>
+          <div class="service-card-header-bg" style="background-image: url('https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&q=80&fm=webp'); background-color: #1a2e2a;"></div>
           <div class="service-card-header-overlay"></div>
           <div class="service-card-header-content">
             <div class="service-card-icon-large">
@@ -1512,7 +1574,7 @@ ul { list-style: none; }
     <div class="content-grid">
       <!-- Article 1 -->
       <a href="content/ai-hp-guide.html" class="content-card reveal reveal-delay-1">
-        <div class="content-card-thumb" style="background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&q=80'); background-color: #1a2030;">
+        <div class="content-card-thumb" style="background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80&fm=webp'); background-color: #1a2030;">
           <div class="content-card-thumb-overlay"></div>
           <span class="content-card-thumb-inner">AI &times; HP</span>
           <div class="content-card-thumb-icon">
@@ -1532,7 +1594,7 @@ ul { list-style: none; }
 
       <!-- Article 2 -->
       <a href="content/ai-sns-strategy.html" class="content-card reveal reveal-delay-2">
-        <div class="content-card-thumb" style="background-image: url('https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&q=80'); background-color: #1a2e2a;">
+        <div class="content-card-thumb" style="background-image: url('https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80&fm=webp'); background-color: #1a2e2a;">
           <div class="content-card-thumb-overlay"></div>
           <span class="content-card-thumb-inner">AI &times; SNS</span>
           <div class="content-card-thumb-icon">
@@ -1552,7 +1614,7 @@ ul { list-style: none; }
 
       <!-- Article 3 -->
       <a href="content/sns-account-design.html" class="content-card reveal reveal-delay-1">
-        <div class="content-card-thumb" style="background-image: url('https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=600&q=80'); background-color: #1a2030;">
+        <div class="content-card-thumb" style="background-image: url('https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=800&q=80&fm=webp'); background-color: #1a2030;">
           <div class="content-card-thumb-overlay"></div>
           <span class="content-card-thumb-inner">SNS Design</span>
           <div class="content-card-thumb-icon">
@@ -1632,9 +1694,52 @@ window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 60);
 });
 
+// Hamburger menu with ARIA state management
+function toggleMenu() {
+  const navLinks = document.getElementById('navLinks');
+  const hamburger = document.getElementById('hamburger');
+  const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+
+  // Toggle menu
+  navLinks.classList.toggle('active');
+
+  // Update ARIA state
+  hamburger.setAttribute('aria-expanded', !isExpanded);
+  hamburger.setAttribute('aria-label', !isExpanded ? 'メニューを閉じる' : 'メニューを開く');
+}
+
 // Hamburger menu toggle
-document.getElementById('hamburger')?.addEventListener('click', () => {
-  document.getElementById('navLinks').classList.toggle('active');
+document.getElementById('hamburger')?.addEventListener('click', toggleMenu);
+
+// Keyboard support for hamburger menu
+document.addEventListener('DOMContentLoaded', function() {
+  const hamburger = document.getElementById('hamburger');
+  if (!hamburger) return;
+
+  hamburger.addEventListener('keydown', function(e) {
+    // Support Enter and Space keys
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggleMenu();
+    }
+
+    // ESC to close menu
+    if (e.key === 'Escape' && this.getAttribute('aria-expanded') === 'true') {
+      toggleMenu();
+    }
+  });
+
+  // Close menu on ESC from anywhere when menu is open
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      if (navLinks && navLinks.classList.contains('active')) {
+        toggleMenu();
+        hamburger.focus(); // Return focus to hamburger
+      }
+    }
+  });
 });
 
 // Particles
