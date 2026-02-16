@@ -1,0 +1,48 @@
+/* ========================================
+   CSS Custom Properties
+   ======================================== */
+:root {
+  --bg-primary: #f6f3ee;
+  --bg-secondary: #edeae4;
+  --bg-tertiary: #e3dfd8;
+  --bg-hero: #0a0a14;
+  --bg-dark: #0b0b12;
+  --bg-card: rgba(255,255,255,0.7);
+  --bg-card-hover: rgba(255,255,255,0.92);
+
+  --text-primary: #1a1a24;
+  --text-secondary: #4a4a5a;
+  --text-muted: #8a8a9a;
+
+  --text-on-dark: #f0ece6;
+  --text-on-dark-sub: rgba(240,236,230,0.7);
+
+  --accent: #d4782f;
+  --accent-light: #e8944a;
+  --accent-dark: #b85e1a;
+  --accent-glow: rgba(212,120,47,0.12);
+  --accent-glow-strong: rgba(212,120,47,0.25);
+
+  --accent2: #2a7a6e;
+  --accent2-glow: rgba(42,122,110,0.1);
+
+  --gradient-hero: linear-gradient(135deg, #e8944a 0%, #d4582f 50%, #c04040 100%);
+  --gradient-warm: linear-gradient(135deg, #f6f3ee 0%, #edeae4 100%);
+
+  --border: rgba(26,26,36,0.08);
+  --border-accent: rgba(212,120,47,0.25);
+  --border-dark: rgba(255,255,255,0.08);
+
+  --shadow-sm: 0 2px 8px rgba(26,26,36,0.04);
+  --shadow-md: 0 8px 32px rgba(26,26,36,0.06);
+  --shadow-lg: 0 16px 48px rgba(26,26,36,0.08);
+  --shadow-glow: 0 8px 32px rgba(212,120,47,0.12);
+
+  --font-head: 'Sora', 'Inter', sans-serif;
+  --font-brush: 'Zen Antique', 'Yu Mincho', serif;
+  --font-ja: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+  --font-en: 'Sora', 'Inter', 'Helvetica Neue', Arial, sans-serif;
+
+  --max-width: 1200px;
+  --section-padding: 140px 0;
+}

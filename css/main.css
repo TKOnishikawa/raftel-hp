@@ -1,0 +1,13 @@
+/* RAFTEL HP - Main Stylesheet
+ * Version: 1.0.0
+ * Phase D-1: CSS Externalization
+ * Date: 2026-02-16
+ */
+
+@import url('_variables.css');
+@import url('_base.css');
+@import url('_utilities.css');
+@import url('_navigation.css');
+@import url('_buttons.css');
+@import url('_cards.css');
+@import url('_animations.css');
