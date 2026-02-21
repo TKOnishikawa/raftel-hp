@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="Shift_JIS">
+<title>ホームページ</title>
+<!-- No viewport meta = not mobile friendly -->
+<!-- No description, no OGP, no structured data -->
+<style>
+/* === 2010年代風「残念HP」=== */
+body {
+  width: 960px;
+  margin: 0 auto;
+  font-family: "MS Pゴシック", "ＭＳ Ｐゴシック", sans-serif;
+  background: linear-gradient(180deg, #e8f4e8 0%, #ffffff 30%);
+  color: #333;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* ヘッダー: テーブルレイアウト風 */
+.header {
+  background: linear-gradient(180deg, #2e7d32, #1b5e20);
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 4px solid #ffd700;
+}
+.header h1 {
+  color: #ffd700;
+  font-size: 28px;
+  font-family: "HGP創英角ﾎﾟｯﾌﾟ体", "MS Pゴシック", sans-serif;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  margin: 0;
+  letter-spacing: 3px;
+}
+.header-sub {
+  color: #fff;
+  font-size: 11px;
+}
+
+/* ナビ: テキストリンク羅列 */
+.nav {
+  background: #4caf50;
+  padding: 8px 20px;
+  text-align: center;
+  border-bottom: 2px solid #388e3c;
+}
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 15px;
+  font-size: 14px;
+  font-weight: bold;
+}
+.nav a:hover {
+  text-decoration: underline;
+}
+
+/* メインコンテンツ */
+.main {
+  padding: 20px;
+}
+
+/* マーキー（古典的） */
+.marquee-bar {
+  background: #fff3cd;
+  border: 2px solid #ffc107;
+  padding: 8px 15px;
+  margin-bottom: 20px;
+  color: #856404;
+  font-weight: bold;
+  font-size: 14px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.marquee-bar span {
+  display: inline-block;
+  animation: marquee 15s linear infinite;
+}
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+/* キービジュアル: フリー素材のイラスト的なエリア */
+.hero {
+  background: linear-gradient(135deg, #c8e6c9, #a5d6a7);
+  border: 3px solid #4caf50;
+  border-radius: 8px;
+  padding: 30px;
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+}
+.hero h2 {
+  font-size: 24px;
+  color: #1b5e20;
+  font-family: "HGP創英角ﾎﾟｯﾌﾟ体", "MS Pゴシック", sans-serif;
+  margin-bottom: 10px;
+}
+.hero p {
+  font-size: 14px;
+  color: #2e7d32;
+}
+.hero .sparkle {
+  position: absolute;
+  font-size: 24px;
+  animation: blink 1s infinite;
+}
+.hero .sparkle:nth-child(1) { top: 10px; left: 10px; }
+.hero .sparkle:nth-child(2) { top: 10px; right: 10px; }
+.hero .sparkle:nth-child(3) { bottom: 10px; left: 10px; }
+.hero .sparkle:nth-child(4) { bottom: 10px; right: 10px; }
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* カウンター（点滅するGIF風） */
+.counter {
+  text-align: center;
+  margin: 15px 0;
+  padding: 10px;
+  background: #fff;
+  border: 1px dashed #999;
+}
+.counter img {
+  display: inline;
+}
+
+/* 2カラムレイアウト（左メイン+右サイドバー） */
+.content-wrap {
+  display: flex;
+  gap: 20px;
+}
+.content-main {
+  flex: 1;
+}
+.sidebar {
+  width: 200px;
+  flex-shrink: 0;
+}
+
+/* セクション */
+.section {
+  margin-bottom: 25px;
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 15px;
+}
+.section h3 {
+  background: linear-gradient(90deg, #4caf50, #81c784);
+  color: #fff;
+  padding: 8px 15px;
+  margin: -15px -15px 15px;
+  font-size: 16px;
+  border-bottom: 3px solid #2e7d32;
+}
+.section h3::before {
+  content: "■ ";
+}
+
+/* テーブル: 施術メニュー */
+.menu-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.menu-table th {
+  background: #e8f5e9;
+  border: 1px solid #a5d6a7;
+  padding: 8px;
+  text-align: left;
+  font-weight: bold;
+}
+.menu-table td {
+  border: 1px solid #c8e6c9;
+  padding: 8px;
+}
+.menu-table tr:nth-child(even) {
+  background: #f1f8e9;
+}
+
+/* サイドバー */
+.sidebar-box {
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  padding: 12px;
+  margin-bottom: 15px;
+  font-size: 12px;
+}
+.sidebar-box h4 {
+  background: #4caf50;
+  color: #fff;
+  padding: 6px 10px;
+  margin: -12px -12px 10px;
+  font-size: 13px;
+}
+
+/* アクセス */
+.access-info {
+  font-size: 13px;
+  line-height: 2;
+}
+.access-info dt {
+  font-weight: bold;
+  color: #2e7d32;
+  float: left;
+  width: 80px;
+  clear: left;
+}
+
+/* フッター */
+.footer {
+  background: linear-gradient(180deg, #1b5e20, #0d3311);
+  color: #a5d6a7;
+  text-align: center;
+  padding: 15px;
+  font-size: 11px;
+  margin-top: 20px;
+  border-top: 4px solid #ffd700;
+}
+.footer a {
+  color: #ffd700;
+}
+
+/* 点滅するNEWアイコン */
+.new-icon {
+  display: inline-block;
+  background: #f44336;
+  color: #fff;
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 3px;
+  animation: blink 0.8s infinite;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+
+/* Under Construction */
+.under-construction {
+  text-align: center;
+  padding: 20px;
+  color: #999;
+  font-style: italic;
+}
+
+/* 「リンクはこちら」矢印 */
+.arrow-link {
+  color: #1565c0;
+  text-decoration: underline;
+}
+.arrow-link::before {
+  content: ">>>";
+}
+
+/* 著作権フリー素材風プレースホルダ */
+.illust-placeholder {
+  width: 200px;
+  height: 150px;
+  background: linear-gradient(135deg, #e0e0e0, #f5f5f5);
+  border: 2px dashed #bbb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-size: 11px;
+  margin: 10px auto;
+}
+</style>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<div class="header">
+  <div>
+    <h1>さくら整骨院</h1>
+    <div class="header-sub">〜地域の皆さまの健康をサポート〜</div>
+  </div>
+  <div style="color: #fff; font-size: 20px; font-weight: bold;">
+    TEL: 03-XXXX-XXXX
+  </div>
+</div>
+
+<!-- ナビゲーション -->
+<div class="nav">
+  <a href="#">トップ</a>
+  <a href="#">施術メニュー</a>
+  <a href="#">アクセス</a>
+  <a href="#">お問い合わせ</a>
+</div>
+
+<!-- メインコンテンツ -->
+<div class="main">
+
+  <!-- マーキー -->
+  <div class="marquee-bar">
+    <span>★★★ 2019年リニューアルオープンしました！皆さまのご来院をお待ちしております ★★★　　　★★★ 年末年始の休診日：12/30〜1/3 ★★★</span>
+  </div>
+
+  <!-- ヒーロー -->
+  <div class="hero">
+    <span class="sparkle">&#10024;</span>
+    <span class="sparkle">&#10024;</span>
+    <span class="sparkle">&#10024;</span>
+    <span class="sparkle">&#10024;</span>
+    <h2>さくら整骨院へようこそ！</h2>
+    <p>当院は丁寧な施術と安心の技術で、<br>地域の皆さまの健康をサポートいたします。</p>
+    <div class="illust-placeholder">
+      [イラスト素材]<br>施術イメージ
+    </div>
+    <p style="font-size: 12px; color: #666; margin-top: 10px;">
+      ※写真はイメージです
+    </p>
+  </div>
+
+  <!-- アクセスカウンター -->
+  <div class="counter">
+    あなたは <span style="font-size: 20px; color: #f44336; font-weight: bold;">12,847</span> 人目の訪問者です！
+  </div>
+
+  <!-- 2カラム -->
+  <div class="content-wrap">
+
+    <!-- メインカラム -->
+    <div class="content-main">
+
+      <!-- お知らせ -->
+      <div class="section">
+        <h3>お知らせ</h3>
+        <ul style="list-style: none; padding: 0;">
+          <li style="border-bottom: 1px dotted #ddd; padding: 5px 0;">
+            <span style="color: #999; font-size: 12px;">2019.04.01</span>
+            ホームページをリニューアルしました！<span class="new-icon">NEW</span>
+          </li>
+          <li style="border-bottom: 1px dotted #ddd; padding: 5px 0;">
+            <span style="color: #999; font-size: 12px;">2019.03.15</span>
+            スタッフを募集しています
+          </li>
+          <li style="border-bottom: 1px dotted #ddd; padding: 5px 0;">
+            <span style="color: #999; font-size: 12px;">2018.12.20</span>
+            年末年始の休診日のお知らせ
+          </li>
+          <li style="padding: 5px 0;">
+            <span style="color: #999; font-size: 12px;">2018.10.01</span>
+            消費税改定に伴う料金変更のお知らせ
+          </li>
+        </ul>
+      </div>
+
+      <!-- 当院の特徴 -->
+      <div class="section">
+        <h3>当院の特徴</h3>
+        <div class="illust-placeholder">
+          [イラスト素材]<br>笑顔のスタッフ
+        </div>
+        <br>
+        <p>さくら整骨院では、<b>丁寧な施術</b>と<b>安心の技術</b>で、患者さま一人ひとりに合わせた治療を行っております。</p>
+        <br>
+        <p>お体のお悩みがございましたら、お気軽にご相談ください。</p>
+        <br>
+        <table style="width: 100%; font-size: 13px;">
+          <tr>
+            <td style="padding: 8px; text-align: center; width: 33%;">
+              <div class="illust-placeholder" style="width: 120px; height: 90px; margin: 0 auto;">
+                [イラスト]<br>施術1
+              </div>
+              <p style="margin-top: 5px;"><b>丁寧な施術</b></p>
+            </td>
+            <td style="padding: 8px; text-align: center; width: 33%;">
+              <div class="illust-placeholder" style="width: 120px; height: 90px; margin: 0 auto;">
+                [イラスト]<br>施術2
+              </div>
+              <p style="margin-top: 5px;"><b>安心の技術</b></p>
+            </td>
+            <td style="padding: 8px; text-align: center; width: 33%;">
+              <div class="illust-placeholder" style="width: 120px; height: 90px; margin: 0 auto;">
+                [イラスト]<br>施術3
+              </div>
+              <p style="margin-top: 5px;"><b>心を込めて</b></p>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- 施術メニュー -->
+      <div class="section">
+        <h3>施術メニュー</h3>
+        <table class="menu-table">
+          <tr>
+            <th>メニュー</th>
+            <th>料金（税込）</th>
+            <th>時間</th>
+          </tr>
+          <tr>
+            <td>各種保険施術</td>
+            <td>保険適用</td>
+            <td>約30分</td>
+          </tr>
+          <tr>
+            <td>骨盤矯正</td>
+            <td>¥3,000</td>
+            <td>約40分</td>
+          </tr>
+          <tr>
+            <td>マッサージ</td>
+            <td>¥2,500〜</td>
+            <td>30分〜</td>
+          </tr>
+          <tr>
+            <td>鍼灸治療</td>
+            <td>¥3,500</td>
+            <td>約45分</td>
+          </tr>
+          <tr>
+            <td>テーピング</td>
+            <td>¥500〜</td>
+            <td>-</td>
+          </tr>
+        </table>
+        <p style="font-size: 11px; color: #999; margin-top: 8px;">
+          ※料金は変更になる場合がございます。詳しくはお電話でお問い合わせください。
+        </p>
+      </div>
+
+      <!-- アクセス -->
+      <div class="section">
+        <h3>アクセス</h3>
+        <dl class="access-info">
+          <dt>住所</dt>
+          <dd>東京都世田谷区桜丘X-XX-X さくらビル1F</dd>
+          <dt>電話</dt>
+          <dd>03-XXXX-XXXX</dd>
+          <dt>受付</dt>
+          <dd>月〜金 9:00〜12:00 / 15:00〜20:00<br>
+              土 9:00〜13:00<br>
+              日・祝 休診</dd>
+          <dt>最寄駅</dt>
+          <dd>小田急線 千歳船橋駅 徒歩5分</dd>
+        </dl>
+        <br>
+        <div style="background: #f5f5f5; padding: 20px; text-align: center; border: 1px solid #ddd;">
+          [ここに地図が入ります]<br>
+          <span style="font-size: 11px; color: #999;">※Googleマップの埋め込みが設定されていません</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- サイドバー -->
+    <div class="sidebar">
+
+      <div class="sidebar-box">
+        <h4>診療時間</h4>
+        <table style="width: 100%; font-size: 11px; border-collapse: collapse;">
+          <tr><td>月〜金</td><td>9:00-12:00<br>15:00-20:00</td></tr>
+          <tr><td>土</td><td>9:00-13:00</td></tr>
+          <tr><td style="color: #f44336;">日・祝</td><td style="color: #f44336;">休診</td></tr>
+        </table>
+      </div>
+
+      <div class="sidebar-box">
+        <h4>お電話はこちら</h4>
+        <p style="text-align: center; font-size: 16px; font-weight: bold; color: #2e7d32;">
+          03-XXXX-XXXX
+        </p>
+        <p style="font-size: 10px; color: #999; text-align: center;">
+          ※お電話でのご予約をお願いします
+        </p>
+      </div>
+
+      <div class="sidebar-box">
+        <h4>リンク集</h4>
+        <ul style="list-style: disc; padding-left: 15px; font-size: 11px;">
+          <li><a href="#" class="arrow-link">日本整骨師会</a></li>
+          <li><a href="#" class="arrow-link">世田谷区医師会</a></li>
+          <li><a href="#" class="arrow-link">健康情報サイト</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-box">
+        <h4>院長ブログ</h4>
+        <p style="font-size: 11px;">
+          <span style="color: #999;">2019.02.10</span><br>
+          花粉症の季節です...<br>
+          <a href="#" class="arrow-link">続きを読む</a>
+        </p>
+        <hr style="border: none; border-top: 1px dotted #ddd;">
+        <p style="font-size: 11px;">
+          <span style="color: #999;">2018.12.01</span><br>
+          冬の腰痛対策...<br>
+          <a href="#" class="arrow-link">続きを読む</a>
+        </p>
+      </div>
+
+      <div class="sidebar-box" style="text-align: center;">
+        <h4>QRコード</h4>
+        <div style="width: 80px; height: 80px; background: #fff; border: 1px solid #ddd; margin: 0 auto; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #999;">
+          [QRコード]
+        </div>
+        <p style="font-size: 10px; color: #999; margin-top: 5px;">
+          携帯でもアクセス！
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- お問い合わせ（ただの電話番号） -->
+  <div class="section">
+    <h3>お問い合わせ</h3>
+    <p>お体のお悩み、ご不明な点がございましたら、<br>お気軽にお電話ください。</p>
+    <br>
+    <p style="text-align: center; font-size: 24px; font-weight: bold; color: #2e7d32;">
+      TEL: 03-XXXX-XXXX
+    </p>
+    <p style="text-align: center; font-size: 12px; color: #999;">
+      受付時間: 月〜金 9:00〜20:00 / 土 9:00〜13:00
+    </p>
+  </div>
+
+</div>
+
+<!-- フッター -->
+<div class="footer">
+  <p>さくら整骨院 | 東京都世田谷区桜丘X-XX-X さくらビル1F</p>
+  <p>TEL: 03-XXXX-XXXX | 受付: 月〜金 9:00〜20:00</p>
+  <p style="margin-top: 8px;">
+    Copyright &copy; 2018 さくら整骨院 All Rights Reserved.<br>
+    <span style="font-size: 10px;">このサイトは<a href="#">○○○ホームページ作成サービス</a>で作成されました</span>
+  </p>
+</div>
+
+<!-- ページトップに戻るリンク（古典的） -->
+<div style="text-align: right; padding: 10px 20px; font-size: 12px;">
+  <a href="#" style="color: #4caf50; text-decoration: underline;">▲ページの先頭へ戻る</a>
+</div>
+
+</body>
+</html>
