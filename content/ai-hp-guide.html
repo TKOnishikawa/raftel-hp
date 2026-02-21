@@ -3,31 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI×プロンプトだけで「プロ品質のHP」を作る完全ガイド | RAFTEL Inc.</title>
-<meta name="description" content="Claude Code / Geminiを使い、コーディング知識ゼロでも洗練されたホームページを作る方法を、実際のプロセスとプロンプト例つきで解説します。">
+<title>中小企業のための AI×HP制作 完全ガイド | omoshiku</title>
+<meta name="description" content="コード知識ゼロ・費用ゼロでプロ品質のHPを作る方法を全公開。戦略設計からAI活用、公開まで、中小企業経営者のための完全ガイド。">
 <!-- OGP -->
-<meta property="og:title" content="AI×プロンプトだけで「プロ品質のHP」を作る完全ガイド | RAFTEL Inc.">
-<meta property="og:description" content="コーディング知識ゼロでもAIとの対話だけで洗練されたHPを作る方法を、実際のプロセスとプロンプト例つきで解説。">
+<meta property="og:title" content="中小企業のための AI×HP制作 完全ガイド | omoshiku">
+<meta property="og:description" content="コード知識ゼロ・費用ゼロでプロ品質のHPを作る方法を全公開。中小企業経営者のための実践ガイド。">
 <meta property="og:type" content="article">
-<meta property="og:site_name" content="RAFTEL Inc.">
-<meta property="og:url" content="https://raftel.co.jp/content/ai-hp-guide.html">
-<meta property="og:image" content="https://raftel.co.jp/images/og-content.jpg">
+<meta property="og:site_name" content="omoshiku">
+<meta property="og:url" content="https://omoshiku.co.jp/content/ai-hp-guide.html">
+<meta property="og:image" content="https://omoshiku.co.jp/images/og-content.jpg">
 <meta property="article:published_time" content="2026-02-12">
-<meta property="article:author" content="RAFTEL Inc.">
+<meta property="article:modified_time" content="2026-02-21">
+<meta property="article:author" content="omoshiku">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://raftel.co.jp/images/og-content.jpg">
-<meta name="twitter:title" content="AI×プロンプトだけで「プロ品質のHP」を作る完全ガイド">
-<meta name="twitter:description" content="コーディング知識ゼロでもAIとの対話だけで洗練されたHPを作る方法を全公開。">
+<meta name="twitter:image" content="https://omoshiku.co.jp/images/og-content.jpg">
+<meta name="twitter:title" content="中小企業のための AI×HP制作 完全ガイド">
+<meta name="twitter:description" content="コード知識ゼロ・費用ゼロでプロ品質のHPを作る方法を全公開。">
 <!-- Structured Data: Article -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "AI×プロンプトだけで「プロ品質のHP」を作る完全ガイド",
-  "description": "コーディング知識ゼロでもAIとの対話だけで洗練されたホームページを作る方法を、実際のプロセスとプロンプト例つきで解説します。",
+  "headline": "中小企業のための AI×HP制作 完全ガイド",
+  "description": "コード知識ゼロ・費用ゼロでプロ品質のHPを作る方法を全公開。戦略設計からAI活用、公開まで、中小企業経営者のための完全ガイド。",
   "datePublished": "2026-02-12",
-  "author": { "@type": "Organization", "name": "RAFTEL Inc." },
-  "publisher": { "@type": "Organization", "name": "RAFTEL Inc." }
+  "dateModified": "2026-02-21",
+  "author": { "@type": "Organization", "name": "omoshiku" },
+  "publisher": { "@type": "Organization", "name": "omoshiku" }
 }
 </script>
 <!-- Structured Data: Breadcrumb -->
@@ -36,9 +38,9 @@
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "RAFTEL", "item": "../index.html" },
+    { "@type": "ListItem", "position": 1, "name": "omoshiku", "item": "../index.html" },
     { "@type": "ListItem", "position": 2, "name": "Content", "item": "./" },
-    { "@type": "ListItem", "position": 3, "name": "AI×プロンプトだけで「プロ品質のHP」を作る完全ガイド" }
+    { "@type": "ListItem", "position": 3, "name": "中小企業のための AI×HP制作 完全ガイド" }
   ]
 }
 </script>
@@ -48,7 +50,7 @@
 <link rel="stylesheet" href="../css/main.css?v=1.0.0">
 <style>
 /* ========================================
-   Design Tokens (RAFTEL共通)
+   Design Tokens (omoshiku共通)
    ======================================== */
 :root {
   --bg-primary: #f6f3ee;
@@ -97,7 +99,7 @@ img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 
 /* ========================================
-   Navigation (簡易版)
+   Navigation
    ======================================== */
 .nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
@@ -226,6 +228,10 @@ a { color: inherit; text-decoration: none; }
   font-family: var(--font-head); font-weight: 800; font-size: 0.85rem;
   flex-shrink: 0; position: relative; z-index: 1;
 }
+.flow-step-num.star {
+  background: linear-gradient(135deg, var(--accent2) 0%, #1a5a50 100%);
+  font-size: 1.1rem;
+}
 .flow-step-connector {
   width: 2px; flex-grow: 1; background: var(--border);
   min-height: 20px;
@@ -243,6 +249,12 @@ a { color: inherit; text-decoration: none; }
 }
 .flow-step-desc {
   font-size: 0.92rem; color: var(--text-secondary); line-height: 1.85;
+}
+.flow-step-badge {
+  display: inline-block; font-family: var(--font-head);
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em;
+  color: #fff; background: var(--accent2);
+  padding: 3px 12px; border-radius: 12px; margin-top: 8px;
 }
 
 /* Section headers */
@@ -284,6 +296,166 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ========================================
+   Pitfall Box (落とし穴)
+   ======================================== */
+.pitfall-box {
+  background: rgba(42,122,110,0.06);
+  border: 1px solid rgba(42,122,110,0.15);
+  border-left: 4px solid var(--accent2);
+  border-radius: 0 12px 12px 0;
+  padding: 24px 28px;
+  margin: 32px 0;
+}
+.pitfall-box-header {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-head); font-size: 0.82rem; font-weight: 700;
+  color: var(--accent2); margin-bottom: 12px;
+  letter-spacing: 0.04em;
+}
+.pitfall-box p {
+  font-size: 0.9rem; color: var(--text-secondary); line-height: 1.9;
+  margin-bottom: 0;
+}
+.pitfall-box p strong {
+  color: var(--text-primary);
+}
+
+/* ========================================
+   Intro Pain Points
+   ======================================== */
+.pain-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  margin: 32px 0;
+}
+.pain-card {
+  background: #fff; border: 1px solid var(--border);
+  border-radius: 12px; padding: 24px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s;
+}
+.pain-card:hover { transform: translateY(-2px); }
+.pain-card-icon {
+  font-size: 1.4rem; margin-bottom: 10px;
+}
+.pain-card p {
+  font-size: 0.88rem !important; color: var(--text-secondary);
+  line-height: 1.7; margin-bottom: 0 !important;
+}
+.pain-card p strong {
+  color: var(--text-primary); display: block; margin-bottom: 6px;
+  font-size: 0.92rem;
+}
+
+/* ========================================
+   Comparison Table (Step 0)
+   ======================================== */
+.compare-table-wrap {
+  overflow-x: auto; margin: 32px 0;
+  -webkit-overflow-scrolling: touch;
+}
+.compare-table {
+  width: 100%; border-collapse: collapse;
+  font-size: 0.85rem; min-width: 600px;
+}
+.compare-table th {
+  background: var(--bg-dark); color: var(--text-on-dark);
+  font-family: var(--font-head); font-weight: 600;
+  padding: 14px 16px; text-align: left;
+  font-size: 0.78rem; letter-spacing: 0.04em;
+}
+.compare-table th:first-child { border-radius: 8px 0 0 0; }
+.compare-table th:last-child { border-radius: 0 8px 0 0; }
+.compare-table td {
+  padding: 14px 16px; border-bottom: 1px solid var(--border);
+  color: var(--text-secondary); vertical-align: middle;
+  background: #fff;
+}
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table tr:last-child td:first-child { border-radius: 0 0 0 8px; }
+.compare-table tr:last-child td:last-child { border-radius: 0 0 8px 0; }
+.compare-table .row-highlight td {
+  background: rgba(212,120,47,0.06);
+  font-weight: 500;
+}
+.table-note {
+  font-size: 0.8rem; color: var(--text-muted);
+  margin-top: 12px; font-style: italic;
+}
+
+/* ========================================
+   Mid-Article CTA
+   ======================================== */
+.mid-cta {
+  background: var(--bg-dark); color: var(--text-on-dark);
+  border-radius: 16px; padding: 40px 36px;
+  margin: 48px 0; position: relative; overflow: hidden;
+  text-align: center;
+}
+.mid-cta::before {
+  content: ''; position: absolute; top: -30%; right: -10%;
+  width: 400px; height: 400px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,148,74,0.1) 0%, transparent 65%);
+}
+.mid-cta * { position: relative; z-index: 1; }
+.mid-cta p {
+  font-size: 0.92rem; color: var(--text-on-dark-sub) !important;
+  line-height: 1.9; margin-bottom: 24px !important;
+}
+.mid-cta h3 {
+  font-family: var(--font-head);
+  font-size: 1.15rem; font-weight: 800;
+  color: var(--text-on-dark); margin-bottom: 12px;
+}
+.mid-cta .cta-button {
+  margin-top: 8px;
+}
+.mid-cta .cta-or {
+  display: block; font-size: 0.82rem; color: var(--text-on-dark-sub);
+  margin-top: 16px; font-family: var(--font-en);
+}
+
+/* ========================================
+   Sub-step headers
+   ======================================== */
+.substep-header {
+  font-family: var(--font-head); font-size: 1.05rem; font-weight: 700;
+  margin: 36px 0 16px; padding-left: 16px;
+  border-left: 3px solid var(--accent);
+  line-height: 1.5;
+}
+.substep-header .substep-num {
+  font-size: 0.75rem; font-weight: 700; color: var(--accent);
+  display: block; margin-bottom: 2px;
+  font-family: var(--font-en); letter-spacing: 0.08em;
+}
+
+/* ========================================
+   Work box (ワーク)
+   ======================================== */
+.work-box {
+  background: rgba(212,120,47,0.05);
+  border: 1px solid rgba(212,120,47,0.15);
+  border-radius: 12px; padding: 24px 28px;
+  margin: 20px 0;
+}
+.work-box-header {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--font-head); font-size: 0.78rem; font-weight: 700;
+  color: var(--accent); margin-bottom: 12px;
+  letter-spacing: 0.06em; text-transform: uppercase;
+}
+.work-box p {
+  font-size: 0.88rem !important; line-height: 1.85;
+}
+.work-box ol, .work-box ul {
+  padding-left: 20px; margin: 8px 0;
+}
+.work-box li {
+  font-size: 0.88rem; color: var(--text-secondary);
+  line-height: 1.8; padding: 3px 0;
+}
+
+/* ========================================
    Accordion
    ======================================== */
 .accordion {
@@ -320,7 +492,7 @@ a { color: inherit; text-decoration: none; }
   transition: max-height 0.4s cubic-bezier(0.16,1,0.3,1);
 }
 .accordion.open .accordion-content {
-  max-height: 2000px;
+  max-height: 3000px;
 }
 .accordion-inner {
   padding: 0 24px 24px;
@@ -431,7 +603,7 @@ a { color: inherit; text-decoration: none; }
 .principle-box .em { color: var(--accent-light); }
 
 /* ========================================
-   CTA
+   Final CTA (3-tier)
    ======================================== */
 .article-cta {
   text-align: center; padding: 80px 40px;
@@ -445,6 +617,41 @@ a { color: inherit; text-decoration: none; }
 .article-cta p {
   font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 36px;
 }
+.cta-tiers {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  max-width: 760px; margin: 40px auto 0;
+  text-align: left;
+}
+.cta-tier {
+  background: #fff; border: 1px solid var(--border);
+  border-radius: 12px; padding: 28px 24px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.cta-tier:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.cta-tier.featured {
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-md), 0 0 0 1px var(--border-accent);
+}
+.cta-tier-label {
+  font-family: var(--font-head); font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 10px;
+}
+.cta-tier h4 {
+  font-family: var(--font-head); font-size: 0.95rem; font-weight: 700;
+  margin-bottom: 10px; line-height: 1.4;
+}
+.cta-tier p {
+  font-size: 0.82rem !important; color: var(--text-secondary);
+  line-height: 1.7; margin-bottom: 16px !important;
+}
+.cta-tier-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-head); font-size: 0.82rem; font-weight: 600;
+  color: var(--accent); transition: gap 0.3s;
+}
+.cta-tier-link:hover { gap: 10px; }
 .cta-button {
   display: inline-flex; align-items: center; gap: 12px;
   padding: 16px 44px; background: var(--gradient-hero); color: #fff;
@@ -481,6 +688,8 @@ a { color: inherit; text-decoration: none; }
     border-bottom: 1px solid var(--border);
   }
   .compare-cards { grid-template-columns: 1fr; }
+  .pain-grid { grid-template-columns: 1fr; }
+  .cta-tiers { grid-template-columns: 1fr; }
   .flow-step { gap: 16px; }
   .flow-step-line { width: 40px; }
   .flow-step-num { width: 40px; height: 40px; font-size: 0.75rem; }
@@ -489,6 +698,10 @@ a { color: inherit; text-decoration: none; }
   .accordion-trigger { padding: 16px 20px; font-size: 0.93rem; }
   .accordion-inner { padding: 0 20px 20px; }
   .breadcrumb { padding: 16px 24px; }
+  .mid-cta { padding: 32px 24px; }
+  .pitfall-box { padding: 20px 22px; }
+  .work-box { padding: 20px 22px; }
+  .substep-header { font-size: 0.98rem; }
   /* モバイル視認性向上 (+5% バンプ) */
   .content-section p { font-size: 1rem; line-height: 2.05; }
   .accordion-inner, .accordion-inner p { font-size: 0.93rem; }
@@ -497,6 +710,8 @@ a { color: inherit; text-decoration: none; }
   .highlight-box p { font-size: 0.97rem; }
   .acc-table { font-size: 0.88rem; }
   .acc-table th { font-size: 0.85rem; }
+  .pitfall-box p { font-size: 0.95rem; }
+  .work-box p, .work-box li { font-size: 0.93rem; }
 }
 
 </style>
@@ -506,7 +721,7 @@ a { color: inherit; text-decoration: none; }
 <!-- Navigation -->
 <nav class="nav" id="nav">
   <div class="nav-inner">
-    <a href="../index.html" class="nav-logo">RAFTEL</a>
+    <a href="../index.html" class="nav-logo">omoshiku</a>
     <div class="nav-links" id="navLinks">
       <a href="../index.html#solution">課題と解決</a>
       <a href="../index.html#service">サービス</a>
@@ -531,11 +746,11 @@ a { color: inherit; text-decoration: none; }
 <!-- Breadcrumb -->
 <nav class="breadcrumb" style="padding-top: 80px;">
   <div class="breadcrumb-inner">
-    <a href="../index.html">RAFTEL</a>
+    <a href="../index.html">omoshiku</a>
     <span class="breadcrumb-separator">/</span>
     <a href="./">Content</a>
     <span class="breadcrumb-separator">/</span>
-    <span class="breadcrumb-current">AI×プロンプトでHP制作</span>
+    <span class="breadcrumb-current">AI×HP制作 完全ガイド</span>
   </div>
 </nav>
 
@@ -545,14 +760,15 @@ a { color: inherit; text-decoration: none; }
 <header class="article-hero">
   <div class="article-hero-inner">
     <span class="article-tag">AI Knowledge</span>
-    <h1 class="article-title">AI×プロンプトだけで<br>「プロ品質のHP」を作る完全ガイド</h1>
+    <h1 class="article-title">中小企業のための<br>AI×HP制作 完全ガイド</h1>
     <p class="article-subtitle">
-      コーディング知識ゼロでも、AIとの対話だけで洗練されたホームページを作れる時代。<br>
-      実際にRAFTEL HPを制作したプロセスとプロンプトを全公開します。
+      コード知識ゼロ、費用ゼロで始められる。<br>
+      この記事だけで、あなた自身でプロ品質のHPが作れます。<br>
+      全ノウハウを無料で公開します。
     </p>
     <div class="article-meta">
-      <span>2026.02</span>
-      <span>Reading time: 8 min</span>
+      <span>2026.02（Updated）</span>
+      <span>Reading time: 12 min</span>
     </div>
   </div>
 </header>
@@ -562,25 +778,72 @@ a { color: inherit; text-decoration: none; }
      ======================================== -->
 <main class="article-body">
 
+  <!-- ===== 導入: 中小企業あるある ===== -->
+  <section class="content-section">
+    <p class="section-label">Introduction</p>
+    <h2 class="section-title">こんな状況、ありませんか？</h2>
+
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-card-icon">&#x1F4C5;</div>
+        <p><strong>「HPくらい作らなきゃ」と思って3年</strong>
+          気づけば名刺にURLがないまま。展示会で渡した名刺、検索されて"何もない"。</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-card-icon">&#x1F4B8;</div>
+        <p><strong>知り合いに頼んだHP、5年放置</strong>
+          当時は良かったけど、スマホで見たらレイアウト崩壊。更新の仕方もわからない。</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-card-icon">&#x1F6AB;</div>
+        <p><strong>制作会社に見積もりを取ったら50万円</strong>
+          名刺代わりのHPに50万は正直きつい。でもテンプレサイトはダサい。</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-card-icon">&#x1F914;</div>
+        <p><strong>何を書けばいいかわからない</strong>
+          テンプレを開いても「自分の事業に当てはめると…」で手が止まる。白紙のまま。</p>
+      </div>
+    </div>
+
+    <p>
+      もしどれか一つでも当てはまったなら、この記事はあなたのために書きました。
+    </p>
+    <p>
+      2026年、<strong>AIを使えばコード知識ゼロ・費用ゼロでプロ品質のHPが作れます。</strong>
+      この記事では、そのプロセスを最初から最後まで、プロンプト例つきで全公開します。
+    </p>
+    <p>
+      ただし、一つだけ先にお伝えしておきたいことがあります。
+    </p>
+
+    <div class="highlight-box">
+      <p><strong>HPの品質の8割は「何を載せるか」で決まります。</strong><br>
+      デザインやコードはAIが作ってくれる。でも「自社の強みは何か」「誰に届けたいか」は、あなたにしか決められません。<br>
+      この記事では、その「戦略設計」にもっとも多くのページを割いています。</p>
+    </div>
+  </section>
+
   <!-- ===== 全体像 ===== -->
   <section class="content-section">
     <p class="section-label">Overview</p>
-    <h2 class="section-title">全体像: 5つのフェーズ</h2>
+    <h2 class="section-title">HP制作の5フェーズ</h2>
     <p>
       HP制作は「一発で完成」ではなく、<strong>AIとの対話を重ねて磨き上げる反復プロセス</strong>です。
-      料理でいえば、レシピ（素材）を用意し、AIに調理してもらい、味見しながら調整していく流れです。
+      全体像を把握してから、各フェーズに進みましょう。
     </p>
 
     <div class="flow-diagram">
       <div class="flow-step">
         <div class="flow-step-line">
-          <div class="flow-step-num">1</div>
+          <div class="flow-step-num star">&#9733;</div>
           <div class="flow-step-connector"></div>
         </div>
         <div class="flow-step-content">
-          <h3 class="flow-step-title">事前準備</h3>
-          <p class="flow-step-role">あなたがやること: コンテンツ素材 + 参考サイト + 環境構築</p>
-          <p class="flow-step-desc">HPに載せるテキスト・参考デザイン・AIツールを準備する。<strong>ここが品質の9割を決める。</strong></p>
+          <h3 class="flow-step-title">Phase 1: 戦略設計</h3>
+          <p class="flow-step-role">所要時間: 3〜5時間 | 品質への影響: 80%</p>
+          <p class="flow-step-desc">ターゲット・強み・差別化・構成を設計する。<strong>ここがHP全体の品質の8割を決める最重要フェーズ。</strong></p>
+          <span class="flow-step-badge">Most Important</span>
         </div>
       </div>
       <div class="flow-step">
@@ -589,9 +852,9 @@ a { color: inherit; text-decoration: none; }
           <div class="flow-step-connector"></div>
         </div>
         <div class="flow-step-content">
-          <h3 class="flow-step-title">初稿生成</h3>
-          <p class="flow-step-role">AIがやること: HTML/CSS/JS一式を自動生成</p>
-          <p class="flow-step-desc">プロンプト1発で完全なHPが生成される。まずは70点のたたき台を手に入れる。</p>
+          <h3 class="flow-step-title">Phase 2: AIツール選び &amp; 環境構築</h3>
+          <p class="flow-step-role">所要時間: 30分〜1時間</p>
+          <p class="flow-step-desc">Claude Code、Bolt.new、Gemini等から自分に合ったツールを選び、環境をセットアップ。</p>
         </div>
       </div>
       <div class="flow-step">
@@ -600,9 +863,9 @@ a { color: inherit; text-decoration: none; }
           <div class="flow-step-connector"></div>
         </div>
         <div class="flow-step-content">
-          <h3 class="flow-step-title">大方針のブラッシュアップ</h3>
-          <p class="flow-step-role">あなた→AI: トンマナ・構造レベルの修正指示</p>
-          <p class="flow-step-desc">色・フォント・レイアウトなど「全体の方向性」を調整する。細部はまだ触らない。</p>
+          <h3 class="flow-step-title">Phase 3: 初稿生成</h3>
+          <p class="flow-step-role">所要時間: 30分〜1時間</p>
+          <p class="flow-step-desc">Phase 1で整理した内容をプロンプトに落とし込み、AIに一気にHP生成させる。</p>
         </div>
       </div>
       <div class="flow-step">
@@ -611,103 +874,312 @@ a { color: inherit; text-decoration: none; }
           <div class="flow-step-connector"></div>
         </div>
         <div class="flow-step-content">
-          <h3 class="flow-step-title">ディテール調整</h3>
-          <p class="flow-step-role">あなた→AI: セクション単位の磨き込み</p>
-          <p class="flow-step-desc">各セクションを1つずつ見ながら「ここをこう変えて」とピンポイント修正。</p>
+          <h3 class="flow-step-title">Phase 4: ブラッシュアップ</h3>
+          <p class="flow-step-role">所要時間: 3〜10時間（こだわり次第）</p>
+          <p class="flow-step-desc">全体の方向性調整 → セクション単位の磨き込み。AIとの対話で70点を100点に。</p>
         </div>
       </div>
       <div class="flow-step">
         <div class="flow-step-line">
           <div class="flow-step-num">5</div>
-          <div class="flow-step-connector"></div>
         </div>
         <div class="flow-step-content">
-          <h3 class="flow-step-title">レスポンシブ &amp; 仕上げ</h3>
-          <p class="flow-step-role">あなた: スマホ実機確認 → AI: レスポンシブ対応</p>
-          <p class="flow-step-desc">スマホ・タブレットでの表示崩れを修正し、最終仕上げ。</p>
+          <h3 class="flow-step-title">Phase 5: レスポンシブ &amp; 公開</h3>
+          <p class="flow-step-role">所要時間: 1〜2時間</p>
+          <p class="flow-step-desc">スマホ表示の調整、最終確認、公開。</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== Phase 1 ===== -->
+  <!-- ===== Step 0: 制作手段の比較 ===== -->
   <section class="content-section">
-    <p class="section-label">Phase 1</p>
-    <h2 class="section-title">事前準備 — AIに渡す「素材」を揃える</h2>
-
+    <p class="section-label">Step 0</p>
+    <h2 class="section-title">まず知っておきたい — HP制作の選択肢</h2>
     <p>
-      AIに丸投げしても「それっぽいけど中身スカスカ」なHPになる。<strong>AIに渡す前の素材の質が、アウトプットの9割を決める。</strong>
-      やるべきことは3つ。
+      具体的な手順に入る前に、HP制作の選択肢を整理します。
+      <strong>どの手段にもメリット・デメリットがある</strong>ので、あなたの状況に合ったものを選んでください。
     </p>
 
-    <h3 style="font-family:var(--font-head);font-size:1rem;font-weight:700;margin:32px 0 12px;">1. テキストコンテンツを書き出す</h3>
-    <p>HPに載せたい情報を、箇条書きでいいので全部書き出す。文章の美しさはAIが整えてくれるので、<strong>伝えたい「中身」だけに集中する。</strong></p>
+    <div class="compare-table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>制作手段</th>
+            <th>費用</th>
+            <th>期間</th>
+            <th>品質</th>
+            <th>自由度</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Web制作会社に外注</strong></td>
+            <td>50〜150万円</td>
+            <td>1〜3ヶ月</td>
+            <td>高い</td>
+            <td>中（制作会社に依存）</td>
+          </tr>
+          <tr>
+            <td><strong>ペライチ等ノーコード</strong></td>
+            <td>0〜3万円/月</td>
+            <td>1〜2週間</td>
+            <td>中程度</td>
+            <td>低（テンプレ制約）</td>
+          </tr>
+          <tr class="row-highlight">
+            <td><strong>AI × 自作（この記事）</strong></td>
+            <td>0円</td>
+            <td>20〜40時間</td>
+            <td>高い</td>
+            <td>非常に高い</td>
+          </tr>
+          <tr>
+            <td><strong>omoshiku Quick Launch</strong></td>
+            <td>5万円</td>
+            <td>3日</td>
+            <td>高い</td>
+            <td>高い</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-note">
+      ※ この記事は「AI × 自作」の方法をすべて公開するものです。時間が取れる方にとっては最強の選択肢です。
+    </p>
+  </section>
+
+  <!-- ===== Phase 1: 戦略設計 ===== -->
+  <section class="content-section">
+    <p class="section-label">Phase 1 — Most Important</p>
+    <h2 class="section-title">戦略設計 — HPの品質の8割はここで決まる</h2>
+
+    <p>
+      HPの見た目は後から何度でも変えられます。でも、<strong>「誰に」「何を」「なぜ伝えるか」は最初に決めないと、すべてがブレます。</strong>
+    </p>
+    <p>
+      このフェーズでは、AIに渡す前に「載せるべき内容」を徹底的に整理します。
+      地味な作業ですが、ここを飛ばして「AIでHP作って」と丸投げすると、<strong>見た目はきれいだけど中身スカスカ</strong>なHPになります。
+    </p>
+
+    <!-- Step 1-1 -->
+    <h3 class="substep-header">
+      <span class="substep-num">STEP 1-1</span>
+      ターゲット顧客の明確化
+    </h3>
+    <p>
+      「誰に見せるHP？」が決まらないと、何を書くかも決まりません。
+      <strong>「みんな」に向けたHPは、「誰にも」刺さりません。</strong>
+    </p>
+
+    <div class="work-box">
+      <div class="work-box-header">&#x270F; Try It — ペルソナ3行シート</div>
+      <p>以下の3行を、できるだけ具体的に埋めてください。</p>
+      <ol>
+        <li><strong>名前・属性:</strong> 〇〇業の経営者、従業員△名、年商□千万円（架空でOK）</li>
+        <li><strong>今の課題:</strong> 「〜〜で困っている」「〜〜がうまくいかない」</li>
+        <li><strong>理想の状態:</strong> あなたのサービスを受けた後、どうなっていたい？</li>
+      </ol>
+      <p style="margin-top:12px;margin-bottom:0;">
+        <strong>例:</strong> 「製造業の社長、従業員20名。Web集客したいけど、HPが10年前のまま。営業に来る外注は高すぎる。自分たちの技術力が正しく伝わるHPがほしい。」
+      </p>
+    </div>
+
+    <!-- Step 1-2 -->
+    <h3 class="substep-header">
+      <span class="substep-num">STEP 1-2</span>
+      自社の強みを棚卸しする
+    </h3>
+    <p>
+      お客さんに選ばれている理由、言えますか？<br>
+      「品質が良い」「対応が早い」は強みではありません。<strong>それは当たり前</strong>です。
+      お客さんが「他社じゃなく御社に頼む理由」を具体的に言語化します。
+    </p>
+
+    <div class="work-box">
+      <div class="work-box-header">&#x270F; Try It — 強み発掘ワーク</div>
+      <p>以下の質問に答えてください（1問30秒でOK）:</p>
+      <ol>
+        <li>お客さんに「なんでうちに頼んでくれたんですか？」と聞いたら、何と言われそう？</li>
+        <li>同業他社と比べて「ここだけは負けない」と思うことは？</li>
+        <li>お客さんに一番感謝されたエピソードは？</li>
+        <li>業界の「当たり前」で、自社だけ違うやり方をしていることは？</li>
+        <li>もしあなたの会社がなくなったら、お客さんは何に困る？</li>
+      </ol>
+    </div>
+
+    <!-- Step 1-3 -->
+    <h3 class="substep-header">
+      <span class="substep-num">STEP 1-3</span>
+      競合サイトを分析する
+    </h3>
+    <p>
+      同業他社のHPを3つ開いて、<strong>「うちとの違い」</strong>を明確にします。
+      HPの役割は「選ばれること」。選ばれるには、違いが見えなければなりません。
+    </p>
+
+    <div class="work-box">
+      <div class="work-box-header">&#x270F; Try It — 競合比較シート</div>
+      <p>同業他社のHPを3社ピックアップし、以下を比べてください:</p>
+      <ol>
+        <li><strong>キャッチコピー:</strong> 何を打ち出している？</li>
+        <li><strong>サービスの見せ方:</strong> 価格表示？事例重視？プロセス説明？</li>
+        <li><strong>デザインの印象:</strong> 堅い？柔らかい？先進的？伝統的？</li>
+        <li><strong>弱いと感じるポイント:</strong> 古い？情報不足？差別化が見えない？</li>
+        <li><strong>自社が勝てるポイント:</strong> ここなら差をつけられる、という領域</li>
+      </ol>
+    </div>
+
+    <!-- Step 1-4 -->
+    <h3 class="substep-header">
+      <span class="substep-num">STEP 1-4</span>
+      HP全体の構成を設計する
+    </h3>
+    <p>
+      ここまでの整理を元に、HPに載せるセクションと順番を決めます。
+      中小企業HPの場合、以下の構成がほぼ鉄板です。
+    </p>
 
     <div class="accordion">
       <button class="accordion-trigger" onclick="toggleAccordion(this)">
-        <span>書き出すべき項目と具体例</span>
+        <span>中小企業HP 鉄板構成テンプレート</span>
         <span class="acc-icon">+</span>
       </button>
       <div class="accordion-content">
         <div class="accordion-inner">
           <table class="acc-table">
-            <tr><th>セクション</th><th>書くべきこと</th></tr>
-            <tr><td>キャッチコピー</td><td>一言で「何者か」が伝わるフレーズ</td></tr>
-            <tr><td>サブコピー</td><td>キャッチの補足（誰に・何を・どう届けるか）</td></tr>
-            <tr><td>理念</td><td>なぜこの事業をやるのか、どんな世界を作りたいか</td></tr>
-            <tr><td>事業内容</td><td>具体的に何をするのか（3つ程度に整理）</td></tr>
-            <tr><td>差別化ポイント</td><td>他社との違い、独自の手法やアプローチ</td></tr>
-            <tr><td>プロフィール</td><td>経歴・強み・想い（人材紹介系なら実績数値も）</td></tr>
+            <tr><th>セクション</th><th>役割</th><th>書くべきこと</th></tr>
+            <tr><td>1. ヒーロー</td><td>3秒で「何の会社か」伝える</td><td>キャッチコピー + サブコピー + CTA</td></tr>
+            <tr><td>2. 課題共感</td><td>「わかってくれる」と思わせる</td><td>ターゲットの悩みを3つ</td></tr>
+            <tr><td>3. 解決策/サービス</td><td>「どう解決するか」を見せる</td><td>サービス内容を3つ程度に整理</td></tr>
+            <tr><td>4. 強み/差別化</td><td>「なぜ御社なのか」に答える</td><td>Step 1-2で整理した内容</td></tr>
+            <tr><td>5. 実績/事例</td><td>信頼を裏付ける</td><td>数字・お客様の声・Before/After</td></tr>
+            <tr><td>6. 代表紹介</td><td>「人」を見せる</td><td>経歴・想い・写真</td></tr>
+            <tr><td>7. お問い合わせ</td><td>行動を促す</td><td>フォーム or 連絡先</td></tr>
           </table>
-          <p><strong>今回のRAFTELの場合:</strong> Vision/Mission/Value の理念体系、3つの事業内容、4つのアプローチ、代表略歴・強み・メッセージを約2,000字で書き出した。</p>
         </div>
       </div>
     </div>
 
-    <h3 style="font-family:var(--font-head);font-size:1rem;font-weight:700;margin:32px 0 12px;">2. 参考サイトを見つける</h3>
-    <p>「こんな雰囲気にしたい」というサイトを1〜3個見つけておく。AIにURLを渡すと、そのトンマナを参考にしてくれる。</p>
-
     <div class="accordion">
       <button class="accordion-trigger" onclick="toggleAccordion(this)">
-        <span>参考サイトで見るべき4つのポイント</span>
+        <span>業種別: コンテンツの力点の置き方</span>
         <span class="acc-icon">+</span>
       </button>
       <div class="accordion-content">
         <div class="accordion-inner">
-          <p><strong>全体のトーン:</strong> ダーク/ライト、シャープ/温かみ、ミニマル/リッチ</p>
-          <p><strong>レイアウト構成:</strong> 1カラム/2カラム、カード型/リスト型、余白の取り方</p>
-          <p><strong>アニメーションの有無・強度:</strong> 静的/スクロール連動/パーティクル等</p>
-          <p><strong>フォントの雰囲気:</strong> ゴシック系/明朝系/手書き風、太さのメリハリ</p>
-          <p style="margin-top:16px;"><strong>今回の参考:</strong> ecfs.jp — 洗練されたダークベース＋温かみのあるアクセントカラーが、RAFTELの「データ×魂」というコンセプトにマッチしていた。</p>
+          <table class="acc-table">
+            <tr><th>業種</th><th>重点セクション</th><th>トンマナの形容詞</th></tr>
+            <tr><td>コンサル / 士業</td><td>代表紹介 + 実績</td><td>信頼、知的、堅実</td></tr>
+            <tr><td>製造業</td><td>技術力 + 設備 + 品質管理</td><td>精密、技術、信頼</td></tr>
+            <tr><td>飲食 / サービス業</td><td>写真 + 雰囲気 + アクセス</td><td>温かみ、おいしそう、親しみ</td></tr>
+            <tr><td>IT / クリエイティブ</td><td>事例 + 技術スタック</td><td>先進的、ミニマル、スマート</td></tr>
+            <tr><td>医療 / 福祉</td><td>安心感 + スタッフ紹介</td><td>清潔、安心、やさしさ</td></tr>
+            <tr><td>不動産 / 建設</td><td>施工実績 + Before/After</td><td>堅実、大地、誠実</td></tr>
+          </table>
         </div>
       </div>
     </div>
 
-    <h3 style="font-family:var(--font-head);font-size:1rem;font-weight:700;margin:32px 0 12px;">3. AIツール &amp; 環境を用意する</h3>
-    <p>2パターンから選べる。<strong>何度も調整を重ねたい場合はClaude Codeが圧倒的に効率的。</strong></p>
+    <div class="accordion">
+      <button class="accordion-trigger" onclick="toggleAccordion(this)">
+        <span>書き出すべきテキスト内容チェックリスト</span>
+        <span class="acc-icon">+</span>
+      </button>
+      <div class="accordion-content">
+        <div class="accordion-inner">
+          <table class="acc-table">
+            <tr><th>項目</th><th>書くべきこと</th></tr>
+            <tr><td>キャッチコピー</td><td>一言で「何者か」が伝わるフレーズ</td></tr>
+            <tr><td>サブコピー</td><td>キャッチの補足（誰に・何を・どう届けるか）</td></tr>
+            <tr><td>理念/想い</td><td>なぜこの事業をやるのか、どんな世界を作りたいか</td></tr>
+            <tr><td>事業内容</td><td>具体的に何をするのか（3つ程度に整理）</td></tr>
+            <tr><td>差別化ポイント</td><td>他社との違い、独自の手法やアプローチ</td></tr>
+            <tr><td>プロフィール</td><td>経歴・強み・想い（実績数値があれば入れる）</td></tr>
+          </table>
+          <p style="margin-top:16px;"><strong>ポイント:</strong> 文章の美しさは不要。箇条書きでOK。AIが整えてくれます。<strong>「伝えたい中身」だけに集中してください。</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 落とし穴BOX -->
+    <div class="pitfall-box">
+      <div class="pitfall-box-header">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4m0 4h.01M12 2L2 22h20L12 2z"/></svg>
+        よくある落とし穴
+      </div>
+      <p>
+        <strong>自分の会社のことは、自分が一番客観的に見えにくい。</strong><br>
+        「うちの強みは品質です」——これ、同業他社も全員言ってます。お客さんに選ばれている本当の理由は、もっと具体的で、意外なところにあることが多い。<br><br>
+        「当たり前だと思っていたことが、実は最大の差別化ポイントだった」という発見は、第三者との対話で頻繁に起きます。Step 1-2のワークで手が止まった方は、信頼できる人に壁打ち相手になってもらうのも手です。
+      </p>
+    </div>
+
+    <!-- Mid-CTA -->
+    <div class="mid-cta">
+      <h3>Phase 1を一人でやり切る自信がある方は、Phase 2へ。</h3>
+      <p>
+        「強みの言語化が難しい」「第三者の目がほしい」と感じた方は、<br>
+        omoshikuのHP戦略設計ワークショップで一緒に整理しませんか。<br>
+        2時間のオンライン壁打ちで、ターゲット・強み・差別化・HP構成を一気に設計します。
+      </p>
+      <a href="../service/quick-launch.html" class="cta-button">
+        Quick Launch の詳細を見る
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <span class="cta-or">&#x2193; 自分でやる方は、このまま読み進めてください</span>
+    </div>
+  </section>
+
+  <!-- ===== Phase 2 ===== -->
+  <section class="content-section">
+    <p class="section-label">Phase 2</p>
+    <h2 class="section-title">AIツール選び &amp; 環境構築</h2>
+
+    <p>
+      Phase 1で内容が整理できたら、次はAIツールを選びます。
+      <strong>ツール選びに迷って3日溶かす人が多い</strong>ので、結論から言います。
+    </p>
 
     <div class="compare-cards">
       <div class="compare-card recommended">
-        <p class="compare-card-badge">Recommended</p>
-        <h4>パターンA: Claude Code（CLI）</h4>
-        <p>AIがファイルを直接作成・編集。「ここだけ変えて」が1行単位で正確に反映される。</p>
+        <p class="compare-card-badge">品質重視ならこれ</p>
+        <h4>Claude Code（CLI）</h4>
+        <p>AIがファイルを直接作成・編集。「ここだけ変えて」が1行単位で正確に反映される。何十回修正しても他の部分が壊れない。</p>
         <ul>
           <li>PC + Node.js + ブラウザが必要</li>
           <li>AIがファイルを直接操作 → コピペ不要</li>
           <li>1,400行の中から「250行目だけ修正」が可能</li>
-          <li>何十回修正しても他の部分が壊れない</li>
+          <li>こだわり派には圧倒的に有利</li>
         </ul>
       </div>
       <div class="compare-card">
-        <p class="compare-card-badge">Easy Start</p>
-        <h4>パターンB: Gemini（ブラウザ版）</h4>
-        <p>インストール不要、ブラウザだけで始められる。ただし手動コピペが毎回必要。</p>
+        <p class="compare-card-badge">手軽さ重視ならこれ</p>
+        <h4>Bolt.new / Lovable</h4>
+        <p>ブラウザだけで完結。プロンプトを入れるとリアルタイムでHPが生成される。初心者に最もおすすめ。</p>
         <ul>
-          <li>Googleアカウント + ブラウザのみ</li>
-          <li>AIがコードを出力 → 自分でコピペ保存</li>
-          <li>修正のたびにコード全体が再出力されがち</li>
-          <li>長いコードは途中で切れる場合あり</li>
+          <li>インストール不要、ブラウザのみ</li>
+          <li>リアルタイムプレビューで直感的</li>
+          <li>デプロイまでワンクリック</li>
+          <li>無料枠あり（月5〜10回生成程度）</li>
         </ul>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-trigger" onclick="toggleAccordion(this)">
+        <span>Geminiを使う場合の注意点</span>
+        <span class="acc-icon">+</span>
+      </button>
+      <div class="accordion-content">
+        <div class="accordion-inner">
+          <p>Geminiでも作れますが、<strong>手動コピペが毎回必要</strong>で効率が落ちます。</p>
+          <p><strong>初稿生成時に追加すべき指示:</strong></p>
+          <div class="code-block">HTMLファイル1つで完結する形で作成してください。
+外部CSSやJSファイルは使わず、すべてインラインで記述してください。
+コードは省略せず、完全な形で出力してください。</div>
+          <p style="margin-top:16px;"><strong>修正指示時のコツ:</strong> 「全体のコードは不要です。変更箇所のみを教えてください」と明示する。そうしないとコード全体が再生成され、修正済み箇所が意図せず元に戻ることがあります。</p>
+        </div>
       </div>
     </div>
 
@@ -727,145 +1199,128 @@ mkdir -p output/hp
 # 3. 作業フォルダでClaude Codeを起動
 cd output/hp
 claude</div>
-          <p>起動後は、チャット形式でAIに指示を出すだけ。ファイルの作成・編集・ブラウザ表示まで全て自動で行われる。</p>
+          <p>起動後は、チャット形式でAIに指示を出すだけ。ファイルの作成・編集・ブラウザ表示まで全て自動で行われます。</p>
         </div>
       </div>
     </div>
 
     <div class="accordion">
       <button class="accordion-trigger" onclick="toggleAccordion(this)">
-        <span>Geminiを使う場合の注意点</span>
-        <span class="acc-icon">+</span>
-      </button>
-      <div class="accordion-content">
-        <div class="accordion-inner">
-          <p><strong>初稿生成時に追加すべき指示:</strong></p>
-          <div class="code-block">HTMLファイル1つで完結する形で作成してください。
-外部CSSやJSファイルは使わず、すべてインラインで記述してください。
-コードは省略せず、完全な形で出力してください。</div>
-          <p>Geminiは親切心で「省略」したり「ファイル分割」を提案することがある。単一HTMLで完結させないと管理が煩雑になる。</p>
-          <p style="margin-top:16px;"><strong>修正指示時のコツ:</strong> 「全体のコードは不要です。変更箇所のみを教えてください」と明示する。そうしないとコード全体が再生成され、修正済み箇所が意図せず元に戻ることがある。</p>
-
-          <table class="acc-table" style="margin-top:20px;">
-            <tr><th>工程</th><th>Claude Code</th><th>Gemini</th></tr>
-            <tr><td>初稿生成</td><td>AIがファイル直接作成</td><td>コピペして保存が必要</td></tr>
-            <tr><td>修正</td><td>該当箇所だけ差分編集</td><td>コード全体が再出力されがち</td></tr>
-            <tr><td>長いコード</td><td>1,400行でも問題なし</td><td>途中で切れる場合あり</td></tr>
-            <tr><td>修正の安全性</td><td>他の箇所が壊れない</td><td>意図しない変更リスクあり</td></tr>
-          </table>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Phase 2 ===== -->
-  <section class="content-section">
-    <p class="section-label">Phase 2</p>
-    <h2 class="section-title">初稿生成 — プロンプト1発でHPを作る</h2>
-
-    <p>
-      準備した素材をAIに渡し、一気にHPを生成させる。ここで大事なのは<strong>プロンプトの構造</strong>。
-      「作って」と丸投げではなく、3つの要素を組み合わせる。
-    </p>
-
-    <div class="highlight-box">
-      <p><strong>プロンプトの3要素:</strong> 制作指示（何を作るか）+ トンマナ（どんな雰囲気か）+ コンテンツ（中身の全テキスト）</p>
-    </div>
-
-    <div class="accordion">
-      <button class="accordion-trigger" onclick="toggleAccordion(this)">
-        <span>実際に使ったプロンプト（テンプレート）</span>
-        <span class="acc-icon">+</span>
-      </button>
-      <div class="accordion-content">
-        <div class="accordion-inner">
-          <div class="code-block">以下のHPを作成して。
-洗練されたデザイン、熱量を感じさせるパッションで。
-
-ホームページ構成案
-
-1. ヒーローメッセージ（Top View）
-キャッチコピー: ○○○○○
-サブコピー: ○○○○○
-
-2. 理念体系 (Philosophy)
-Vision: ○○○○○
-Mission: ○○○○○
-...
-
-（Phase 1で準備した全テキストを貼り付け）
-
-以下HPは参考：
-https://参考サイトのURL</div>
-          <p style="margin-top:16px;"><strong>ポイント:</strong></p>
-          <p>・「作成して」と明確に指示する（「考えて」ではなく）</p>
-          <p>・トンマナは形容詞で伝える（「洗練」「熱量」「有機的」「信頼感」等）</p>
-          <p>・コンテンツは構造化して渡す（セクション分け + 見出し + 本文の階層）</p>
-          <p>・参考URLを添える → AIがデザインの方向性を理解する手がかりになる</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="accordion">
-      <button class="accordion-trigger" onclick="toggleAccordion(this)">
-        <span>業種別: トンマナの伝え方の例</span>
+        <span>状況別おすすめツール</span>
         <span class="acc-icon">+</span>
       </button>
       <div class="accordion-content">
         <div class="accordion-inner">
           <table class="acc-table">
-            <tr><th>業種</th><th>トンマナの形容詞</th><th>参考にすべきサイトの傾向</th></tr>
-            <tr><td>コンサル / データ系</td><td>洗練、熱量、エネルギー、有機的</td><td>ダーク or ベージュ系 + アクセントカラー</td></tr>
-            <tr><td>人材紹介</td><td>信頼感、温かみ、親しみやすさ、プロフェッショナル</td><td>ブルー系 + 人物写真 + 明るいトーン</td></tr>
-            <tr><td>クリエイティブ / デザイン</td><td>モダン、ミニマル、アーティスティック、大胆</td><td>モノトーン + 大きなビジュアル + 余白</td></tr>
-            <tr><td>飲食 / ウェルネス</td><td>ナチュラル、安心感、上質、健やかさ</td><td>グリーン or アーストーン + テクスチャ</td></tr>
+            <tr><th>あなたの状況</th><th>おすすめ</th></tr>
+            <tr><td>とにかく手軽に1ページ作りたい</td><td><span class="mini-tag teal">Bolt.new</span> で十分</td></tr>
+            <tr><td>何度も微調整して品質を追求したい</td><td><span class="mini-tag">Claude Code</span> が圧倒的に効率的</td></tr>
+            <tr><td>コードに触ったことがない</td><td><span class="mini-tag teal">Bolt.new</span> で始めて慣れたらClaude Codeへ</td></tr>
+            <tr><td>複数ページや継続的な更新がある</td><td><span class="mini-tag">Claude Code</span> 一択</td></tr>
           </table>
         </div>
       </div>
     </div>
 
-    <p>
-      この段階で得られるのは<strong>「70点のたたき台」</strong>。
-      RAFTEL HPの場合、初稿（V1）は約1,500行のHTML/CSS/JSが一発で生成された。
-      ダーク背景 + パーティクルアニメーション + 全セクション揃った状態で、ここからブラッシュアップを重ねていく。
-    </p>
+    <div class="pitfall-box">
+      <div class="pitfall-box-header">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4m0 4h.01M12 2L2 22h20L12 2z"/></svg>
+        よくある落とし穴
+      </div>
+      <p>
+        「どのツールがいいか」を調べ始めると、比較記事を3日読み漁って結局何も作らない——というパターンが非常に多いです。<strong>迷ったらBolt.newで始めてください。</strong>無料で、ブラウザだけで、5分で最初のHPが生成されます。
+      </p>
+    </div>
   </section>
 
   <!-- ===== Phase 3 ===== -->
   <section class="content-section">
     <p class="section-label">Phase 3</p>
-    <h2 class="section-title">大方針のブラッシュアップ — 全体の方向性を調整</h2>
+    <h2 class="section-title">初稿生成 — プロンプト1発でHPを作る</h2>
 
     <p>
-      初稿をブラウザで見て、<strong>「方向性」レベルの調整</strong>を指示する。ここではまだ細部に触れない。
-      「色が暗すぎる」「もっと有機的に」「カード型にしたい」など、大枠の修正を1回の指示にまとめる。
+      Phase 1で整理した内容をAIに渡し、一気にHPを生成させます。
+      ここで大事なのは<strong>プロンプトの構造</strong>。「作って」と丸投げではなく、3つの要素を組み合わせます。
     </p>
+
+    <div class="highlight-box">
+      <p><strong>プロンプトの3要素:</strong> 制作指示（何を作るか）+ トンマナ（どんな雰囲気か）+ コンテンツ（Phase 1で整理した全テキスト）</p>
+    </div>
 
     <div class="accordion">
       <button class="accordion-trigger" onclick="toggleAccordion(this)">
-        <span>実際に出したフィードバック（V1→V2）</span>
+        <span>実際に使えるプロンプト（テンプレート）</span>
         <span class="acc-icon">+</span>
       </button>
       <div class="accordion-content">
         <div class="accordion-inner">
-          <div class="code-block">すばらしい。version2として以下のチューニングversionを作成して。
+          <div class="code-block">以下の中小企業HPを作成して。
+1ページ完結型、HTMLファイル1つで。レスポンシブ対応必須。
 
-・4つのアプローチのところをインフォグラフィックで、
-　もっと感覚的に脳にはいってくる感じにして。
-・事業内容のところも、インフォグラフィックで、感覚的に。
-・黒すぎるので、もう少し明るいトーン。
-　だけど洗練・エネルギー感・有機的。
-・エネルギーがみなぎっているような背景アニメいいね。
-　もう少しだけ目立たせて。ただ、うるさくはしたくない。</div>
-          <p style="margin-top:16px;"><strong>このフィードバックで変わったこと:</strong></p>
-          <p>・背景: ダーク黒 → ウォームベージュ（#f6f3ee）に大転換</p>
-          <p>・フォント: Sora（ヘッダー用）、Zen Antique（筆文字風）を追加</p>
-          <p>・アプローチ: テキストカード → 写真付きシネマティックカード</p>
-          <p>・事業内容: リスト型 → 黒背景+写真ヘッダーカード</p>
-          <p>・パーティクル: 30個→50個、色バリエーション追加</p>
+■ デザインの方向性
+[Phase 1-3の競合分析を踏まえたトンマナの形容詞を入れる]
+例: 洗練されたデザイン、信頼感、技術力を感じるトーン
+
+■ HP構成
+[Phase 1-4で決めたセクション構成を入れる]
+
+1. ヒーロー
+キャッチコピー: ○○○○
+サブコピー: ○○○○
+
+2. 課題共感
+- ○○で困っていませんか？
+- ○○が思うようにいかない…
+
+3. サービス内容
+（Phase 1で整理した内容を貼り付け）
+
+...
+
+■ 参考サイト（あれば）
+https://参考サイトのURL</div>
+          <p style="margin-top:16px;"><strong>ポイント:</strong></p>
+          <p>・ <strong>Phase 1の成果物をそのままプロンプトに貼り付ける</strong>のが最も効果的</p>
+          <p>・トンマナは形容詞で伝える（「洗練」「温かみ」「信頼感」等）</p>
+          <p>・参考URLを添えるとAIがデザインの方向性を理解しやすい</p>
         </div>
       </div>
     </div>
+
+    <p>
+      この段階で得られるのは<strong>「70点のたたき台」</strong>です。
+      完璧を求めず、まずは形にすることが重要。ここからPhase 4で磨いていきます。
+    </p>
+
+    <div class="pitfall-box">
+      <div class="pitfall-box-header">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4m0 4h.01M12 2L2 22h20L12 2z"/></svg>
+        よくある落とし穴
+      </div>
+      <p>
+        <strong>プロンプトに入れる情報の質 = Phase 1の質</strong>です。<br>
+        Phase 1を適当にやると、ここでAIが生成するHPも「きれいだけど中身が薄い」ものになります。「AIが微妙なHP作った」と感じたら、原因の9割はPhase 1にあります。
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== Phase 4 ===== -->
+  <section class="content-section">
+    <p class="section-label">Phase 4</p>
+    <h2 class="section-title">ブラッシュアップ — 70点を100点にする</h2>
+
+    <p>
+      初稿をブラウザで見て、段階的に調整していきます。
+      <strong>「大→小」の順で修正する</strong>のがコツ。最初に細部をいじると、全体を変えたときに巻き戻されます。
+    </p>
+
+    <h3 class="substep-header">
+      <span class="substep-num">STEP 4-1</span>
+      大方針の調整（全体の方向性）
+    </h3>
+    <p>
+      色・フォント・レイアウト・雰囲気など「全体の方向性」を調整します。1回の指示で3〜5個に絞るのがコツ。
+    </p>
 
     <div class="accordion">
       <button class="accordion-trigger" onclick="toggleAccordion(this)">
@@ -881,47 +1336,74 @@ https://参考サイトのURL</div>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- ===== Phase 4 ===== -->
-  <section class="content-section">
-    <p class="section-label">Phase 4</p>
-    <h2 class="section-title">ディテール調整 — セクション単位で磨く</h2>
+    <div class="accordion">
+      <button class="accordion-trigger" onclick="toggleAccordion(this)">
+        <span>実際に出したフィードバックの例</span>
+        <span class="acc-icon">+</span>
+      </button>
+      <div class="accordion-content">
+        <div class="accordion-inner">
+          <div class="code-block">すばらしい。version2として以下のチューニングversionを作成して。
 
+・4つのアプローチのところをインフォグラフィックで、
+　もっと感覚的に脳にはいってくる感じにして。
+・黒すぎるので、もう少し明るいトーン。
+　だけど洗練・エネルギー感・有機的。
+・エネルギーがみなぎっているような背景アニメいいね。
+　もう少しだけ目立たせて。ただ、うるさくはしたくない。</div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="substep-header">
+      <span class="substep-num">STEP 4-2</span>
+      ディテール調整（セクション単位）
+    </h3>
     <p>
-      全体の方向性が決まったら、<strong>セクションごとに1つずつ見ながら磨き込む</strong>。
-      1回の指示で1〜3箇所が理想。ブラウザで確認→指示→確認のループを回す。
+      全体の方向性が決まったら、セクションごとに1つずつ磨き込みます。
+      <strong>「〇〇セクションの△△を□□にして」</strong>と、場所→対象→変更内容の3点を明確に。
     </p>
 
     <div class="accordion">
       <button class="accordion-trigger" onclick="toggleAccordion(this)">
-        <span>実際に出した指示の例（RAFTEL HP）</span>
+        <span>ディテール調整の指示例</span>
         <span class="acc-icon">+</span>
       </button>
       <div class="accordion-content">
         <div class="accordion-inner">
           <table class="acc-table">
             <tr><th>指示</th><th>何が変わったか</th></tr>
-            <tr><td>「Visionを筆文字フォントで表現して」</td><td>Zen Antique適用、背景画像除去</td></tr>
-            <tr><td>「Missionは画像に差し替えて」</td><td>テキスト → 画像ブロックに変更</td></tr>
-            <tr><td>「事業内容の背景を黒にして」</td><td>ダーク背景+アンビエントグロー追加</td></tr>
-            <tr><td>「CTAボタンを中央寄せにして」</td><td>wrapper div追加でtext-align: center</td></tr>
-            <tr><td>「スマホではタイトルだけ中央寄せに（PCは左）」</td><td>768pxメディアクエリに条件追加</td></tr>
+            <tr><td>「ヒーローの背景をもう少し明るく」</td><td>ダーク黒 → ウォームベージュに</td></tr>
+            <tr><td>「サービスセクションをカード型にして」</td><td>リスト → 3カラムカードに</td></tr>
+            <tr><td>「CTAボタンを中央寄せにして」</td><td>text-align: center適用</td></tr>
+            <tr><td>「代表紹介に写真スペースを追加」</td><td>2カラムレイアウト追加</td></tr>
           </table>
-          <p style="margin-top:16px;"><strong>コツ:</strong> 「〇〇セクションの△△を□□にして」と、場所→対象→変更内容の3点を明確にする。曖昧な指示は意図しない変更を招く。</p>
         </div>
       </div>
+    </div>
+
+    <div class="pitfall-box">
+      <div class="pitfall-box-header">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4m0 4h.01M12 2L2 22h20L12 2z"/></svg>
+        よくある落とし穴
+      </div>
+      <p>
+        <strong>AIが出した70点を100点にするには、マーケティングの視点が必要です。</strong><br>
+        「何が70点で何が100点か」は、正直マーケ経験がないと判断しづらい部分があります。特に「キャッチコピーの刺さり具合」「CTAの配置と文言」「ファーストビューの情報優先度」は、経験がものを言う領域です。<br>
+        ここは自分で何案か試してみて、知人やお客さんに見てもらうのが効果的です。
+      </p>
     </div>
   </section>
 
   <!-- ===== Phase 5 ===== -->
   <section class="content-section">
     <p class="section-label">Phase 5</p>
-    <h2 class="section-title">レスポンシブ &amp; 仕上げ — スマホで確認</h2>
+    <h2 class="section-title">レスポンシブ &amp; 公開</h2>
 
     <p>
-      最後にスマホ表示を確認し、微調整する。
-      ブラウザのDevTools（F12）でスマホ幅をシミュレートするか、実機で確認する。
+      最後にスマホ表示を確認し、微調整して公開します。
+      <strong>HPを見る人の6〜7割はスマホ</strong>。PC表示だけで満足しないでください。
     </p>
 
     <div class="accordion">
@@ -932,13 +1414,31 @@ https://参考サイトのURL</div>
       <div class="accordion-content">
         <div class="accordion-inner">
           <table class="acc-table">
-            <tr><th>問題</th><th>指示の出し方</th></tr>
-            <tr><td>テキストが変な位置で改行される</td><td>「スマホの場合、○○の改行位置を調整して。iPhone 17（横幅393px）使用」</td></tr>
+            <tr><th>問題</th><th>AIへの指示の出し方</th></tr>
+            <tr><td>テキストが変な位置で改行される</td><td>「スマホの場合、○○の改行位置を調整して。iPhone（横幅393px）基準で」</td></tr>
             <tr><td>ボタンが左に寄っている</td><td>「スマホでは○○ボタンを中央寄せにして」</td></tr>
             <tr><td>要素同士が重なっている</td><td>「スマホで○○と△△が被っている。余白を調整して」</td></tr>
-            <tr><td>PC/スマホで異なる配置にしたい</td><td>「スマホでは中央寄せ、PCでは左寄せにして」と明示</td></tr>
+            <tr><td>文字が小さすぎる</td><td>「スマホでは本文を16px以上にして」</td></tr>
           </table>
-          <p style="margin-top:16px;"><strong>今回の例:</strong> ヒーローキャッチの改行問題は、<code>.br-desktop</code> / <code>.br-mobile</code> というクラスで「PCでは改行、スマホでは改行しない」をCSSで制御する方法で解決した。</p>
+          <p style="margin-top:16px;"><strong>確認方法:</strong> ブラウザのDevTools（F12）→ スマホ幅をシミュレート、またはスマホ実機で確認。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-trigger" onclick="toggleAccordion(this)">
+        <span>公開方法の選択肢</span>
+        <span class="acc-icon">+</span>
+      </button>
+      <div class="accordion-content">
+        <div class="accordion-inner">
+          <table class="acc-table">
+            <tr><th>方法</th><th>費用</th><th>難易度</th><th>おすすめ</th></tr>
+            <tr><td>GitHub Pages</td><td>無料</td><td>中（Git操作が必要）</td><td>技術者向け</td></tr>
+            <tr><td>Netlify / Vercel</td><td>無料</td><td>低（ドラッグ&ドロップ）</td><td>一般向けに最もおすすめ</td></tr>
+            <tr><td>独自ドメイン + レンタルサーバー</td><td>月500〜1,000円</td><td>中</td><td>法人向け</td></tr>
+          </table>
+          <p style="margin-top:16px;">Bolt.newを使った場合は、ワンクリックでデプロイまで完了します。</p>
         </div>
       </div>
     </div>
@@ -950,52 +1450,51 @@ https://参考サイトのURL</div>
       AIに<span class="em">「何を作るか」</span>は人が決め、<br>
       <span class="em">「どう作るか」</span>はAIに任せる。<br><br>
       業種やトンマナが違っても、このフレームワークは同じ。<br>
-      素材の質 × フィードバックの精度 = アウトプットの品質。
+      <span class="em">素材の質 × フィードバックの精度 = アウトプットの品質。</span>
     </p>
   </div>
-
-  <!-- ===== おすすめ選択ガイド ===== -->
-  <section class="content-section">
-    <p class="section-label">Which Tool?</p>
-    <h2 class="section-title">あなたに合ったツール選び</h2>
-
-    <div class="accordion">
-      <button class="accordion-trigger" onclick="toggleAccordion(this)">
-        <span>状況別おすすめツール</span>
-        <span class="acc-icon">+</span>
-      </button>
-      <div class="accordion-content">
-        <div class="accordion-inner">
-          <table class="acc-table">
-            <tr><th>あなたの状況</th><th>おすすめ</th></tr>
-            <tr><td>とにかく手軽に1ページ作りたい</td><td><span class="mini-tag teal">Gemini</span> で十分</td></tr>
-            <tr><td>何度も微調整して品質を追求したい</td><td><span class="mini-tag">Claude Code</span> が圧倒的に効率的</td></tr>
-            <tr><td>コードに触ったことがない</td><td><span class="mini-tag teal">Gemini</span> で始めて慣れたらClaude Codeへ</td></tr>
-            <tr><td>複数ページや継続的な更新がある</td><td><span class="mini-tag">Claude Code</span> 一択</td></tr>
-          </table>
-          <p style="margin-top:16px;">今回のRAFTEL HPは約20回の修正を重ねた。Geminiだと毎回1,400行をコピペし直す必要があった計算で、Claude Codeだからこそ実現できた品質。</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
 </main>
 
 <!-- ========================================
-     CTA
+     CTA (3-tier)
      ======================================== -->
 <section class="article-cta">
-  <h3>HPの制作・AI活用のご相談はお気軽に。</h3>
-  <p>貴社の事業内容やブランドに合ったHP制作を、戦略から実装まで一気通貫で支援します。</p>
-  <a href="../index.html#contact" class="cta-button">
-    お問い合わせ
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-  </a>
+  <h3>お読みいただきありがとうございます。</h3>
+  <p>あなたの状況に合った次のステップをお選びください。</p>
+
+  <div class="cta-tiers">
+    <div class="cta-tier">
+      <div class="cta-tier-label">自分でやる</div>
+      <h4>この記事をブックマークして、Phase 1から始める</h4>
+      <p>全ノウハウはこの記事に書いてあります。時間をかけて、自分のペースで進めたい方に。</p>
+    </div>
+
+    <div class="cta-tier featured">
+      <div class="cta-tier-label">Phase 1だけプロと一緒に</div>
+      <h4>HP戦略設計<br>ワークショップ</h4>
+      <p>2時間のオンライン壁打ちで、ターゲット・強み・差別化・HP構成を一気に設計。HP制作も込みで&#165;50,000。</p>
+      <a href="../service/quick-launch.html" class="cta-tier-link">
+        Quick Launch の詳細
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="cta-tier">
+      <div class="cta-tier-label">継続的に改善したい</div>
+      <h4>Growth Sprint</h4>
+      <p>HP + SNS + 集客導線を3ヶ月で構築。事業のブランディングから伴走します。</p>
+      <a href="../service/growth-partner.html" class="cta-tier-link">
+        Growth Sprint の詳細
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
 </section>
 
 <!-- Footer -->
 <footer class="footer">
-  <span class="footer-copy">&copy; 2026 RAFTEL Inc. All Rights Reserved.</span>
+  <span class="footer-copy">&copy; 2026 omoshiku All Rights Reserved.</span>
 </footer>
 
 <!-- ========================================

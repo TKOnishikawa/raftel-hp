@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quick Launch — 3日HP制作プラン | RAFTEL Inc.</title>
-<meta name="description" content="¥30,000で、1.5時間の壁打ち＋プロ品質のHPを3日以内に初稿納品。起業家の「最初の一歩」を、確実に形に。">
+<title>Quick Launch — HP戦略設計ワークショップ | omoshiku</title>
+<meta name="description" content="2時間のオンライン壁打ちで事業の強みを言語化し、刺さるHPを3日で形にする。¥50,000（税別）。中小企業の経営者・事業責任者向け。">
 <!-- OGP -->
-<meta property="og:title" content="Quick Launch — 3日HP制作プラン | RAFTEL Inc.">
-<meta property="og:description" content="¥30,000で、1.5時間の壁打ち＋プロ品質のHPを3日以内に初稿納品。起業家の「最初の一歩」を、確実に形に。">
+<meta property="og:title" content="Quick Launch — HP戦略設計ワークショップ | omoshiku">
+<meta property="og:description" content="2時間のオンライン壁打ちで事業の強みを言語化し、刺さるHPを3日で形にする。¥50,000（税別）。">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="RAFTEL Inc.">
-<meta property="og:url" content="https://raftel.co.jp/service/quick-launch.html">
-<meta property="og:image" content="https://raftel.co.jp/images/og-service.jpg">
+<meta property="og:site_name" content="omoshiku">
+<meta property="og:url" content="https://omoshiku.co.jp/service/quick-launch.html">
+<meta property="og:image" content="https://omoshiku.co.jp/images/og-service.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://raftel.co.jp/images/og-service.jpg">
+<meta name="twitter:image" content="https://omoshiku.co.jp/images/og-service.jpg">
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,22 +23,22 @@
 {
   "@context": "https://schema.org",
   "@type": "Service",
-  "name": "Quick Launch — 3日HP制作プラン",
-  "description": "1.5時間の壁打ち＋プロ品質のHPを3日以内に初稿納品する起業家向けサービス",
+  "name": "Quick Launch — HP戦略設計ワークショップ",
+  "description": "2時間のオンライン壁打ちで事業の強みを言語化し、刺さるHPを3日で形にする中小企業向けサービス",
   "provider": {
     "@type": "Organization",
-    "name": "RAFTEL Inc."
+    "name": "omoshiku"
   },
   "offers": {
     "@type": "Offer",
-    "price": "30000",
+    "price": "50000",
     "priceCurrency": "JPY"
   }
 }
 </script>
 <style>
 /* ========================================
-   Design Tokens (RAFTEL共通)
+   Design Tokens (omoshiku共通)
    ======================================== */
 :root {
   --bg-primary: #f6f3ee;
@@ -284,6 +284,23 @@ a { color: inherit; text-decoration: none; }
   padding: 4px 12px; border-radius: 12px; margin-top: 8px;
 }
 
+/* Workshop agenda */
+.workshop-agenda {
+  list-style: none; padding: 0; margin: 20px 0;
+}
+.workshop-agenda li {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 14px 0; border-bottom: 1px solid var(--border);
+  font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7;
+}
+.workshop-agenda li:last-child { border-bottom: none; }
+.agenda-time {
+  font-family: var(--font-en); font-size: 0.75rem; font-weight: 700;
+  color: var(--accent); background: var(--accent-glow);
+  padding: 4px 10px; border-radius: 8px; white-space: nowrap;
+  flex-shrink: 0; margin-top: 2px;
+}
+
 /* ========================================
    Highlight Box
    ======================================== */
@@ -332,7 +349,7 @@ a { color: inherit; text-decoration: none; }
   border: 2px solid var(--border-accent);
   border-radius: 16px; padding: 48px 56px;
   box-shadow: var(--shadow-lg);
-  max-width: 480px; width: 100%;
+  max-width: 520px; width: 100%;
 }
 .price-card-label {
   font-family: var(--font-head); font-size: 0.72rem; font-weight: 700;
@@ -340,7 +357,7 @@ a { color: inherit; text-decoration: none; }
   color: var(--accent); margin-bottom: 8px;
 }
 .price-card-name {
-  font-family: var(--font-head); font-size: 1.3rem; font-weight: 800;
+  font-family: var(--font-head); font-size: 1.2rem; font-weight: 800;
   margin-bottom: 24px;
 }
 .price-amount {
@@ -369,6 +386,28 @@ a { color: inherit; text-decoration: none; }
   width: 6px; height: 6px; border-radius: 50%;
   background: var(--accent);
 }
+.price-card-features li strong {
+  color: var(--text-primary);
+}
+
+/* Article from guide link */
+.guide-link-box {
+  background: rgba(42,122,110,0.06);
+  border: 1px solid rgba(42,122,110,0.15);
+  border-radius: 12px; padding: 24px 28px;
+  margin: 28px 0; display: flex; align-items: center;
+  gap: 20px;
+}
+.guide-link-box p {
+  font-size: 0.88rem !important; color: var(--text-secondary);
+  line-height: 1.7; margin-bottom: 0 !important; flex: 1;
+}
+.guide-link-box a {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-head); font-size: 0.82rem; font-weight: 600;
+  color: var(--accent2); white-space: nowrap; transition: gap 0.3s;
+}
+.guide-link-box a:hover { gap: 10px; }
 
 /* ========================================
    Upsell Banner
@@ -491,8 +530,6 @@ a { color: inherit; text-decoration: none; }
   transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
 
 /* ========================================
    Responsive
@@ -525,6 +562,8 @@ a { color: inherit; text-decoration: none; }
   .accordion-inner { padding: 0 20px 20px; }
   .breadcrumb { padding: 16px 24px; }
   .upsell-banner { flex-direction: column; gap: 24px; padding: 36px 24px; }
+  .guide-link-box { flex-direction: column; gap: 12px; }
+  .workshop-agenda li { flex-direction: column; gap: 6px; }
   /* モバイル視認性向上 */
   .article-subtitle { font-size: 1.05rem; }
   .problem-card h4 { font-size: 1rem; }
@@ -542,7 +581,7 @@ a { color: inherit; text-decoration: none; }
 <!-- Navigation -->
 <nav class="nav" id="nav">
   <div class="nav-inner">
-    <a href="../index.html" class="nav-logo">RAFTEL</a>
+    <a href="../index.html" class="nav-logo">omoshiku</a>
     <div class="nav-links" id="navLinks">
       <a href="../index.html#solution">課題と解決</a>
       <a href="../index.html#service">サービス</a>
@@ -567,7 +606,7 @@ a { color: inherit; text-decoration: none; }
 <!-- Breadcrumb -->
 <nav class="breadcrumb" style="padding-top: 80px;">
   <div class="breadcrumb-inner">
-    <a href="../index.html">RAFTEL</a>
+    <a href="../index.html">omoshiku</a>
     <span class="breadcrumb-separator">/</span>
     <a href="./">Service</a>
     <span class="breadcrumb-separator">/</span>
@@ -580,18 +619,18 @@ a { color: inherit; text-decoration: none; }
      ======================================== -->
 <header class="article-hero">
   <div class="article-hero-inner">
-    <span class="article-tag">Quick Launch &mdash; 1&#x65E5;HP&#x5236;&#x4F5C;&#x30D7;&#x30E9;&#x30F3;</span>
-    <h1 class="article-title">あなたのHPを、<br>3日で。</h1>
+    <span class="article-tag">Quick Launch &mdash; HP&#x6226;&#x7565;&#x8A2D;&#x8A08;&#x30EF;&#x30FC;&#x30AF;&#x30B7;&#x30E7;&#x30C3;&#x30D7;</span>
+    <h1 class="article-title">事業の強みを言語化し、<br>刺さるHPを3日で。</h1>
     <p class="article-subtitle">
-      1.5時間の壁打ちで事業の強みを整理し、プロ品質のHPを3日以内に初稿納品。「まだHPがない」を、今週終わらせる。
+      2時間のオンライン壁打ちで、ターゲット・強み・差別化を一緒に整理。<br>
+      その言葉を、プロ品質のHPに変換して3日以内にお届けします。
     </p>
     <div class="hero-price-badge">
-      <span class="price-num">&yen;30,000</span>
-      <span class="price-unit">（税別・モニター価格）</span>
+      <span class="price-num">&yen;50,000</span>
+      <span class="price-unit">（税別）</span>
     </div>
-    <p style="font-size:0.95rem; font-weight:600; color:rgba(240,236,230,0.85); text-decoration:line-through; margin-top:8px;">通常 ¥100,000</p>
     <a href="../index.html#contact" class="hero-cta">
-      今すぐ申し込む
+      まずは無料で相談する
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
   </div>
@@ -605,32 +644,31 @@ a { color: inherit; text-decoration: none; }
   <!-- ===== 2. Problem ===== -->
   <section class="content-section reveal">
     <p class="section-label">Problem</p>
-    <h2 class="section-title">「HPくらい作らなきゃ」<br>でも、手が動かない。</h2>
+    <h2 class="section-title">中小企業のHP、<br>こんな状態になっていませんか？</h2>
 
     <div class="problem-cards">
       <div class="problem-card">
         <div class="problem-card-num">01</div>
-        <h4>名刺交換のあと、<br>検索されて"何もない"。</h4>
-        <p>「いい話だったけど、HPないんだ…」。その一言で、せっかくのご縁が消える。</p>
+        <h4>5年前に作ったHP、<br>スマホで見たら崩壊。</h4>
+        <p>知り合いに頼んだHP、当時は良かった。でも今スマホで開くと文字が重なって読めない。更新の仕方もわからない。</p>
       </div>
       <div class="problem-card">
         <div class="problem-card-num">02</div>
-        <h4>何を書けばいいか<br>わからない。</h4>
-        <p>テンプレを見ても「自分の事業に当てはめると…」で手が止まる。結局、白紙のまま。</p>
+        <h4>制作会社に頼むと50万。<br>名刺代わりのHPに50万は…。</h4>
+        <p>見積もりを取ったら想像以上の金額。でもペライチのテンプレは「うちらしさ」が出ない。ちょうどいいがない。</p>
       </div>
       <div class="problem-card">
         <div class="problem-card-num">03</div>
-        <h4>外注は高い。<br>自作は終わらない。</h4>
-        <p>制作会社に頼めば50万以上。自分でやろうとすれば数ヶ月。どちらも、今じゃない。</p>
+        <h4>自分の会社の強み、<br>聞かれると意外と言えない。</h4>
+        <p>「御社の強みは？」と聞かれて「品質です」としか言えない。でもそれ、同業他社も全員言ってる。差別化が見えない。</p>
       </div>
     </div>
   </section>
 
-
   <!-- ===== 3. Solution — How It Works ===== -->
   <section class="content-section reveal">
     <p class="section-label">How It Works</p>
-    <h2 class="section-title">1.5時間の壁打ち + 3日で納品。<br>確かなプロセスで、質の高いHPを。</h2>
+    <h2 class="section-title">2時間の壁打ち + 3日で納品。<br>「強みの言語化」から始めるHP制作。</h2>
 
     <div class="flow-diagram">
       <div class="flow-step">
@@ -639,11 +677,32 @@ a { color: inherit; text-decoration: none; }
           <div class="flow-step-connector"></div>
         </div>
         <div class="flow-step-content">
-          <h3 class="flow-step-title">事業の壁打ち（1.5時間・オンライン）</h3>
+          <h3 class="flow-step-title">HP戦略設計ワークショップ（2時間・オンライン）</h3>
           <p class="flow-step-desc">
-            「誰に、何を、なぜあなたが？」を一緒に整理します。コンサルティングのプロが問いを投げるので、あなたは話すだけ。事業の強み・ストーリーが1.5時間で言語化されます。
+            「誰に、何を、なぜあなたが？」を一緒に整理します。<br>
+            認知科学コーチングの手法で、あなた自身も気づいていなかった強みを引き出します。<br>
+            話すだけでOK。言語化はこちらがやります。
           </p>
-          <span class="flow-step-time">90 min</span>
+          <span class="flow-step-time">2 Hours</span>
+
+          <ul class="workshop-agenda" style="margin-top:20px;">
+            <li>
+              <span class="agenda-time">0:00</span>
+              <span><strong>ターゲット顧客の明確化</strong> — 誰に届けたいか。ペルソナの具体化。</span>
+            </li>
+            <li>
+              <span class="agenda-time">0:30</span>
+              <span><strong>自社の強み棚卸し</strong> — お客さんに選ばれている本当の理由を発掘。</span>
+            </li>
+            <li>
+              <span class="agenda-time">1:00</span>
+              <span><strong>競合との差別化整理</strong> — 同業他社と何が違うかを明確に。</span>
+            </li>
+            <li>
+              <span class="agenda-time">1:30</span>
+              <span><strong>HP構成・セクション設計</strong> — 何をどの順番で見せるかを決定。</span>
+            </li>
+          </ul>
         </div>
       </div>
       <div class="flow-step">
@@ -654,7 +713,9 @@ a { color: inherit; text-decoration: none; }
         <div class="flow-step-content">
           <h3 class="flow-step-title">HP制作（3日以内に初稿納品）</h3>
           <p class="flow-step-desc">
-            壁打ちで引き出した言葉を元に、プロ品質のHPを制作。レスポンシブ対応・SEO設計込み。3日以内に初稿をお届けします。テンプレートではなく、あなたの言葉で作るオリジナルページです。
+            ワークショップで引き出した言葉を元に、AI×プロの知見で「刺さるHP」を制作。<br>
+            テンプレートではなく、あなたの事業の言葉で作るオリジナルページです。<br>
+            レスポンシブ対応・SEO基本設計込み。
           </p>
           <span class="flow-step-time">3 Days</span>
         </div>
@@ -664,11 +725,13 @@ a { color: inherit; text-decoration: none; }
           <div class="flow-step-num">03</div>
         </div>
         <div class="flow-step-content">
-          <h3 class="flow-step-title">ブラッシュアップMTG</h3>
+          <h3 class="flow-step-title">ブラッシュアップMTG（30分）</h3>
           <p class="flow-step-desc">
-            初稿をご確認いただき、1時間のMTGで追加リクエストをお伺いします。1回のブラッシュアップ対応で完成版をお届けし、公開方法もサポートします。
+            初稿をベースに微調整。<br>
+            「ここの表現をもう少しこうしたい」「この写真に差し替えたい」など、<br>
+            納得いくまで磨き上げます。公開サポートも込み。
           </p>
-          <span class="flow-step-time">1 Meeting</span>
+          <span class="flow-step-time">30 min</span>
         </div>
       </div>
     </div>
@@ -676,8 +739,19 @@ a { color: inherit; text-decoration: none; }
     <div class="highlight-box">
       <p>
         <strong>売り物はHPではありません。</strong><br>
-        1.5時間の壁打ちで「自分の事業の輪郭が見えた」体験こそが、本当の価値。HPはその副産物です。
+        2時間のワークショップで「自分の事業の強みが言語化された」体験こそが、本当の価値です。<br>
+        HPは、その言葉を形にした副産物。事業整理メモは、HP以外のあらゆる場面（営業資料、提案書、採用ページ）で使えます。
       </p>
+    </div>
+
+    <div class="guide-link-box">
+      <p>
+        「自分でAI使ってHP作りたい」方向けに、<strong>ノウハウを全公開した無料ガイド</strong>も用意しています。Quick Launchは、そのガイドの「Phase 1（戦略設計）」をプロと一緒にやるサービスです。
+      </p>
+      <a href="../content/ai-hp-guide.html">
+        無料ガイドを読む
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
     </div>
   </section>
 
@@ -688,11 +762,12 @@ a { color: inherit; text-decoration: none; }
     <h2 class="section-title">こんな方に最適です</h2>
 
     <ul class="checklist">
-      <li>起業準備中で、まだHPを持っていない</li>
-      <li>名刺やSNSに載せるURLがほしい</li>
-      <li>「何を書けばいいかわからない」で止まっている</li>
-      <li>制作会社に50万円は出せないが、プロ品質がほしい</li>
+      <li>従業員5〜50人の中小企業で、HPを持っていない or 5年以上更新していない</li>
+      <li>制作会社に頼むほどの予算はないが、品質は妥協したくない</li>
+      <li>自社の強みを第三者に客観的に言語化してほしい</li>
+      <li>AI HP制作ガイドを読んだけど、Phase 1（戦略設計）が一番難しいと感じた</li>
       <li>本業に集中したいので、HP制作に何週間もかけたくない</li>
+      <li>名刺やSNSに載せるURLを早急に用意したい</li>
     </ul>
   </section>
 
@@ -700,31 +775,32 @@ a { color: inherit; text-decoration: none; }
   <!-- ===== 5. What You Get ===== -->
   <section class="content-section reveal">
     <p class="section-label">Deliverables</p>
-    <h2 class="section-title">&#165;30,000で手に入るもの</h2>
+    <h2 class="section-title">&#165;50,000で手に入るもの</h2>
 
     <ul class="checklist">
-      <li>事業の壁打ち（1.5時間・オンライン） &mdash; コンサルティングのプロによるヒアリング</li>
-      <li>オリジナルHP（1ページ） &mdash; レスポンシブ対応・SEO設計込み</li>
-      <li>公開サポート &mdash; ドメイン取得・サーバー設定のご案内</li>
-      <li>事業の強み整理メモ &mdash; 壁打ちで出た言葉の構造化レポート</li>
+      <li><strong>HP戦略設計ワークショップ（2時間・オンライン）</strong> &mdash; ターゲット・強み・差別化・HP構成を一気に設計</li>
+      <li><strong>事業整理メモ</strong> &mdash; ワークショップで出た言葉の構造化レポート。営業資料にも転用可能</li>
+      <li><strong>オリジナルHP（1ページLP or 3ページ構成）</strong> &mdash; レスポンシブ対応・SEO基本設計込み</li>
+      <li><strong>ブラッシュアップMTG（30分）</strong> &mdash; 初稿をベースに微調整</li>
+      <li><strong>公開サポート</strong> &mdash; ドメイン取得・サーバー設定のご案内</li>
     </ul>
 
     <div class="price-section">
       <div class="price-card">
         <div class="price-card-label">Quick Launch</div>
-        <div class="price-card-name">1日HP制作プラン</div>
-        <div class="price-amount">&yen;30,000</div>
-        <div class="price-detail">税別 &middot; モニター価格（通常¥100,000）</div>
+        <div class="price-card-name">HP戦略設計ワークショップ</div>
+        <div class="price-amount">&yen;50,000</div>
+        <div class="price-detail">税別</div>
         <div class="price-card-divider"></div>
         <ul class="price-card-features">
-          <li>事業の壁打ち（1.5時間）</li>
+          <li><strong>HP戦略設計ワークショップ（2時間）</strong></li>
+          <li>事業整理メモ（構造化レポート）</li>
+          <li>オリジナルHP制作</li>
           <li>3日以内に初稿納品</li>
-          <li>1時間MTG + ブラッシュアップ1回</li>
-          <li>オリジナルHP 1ページ</li>
-          <li>レスポンシブ対応</li>
+          <li>ブラッシュアップMTG（30分）</li>
+          <li>レスポンシブ対応（PC/スマホ）</li>
           <li>SEO基本設計</li>
           <li>公開サポート</li>
-          <li>事業の強み整理メモ</li>
         </ul>
       </div>
     </div>
@@ -738,7 +814,7 @@ a { color: inherit; text-decoration: none; }
         <p class="upsell-label">Next Step</p>
         <h3 class="upsell-title">HPの「その先」が見えたら。</h3>
         <p class="upsell-desc">
-          壁打ちで「もっと深く言語化したい」「SNSも集客導線も整えたい」と感じたら、Growth Sprint へ。ビジョン策定からHP・SNS・集客まで、3ヶ月で「伝わる仕組み」をすべて構築します。
+          ワークショップで「もっと深く言語化したい」「SNSも集客導線も整えたい」と感じたら、Growth Sprint へ。ビジョン策定からHP・SNS・集客まで、3ヶ月で「伝わる仕組み」をすべて構築します。
         </p>
         <a href="growth-partner.html" class="upsell-link">
           Growth Sprint を見る
@@ -761,7 +837,31 @@ a { color: inherit; text-decoration: none; }
       </button>
       <div class="accordion-content">
         <div class="accordion-inner">
-          <p>はい。壁打ち1.5時間で事業の言葉を整理し、3日以内に初稿をお届けします。その後、1時間のMTGでご要望を伺い、1回のブラッシュアップで完成版をお渡しします。RAFTELのHP自体がAIで制作されており、品質はご自身の目でご確認いただけます。</p>
+          <p>はい。2時間のワークショップで事業の言葉を整理し、3日以内に初稿をお届けします。その後30分のMTGでご要望を伺い、ブラッシュアップで完成版をお渡しします。omoshikuのHP自体がこの手法で制作されており、品質はご自身の目でご確認いただけます。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-trigger" onclick="toggleAccordion(this)">
+        <span>1ページで足りますか？</span>
+        <span class="acc-icon">+</span>
+      </button>
+      <div class="accordion-content">
+        <div class="accordion-inner">
+          <p>中小企業のHPは、1ページのランディングページ形式で全セクション（ヒーロー・課題共感・サービス・強み・実績・代表紹介・問い合わせ）をカバーできます。実際にomoshikuのHPもこの形式です。ただし、事業の複雑さに応じて3ページ構成にも対応しています。ワークショップで最適な構成を一緒に決めましょう。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-trigger" onclick="toggleAccordion(this)">
+        <span>自分でAI使って作るのと何が違いますか？</span>
+        <span class="acc-icon">+</span>
+      </button>
+      <div class="accordion-content">
+        <div class="accordion-inner">
+          <p><strong>Phase 1（戦略設計）をプロと一緒にやるかどうか</strong>、が最大の違いです。AIでHPを作ること自体は簡単です（無料ガイドで全手順を公開しています）。でも「何を載せるか」の質がHPの品質の8割を決めます。自社の強みの客観的な言語化、マーケティング観点でのチューニング——ここにプロの知見が最も効きます。</p>
         </div>
       </div>
     </div>
@@ -773,7 +873,7 @@ a { color: inherit; text-decoration: none; }
       </button>
       <div class="accordion-content">
         <div class="accordion-inner">
-          <p>業種は問いません。コーチ、コンサルタント、セラピスト、飲食、EC、士業など、あらゆる業種に対応しています。壁打ちで事業の本質を引き出すので、専門知識がなくても大丈夫です。</p>
+          <p>業種は問いません。コンサル、士業、製造業、飲食、EC、クリエイティブ、医療・福祉など、あらゆる業種に対応しています。ワークショップで事業の本質を引き出すので、専門知識がなくても大丈夫です。</p>
         </div>
       </div>
     </div>
@@ -785,7 +885,7 @@ a { color: inherit; text-decoration: none; }
       </button>
       <div class="accordion-content">
         <div class="accordion-inner">
-          <p>初稿納品後、1時間のMTGで1回のブラッシュアップ対応が含まれています。その後の追加修正や継続的な更新をご希望の場合は、Growth Sprint でのサポートをおすすめします。</p>
+          <p>初稿納品後、30分のMTGでブラッシュアップ対応が含まれています。その後の追加修正や継続的な更新をご希望の場合は、Growth Sprint でのサポートをおすすめします。また、AIを使った更新方法もお伝えするので、簡単な修正はご自身でも可能です。</p>
         </div>
       </div>
     </div>
@@ -797,19 +897,19 @@ a { color: inherit; text-decoration: none; }
       </button>
       <div class="accordion-content">
         <div class="accordion-inner">
-          <p>¥30,000はHP制作費のみです。ドメイン（年額1,000〜2,000円程度）とサーバー（無料〜月額数百円）は別途ご用意いただきます。取得方法は丁寧にサポートします。</p>
+          <p>&#165;50,000はワークショップ + HP制作費です。ドメイン（年額1,000〜2,000円程度）とサーバー（無料〜月額数百円）は別途ご用意いただきます。Netlifyなど無料で公開できる方法もご案内しますので、追加コストゼロで始めることも可能です。</p>
         </div>
       </div>
     </div>
 
     <div class="accordion">
       <button class="accordion-trigger" onclick="toggleAccordion(this)">
-        <span>壁打ちだけの利用もできますか？</span>
+        <span>追加ページが必要な場合は？</span>
         <span class="acc-icon">+</span>
       </button>
       <div class="accordion-content">
         <div class="accordion-inner">
-          <p>Quick Launch は壁打ち＋HP制作のセットプランです。壁打ちのみをご希望の場合は、無料相談からお気軽にご連絡ください。</p>
+          <p>Quick Launchには1ページLP or 3ページ構成が含まれています。それ以上のページが必要な場合は、お見積もりベースで対応します。まずはワークショップで「どこまで必要か」を一緒に整理しましょう。</p>
         </div>
       </div>
     </div>
@@ -822,17 +922,17 @@ a { color: inherit; text-decoration: none; }
      ======================================== -->
 <section class="article-cta">
   <h3>HPがない期間は、機会損失です。</h3>
-  <p>今週中にHPが手に入る。壁打ちで事業の輪郭を見つめ、形にする。まずは気軽にお申し込みください。</p>
+  <p>まずは無料相談で、あなたの事業に最適なHP戦略をお話しましょう。</p>
   <a href="../index.html#contact" class="cta-button">
-    今すぐ申し込む
+    まずは無料で相談する
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
   </a>
-  <p class="cta-meta">&yen;30,000 &middot; 3日以内に初稿納品 &middot; オンライン完結</p>
+  <p class="cta-meta">&yen;50,000（税別）&middot; 3日以内に初稿納品 &middot; オンライン完結</p>
 </section>
 
 <!-- Footer -->
 <footer class="footer">
-  <span class="footer-copy">&copy; 2026 RAFTEL Inc. All Rights Reserved.</span>
+  <span class="footer-copy">&copy; 2026 omoshiku All Rights Reserved.</span>
 </footer>
 
 <!-- JavaScript -->
