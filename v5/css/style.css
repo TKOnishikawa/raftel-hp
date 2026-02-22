@@ -1693,9 +1693,18 @@ tbody tr:last-child td.compare-highlight {
     gap: 36px;
   }
 
+  .about-photo {
+    text-align: center;
+  }
+
   .about-photo-img {
     max-width: 240px;
     margin: 0 auto;
+  }
+
+  .about-name,
+  .about-role {
+    text-align: center;
   }
 
   /* CTA */
