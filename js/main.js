@@ -604,8 +604,7 @@ function initContactForm() {
   const form = document.getElementById("contactForm");
   if (!form) return;
 
-  // TODO: GASデプロイ後にURLを差し替え
-  const GAS_URL = "https://script.google.com/macros/s/PLACEHOLDER/exec";
+  const GAS_URL = "https://script.google.com/macros/s/AKfycbwtBBI9W8HUZjdVbp5W7Lb_wwMSkryeN34sFA5-va9233YIRt8ast_xRiQY5gXdSFjl/exec";
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
