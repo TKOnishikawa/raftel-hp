@@ -438,7 +438,7 @@ function initSectionAnimations() {
     .from(".cta-title", { scale: 0.92, opacity: 0, duration: 0.8, ease: EASE.bounce })
     .from(".cta-desc", { y: 20, opacity: 0, duration: 0.6 }, "-=0.3")
     .from(".cta-details span", { scale: 0.85, opacity: 0, stagger: STAGGER.tight, duration: 0.5 }, "-=0.2")
-    .from(".cta-button", { y: 20, opacity: 0, duration: 0.6, ease: EASE.bounce }, "-=0.2");
+    .from(".contact-form", { y: 30, opacity: 0, duration: 0.8, ease: EASE.smooth }, "-=0.2");
 }
 
 // ========================================
@@ -598,6 +598,63 @@ function initConstellation() {
 }
 
 // ========================================
+// 11. Contact Form Submission
+// ========================================
+function initContactForm() {
+  const form = document.getElementById("contactForm");
+  if (!form) return;
+
+  // TODO: GASデプロイ後にURLを差し替え
+  const GAS_URL = "https://script.google.com/macros/s/PLACEHOLDER/exec";
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    // Honeypot check
+    if (form.website && form.website.value) return;
+
+    // Validation
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    const btn = document.getElementById("formSubmit");
+    const originalHTML = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '<span>送信中...</span>';
+
+    const data = {
+      name: form.querySelector('[name="name"]').value,
+      email: form.querySelector('[name="email"]').value,
+      company: form.querySelector('[name="company"]').value,
+      phone: form.querySelector('[name="phone"]').value,
+      category: form.querySelector('[name="category"]').value,
+      message: form.querySelector('[name="message"]').value
+    };
+
+    try {
+      await fetch(GAS_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+
+      // Success — hide form, show thank you
+      form.hidden = true;
+      const success = document.getElementById("formSuccess");
+      success.hidden = false;
+      success.scrollIntoView({ behavior: "smooth", block: "center" });
+    } catch (err) {
+      btn.disabled = false;
+      btn.innerHTML = originalHTML;
+      alert("送信に失敗しました。お手数ですが nishikawa@omoshiku.jp まで直接ご連絡ください。");
+    }
+  });
+}
+
+// ========================================
 // INIT
 // ========================================
 const mm = gsap.matchMedia();
@@ -608,6 +665,7 @@ initNavigation();
 initAccordion();
 initTypewriter();
 initParticles();
+initContactForm();
 
 mm.add("(min-width: 769px)", () => {
   initHeroParallax();
