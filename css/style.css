@@ -995,6 +995,9 @@ img { max-width: 100%; height: auto; display: block; }
   background: #fff;
   border: 1px solid var(--border);
   transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .number-card:hover {
@@ -1012,6 +1015,10 @@ img { max-width: 100%; height: auto; display: block; }
   -webkit-text-fill-color: transparent;
   margin-bottom: 8px;
   line-height: 1.2;
+  min-height: 3.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .number-label {
