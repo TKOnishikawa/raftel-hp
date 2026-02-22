@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>omoshiku | 想いと仕組みで面白く</title>
+<meta name="description" content="「何をつくるべきか」を戦略から一緒に考え、その場で実装する。経営と現場とシステムのブリッジ役。">
+<!-- OGP -->
+<meta property="og:title" content="omoshiku | 想いと仕組みで面白く">
+<meta property="og:description" content="「何をつくるべきか」を戦略から一緒に考え、その場で実装する。経営と現場とシステムのブリッジ役。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tkonishikawa.github.io/raftel-hp/v5/">
+<meta property="og:site_name" content="omoshiku">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Antique&family=Sora:wght@300;400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<!-- Styles -->
+<link rel="stylesheet" href="css/style.css">
+<!-- GSAP -->
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/gsap.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/ScrollTrigger.min.js"></script>
+<script defer src="js/main.js"></script>
+</head>
+<body>
+
+<div class="mouse-glow" id="mouseGlow"></div>
+
+<!-- ========================================
+     Navigation
+     ======================================== -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">omoshiku</a>
+    <div class="nav-links" id="navLinks">
+      <a href="#problem">Problem</a>
+      <a href="#approach">Approach</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#results">Results</a>
+      <a href="#contact" class="nav-contact">Contact</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#problem">Problem</a>
+    <a href="#approach">Approach</a>
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#results">Results</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- ========================================
+     Section 1: Hero (FV)
+     ======================================== -->
+<section class="hero" id="hero">
+  <!-- Background Layers -->
+  <div class="hero-bg">
+    <div class="hero-orb hero-orb--1"></div>
+    <div class="hero-orb hero-orb--2"></div>
+    <div class="hero-orb hero-orb--3"></div>
+  </div>
+  <div class="hero-mesh"></div>
+  <div class="hero-scanlines"></div>
+
+  <!-- Content -->
+  <div class="hero-content">
+    <span class="typewriter-label"><span id="typewriterText"></span><span class="typewriter-cursor"></span></span>
+    <h1 class="hero-catch">
+      <span class="line-mask">
+        <span class="line-inner"><span class="accent-text">想い</span>と<span class="accent-text">仕組み</span>で<span class="shimmer-text">面白く</span></span>
+      </span>
+    </h1>
+    <p class="hero-sub">「何をつくるべきか」を戦略から一緒に考え設計し、その場で実装する。<br>経営と現場とシステムのブリッジ役。</p>
+    <div class="hero-cta-group">
+      <a href="#contact" class="hero-cta magnetic" data-strength="0.3">
+        まずは相談する
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+      <a href="#services" class="hero-cta-secondary magnetic" data-strength="0.2">
+        サービスを見る
+      </a>
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ========================================
+     Section 2: Problem
+     ======================================== -->
+<section class="section section-light" id="problem">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">01</span>
+      <span class="section-label">Problem</span>
+      <h2 class="section-title">こんな課題、<br class="br-mobile">ありませんか？</h2>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+        </div>
+        <h3>ツールを入れたのに、誰も使っていない</h3>
+        <p>業務管理ツール、顧客管理システム…導入したはずなのに、月額費用だけが積み上がっている。「支出」が「投資」に変わらない。</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>「ベテランの勘頼み」から抜け出せない</h3>
+        <p>トップ営業のやり方が言語化されず、組織に残らない。「あの人だからできる」で終わってしまい、チーム全体の底上げにつながらない。</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        </div>
+        <h3>システム会社に何を頼めばいいかわからない</h3>
+        <p>課題はぼんやりある。でも、技術で何ができるのか見えない。「で、何を作りますか？」と聞かれて止まってしまう。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     Section 3: What We Do (Approach)
+     ======================================== -->
+<section class="section section-warm" id="approach">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <span class="section-label">Approach</span>
+      <h2 class="section-title">一人の専門家が、<br class="br-mobile">一気通貫で伴走する</h2>
+    </div>
+
+    <!-- Principle Box -->
+    <div class="principle-box">
+      <div class="principle-orb"></div>
+      <div class="principle-text">
+        <p>システム会社に頼むと、言われたものは作ってくれる。<span class="em">でも「何を作るべきか」は教えてくれない。</span></p>
+        <p>コンサルに頼むと、立派な資料はできる。<span class="em">でも現場に実装されない。</span></p>
+        <p class="principle-conclusion">omoshikuは、「何を・なぜ作るべきか」を一緒に考え、<br>そのまま手を動かして実装する。</p>
+      </div>
+    </div>
+
+    <!-- Three Pillars -->
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <span class="pillar-label">Coaching</span>
+        <h3>想いを言葉にする</h3>
+        <p>「内部の人同士だと当たり前すぎて言語化できない」。外部からの問いかけで、あなたの中にある答えを引き出す。</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <span class="pillar-label">Consulting</span>
+        <h3>勝ちパターンを見つける</h3>
+        <p>トップパフォーマーの暗黙知をデータで裏付け、チーム全員が再現できる形に変換する。</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <span class="pillar-label">Engineering</span>
+        <h3>その場で実装する</h3>
+        <p>業務自動化、レポート生成、管理ツール構築。「作りたいイメージはあるが手が動かない」を即解決。</p>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <div class="compare-section">
+      <h3 class="compare-title">なぜ、omoshikuなのか</h3>
+      <div class="compare-table-wrap">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th class="compare-highlight">omoshiku</th>
+              <th>システム会社 / SIer</th>
+              <th>コンサル会社</th>
+              <th>フリーランスエンジニア</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="compare-row-label">業務理解</td>
+              <td class="compare-highlight"><span class="compare-best">&#9678;</span></td>
+              <td><span class="compare-mid">&#9651;</span></td>
+              <td><span class="compare-best">&#9678;</span></td>
+              <td><span class="compare-low">&#10005;</span></td>
+            </tr>
+            <tr>
+              <td class="compare-row-label">要件定義</td>
+              <td class="compare-highlight"><span class="compare-best">&#9678;</span></td>
+              <td><span class="compare-mid">&#9651;</span></td>
+              <td><span class="compare-good">&#9675;</span></td>
+              <td><span class="compare-low">&#10005;</span></td>
+            </tr>
+            <tr>
+              <td class="compare-row-label">直接実装</td>
+              <td class="compare-highlight"><span class="compare-best">&#9678;</span></td>
+              <td><span class="compare-best">&#9678;</span></td>
+              <td><span class="compare-low">&#10005;</span></td>
+              <td><span class="compare-best">&#9678;</span></td>
+            </tr>
+            <tr>
+              <td class="compare-row-label">継続伴走</td>
+              <td class="compare-highlight"><span class="compare-best">&#9678;</span></td>
+              <td><span class="compare-good">&#9675;</span></td>
+              <td><span class="compare-mid">&#9651;</span></td>
+              <td><span class="compare-low">&#10005;</span></td>
+            </tr>
+            <tr>
+              <td class="compare-row-label">コスト効率</td>
+              <td class="compare-highlight"><span class="compare-best">&#9678;</span></td>
+              <td><span class="compare-mid">&#9651;</span></td>
+              <td><span class="compare-mid">&#9651;</span></td>
+              <td><span class="compare-good">&#9675;</span></td>
+            </tr>
+            <tr>
+              <td class="compare-row-label">スピード</td>
+              <td class="compare-highlight"><span class="compare-best">&#9678;</span></td>
+              <td><span class="compare-mid">&#9651;</span></td>
+              <td><span class="compare-mid">&#9651;</span></td>
+              <td><span class="compare-good">&#9675;</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     Section 4: Services
+     ======================================== -->
+<section class="section section-dark" id="services">
+  <div class="service-ambient"></div>
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">03</span>
+      <span class="section-label">Services</span>
+      <h2 class="section-title">課題のフェーズに合わせた<br class="br-mobile">2つの支援メニュー</h2>
+    </div>
+    <div class="service-grid service-grid--two">
+      <!-- 月額パートナー -->
+      <a href="#contact" class="service-card service-card--featured">
+        <div class="service-card-badge service-card-badge--featured">Popular</div>
+        <div class="service-card-content">
+          <span class="service-card-num">SERVICE 01</span>
+          <h3 class="service-card-title">月額パートナー</h3>
+          <p class="service-card-desc">月3-4回の定例 + チャット随時対応。<br>業務課題の整理から要件定義、ツール実装まで伴走。</p>
+          <div class="service-card-meta">
+            <span class="service-card-price">¥150,000〜/月</span>
+            <span class="service-card-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </span>
+          </div>
+        </div>
+      </a>
+      <!-- スポット相談 -->
+      <a href="#contact" class="service-card">
+        <div class="service-card-badge">Spot</div>
+        <div class="service-card-content">
+          <span class="service-card-num">SERVICE 02</span>
+          <h3 class="service-card-title">スポット相談</h3>
+          <p class="service-card-desc">単発の壁打ち・セカンドオピニオン。<br>「まず一度話してみたい」方向け。</p>
+          <div class="service-card-meta">
+            <span class="service-card-price">¥50,000〜/回</span>
+            <span class="service-card-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </span>
+          </div>
+        </div>
+      </a>
+    </div>
+    <p style="text-align:center; color: var(--text-on-dark); opacity: 0.5; font-size: 0.85rem; margin-top: 1.5rem;">※ 大型案件（システム構築等）は別途お見積り</p>
+  </div>
+</section>
+
+<!-- ========================================
+     Section 5: About
+     ======================================== -->
+<section class="section section-warm" id="about">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">04</span>
+      <span class="section-label">About</span>
+      <h2 class="section-title">代表プロフィール</h2>
+    </div>
+    <div class="about-split">
+      <div class="about-photo">
+        <div class="about-photo-placeholder">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+      </div>
+      <div class="about-detail">
+        <h3 class="about-name">西川 太雄<span class="about-name-en">Takao Nishikawa</span></h3>
+        <p class="about-role">omoshiku 代表 / DXマネージャー</p>
+        <div class="about-career">
+          <div class="career-step">
+            <span class="career-company">マクロミル</span>
+            <span class="career-desc">リサーチ・データ分析の基礎</span>
+          </div>
+          <div class="career-step">
+            <span class="career-company">MTG</span>
+            <span class="career-desc">事業成長・マーケティング戦略</span>
+          </div>
+          <div class="career-step">
+            <span class="career-company">アクセンチュア</span>
+            <span class="career-desc">DX・テクノロジーコンサルティング</span>
+          </div>
+          <div class="career-step career-step--current">
+            <span class="career-company">年商25億円スタートアップ DXマネージャー × omoshiku 代表</span>
+            <span class="career-desc">現在も事業会社でデジタル戦略を推進しながら、その実践知を外部企業にも展開</span>
+          </div>
+        </div>
+        <blockquote class="about-quote">
+          「根拠のない確信を育て、論理的な熱狂でぶち抜く。」
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     Section 6: Results (Numbers + Projects)
+     ======================================== -->
+<section class="section section-light" id="results">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">05</span>
+      <span class="section-label">Results</span>
+      <h2 class="section-title">支援実績</h2>
+    </div>
+    <div class="numbers-grid">
+      <div class="number-card">
+        <div class="number-value" data-count="10" data-prefix="0→" data-suffix="億">0</div>
+        <div class="number-label">売上成長</div>
+        <p class="number-desc">創業期から10億円規模まで伴走支援</p>
+      </div>
+      <div class="number-card">
+        <div class="number-value" data-count="7" data-prefix="+" data-suffix="億円">0</div>
+        <div class="number-label">売上インパクト</div>
+        <p class="number-desc">データ活用による直接的な売上貢献</p>
+      </div>
+      <div class="number-card">
+        <div class="number-value" data-count="1.4" data-prefix="" data-suffix="x" data-decimals="1">0</div>
+        <div class="number-label">LTV向上</div>
+        <p class="number-desc">顧客生涯価値の大幅改善を実現</p>
+      </div>
+      <div class="number-card">
+        <div class="number-value" data-count="10" data-prefix="" data-suffix="+">0</div>
+        <div class="number-label">支援プロジェクト</div>
+        <p class="number-desc">多業種での実践的なDX推進実績</p>
+      </div>
+    </div>
+
+    <!-- Projects Accordion -->
+    <h3 class="results-sub-title">プロジェクト実績</h3>
+    <div class="project-list">
+      <div class="project-item">
+        <button class="project-header" aria-expanded="false">
+          <div class="project-header-content">
+            <span class="project-tag">D2C</span>
+            <span class="project-title">某D2Cブランド — 売上0→10億円の成長支援</span>
+          </div>
+          <svg class="project-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="project-body">
+          <div class="project-body-inner">
+            <p>創業初期からグロースパートナーとして伴走。ブランド戦略の策定から、広告運用・CRM構築・データ基盤整備までを一気通貫で支援し、3年で売上10億円規模への成長を実現。</p>
+            <div class="project-tags">
+              <span>戦略設計</span><span>広告運用</span><span>CRM構築</span><span>データ分析</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="project-item">
+        <button class="project-header" aria-expanded="false">
+          <div class="project-header-content">
+            <span class="project-tag">SaaS</span>
+            <span class="project-title">某SaaS企業 — LTV 1.4倍改善</span>
+          </div>
+          <svg class="project-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="project-body">
+          <div class="project-body-inner">
+            <p>解約率の高さが課題だったSaaSプロダクトに対し、ユーザー行動データの分析基盤を構築。離脱予兆の検知モデルとオンボーディング改善施策を実装し、LTVを1.4倍に改善。</p>
+            <div class="project-tags">
+              <span>データ基盤</span><span>解約分析</span><span>KPI設計</span><span>自動化</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="project-item">
+        <button class="project-header" aria-expanded="false">
+          <div class="project-header-content">
+            <span class="project-tag">小売</span>
+            <span class="project-title">某小売チェーン — データドリブン経営の実現</span>
+          </div>
+          <svg class="project-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="project-body">
+          <div class="project-body-inner">
+            <p>店舗ごとにバラバラだったデータをBigQueryに統合し、リアルタイムダッシュボードを構築。経営会議の意思決定スピードが劇的に向上し、在庫最適化による利益率改善を実現。</p>
+            <div class="project-tags">
+              <span>BQ構築</span><span>ダッシュボード</span><span>在庫最適化</span><span>経営支援</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="project-item">
+        <button class="project-header" aria-expanded="false">
+          <div class="project-header-content">
+            <span class="project-tag">人材</span>
+            <span class="project-title">某人材サービス — 広告ROAS 3倍改善</span>
+          </div>
+          <svg class="project-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="project-body">
+          <div class="project-body-inner">
+            <p>Meta・Google広告のデータをBigQueryに統合し、クリエイティブ×オーディエンスの組み合わせ分析を自動化。勝ちパターンの特定と予算配分の最適化により、ROAS 3倍を達成。</p>
+            <div class="project-tags">
+              <span>広告分析</span><span>ROAS改善</span><span>データ統合</span><span>自動レポート</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     Section 7: Contact (CTA)
+     ======================================== -->
+<section class="section section-cta" id="contact">
+  <div class="cta-bg">
+    <div class="cta-orb cta-orb--1"></div>
+    <div class="cta-orb cta-orb--2"></div>
+  </div>
+  <div class="container cta-content">
+    <span class="section-number section-number--light">06</span>
+    <h2 class="cta-title">「何を頼めばいいかわからない」でOKです。</h2>
+    <p class="cta-desc">まずは30分、あなたの「なんとなく不便」を聞かせてください。<br>対話の中から、一緒に答えを見つけていきましょう。</p>
+    <div class="cta-details">
+      <span>初回相談 無料</span>
+      <span>オンライン対応</span>
+      <span>秘密厳守</span>
+    </div>
+    <a href="https://forms.gle/placeholder" class="cta-button" target="_blank" rel="noopener">
+      無料相談を予約する
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ========================================
+     Footer
+     ======================================== -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <span class="footer-logo">omoshiku</span>
+      <p class="footer-tagline">想いと仕組みで面白く</p>
+    </div>
+    <div class="footer-links">
+      <a href="#problem">Problem</a>
+      <a href="#approach">Approach</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#results">Results</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 omoshiku. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
