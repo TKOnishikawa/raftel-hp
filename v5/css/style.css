@@ -1694,12 +1694,16 @@ tbody tr:last-child td.compare-highlight {
   }
 
   .about-photo {
-    text-align: center;
+    display: flex;
+    justify-content: center;
   }
 
   .about-photo-img {
     max-width: 240px;
-    margin: 0 auto;
+  }
+
+  .about-detail {
+    text-align: center;
   }
 
   .about-name,
