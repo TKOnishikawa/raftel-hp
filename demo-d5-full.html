@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>omoshiku — D5 Kinetic + Full Craft + Geometric Lines</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Antique&family=Sora:wght@300;400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+a { text-decoration: none; color: inherit; }
+body { font-family: 'Noto Sans JP', sans-serif; background: #0a0a14; color: #f0ece6; overflow-x: hidden; }
+
+:root {
+  --nh-dark: #0a0a14; --nh-dark2: #0b0b12; --nh-warm: #f6f3ee;
+  --nh-amber: #e8944a; --nh-rose: #d4627a; --nh-pink: #ff7eb3; --nh-blue: #4a9eff;
+  --nh-text: #f0ece6; --nh-text-sub: rgba(240,236,230,0.7);
+  --nh-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* === Toggle === */
+.toggle-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  background: rgba(10,10,20,0.96); backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex; align-items: center; justify-content: center; padding: 8px 16px;
+}
+.toggle-row { display: flex; gap: 3px; background: rgba(255,255,255,0.05); border-radius: 8px; padding: 3px; }
+.toggle-btn {
+  padding: 7px 14px; font-family: 'Sora', sans-serif; font-size: 0.65rem; font-weight: 600;
+  letter-spacing: 0.03em; color: rgba(240,236,230,0.35);
+  border: none; background: transparent; cursor: pointer;
+  border-radius: 5px; transition: all 0.3s var(--nh-ease); white-space: nowrap;
+}
+.toggle-btn:hover { color: rgba(240,236,230,0.65); }
+.toggle-btn.active { background: rgba(255,255,255,0.1); color: var(--nh-pink); box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+
+.demo { display: none; }
+.demo.active { display: block; }
+
+/* === Hero (D5 Kinetic + Full Craft) === */
+.hero {
+  position: relative; min-height: 100vh; display: flex; align-items: center;
+  overflow: hidden; padding-top: 56px; background: var(--nh-dark);
+}
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 1200px; margin: 0 auto; padding: 0 40px; padding-top: 80px;
+}
+.mesh-bg { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 25% 30%, rgba(232,148,74,0.14) 0%, transparent 50%), radial-gradient(ellipse at 75% 20%, rgba(212,98,122,0.1) 0%, transparent 45%), radial-gradient(ellipse at 60% 70%, rgba(74,154,255,0.08) 0%, transparent 50%), radial-gradient(ellipse at 30% 80%, rgba(255,126,179,0.06) 0%, transparent 40%); background-size: 200% 200%; animation: mesh-flow 16s ease infinite alternate; pointer-events: none; }
+@keyframes mesh-flow { 0% { background-position: 0% 0%, 100% 0%, 60% 100%, 0% 80%; } 100% { background-position: 100% 100%, 0% 100%, 0% 0%, 100% 50%; } }
+.glow-amber { position: absolute; top: 10%; right: -8%; width: 900px; height: 700px; border-radius: 50%; background: radial-gradient(ellipse, rgba(232,148,74,0.12) 0%, rgba(214,98,122,0.08) 40%, transparent 70%); filter: blur(60px); pointer-events: none; animation: breathe 10s ease-in-out infinite; }
+.glow-blue { position: absolute; bottom: -15%; left: 0%; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(74,154,255,0.1) 0%, transparent 65%); filter: blur(50px); pointer-events: none; animation: breathe 12s ease-in-out infinite 2s; }
+@keyframes breathe { 0%, 100% { opacity: 0.8; transform: scale(1); } 50% { opacity: 1; transform: scale(1.05); } }
+
+/* Marquee */
+.marquee-track { position: absolute; bottom: 10%; left: 0; width: 200%; z-index: 0; display: flex; animation: marquee-scroll 20s linear infinite; }
+.marquee-text { font-family: 'Sora', sans-serif; font-size: clamp(5rem, 12vw, 10rem); font-weight: 900; white-space: nowrap; letter-spacing: -0.02em; -webkit-text-stroke: 1px rgba(212,98,122,0.1); color: transparent; padding-right: 80px; }
+@keyframes marquee-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* Hero text */
+.typewriter-label { font-family: 'Sora', sans-serif; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--nh-amber); margin-bottom: 40px; opacity: 0; animation: fade-up 0.6s 0.2s var(--nh-ease) forwards; }
+.typewriter-label::before { content: ''; display: inline-block; width: 40px; height: 1px; background: linear-gradient(90deg, var(--nh-amber), var(--nh-rose)); margin-right: 16px; vertical-align: middle; }
+.typewriter-cursor { display: inline-block; width: 2px; height: 1em; background: var(--nh-amber); vertical-align: text-bottom; margin-left: 2px; animation: cursor-blink 0.8s step-end infinite; }
+@keyframes cursor-blink { 50% { opacity: 0; } }
+.hero-catch { font-family: 'Zen Antique', serif; font-size: clamp(3.2rem, 8vw, 6rem); font-weight: 400; line-height: 1.5; letter-spacing: 0.04em; color: var(--nh-text); margin-bottom: 40px; }
+.hero-catch .line-1 { display: block; opacity: 0; animation: fade-up 0.8s 0.5s var(--nh-ease) forwards; }
+.hero-catch .line-2 { display: block; opacity: 0; animation: fade-up 0.8s 0.7s var(--nh-ease) forwards; }
+.hero-catch .em { background: linear-gradient(135deg, var(--nh-amber) 0%, var(--nh-rose) 60%, var(--nh-pink) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.shimmer-text { background: linear-gradient(90deg, var(--nh-amber) 0%, var(--nh-rose) 25%, var(--nh-pink) 40%, #fff 50%, var(--nh-pink) 60%, var(--nh-rose) 75%, var(--nh-amber) 100%); background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: shimmer-flow 4s ease-in-out infinite; }
+@keyframes shimmer-flow { 0% { background-position: 100% center; } 50% { background-position: 0% center; } 100% { background-position: 100% center; } }
+.hero-sub { font-size: clamp(0.9rem, 1.4vw, 1.05rem); color: var(--nh-text-sub); line-height: 2; max-width: 540px; margin-bottom: 56px; opacity: 0; animation: fade-up 0.6s 0.9s var(--nh-ease) forwards; }
+.cta-group { display: flex; gap: 16px; flex-wrap: wrap; opacity: 0; animation: fade-up 0.6s 1.2s var(--nh-ease) forwards; }
+.cta-primary { display: inline-flex; align-items: center; gap: 12px; padding: 18px 44px; background: linear-gradient(135deg, var(--nh-amber), var(--nh-rose), #c04070); color: #fff; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 0.95rem; border-radius: 4px; transition: transform 0.3s var(--nh-ease), box-shadow 0.3s; }
+.cta-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(212,98,122,0.35); }
+.cta-secondary { display: inline-flex; align-items: center; gap: 12px; padding: 18px 44px; border: 1px solid rgba(212,98,122,0.3); color: #fff; font-family: 'Sora', sans-serif; font-weight: 600; font-size: 0.95rem; border-radius: 4px; transition: all 0.3s; }
+.cta-secondary:hover { border-color: var(--nh-rose); background: rgba(212,98,122,0.06); }
+.scroll-ind { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; z-index: 2; opacity: 0; animation: fade-up 0.6s 1.8s ease-out forwards; }
+.scroll-ind span { font-family: 'Sora', sans-serif; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(240,236,230,0.35); }
+.scroll-line { width: 1px; height: 60px; background: rgba(255,255,255,0.1); position: relative; overflow: hidden; }
+.scroll-line::after { content: ''; position: absolute; top: -60px; width: 100%; height: 60px; background: linear-gradient(180deg, var(--nh-amber), var(--nh-rose)); animation: scroll-anim 2s ease-in-out infinite; }
+.mouse-glow { position: fixed; z-index: 1; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(212,98,122,0.12) 0%, rgba(232,148,74,0.06) 30%, transparent 70%); pointer-events: none; transform: translate(-50%, -50%); transition: opacity 0.4s; opacity: 0; will-change: left, top; }
+.mouse-glow.visible { opacity: 1; }
+.magnetic { transition: transform 0.15s ease-out; }
+.magnetic.returning { transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1); }
+@keyframes fade-up { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes scroll-anim { 0% { top: -60px; } 100% { top: 60px; } }
+
+/* ========================================
+   SECTIONS — Content with geometric lines
+   ======================================== */
+.sec { position: relative; padding: 160px 0; overflow: hidden; }
+.sec-dark { background: var(--nh-dark); color: var(--nh-text); }
+.sec-warm { background: var(--nh-warm); color: #1a1a24; }
+.sec-dark2 { background: var(--nh-dark2); color: var(--nh-text); }
+.sec-container { max-width: 1200px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 2; }
+.sec-label { font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--nh-rose); margin-bottom: 16px; }
+.sec-dark .sec-label { color: var(--nh-amber); }
+.sec-label::before { content: ''; display: inline-block; width: 24px; height: 1px; background: linear-gradient(90deg, var(--nh-amber), var(--nh-rose)); margin-right: 12px; vertical-align: middle; }
+.sec-title { font-family: 'Sora', sans-serif; font-size: clamp(2rem, 3.5vw, 2.6rem); font-weight: 800; line-height: 1.35; margin-bottom: 24px; }
+.sec-body { font-size: 0.92rem; line-height: 2; color: var(--nh-text-sub); max-width: 640px; }
+.sec-warm .sec-body { color: #4a4a5a; }
+.cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+.card { padding: 40px 32px; border-radius: 12px; transition: transform 0.3s var(--nh-ease), box-shadow 0.3s; }
+.sec-warm .card { background: rgba(255,255,255,0.7); border: 1px solid rgba(26,26,36,0.06); }
+.sec-warm .card:hover { transform: translateY(-3px); box-shadow: 0 16px 48px rgba(212,98,122,0.1); }
+.sec-dark .card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); }
+.sec-dark .card:hover { transform: translateY(-3px); box-shadow: 0 16px 48px rgba(74,154,255,0.1); }
+.card .num { font-family: 'Inter', monospace; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 20px; color: var(--nh-blue); }
+.card h4 { font-size: 1rem; font-weight: 700; line-height: 1.7; margin-bottom: 12px; }
+.card p { font-size: 0.88rem; line-height: 1.8; }
+.sec-warm .card p { color: #4a4a5a; }
+.sec-dark .card p { color: rgba(240,236,230,0.6); }
+
+/* Badge */
+.line-badge { position: absolute; top: 20px; right: 40px; font-family: 'Sora', sans-serif; font-size: 0.55rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; padding: 6px 14px; border-radius: 6px; z-index: 10; }
+.sec-warm .line-badge { background: rgba(26,26,36,0.05); color: rgba(26,26,36,0.35); }
+.sec-dark .line-badge, .sec-dark2 .line-badge { background: rgba(255,255,255,0.05); color: rgba(240,236,230,0.35); }
+
+/* ========================================
+   GEOMETRIC LINE ANIMATIONS
+   ======================================== */
+.geo-svg {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 1; pointer-events: none; overflow: visible;
+}
+.geo-svg path, .geo-svg line, .geo-svg circle {
+  stroke-linecap: round; stroke-linejoin: round;
+  fill: none;
+}
+
+/* Draw-in animation class */
+.geo-line {
+  stroke-dasharray: var(--len, 1000);
+  stroke-dashoffset: var(--len, 1000);
+  transition: stroke-dashoffset 0s;
+}
+.geo-line.drawn {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset var(--dur, 0.8s) var(--delay, 0s) cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Dots for nodes */
+.geo-dot {
+  r: 0;
+  transition: r 0s;
+}
+.geo-dot.drawn {
+  r: var(--r, 3);
+  transition: r 0.4s var(--delay, 0s) cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ========================================
+   LINE STYLE A — X Cross Slash
+   ======================================== */
+.line-a .x-slash { stroke: url(#grad-amber-rose); stroke-width: 1.5; }
+.line-a .x-accent { stroke: var(--nh-blue); stroke-width: 0.5; opacity: 0.4; }
+
+/* ========================================
+   LINE STYLE B — Angular Brackets
+   ======================================== */
+.line-b .bracket { stroke: var(--nh-rose); stroke-width: 1.5; }
+.line-b .bracket-sub { stroke: var(--nh-blue); stroke-width: 0.5; opacity: 0.3; }
+
+/* ========================================
+   LINE STYLE C — Diagonal Rain
+   ======================================== */
+.line-c .rain { stroke-width: 1; }
+.line-c .rain-amber { stroke: var(--nh-amber); opacity: 0.25; }
+.line-c .rain-rose { stroke: var(--nh-rose); opacity: 0.2; }
+.line-c .rain-blue { stroke: var(--nh-blue); opacity: 0.15; }
+
+/* ========================================
+   LINE STYLE D — Network Grid
+   ======================================== */
+.line-d .grid-line { stroke: rgba(74,154,255,0.2); stroke-width: 0.5; }
+.line-d .grid-accent { stroke: var(--nh-rose); stroke-width: 1.5; }
+.line-d .grid-dot { fill: var(--nh-blue); }
+
+/* ========================================
+   LINE STYLE E — Radial Burst
+   ======================================== */
+.line-e .burst { stroke-width: 1; }
+.line-e .burst-amber { stroke: var(--nh-amber); opacity: 0.3; }
+.line-e .burst-rose { stroke: var(--nh-rose); opacity: 0.25; }
+.line-e .burst-blue { stroke: var(--nh-blue); opacity: 0.2; }
+
+/* === Spec section === */
+.spec-sec { padding: 80px 0; background: #08080d; border-top: 1px solid rgba(255,255,255,0.04); }
+.spec-container { max-width: 900px; margin: 0 auto; padding: 0 40px; }
+.spec-title { font-family: 'Sora', sans-serif; font-size: 1.2rem; font-weight: 800; margin-bottom: 24px; }
+.spec-title .accent { color: var(--nh-rose); }
+.spec-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-bottom: 32px; }
+.spec-table th { text-align: left; padding: 8px 12px; font-weight: 600; color: rgba(240,236,230,0.4); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.spec-table td { padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,0.03); color: rgba(240,236,230,0.75); line-height: 1.7; vertical-align: top; }
+.spec-table td:first-child { font-weight: 600; color: var(--nh-text); width: 160px; }
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .toggle-row { flex-wrap: wrap; justify-content: center; }
+  .toggle-btn { padding: 5px 10px; font-size: 0.58rem; }
+  .hero-content, .sec-container, .spec-container { padding: 0 24px; }
+  .cards-grid { grid-template-columns: 1fr; }
+  .cta-group { flex-direction: column; }
+  .cta-primary, .cta-secondary { width: 100%; justify-content: center; }
+  .marquee-text { font-size: 4rem; }
+  .line-badge { display: none; }
+}
+</style>
+
+<!-- SVG Gradient Definitions -->
+<svg width="0" height="0" style="position:absolute;">
+  <defs>
+    <linearGradient id="grad-amber-rose" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e8944a"/>
+      <stop offset="100%" stop-color="#d4627a"/>
+    </linearGradient>
+    <linearGradient id="grad-rose-pink" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#d4627a"/>
+      <stop offset="100%" stop-color="#ff7eb3"/>
+    </linearGradient>
+    <linearGradient id="grad-amber-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e8944a"/>
+      <stop offset="50%" stop-color="#d4627a"/>
+      <stop offset="100%" stop-color="#4a9eff"/>
+    </linearGradient>
+  </defs>
+</svg>
+</head>
+<body>
+
+<!-- Toggle -->
+<div class="toggle-bar">
+  <div class="toggle-row">
+    <button class="toggle-btn active" data-v="a" onclick="sw('a')">A: X Cross Slash</button>
+    <button class="toggle-btn" data-v="b" onclick="sw('b')">B: Angular Brackets</button>
+    <button class="toggle-btn" data-v="c" onclick="sw('c')">C: Diagonal Rain</button>
+    <button class="toggle-btn" data-v="d" onclick="sw('d')">D: Network Grid</button>
+    <button class="toggle-btn" data-v="e" onclick="sw('e')">E: Radial Burst</button>
+  </div>
+</div>
+
+<div class="mouse-glow" id="mouseGlow"></div>
+
+<!-- ============================================================
+     Each demo: same Hero + same content, different line style
+     ============================================================ -->
+
+<!-- === A: X CROSS SLASH === -->
+<div class="demo active" id="demo-a">
+  <!-- Hero (shared structure) -->
+  <section class="hero" id="hero-a">
+    <div class="mesh-bg"></div>
+    <div class="glow-amber"></div><div class="glow-blue"></div>
+    <div class="marquee-track"><span class="marquee-text">OMOSHIKU OMOSHIKU OMOSHIKU OMOSHIKU&nbsp;</span><span class="marquee-text">OMOSHIKU OMOSHIKU OMOSHIKU OMOSHIKU&nbsp;</span></div>
+    <div class="hero-content">
+      <p class="typewriter-label"><span class="tw-text"></span><span class="typewriter-cursor"></span></p>
+      <h1 class="hero-catch"><span class="line-1"><span class="em">"想い"</span>と<span class="em">"仕組み"</span>で</span><span class="line-2"><span class="shimmer-text">"面白く"</span></span></h1>
+      <p class="hero-sub">データ / DX / AI で、中小企業の変革と熱狂を支援する</p>
+      <div class="cta-group"><a href="#" class="cta-primary magnetic" data-strength="0.3">無料相談に申し込む <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a><a href="#" class="cta-secondary magnetic" data-strength="0.2">サービス詳細を見る <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+    </div>
+    <div class="scroll-ind"><span>Scroll</span><div class="scroll-line"></div></div>
+  </section>
+
+  <!-- Section 1: X Slash on warm -->
+  <section class="sec sec-warm line-a" data-anim>
+    <div class="line-badge">A: X Cross Slash</div>
+    <svg class="geo-svg" viewBox="0 0 1200 600" preserveAspectRatio="none">
+      <path class="geo-line x-slash" d="M-50,0 L400,600" style="--len:750;--dur:0.7s;--delay:0s"/>
+      <path class="geo-line x-slash" d="M400,0 L-50,600" style="--len:750;--dur:0.7s;--delay:0.15s"/>
+      <path class="geo-line x-accent" d="M600,0 L1000,600" style="--len:720;--dur:0.6s;--delay:0.3s"/>
+      <path class="geo-line x-accent" d="M1000,0 L600,600" style="--len:720;--dur:0.6s;--delay:0.4s"/>
+    </svg>
+    <div class="sec-container">
+      <p class="sec-label">Solution</p>
+      <h2 class="sec-title">こんな課題に、心当たりはありませんか？</h2>
+      <p class="sec-body">omoshikuは、言語化から戦略、実装まで一気通貫。意図が途中で抜け落ちない。</p>
+      <div class="cards-grid">
+        <div class="card"><div class="num">01</div><h4>サービスには自信がある。<br>でも「何がいいの？」に答えられない。</h4><p>価値はわかっている。でも、端的に伝える方法が見つからない。</p></div>
+        <div class="card"><div class="num">02</div><h4>データは集まっている。<br>でも、意思決定に使えていない。</h4><p>分析→施策→検証のループが回っていない。</p></div>
+        <div class="card"><div class="num">03</div><h4>外注の納品物はきれい。<br>でも、売上は動かない。</h4><p>戦略と実装が分断され、温度差が埋まらない。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: X Slash on dark -->
+  <section class="sec sec-dark line-a" data-anim>
+    <svg class="geo-svg" viewBox="0 0 1200 500" preserveAspectRatio="none">
+      <path class="geo-line x-slash" d="M800,-50 L1250,500" style="--len:700;--dur:0.7s;--delay:0s"/>
+      <path class="geo-line x-slash" d="M1250,-50 L800,500" style="--len:700;--dur:0.7s;--delay:0.15s"/>
+      <path class="geo-line x-accent" d="M100,0 L350,500" style="--len:560;--dur:0.5s;--delay:0.25s"/>
+    </svg>
+    <div class="sec-container">
+      <p class="sec-label">Service</p>
+      <h2 class="sec-title">サービス</h2>
+      <p class="sec-body">コーチング×コンサル×エンジニアリングの三刀流で、「想い」を「仕組み」に変換する。</p>
+    </div>
+  </section>
+
+  <section class="spec-sec"><div class="spec-container">
+    <h2 class="spec-title"><span class="accent">A: X Cross Slash</span> — 仕様</h2>
+    <table class="spec-table">
+      <tr><td>コンセプト</td><td>2本の対角線が交差してX字を描く。LayerXロゴの「X」を直接引用。セクション進入時にシャキーンと描画。最もストレートな幾何学表現。</td></tr>
+      <tr><td>SVG構造</td><td>viewBox内の対角pathが2本1組。stroke-dasharray/dashoffset で描画アニメーション。</td></tr>
+      <tr><td>ストローク</td><td>メイン: amber→rose グラデ / 1.5px。サブ: blue / 0.5px / opacity 0.4。</td></tr>
+      <tr><td>タイミング</td><td>0.7s / expo-out。2本目は0.15s遅延でstagger。背景X字は0.3-0.4s遅延。</td></tr>
+      <tr><td>トリガー</td><td>IntersectionObserver (threshold: 0.15)。一度だけ発火。</td></tr>
+      <tr><td>面白さ / テクノロジー感</td><td>★★★★ / ★★★★ — ダイナミックかつ意味がある（omoshikuのクロス=統合の象徴）。</td></tr>
+    </table>
+  </div></section>
+</div>
+
+<!-- === B: ANGULAR BRACKETS === -->
+<div class="demo" id="demo-b">
+  <section class="hero" id="hero-b">
+    <div class="mesh-bg"></div><div class="glow-amber"></div><div class="glow-blue"></div>
+    <div class="marquee-track"><span class="marquee-text">OMOSHIKU OMOSHIKU OMOSHIKU OMOSHIKU&nbsp;</span><span class="marquee-text">OMOSHIKU OMOSHIKU OMOSHIKU OMOSHIKU&nbsp;</span></div>
+    <div class="hero-content"><p class="typewriter-label"><span class="tw-text"></span><span class="typewriter-cursor"></span></p><h1 class="hero-catch"><span class="line-1"><span class="em">"想い"</span>と<span class="em">"仕組み"</span>で</span><span class="line-2"><span class="shimmer-text">"面白く"</span></span></h1><p class="hero-sub">データ / DX / AI で、中小企業の変革と熱狂を支援する</p><div class="cta-group"><a href="#" class="cta-primary magnetic" data-strength="0.3">無料相談に申し込む <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a><a href="#" class="cta-secondary magnetic" data-strength="0.2">サービス詳細を見る <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></div>
+    <div class="scroll-ind"><span>Scroll</span><div class="scroll-line"></div></div>
+  </section>
+  <section class="sec sec-warm line-b" data-anim>
+    <div class="line-badge">B: Angular Brackets</div>
+    <svg class="geo-svg" viewBox="0 0 1200 600" preserveAspectRatio="none">
+      <!-- Top-left bracket -->
+      <path class="geo-line bracket" d="M0,120 L80,120 L80,0" style="--len:200;--dur:0.5s;--delay:0s"/>
+      <!-- Top-right bracket -->
+      <path class="geo-line bracket" d="M1200,120 L1120,120 L1120,0" style="--len:200;--dur:0.5s;--delay:0.1s"/>
+      <!-- Bottom-left bracket -->
+      <path class="geo-line bracket" d="M0,480 L80,480 L80,600" style="--len:200;--dur:0.5s;--delay:0.2s"/>
+      <!-- Bottom-right bracket -->
+      <path class="geo-line bracket" d="M1200,480 L1120,480 L1120,600" style="--len:200;--dur:0.5s;--delay:0.3s"/>
+      <!-- Horizontal accent -->
+      <line class="geo-line bracket-sub" x1="200" y1="300" x2="1000" y2="300" style="--len:800;--dur:0.8s;--delay:0.4s"/>
+    </svg>
+    <div class="sec-container">
+      <p class="sec-label">Solution</p>
+      <h2 class="sec-title">こんな課題に、心当たりはありませんか？</h2>
+      <p class="sec-body">omoshikuは、言語化から戦略、実装まで一気通貫。意図が途中で抜け落ちない。</p>
+      <div class="cards-grid">
+        <div class="card"><div class="num">01</div><h4>サービスには自信がある。<br>でも「何がいいの？」に答えられない。</h4><p>価値はわかっている。でも、端的に伝える方法が見つからない。</p></div>
+        <div class="card"><div class="num">02</div><h4>データは集まっている。<br>でも、意思決定に使えていない。</h4><p>分析→施策→検証のループが回っていない。</p></div>
+        <div class="card"><div class="num">03</div><h4>外注の納品物はきれい。<br>でも、売上は動かない。</h4><p>戦略と実装が分断され、温度差が埋まらない。</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="sec sec-dark line-b" data-anim>
+    <svg class="geo-svg" viewBox="0 0 1200 500" preserveAspectRatio="none">
+      <path class="geo-line bracket" d="M560,0 L560,80 L640,80 L640,0" style="--len:240;--dur:0.6s;--delay:0s"/>
+      <path class="geo-line bracket" d="M560,500 L560,420 L640,420 L640,500" style="--len:240;--dur:0.6s;--delay:0.15s"/>
+      <line class="geo-line bracket-sub" x1="0" y1="250" x2="500" y2="250" style="--len:500;--dur:0.7s;--delay:0.3s"/>
+      <line class="geo-line bracket-sub" x1="700" y1="250" x2="1200" y2="250" style="--len:500;--dur:0.7s;--delay:0.35s"/>
+    </svg>
+    <div class="sec-container"><p class="sec-label">Service</p><h2 class="sec-title">サービス</h2><p class="sec-body">コーチング×コンサル×エンジニアリングの三刀流。</p></div>
+  </section>
+  <section class="spec-sec"><div class="spec-container">
+    <h2 class="spec-title"><span class="accent">B: Angular Brackets</span> — 仕様</h2>
+    <table class="spec-table">
+      <tr><td>コンセプト</td><td>四隅からL字ブラケットが描画され、コンテンツを「フレーミング」する。コード &lt;brackets&gt; のメタファー。建築的な構造美。</td></tr>
+      <tr><td>SVG構造</td><td>L字path × 4（四隅） + 水平線accent。各セクションで配置パターンを変える。</td></tr>
+      <tr><td>ストローク</td><td>ブラケット: rose / 1.5px。アクセント線: blue / 0.5px / opacity 0.3。</td></tr>
+      <tr><td>タイミング</td><td>0.5-0.6s / expo-out。四隅が0.1s刻みで順次描画。中央線は最後に0.4s遅延。</td></tr>
+      <tr><td>面白さ / テクノロジー感</td><td>★★★☆ / ★★★★★ — 最もアーキテクチャル。IDE/エディタの括弧を連想。構造的美しさ。</td></tr>
+    </table>
+  </div></section>
+</div>
+
+<!-- === C: DIAGONAL RAIN === -->
+<div class="demo" id="demo-c">
+  <section class="hero" id="hero-c">
+    <div class="mesh-bg"></div><div class="glow-amber"></div><div class="glow-blue"></div>
+    <div class="marquee-track"><span class="marquee-text">OMOSHIKU OMOSHIKU OMOSHIKU OMOSHIKU&nbsp;</span><span class="marquee-text">OMOSHIKU OMOSHIKU OMOSHIKU OMOSHIKU&nbsp;</span></div>
+    <div class="hero-content"><p class="typewriter-label"><span class="tw-text"></span><span class="typewriter-cursor"></span></p><h1 class="hero-catch"><span class="line-1"><span class="em">"想い"</span>と<span class="em">"仕組み"</span>で</span><span class="line-2"><span class="shimmer-text">"面白く"</span></span></h1><p class="hero-sub">データ / DX / AI で、中小企業の変革と熱狂を支援する</p><div class="cta-group"><a href="#" class="cta-primary magnetic" data-strength="0.3">無料相談に申し込む <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a><a href="#" class="cta-secondary magnetic" data-strength="0.2">サービス詳細を見る <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></div>
+    <div class="scroll-ind"><span>Scroll</span><div class="scroll-line"></div></div>
+  </section>
+  <section class="sec sec-warm line-c" data-anim>
+    <div class="line-badge">C: Diagonal Rain</div>
+    <svg class="geo-svg" viewBox="0 0 1200 600" preserveAspectRatio="none">
+      <line class="geo-line rain rain-amber" x1="100" y1="-50" x2="350" y2="650" style="--len:750;--dur:0.6s;--delay:0s"/>
+      <line class="geo-line rain rain-rose" x1="250" y1="-50" x2="500" y2="650" style="--len:750;--dur:0.6s;--delay:0.08s"/>
+      <line class="geo-line rain rain-blue" x1="400" y1="-50" x2="650" y2="650" style="--len:750;--dur:0.6s;--delay:0.16s"/>
+      <line class="geo-line rain rain-amber" x1="550" y1="-50" x2="800" y2="650" style="--len:750;--dur:0.5s;--delay:0.24s"/>
+      <line class="geo-line rain rain-rose" x1="700" y1="-50" x2="950" y2="650" style="--len:750;--dur:0.5s;--delay:0.32s"/>
+      <line class="geo-line rain rain-blue" x1="850" y1="-50" x2="1100" y2="650" style="--len:750;--dur:0.5s;--delay:0.40s"/>
+      <line class="geo-line rain rain-amber" x1="1000" y1="-50" x2="1250" y2="650" style="--len:750;--dur:0.4s;--delay:0.48s"/>
+    </svg>
+    <div class="sec-container">
+      <p class="sec-label">Solution</p><h2 class="sec-title">こんな課題に、心当たりはありませんか？</h2><p class="sec-body">omoshikuは、言語化から戦略、実装まで一気通貫。</p>
+      <div class="cards-grid">
+        <div class="card"><div class="num">01</div><h4>サービスには自信がある。<br>でも「何がいいの？」に答えられない。</h4><p>価値はわかっている。でも、端的に伝える方法が見つからない。</p></div>
+        <div class="card"><div class="num">02</div><h4>データは集まっている。<br>でも、意思決定に使えていない。</h4><p>分析→施策→検証のループが回っていない。</p></div>
+        <div class="card"><div class="num">03</div><h4>外注の納品物はきれい。<br>でも、売上は動かない。</h4><p>戦略と実装が分断され、温度差が埋まらない。</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="sec sec-dark2 line-c" data-anim>
+    <svg class="geo-svg" viewBox="0 0 1200 500" preserveAspectRatio="none">
+      <line class="geo-line rain rain-rose" x1="900" y1="-50" x2="650" y2="550" style="--len:650;--dur:0.5s;--delay:0s"/>
+      <line class="geo-line rain rain-blue" x1="1000" y1="-50" x2="750" y2="550" style="--len:650;--dur:0.5s;--delay:0.1s"/>
+      <line class="geo-line rain rain-amber" x1="1100" y1="-50" x2="850" y2="550" style="--len:650;--dur:0.5s;--delay:0.2s"/>
+    </svg>
+    <div class="sec-container"><p class="sec-label">Service</p><h2 class="sec-title">サービス</h2><p class="sec-body">コーチング×コンサル×エンジニアリングの三刀流。</p></div>
+  </section>
+  <section class="spec-sec"><div class="spec-container">
+    <h2 class="spec-title"><span class="accent">C: Diagonal Rain</span> — 仕様</h2>
+    <table class="spec-table">
+      <tr><td>コンセプト</td><td>平行な斜線が左から右へ「雨のように」次々と描画される。データストリーム / 光線の表現。最もダイナミック。</td></tr>
+      <tr><td>SVG構造</td><td>等間隔(150px)の斜線 × 7本。各線は同じ角度。色はamber→rose→blueの3色循環。</td></tr>
+      <tr><td>ストローク</td><td>1px。amber: opacity 0.25 / rose: 0.2 / blue: 0.15。繊細さが命。</td></tr>
+      <tr><td>タイミング</td><td>0.4-0.6s。0.08s刻みのstagger（7本で計0.48s）。全体で約1s。加速感を出す。</td></tr>
+      <tr><td>面白さ / テクノロジー感</td><td>★★★★★ / ★★★★ — 最も動的でエネルギッシュ。「スピード」「加速」の表現。</td></tr>
+    </table>
+  </div></section>
+</div>
+
+<!-- === D: NETWORK GRID === -->
+<div class="demo" id="demo-d">
+  <section class="hero" id="hero-d">
+    <div class="mesh-bg"></div><div class="glow-amber"></div><div class="glow-blue"></div>
+    <div class="marquee-track"><span class="marquee-text">OMOSHIKU OMOSHIKU OMOSHIKU OMOSHIKU&nbsp;</span><span class="marquee-text">OMOSHIKU OMOSHIKU OMOSHIKU OMOSHIKU&nbsp;</span></div>
+    <div class="hero-content"><p class="typewriter-label"><span class="tw-text"></span><span class="typewriter-cursor"></span></p><h1 class="hero-catch"><span class="line-1"><span class="em">"想い"</span>と<span class="em">"仕組み"</span>で</span><span class="line-2"><span class="shimmer-text">"面白く"</span></span></h1><p class="hero-sub">データ / DX / AI で、中小企業の変革と熱狂を支援する</p><div class="cta-group"><a href="#" class="cta-primary magnetic" data-strength="0.3">無料相談に申し込む <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a><a href="#" class="cta-secondary magnetic" data-strength="0.2">サービス詳細を見る <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></div>
+    <div class="scroll-ind"><span>Scroll</span><div class="scroll-line"></div></div>
+  </section>
+  <section class="sec sec-warm line-d" data-anim>
+    <div class="line-badge">D: Network Grid</div>
+    <svg class="geo-svg" viewBox="0 0 1200 600" preserveAspectRatio="none">
+      <!-- Grid lines -->
+      <line class="geo-line grid-line" x1="200" y1="0" x2="200" y2="600" style="--len:600;--dur:0.6s;--delay:0s"/>
+      <line class="geo-line grid-line" x1="600" y1="0" x2="600" y2="600" style="--len:600;--dur:0.6s;--delay:0.05s"/>
+      <line class="geo-line grid-line" x1="1000" y1="0" x2="1000" y2="600" style="--len:600;--dur:0.6s;--delay:0.1s"/>
+      <line class="geo-line grid-line" x1="0" y1="200" x2="1200" y2="200" style="--len:1200;--dur:0.8s;--delay:0.15s"/>
+      <line class="geo-line grid-line" x1="0" y1="400" x2="1200" y2="400" style="--len:1200;--dur:0.8s;--delay:0.2s"/>
+      <!-- Accent diagonals at intersections -->
+      <path class="geo-line grid-accent" d="M180,180 L220,220" style="--len:57;--dur:0.3s;--delay:0.5s"/>
+      <path class="geo-line grid-accent" d="M220,180 L180,220" style="--len:57;--dur:0.3s;--delay:0.55s"/>
+      <path class="geo-line grid-accent" d="M580,380 L620,420" style="--len:57;--dur:0.3s;--delay:0.6s"/>
+      <path class="geo-line grid-accent" d="M620,380 L580,420" style="--len:57;--dur:0.3s;--delay:0.65s"/>
+      <!-- Nodes -->
+      <circle class="geo-dot grid-dot" cx="200" cy="200" style="--r:4;--delay:0.5s"/>
+      <circle class="geo-dot grid-dot" cx="600" cy="200" style="--r:3;--delay:0.55s"/>
+      <circle class="geo-dot grid-dot" cx="1000" cy="200" style="--r:3;--delay:0.6s"/>
+      <circle class="geo-dot grid-dot" cx="600" cy="400" style="--r:4;--delay:0.65s"/>
+      <circle class="geo-dot grid-dot" cx="200" cy="400" style="--r:3;--delay:0.7s"/>
+      <circle class="geo-dot grid-dot" cx="1000" cy="400" style="--r:3;--delay:0.75s"/>
+    </svg>
+    <div class="sec-container">
+      <p class="sec-label">Solution</p><h2 class="sec-title">こんな課題に、心当たりはありませんか？</h2><p class="sec-body">omoshikuは、言語化から戦略、実装まで一気通貫。</p>
+      <div class="cards-grid">
+        <div class="card"><div class="num">01</div><h4>サービスには自信がある。<br>でも「何がいいの？」に答えられない。</h4><p>価値はわかっている。でも、端的に伝える方法が見つからない。</p></div>
+        <div class="card"><div class="num">02</div><h4>データは集まっている。<br>でも、意思決定に使えていない。</h4><p>分析→施策→検証のループが回っていない。</p></div>
+        <div class="card"><div class="num">03</div><h4>外注の納品物はきれい。<br>でも、売上は動かない。</h4><p>戦略と実装が分断され、温度差が埋まらない。</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="sec sec-dark line-d" data-anim>
+    <svg class="geo-svg" viewBox="0 0 1200 500" preserveAspectRatio="none">
+      <line class="geo-line grid-line" x1="400" y1="0" x2="400" y2="500" style="--len:500;--dur:0.5s;--delay:0s"/>
+      <line class="geo-line grid-line" x1="800" y1="0" x2="800" y2="500" style="--len:500;--dur:0.5s;--delay:0.08s"/>
+      <line class="geo-line grid-line" x1="0" y1="250" x2="1200" y2="250" style="--len:1200;--dur:0.8s;--delay:0.15s"/>
+      <circle class="geo-dot grid-dot" cx="400" cy="250" style="--r:5;--delay:0.5s"/>
+      <circle class="geo-dot grid-dot" cx="800" cy="250" style="--r:5;--delay:0.55s"/>
+      <path class="geo-line grid-accent" d="M390,240 L410,260" style="--len:28;--dur:0.3s;--delay:0.6s"/>
+      <path class="geo-line grid-accent" d="M410,240 L390,260" style="--len:28;--dur:0.3s;--delay:0.65s"/>
+    </svg>
+    <div class="sec-container"><p class="sec-label">Service</p><h2 class="sec-title">サービス</h2><p class="sec-body">コーチング×コンサル×エンジニアリングの三刀流。</p></div>
+  </section>
+  <section class="spec-sec"><div class="spec-container">
+    <h2 class="spec-title"><span class="accent">D: Network Grid</span> — 仕様</h2>
+    <table class="spec-table">
+      <tr><td>コンセプト</td><td>直交するグリッド線が描画され、交差点にノード（点）とミニXが現れる。データネットワーク / 基盤の表現。「仕組み」の可視化。</td></tr>
+      <tr><td>SVG構造</td><td>縦線3本 + 横線2本（グリッド）→ 交差点に circle ノード → ミニX path。3層の時間差。</td></tr>
+      <tr><td>ストローク</td><td>グリッド: blue 20% / 0.5px。アクセントX: rose / 1.5px。ノード: blue fill / r:3-5px。</td></tr>
+      <tr><td>タイミング</td><td>グリッド線: 0.5-0.8s。ノード: 0.4s (r=0→target, 0.5s delay)。ミニX: 0.3s (0.6s delay)。</td></tr>
+      <tr><td>面白さ / テクノロジー感</td><td>★★★★ / ★★★★★ — 最もデータ/インフラ的。交差点のXがomoshikuのクロスを反復。</td></tr>
+    </table>
+  </div></section>
+</div>
+
+<!-- === E: RADIAL BURST === -->
+<div class="demo" id="demo-e">
+  <section class="hero" id="hero-e">
+    <div class="mesh-bg"></div><div class="glow-amber"></div><div class="glow-blue"></div>
+    <div class="marquee-track"><span class="marquee-text">OMOSHIKU OMOSHIKU OMOSHIKU OMOSHIKU&nbsp;</span><span class="marquee-text">OMOSHIKU OMOSHIKU OMOSHIKU OMOSHIKU&nbsp;</span></div>
+    <div class="hero-content"><p class="typewriter-label"><span class="tw-text"></span><span class="typewriter-cursor"></span></p><h1 class="hero-catch"><span class="line-1"><span class="em">"想い"</span>と<span class="em">"仕組み"</span>で</span><span class="line-2"><span class="shimmer-text">"面白く"</span></span></h1><p class="hero-sub">データ / DX / AI で、中小企業の変革と熱狂を支援する</p><div class="cta-group"><a href="#" class="cta-primary magnetic" data-strength="0.3">無料相談に申し込む <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a><a href="#" class="cta-secondary magnetic" data-strength="0.2">サービス詳細を見る <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></div>
+    <div class="scroll-ind"><span>Scroll</span><div class="scroll-line"></div></div>
+  </section>
+  <section class="sec sec-warm line-e" data-anim>
+    <div class="line-badge">E: Radial Burst</div>
+    <svg class="geo-svg" viewBox="0 0 1200 600" preserveAspectRatio="none">
+      <!-- Burst from top-right -->
+      <line class="geo-line burst burst-amber" x1="1000" y1="100" x2="600" y2="500" style="--len:570;--dur:0.6s;--delay:0s"/>
+      <line class="geo-line burst burst-rose" x1="1000" y1="100" x2="400" y2="350" style="--len:650;--dur:0.6s;--delay:0.06s"/>
+      <line class="geo-line burst burst-blue" x1="1000" y1="100" x2="800" y2="550" style="--len:500;--dur:0.5s;--delay:0.12s"/>
+      <line class="geo-line burst burst-amber" x1="1000" y1="100" x2="200" y2="200" style="--len:810;--dur:0.7s;--delay:0.18s"/>
+      <line class="geo-line burst burst-rose" x1="1000" y1="100" x2="500" y2="600" style="--len:710;--dur:0.6s;--delay:0.24s"/>
+      <line class="geo-line burst burst-blue" x1="1000" y1="100" x2="1200" y2="500" style="--len:440;--dur:0.5s;--delay:0.30s"/>
+      <!-- Origin dot -->
+      <circle class="geo-dot" cx="1000" cy="100" fill="#e8944a" style="--r:5;--delay:0s"/>
+    </svg>
+    <div class="sec-container">
+      <p class="sec-label">Solution</p><h2 class="sec-title">こんな課題に、心当たりはありませんか？</h2><p class="sec-body">omoshikuは、言語化から戦略、実装まで一気通貫。</p>
+      <div class="cards-grid">
+        <div class="card"><div class="num">01</div><h4>サービスには自信がある。<br>でも「何がいいの？」に答えられない。</h4><p>価値はわかっている。でも、端的に伝える方法が見つからない。</p></div>
+        <div class="card"><div class="num">02</div><h4>データは集まっている。<br>でも、意思決定に使えていない。</h4><p>分析→施策→検証のループが回っていない。</p></div>
+        <div class="card"><div class="num">03</div><h4>外注の納品物はきれい。<br>でも、売上は動かない。</h4><p>戦略と実装が分断され、温度差が埋まらない。</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="sec sec-dark line-e" data-anim>
+    <svg class="geo-svg" viewBox="0 0 1200 500" preserveAspectRatio="none">
+      <line class="geo-line burst burst-rose" x1="200" y1="400" x2="600" y2="50" style="--len:530;--dur:0.6s;--delay:0s"/>
+      <line class="geo-line burst burst-blue" x1="200" y1="400" x2="900" y2="100" style="--len:770;--dur:0.7s;--delay:0.08s"/>
+      <line class="geo-line burst burst-amber" x1="200" y1="400" x2="500" y2="200" style="--len:360;--dur:0.4s;--delay:0.16s"/>
+      <line class="geo-line burst burst-rose" x1="200" y1="400" x2="1100" y2="250" style="--len:930;--dur:0.8s;--delay:0.24s"/>
+      <circle class="geo-dot" cx="200" cy="400" fill="#d4627a" style="--r:5;--delay:0s"/>
+    </svg>
+    <div class="sec-container"><p class="sec-label">Service</p><h2 class="sec-title">サービス</h2><p class="sec-body">コーチング×コンサル×エンジニアリングの三刀流。</p></div>
+  </section>
+  <section class="spec-sec"><div class="spec-container">
+    <h2 class="spec-title"><span class="accent">E: Radial Burst</span> — 仕様</h2>
+    <table class="spec-table">
+      <tr><td>コンセプト</td><td>1点から放射状に線が伸びる「爆発」。エネルギーの放出 = omoshikuの「面白さが広がる」瞬間。セクションごとに起点を変える。</td></tr>
+      <tr><td>SVG構造</td><td>共通起点(cx,cy)から6-8本のlineが異なる角度・長さで放射。起点にcircle(r:5)ノード。</td></tr>
+      <tr><td>ストローク</td><td>1px。amber/rose/blue の3色交互。opacity 0.2-0.3（繊細さ重視）。</td></tr>
+      <tr><td>タイミング</td><td>0.4-0.8s（線の長さに比例）。0.06-0.08s刻みのstagger。ノードは即座に出現。</td></tr>
+      <tr><td>面白さ / テクノロジー感</td><td>★★★★★ / ★★★★ — 最もエネルギッシュ。花火/爆発。omoshikuの「熱狂」を最も直接的に表現。</td></tr>
+    </table>
+  </div></section>
+</div>
+
+<!-- ========================================
+     JavaScript
+     ======================================== -->
+<script>
+const mouseGlow = document.getElementById('mouseGlow');
+let twInterval = null;
+
+function sw(v) {
+  stopTw();
+  mouseGlow.classList.remove('visible');
+  document.querySelectorAll('.demo').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.toggle-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById('demo-' + v).classList.add('active');
+  document.querySelector('.toggle-btn[data-v="' + v + '"]').classList.add('active');
+  const demo = document.getElementById('demo-' + v);
+  // Re-trigger hero animations
+  demo.querySelectorAll('.typewriter-label,.hero-catch .line-1,.hero-catch .line-2,.hero-sub,.cta-group,.scroll-ind').forEach(el => { el.style.animation = 'none'; el.offsetHeight; el.style.animation = ''; });
+  // Reset geo lines
+  demo.querySelectorAll('.geo-line,.geo-dot').forEach(el => el.classList.remove('drawn'));
+  // Re-observe sections
+  initLineObservers(demo);
+  // Magnetic
+  initMagnetic(demo);
+  // Typewriter
+  startTw(demo);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Mouse glow
+let gRaf;
+document.addEventListener('mousemove', (e) => {
+  cancelAnimationFrame(gRaf);
+  gRaf = requestAnimationFrame(() => { mouseGlow.style.left = e.clientX + 'px'; mouseGlow.style.top = e.clientY + 'px'; if (!mouseGlow.classList.contains('visible')) mouseGlow.classList.add('visible'); });
+});
+
+// Magnetic
+function initMagnetic(c) {
+  c.querySelectorAll('.magnetic').forEach(btn => {
+    const n = btn.cloneNode(true); btn.parentNode.replaceChild(n, btn);
+    n.addEventListener('mousemove', (e) => { const r = n.getBoundingClientRect(); const dx = e.clientX-(r.left+r.width/2); const dy = e.clientY-(r.top+r.height/2); n.classList.remove('returning'); n.style.transform = `translate(${dx*(parseFloat(n.dataset.strength)||0.3)}px,${dy*(parseFloat(n.dataset.strength)||0.3)}px)`; });
+    n.addEventListener('mouseleave', () => { n.classList.add('returning'); n.style.transform = 'translate(0,0)'; });
+  });
+}
+
+// Typewriter
+const phrases = ['DX / AI GROWTH PARTNER','DATA-DRIVEN TRANSFORMATION','COACHING \u00d7 CONSULTING \u00d7 ENGINEERING'];
+let pI=0,cI=0,isDel=false;
+function typeStep(el) { if(!el)return; const cur=phrases[pI]; isDel?cI--:cI++; el.textContent=cur.substring(0,cI); let d=isDel?40:80; if(!isDel&&cI===cur.length){d=2500;isDel=true;} else if(isDel&&cI===0){isDel=false;pI=(pI+1)%phrases.length;d=500;} twInterval=setTimeout(()=>typeStep(el),d); }
+function startTw(c) { pI=0;cI=0;isDel=false; const el=c.querySelector('.tw-text'); if(el){el.textContent='';typeStep(el);} }
+function stopTw() { if(twInterval){clearTimeout(twInterval);twInterval=null;} }
+
+// Geometric line observer
+function initLineObservers(container) {
+  const sections = container.querySelectorAll('[data-anim]');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.geo-line, .geo-dot').forEach(el => el.classList.add('drawn'));
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  sections.forEach(sec => obs.observe(sec));
+}
+
+// Init first variant
+initLineObservers(document.getElementById('demo-a'));
+initMagnetic(document.getElementById('demo-a'));
+startTw(document.getElementById('demo-a'));
+</script>
+</body>
+</html>
