@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>omoshiku — カラー方向性デモ A/B/C</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Antique&family=Sora:wght@300;400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ========================================
+   Reset & Base
+   ======================================== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+a { text-decoration: none; color: inherit; }
+
+body {
+  font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
+  background: #0a0a14;
+  color: #f0ece6;
+  overflow-x: hidden;
+}
+
+/* ========================================
+   Toggle Bar (Fixed)
+   ======================================== */
+.toggle-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  background: rgba(10,10,20,0.92);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 0 24px;
+  display: flex; align-items: center; justify-content: center;
+  gap: 0; height: 56px;
+}
+.toggle-bar-inner {
+  display: flex; align-items: center; gap: 4px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 8px; padding: 4px;
+}
+.toggle-btn {
+  padding: 10px 28px;
+  font-family: 'Sora', sans-serif; font-size: 0.82rem; font-weight: 600;
+  letter-spacing: 0.06em; color: rgba(240,236,230,0.45);
+  border: none; background: transparent; cursor: pointer;
+  border-radius: 6px; transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+  white-space: nowrap;
+}
+.toggle-btn:hover { color: rgba(240,236,230,0.7); }
+.toggle-btn.active {
+  background: rgba(255,255,255,0.1);
+  color: #f0ece6;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.toggle-btn.active[data-theme="a"] { color: #e8944a; }
+.toggle-btn.active[data-theme="b"] { color: #a8e000; }
+.toggle-btn.active[data-theme="c"] { color: #ff7eb3; }
+
+/* ========================================
+   Demo Container
+   ======================================== */
+.demo-section { display: none; }
+.demo-section.active { display: block; }
+
+/* ========================================
+   Shared Layout
+   ======================================== */
+.hero {
+  position: relative; min-height: 100vh; display: flex; align-items: center;
+  overflow: hidden; padding-top: 56px;
+}
+.hero-content {
+  position: relative; z-index: 1;
+  max-width: 1200px; margin: 0 auto; padding: 0 40px; padding-top: 80px;
+}
+.hero-label {
+  font-family: 'Sora', sans-serif; font-size: 0.78rem; font-weight: 500;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  margin-bottom: 40px;
+  opacity: 0; animation: fade-in 0.6s 0.3s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+.hero-label::before {
+  content: ''; display: inline-block; width: 40px; height: 1px;
+  margin-right: 16px; vertical-align: middle;
+}
+.hero-catch {
+  font-family: 'Zen Antique', serif;
+  font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 400;
+  line-height: 1.5; letter-spacing: 0.08em;
+  margin-bottom: 40px;
+}
+.hero-catch .line-1 {
+  display: block;
+  opacity: 0; animation: fade-in 0.8s 0.5s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+.hero-catch .line-2 {
+  display: block;
+  opacity: 0; animation: fade-in 0.8s 0.7s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+.hero-sub {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: clamp(1rem, 1.6vw, 1.15rem); font-weight: 400;
+  line-height: 2; letter-spacing: 0.04em; max-width: 540px;
+  margin-bottom: 56px;
+  opacity: 0; animation: fade-in 0.6s 0.9s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+.hero-cta-group {
+  display: flex; gap: 16px; flex-wrap: wrap;
+  opacity: 0; animation: fade-in 0.6s 1.2s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+.hero-cta {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 18px 44px; color: #fff;
+  font-family: 'Sora', sans-serif; font-weight: 700; font-size: 0.95rem;
+  border-radius: 4px;
+  transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s cubic-bezier(0.16,1,0.3,1);
+}
+.hero-cta:hover { transform: translateY(-2px); }
+.hero-cta-secondary {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 18px 44px; border: 1px solid rgba(255,255,255,0.3);
+  color: #fff; font-family: 'Sora', sans-serif;
+  font-weight: 600; font-size: 0.95rem; border-radius: 4px;
+  transition: all 0.3s;
+}
+.hero-cta-secondary:hover { background: rgba(255,255,255,0.08); }
+.scroll-indicator {
+  position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px; z-index: 1;
+  opacity: 0; animation: fade-in 0.6s 1.8s ease-out forwards;
+}
+.scroll-indicator span {
+  font-family: 'Sora', sans-serif; font-size: 0.65rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: rgba(240,236,230,0.35);
+}
+.scroll-line {
+  width: 1px; height: 60px; background: rgba(255,255,255,0.1);
+  position: relative; overflow: hidden;
+}
+.scroll-line::after {
+  content: ''; position: absolute; top: -60px; width: 100%; height: 60px;
+  animation: scroll-down 2s ease-in-out infinite;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes scroll-down { 0% { top: -60px; } 100% { top: 60px; } }
+@keyframes ambient-breathe {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+/* ========================================
+   Cards Preview Section
+   ======================================== */
+.preview-section {
+  padding: 120px 0 100px;
+  position: relative;
+}
+.preview-container {
+  max-width: 1200px; margin: 0 auto; padding: 0 40px;
+}
+.preview-header {
+  margin-bottom: 64px;
+}
+.preview-label {
+  font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.preview-label::before {
+  content: ''; display: inline-block; width: 24px; height: 1px;
+  margin-right: 12px; vertical-align: middle;
+}
+.preview-title {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(2rem, 3.5vw, 2.6rem); font-weight: 800;
+  line-height: 1.35; letter-spacing: -0.01em;
+}
+
+.cards-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+.card {
+  padding: 40px 32px;
+  border-radius: 12px;
+  transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s;
+}
+.card:hover { transform: translateY(-3px); }
+.card .num {
+  font-family: 'Inter', monospace; font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.1em; margin-bottom: 20px;
+}
+.card h4 {
+  font-family: 'Noto Sans JP', sans-serif; font-size: 1rem; font-weight: 700;
+  line-height: 1.7; margin-bottom: 12px;
+}
+.card p {
+  font-size: 0.88rem; line-height: 1.8;
+}
+
+/* ========================================
+   Pillar Preview
+   ======================================== */
+.pillars-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
+  margin-top: 80px;
+}
+.pillar {
+  padding: 48px 32px;
+  border-radius: 12px;
+  text-align: center;
+  transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
+}
+.pillar:hover { transform: translateY(-3px); }
+.pillar .icon {
+  width: 56px; height: 56px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 24px;
+}
+.pillar .icon svg { width: 24px; height: 24px; }
+.pillar h4 {
+  font-family: 'Sora', sans-serif; font-size: 1.15rem; font-weight: 700;
+  letter-spacing: 0.04em; margin-bottom: 8px;
+}
+.pillar h5 {
+  font-size: 0.9rem; font-weight: 500; margin-bottom: 16px;
+}
+.pillar p {
+  font-size: 0.88rem; line-height: 1.8;
+}
+
+/* ========================================
+   Color Palette Display
+   ======================================== */
+.palette-section {
+  padding: 80px 0 100px;
+}
+.palette-container {
+  max-width: 1200px; margin: 0 auto; padding: 0 40px;
+}
+.palette-title {
+  font-family: 'Sora', sans-serif; font-size: 0.85rem; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  margin-bottom: 32px; color: rgba(240,236,230,0.5);
+}
+.palette-row {
+  display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 24px;
+}
+.palette-chip {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+}
+.palette-swatch {
+  width: 64px; height: 64px; border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.palette-hex {
+  font-family: 'Inter', monospace; font-size: 0.65rem; color: rgba(240,236,230,0.5);
+  letter-spacing: 0.05em;
+}
+.palette-name {
+  font-family: 'Noto Sans JP', sans-serif; font-size: 0.7rem; color: rgba(240,236,230,0.35);
+}
+
+/* ========================================
+   Direction Description
+   ======================================== */
+.direction-info {
+  padding: 0 0 80px;
+}
+.direction-container {
+  max-width: 1200px; margin: 0 auto; padding: 0 40px;
+}
+.direction-box {
+  padding: 40px; border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.direction-box h3 {
+  font-family: 'Sora', sans-serif; font-size: 1.1rem; font-weight: 700;
+  margin-bottom: 16px;
+}
+.direction-box p {
+  font-size: 0.92rem; line-height: 2; color: rgba(240,236,230,0.7);
+}
+.direction-box .keyword {
+  display: inline-block; padding: 4px 12px; border-radius: 4px;
+  font-size: 0.78rem; font-weight: 600; margin-right: 8px; margin-top: 16px;
+}
+
+/* ========================================
+   THEME A — Volcanic Amber
+   ======================================== */
+.theme-a .hero { background: #0a0a14; }
+.theme-a .hero::before {
+  content: ''; position: absolute; top: 15%; right: -10%;
+  width: 800px; height: 800px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,148,74,0.16) 0%, rgba(212,120,47,0.06) 30%, transparent 70%);
+  filter: blur(60px);
+  animation: ambient-breathe 8s ease-in-out infinite;
+}
+.theme-a .hero::after {
+  content: ''; position: absolute; bottom: -10%; left: 10%;
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(192,64,64,0.12) 0%, transparent 65%);
+  filter: blur(40px);
+  animation: ambient-breathe 12s ease-in-out infinite 2s;
+}
+.theme-a .hero-label { color: #e8944a; }
+.theme-a .hero-label::before { background: #e8944a; }
+.theme-a .hero-catch { color: #f0ece6; }
+.theme-a .hero-catch .em { color: #e8944a; }
+.theme-a .hero-sub { color: rgba(240,236,230,0.7); }
+.theme-a .hero-cta {
+  background: linear-gradient(135deg, #e8944a 0%, #c04040 100%);
+}
+.theme-a .hero-cta:hover { box-shadow: 0 8px 32px rgba(232,148,74,0.35); }
+.theme-a .hero-cta-secondary:hover { border-color: #e8944a; }
+.theme-a .scroll-line::after { background: #e8944a; }
+
+/* A - Cards (warm light) */
+.theme-a .preview-section { background: #f6f3ee; color: #1a1a24; }
+.theme-a .preview-label { color: #d4782f; }
+.theme-a .preview-label::before { background: #d4782f; }
+.theme-a .preview-title { color: #1a1a24; }
+.theme-a .card {
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(26,26,36,0.06);
+}
+.theme-a .card:hover { box-shadow: 0 16px 48px rgba(26,26,36,0.08); }
+.theme-a .card .num { color: #d4782f; }
+.theme-a .card h4 { color: #1a1a24; }
+.theme-a .card p { color: #4a4a5a; }
+
+/* A - Pillars */
+.theme-a .pillar { background: rgba(255,255,255,0.5); border: 1px solid rgba(26,26,36,0.06); }
+.theme-a .pillar .icon { background: rgba(212,120,47,0.1); }
+.theme-a .pillar .icon svg { stroke: #d4782f; }
+.theme-a .pillar h4 { color: #1a1a24; }
+.theme-a .pillar h5 { color: #d4782f; }
+.theme-a .pillar p { color: #4a4a5a; }
+
+/* A - Palette section */
+.theme-a .palette-section { background: #0b0b12; }
+.theme-a .direction-box { background: rgba(232,148,74,0.06); }
+.theme-a .direction-box h3 { color: #e8944a; }
+.theme-a .direction-box .keyword { background: rgba(232,148,74,0.15); color: #e8944a; }
+
+/* ========================================
+   THEME B — Electric Craft
+   ======================================== */
+.theme-b .hero { background: #08080d; }
+.theme-b .hero::before {
+  content: ''; position: absolute; top: 10%; right: -5%;
+  width: 700px; height: 700px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(168,224,0,0.1) 0%, rgba(168,224,0,0.03) 35%, transparent 70%);
+  filter: blur(60px);
+  animation: ambient-breathe 10s ease-in-out infinite;
+}
+.theme-b .hero::after {
+  content: ''; position: absolute; bottom: -15%; left: 5%;
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(122,90,245,0.1) 0%, transparent 65%);
+  filter: blur(50px);
+  animation: ambient-breathe 14s ease-in-out infinite 3s;
+}
+.theme-b .hero-label { color: #a8e000; }
+.theme-b .hero-label::before { background: #a8e000; }
+.theme-b .hero-catch { color: #f0f0f8; }
+.theme-b .hero-catch .em { color: #a8e000; }
+.theme-b .hero-sub { color: rgba(240,240,248,0.65); }
+.theme-b .hero-cta {
+  background: linear-gradient(135deg, #a8e000 0%, #7abf00 100%);
+  color: #08080d;
+}
+.theme-b .hero-cta:hover { box-shadow: 0 8px 32px rgba(168,224,0,0.3); }
+.theme-b .hero-cta-secondary { border-color: rgba(168,224,0,0.3); }
+.theme-b .hero-cta-secondary:hover { border-color: #a8e000; background: rgba(168,224,0,0.06); }
+.theme-b .scroll-line::after { background: #a8e000; }
+
+/* B - Cards (cool white) */
+.theme-b .preview-section { background: #f4f5f8; color: #1a1a24; }
+.theme-b .preview-label { color: #7a5af5; }
+.theme-b .preview-label::before { background: #7a5af5; }
+.theme-b .preview-title { color: #1a1a24; }
+.theme-b .card {
+  background: #fff;
+  border: 1px solid rgba(26,26,36,0.06);
+}
+.theme-b .card:hover { box-shadow: 0 16px 48px rgba(122,90,245,0.1); }
+.theme-b .card .num { color: #7a5af5; }
+.theme-b .card h4 { color: #1a1a24; }
+.theme-b .card p { color: #4a4a5a; }
+
+/* B - Pillars */
+.theme-b .pillar { background: #fff; border: 1px solid rgba(26,26,36,0.06); }
+.theme-b .pillar .icon { background: rgba(122,90,245,0.08); }
+.theme-b .pillar .icon svg { stroke: #7a5af5; }
+.theme-b .pillar h4 { color: #1a1a24; }
+.theme-b .pillar h5 { color: #a8e000; filter: brightness(0.7); }
+.theme-b .pillar p { color: #4a4a5a; }
+
+/* B - Palette section */
+.theme-b .palette-section { background: #08080d; }
+.theme-b .direction-box { background: rgba(168,224,0,0.04); }
+.theme-b .direction-box h3 { color: #a8e000; }
+.theme-b .direction-box .keyword { background: rgba(122,90,245,0.15); color: #b09aff; }
+
+/* ========================================
+   THEME C — Night Horizon
+   ======================================== */
+.theme-c .hero { background: #0a0a14; }
+.theme-c .hero::before {
+  content: ''; position: absolute; top: 10%; right: -8%;
+  width: 900px; height: 700px; border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(232,148,74,0.12) 0%, rgba(214,98,122,0.08) 40%, rgba(74,154,255,0.04) 70%, transparent 90%);
+  filter: blur(60px);
+  animation: ambient-breathe 10s ease-in-out infinite;
+}
+.theme-c .hero::after {
+  content: ''; position: absolute; bottom: -15%; left: 0%;
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(74,154,255,0.1) 0%, transparent 65%);
+  filter: blur(50px);
+  animation: ambient-breathe 12s ease-in-out infinite 2s;
+}
+.theme-c .hero-label { color: #e8944a; }
+.theme-c .hero-label::before { background: linear-gradient(90deg, #e8944a, #d4627a); }
+.theme-c .hero-catch { color: #f0ece6; }
+.theme-c .hero-catch .em {
+  background: linear-gradient(135deg, #e8944a 0%, #d4627a 60%, #ff7eb3 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.theme-c .hero-sub { color: rgba(240,236,230,0.7); }
+.theme-c .hero-cta {
+  background: linear-gradient(135deg, #e8944a 0%, #d4627a 50%, #c04070 100%);
+}
+.theme-c .hero-cta:hover { box-shadow: 0 8px 32px rgba(212,98,122,0.35); }
+.theme-c .hero-cta-secondary { border-color: rgba(212,98,122,0.3); }
+.theme-c .hero-cta-secondary:hover { border-color: #d4627a; background: rgba(212,98,122,0.06); }
+.theme-c .scroll-line::after { background: linear-gradient(180deg, #e8944a, #d4627a); }
+
+/* C - Cards (warm) */
+.theme-c .preview-section { background: #f6f3ee; color: #1a1a24; }
+.theme-c .preview-label { color: #d4627a; }
+.theme-c .preview-label::before { background: linear-gradient(90deg, #e8944a, #d4627a); }
+.theme-c .preview-title { color: #1a1a24; }
+.theme-c .card {
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(26,26,36,0.06);
+}
+.theme-c .card:hover { box-shadow: 0 16px 48px rgba(212,98,122,0.1); }
+.theme-c .card .num { color: #4a9eff; }
+.theme-c .card h4 { color: #1a1a24; }
+.theme-c .card p { color: #4a4a5a; }
+
+/* C - Pillars */
+.theme-c .pillar { background: rgba(255,255,255,0.5); border: 1px solid rgba(26,26,36,0.06); }
+.theme-c .pillar .icon { background: rgba(74,154,255,0.08); }
+.theme-c .pillar .icon svg { stroke: #4a9eff; }
+.theme-c .pillar h4 { color: #1a1a24; }
+.theme-c .pillar h5 { color: #d4627a; }
+.theme-c .pillar p { color: #4a4a5a; }
+
+/* C - Data accent elements */
+.theme-c .card .num {
+  font-family: 'Inter', monospace;
+  color: #4a9eff;
+}
+
+/* C - Palette section */
+.theme-c .palette-section { background: #0b0b12; }
+.theme-c .direction-box { background: rgba(212,98,122,0.06); }
+.theme-c .direction-box h3 {
+  background: linear-gradient(135deg, #e8944a, #d4627a);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.theme-c .direction-box .keyword { background: rgba(74,154,255,0.15); color: #4a9eff; }
+
+/* ========================================
+   Responsive
+   ======================================== */
+@media (max-width: 768px) {
+  .toggle-btn { padding: 8px 16px; font-size: 0.72rem; }
+  .hero-content { padding: 0 24px; padding-top: 60px; }
+  .hero-sub { max-width: 100%; }
+  .hero-cta-group { flex-direction: column; }
+  .hero-cta, .hero-cta-secondary { width: 100%; justify-content: center; padding: 16px 32px; }
+  .cards-grid { grid-template-columns: 1fr; }
+  .pillars-grid { grid-template-columns: 1fr; }
+  .preview-container, .palette-container, .direction-container { padding: 0 24px; }
+  .palette-swatch { width: 48px; height: 48px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ========================================
+     Toggle Bar
+     ======================================== -->
+<div class="toggle-bar">
+  <div class="toggle-bar-inner">
+    <button class="toggle-btn active" data-theme="a" onclick="switchTheme('a')">A — Volcanic Amber</button>
+    <button class="toggle-btn" data-theme="b" onclick="switchTheme('b')">B — Electric Craft</button>
+    <button class="toggle-btn" data-theme="c" onclick="switchTheme('c')">C — Night Horizon</button>
+  </div>
+</div>
+
+<!-- ========================================
+     THEME A — Volcanic Amber
+     ======================================== -->
+<div class="demo-section theme-a active" id="demo-a">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-label">DX / AI Growth Partner</p>
+      <h1 class="hero-catch">
+        <span class="line-1"><span class="em">"想い"</span>と<span class="em">"仕組み"</span>で</span>
+        <span class="line-2"><span class="em">"面白く"</span></span>
+      </h1>
+      <p class="hero-sub">データ / DX / AI で、中小企業の変革と熱狂を支援する</p>
+      <div class="hero-cta-group">
+        <a href="#" class="hero-cta">
+          無料相談に申し込む
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#" class="hero-cta-secondary">
+          サービス詳細を見る
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- Cards Preview -->
+  <section class="preview-section">
+    <div class="preview-container">
+      <div class="preview-header">
+        <p class="preview-label">Solution</p>
+        <h2 class="preview-title">こんな課題に、心当たりはありませんか？</h2>
+      </div>
+      <div class="cards-grid">
+        <div class="card">
+          <div class="num">01</div>
+          <h4>サービスには自信がある。<br>でも「何がいいの？」に答えられない。</h4>
+          <p>価値はわかっている。でも、端的に伝える方法が見つからない。</p>
+        </div>
+        <div class="card">
+          <div class="num">02</div>
+          <h4>データは集まっている。<br>でも、意思決定に使えていない。</h4>
+          <p>分析→施策→検証のループが回っていない。</p>
+        </div>
+        <div class="card">
+          <div class="num">03</div>
+          <h4>外注の納品物はきれい。<br>でも、売上は動かない。</h4>
+          <p>戦略と実装が分断され、温度差が埋まらない。</p>
+        </div>
+      </div>
+
+      <div class="pillars-grid">
+        <div class="pillar">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h4>Coaching</h4>
+          <h5>確信を、つくる。</h5>
+          <p>認知科学ベースのコーチングで、<br>想いを言語化・構造化する。</p>
+        </div>
+        <div class="pillar">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/><circle cx="12" cy="12" r="2"/></svg>
+          </div>
+          <h4>Consulting</h4>
+          <h5>確信を、科学する。</h5>
+          <p>データ分析・KPI設計で勝ち筋を特定。<br>エビデンスに基づく意思決定基盤。</p>
+        </div>
+        <div class="pillar">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 6v6M1 12h6m6 0h6"/></svg>
+          </div>
+          <h4>Engineering</h4>
+          <h5>熱狂を、実装する。</h5>
+          <p>HP制作・データ基盤・DX。<br>戦略が現場で回り続ける仕組み。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Color Palette -->
+  <section class="palette-section">
+    <div class="palette-container">
+      <h3 class="palette-title">Color Palette — A: Volcanic Amber</h3>
+      <div class="palette-row">
+        <div class="palette-chip">
+          <div class="palette-swatch" style="background: #0a0a14;"></div>
+          <span class="palette-hex">#0a0a14</span>
+          <span class="palette-name">BG Dark</span>
+        </div>
+        <div class="palette-chip">
+          <div class="palette-swatch" style="background: #f6f3ee;"></div>
+          <span class="palette-hex">#f6f3ee</span>
+          <span class="palette-name">BG Light</span>
+        </div>
+        <div class="palette-chip">
+          <div class="palette-swatch" style="background: #e8944a;"></div>
+          <span class="palette-hex">#e8944a</span>
+          <span class="palette-name">Amber</span>
+        </div>
+        <div class="palette-chip">
+          <div class="palette-swatch" style="background: #d4782f;"></div>
+          <span class="palette-hex">#d4782f</span>
+          <span class="palette-name">Amber Deep</span>
+        </div>
+        <div class="palette-chip">
+          <div class="palette-swatch" style="background: #c04040;"></div>
+          <span class="palette-hex">#c04040</span>
+          <span class="palette-name">Coral</span>
+        </div>
+        <div class="palette-chip">
+          <div class="palette-swatch" style="background: #e85d5d;"></div>
+          <span class="palette-hex">#e85d5d</span>
+          <span class="palette-name">Coral Light</span>
+        </div>
+        <div class="palette-chip">
+          <div class="palette-swatch" style="background: #2a7a6e;"></div>
+          <span class="palette-hex">#2a7a6e</span>
+          <span class="palette-name">Teal</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Direction Info -->
+  <div class="direction-info">
+    <div class="direction-container">
+      <div class="direction-box">
+        <h3>A: Volcanic Amber — 現行進化型</h3>
+        <p>
+          現在のomoshikuパレットを正統進化。amber→coral-redのグラデーションで「燃える情熱」を表現。<br>
+          温度の高さとプレミアム感のバランス。いちばん「安全」だが、「おもしろさ」の表現幅はやや狭い。
+        </p>
+        <div>
+          <span class="keyword">熱さ ★★★★★</span>
+          <span class="keyword">面白さ ★★★☆☆</span>
+          <span class="keyword">テクノロジー感 ★★★☆☆</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================
+     THEME B — Electric Craft
+     ======================================== -->
+<div class="demo-section theme-b" id="demo-b">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-label">DX / AI Growth Partner</p>
+      <h1 class="hero-catch">
+        <span class="line-1"><span class="em">"想い"</span>と<span class="em">"仕組み"</span>で</span>
+        <span class="line-2"><span class="em">"面白く"</span></span>
+      </h1>
+      <p class="hero-sub">データ / DX / AI で、中小企業の変革と熱狂を支援する</p>
+      <div class="hero-cta-group">
+        <a href="#" class="hero-cta">
+          無料相談に申し込む
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#" class="hero-cta-secondary">
+          サービス詳細を見る
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- Cards Preview -->
+  <section class="preview-section">
+    <div class="preview-container">
+      <div class="preview-header">
+        <p class="preview-label">Solution</p>
+        <h2 class="preview-title">こんな課題に、心当たりはありませんか？</h2>
+      </div>
+      <div class="cards-grid">
+        <div class="card">
+          <div class="num">01</div>
+          <h4>サービスには自信がある。<br>でも「何がいいの？」に答えられない。</h4>
+          <p>価値はわかっている。でも、端的に伝える方法が見つからない。</p>
+        </div>
+        <div class="card">
+          <div class="num">02</div>
+          <h4>データは集まっている。<br>でも、意思決定に使えていない。</h4>
+          <p>分析→施策→検証のループが回っていない。</p>
+        </div>
+        <div class="card">
+          <div class="num">03</div>
+          <h4>外注の納品物はきれい。<br>でも、売上は動かない。</h4>
+          <p>戦略と実装が分断され、温度差が埋まらない。</p>
+        </div>
+      </div>
+
+      <div class="pillars-grid">
+        <div class="pillar">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h4>Coaching</h4>
+          <h5>確信を、つくる。</h5>
+          <p>認知科学ベースのコーチングで、<br>想いを言語化・構造化する。</p>
+        </div>
+        <div class="pillar">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/><circle cx="12" cy="12" r="2"/></svg>
+          </div>
+          <h4>Consulting</h4>
+          <h5>確信を、科学する。</h5>
+          <p>データ分析・KPI設計で勝ち筋を特定。<br>エビデンスに基づく意思決定基盤。</p>
+        </div>
+        <div class="pillar">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 6v6M1 12h6m6 0h6"/></svg>
+          </div>
+          <h4>Engineering</h4>
+          <h5>熱狂を、実装する。</h5>
+          <p>HP制作・データ基盤・DX。<br>戦略が現場で回り続ける仕組み。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Color Palette -->
+  <section class="palette-section">
+    <div class="palette-container">
+      <h3 class="palette-title">Color Palette — B: Electric Craft</h3>
+      <div class="palette-row">
+        <div class="palette-chip">
+          <div class="palette-swatch" style="background: #08080d;"></div>
+          <span class="palette-hex">#08080d</span>
+          <span class="palette-name">BG Dark</span>
+        </div>
+        <div class="palette-chip">
+          <div class="palette-swatch" style="background: #f4f5f8;"></div>
+          <span class="palette-hex">#f4f5f8</span>
+          <span class="palette-name">BG Cool</span>
+        </div>
+        <div class="palette-chip">
+          <div class="palette-swatch" style="background: #a8e000;"></div>
+          <span class="palette-hex">#a8e000</span>
+          <span class="palette-name">Lime</span>
+        </div>
+        <div class="palette-chip">
+          <div class="palette-swatch" style="background: #7abf00;"></div>
+          <span class="palette-hex">#7abf00</span>
+          <span class="palette-name">Lime Deep</span>
+        </div>
+        <div class="palette-chip">
+          <div class="palette-swatch" style="background: #7a5af5;"></div>
+          <span class="palette-hex">#7a5af5</span>
+          <span class="palette-name">Violet</span>
+        </div>
+        <div class="palette-chip">
+          <div class="palette-swatch" style="background: #b09aff;"></div>
+          <span class="palette-hex">#b09aff</span>
+          <span class="palette-name">Violet Light</span>
+        </div>
+        <div class="palette-chip">
+          <div class="palette-swatch" style="background: #e8944a;"></div>
+          <span class="palette-hex">#e8944a</span>
+          <span class="palette-name">Amber (Sub)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Direction Info -->
+  <div class="direction-info">
+    <div class="direction-container">
+      <div class="direction-box">
+        <h3>B: Electric Craft — 遊び心ファースト</h3>
+        <p>
+          エレクトリックライム × バイオレットで「面白さ」を前面に。テック感と遊び心が同居する。<br>
+          Notionやlinear.appのような「プロダクトっぽい」雰囲気。amberはサブカラーに降格。<br>
+          いちばん「面白い」が、コンサルの信頼感とのバランスが課題。
+        </p>
+        <div>
+          <span class="keyword">熱さ ★★★☆☆</span>
+          <span class="keyword">面白さ ★★★★★</span>
+          <span class="keyword">テクノロジー感 ★★★★★</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================
+     THEME C — Night Horizon
+     ======================================== -->
+<div class="demo-section theme-c" id="demo-c">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-label">DX / AI Growth Partner</p>
+      <h1 class="hero-catch">
+        <span class="line-1"><span class="em">"想い"</span>と<span class="em">"仕組み"</span>で</span>
+        <span class="line-2"><span class="em">"面白く"</span></span>
+      </h1>
+      <p class="hero-sub">データ / DX / AI で、中小企業の変革と熱狂を支援する</p>
+      <div class="hero-cta-group">
+        <a href="#" class="hero-cta">
+          無料相談に申し込む
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#" class="hero-cta-secondary">
+          サービス詳細を見る
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- Cards Preview -->
+  <section class="preview-section">
+    <div class="preview-container">
+      <div class="preview-header">
+        <p class="preview-label">Solution</p>
+        <h2 class="preview-title">こんな課題に、心当たりはありませんか？</h2>
+      </div>
+      <div class="cards-grid">
+        <div class="card">
+          <div class="num">01</div>
+          <h4>サービスには自信がある。<br>でも「何がいいの？」に答えられない。</h4>
+          <p>価値はわかっている。でも、端的に伝える方法が見つからない。</p>
+        </div>
+        <div class="card">
+          <div class="num">02</div>
+          <h4>データは集まっている。<br>でも、意思決定に使えていない。</h4>
+          <p>分析→施策→検証のループが回っていない。</p>
+        </div>
+        <div class="card">
+          <div class="num">03</div>
+          <h4>外注の納品物はきれい。<br>でも、売上は動かない。</h4>
+          <p>戦略と実装が分断され、温度差が埋まらない。</p>
+        </div>
+      </div>
+
+      <div class="pillars-grid">
+        <div class="pillar">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h4>Coaching</h4>
+          <h5>確信を、つくる。</h5>
+          <p>認知科学ベースのコーチングで、<br>想いを言語化・構造化する。</p>
+        </div>
+        <div class="pillar">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/><circle cx="12" cy="12" r="2"/></svg>
+          </div>
+          <h4>Consulting</h4>
+          <h5>確信を、科学する。</h5>
+          <p>データ分析・KPI設計で勝ち筋を特定。<br>エビデンスに基づく意思決定基盤。</p>
+        </div>
+        <div class="pillar">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 6v6M1 12h6m6 0h6"/></svg>
+          </div>
+          <h4>Engineering</h4>
+          <h5>熱狂を、実装する。</h5>
+          <p>HP制作・データ基盤・DX。<br>戦略が現場で回り続ける仕組み。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Color Palette -->
+  <section class="palette-section">
+    <div class="palette-container">
+      <h3 class="palette-title">Color Palette — C: Night Horizon</h3>
+      <div class="palette-row">
+        <div class="palette-chip">
+          <div class="palette-swatch" style="background: #0a0a14;"></div>
+          <span class="palette-hex">#0a0a14</span>
+          <span class="palette-name">BG Dark</span>
+        </div>
+        <div class="palette-chip">
+          <div class="palette-swatch" style="background: #f6f3ee;"></div>
+          <span class="palette-hex">#f6f3ee</span>
+          <span class="palette-name">BG Warm</span>
+        </div>
+        <div class="palette-chip">
+          <div class="palette-swatch" style="background: #e8944a;"></div>
+          <span class="palette-hex">#e8944a</span>
+          <span class="palette-name">Amber</span>
+        </div>
+        <div class="palette-chip">
+          <div class="palette-swatch" style="background: #d4627a;"></div>
+          <span class="palette-hex">#d4627a</span>
+          <span class="palette-name">Rose</span>
+        </div>
+        <div class="palette-chip">
+          <div class="palette-swatch" style="background: #ff7eb3;"></div>
+          <span class="palette-hex">#ff7eb3</span>
+          <span class="palette-name">Pink</span>
+        </div>
+        <div class="palette-chip">
+          <div class="palette-swatch" style="background: #4a9eff;"></div>
+          <span class="palette-hex">#4a9eff</span>
+          <span class="palette-name">Electric Blue</span>
+        </div>
+        <div class="palette-chip">
+          <div class="palette-swatch" style="background: linear-gradient(135deg, #e8944a, #d4627a, #ff7eb3);"></div>
+          <span class="palette-hex">Gradient</span>
+          <span class="palette-name">Horizon</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Direction Info -->
+  <div class="direction-info">
+    <div class="direction-container">
+      <div class="direction-box">
+        <h3>C: Night Horizon — バランス型（推奨）</h3>
+        <p>
+          amber→coral→soft pinkのグラデーションで「想い」の温度を、electric blueで「データ」の冷静さを表現。<br>
+          「想い（暖色グラデ）」と「仕組み（ブルー）」が色で対になるセマンティックカラー設計。<br>
+          夕焼け→夜空の時間軸グラデーション。3つの中でもっとも「物語性」がある配色。
+        </p>
+        <div>
+          <span class="keyword">熱さ ★★★★☆</span>
+          <span class="keyword">面白さ ★★★★☆</span>
+          <span class="keyword">テクノロジー感 ★★★★☆</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function switchTheme(theme) {
+  // Hide all
+  document.querySelectorAll('.demo-section').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.toggle-btn').forEach(el => el.classList.remove('active'));
+
+  // Show selected
+  document.getElementById('demo-' + theme).classList.add('active');
+  document.querySelector('.toggle-btn[data-theme="' + theme + '"]').classList.add('active');
+
+  // Re-trigger animations
+  const hero = document.querySelector('#demo-' + theme + ' .hero');
+  const animEls = hero.querySelectorAll('.hero-label, .hero-catch .line-1, .hero-catch .line-2, .hero-sub, .hero-cta-group, .scroll-indicator');
+  animEls.forEach(el => {
+    const anim = el.style.animation;
+    el.style.animation = 'none';
+    el.offsetHeight; // force reflow
+    el.style.animation = '';
+  });
+
+  // Scroll to top
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
