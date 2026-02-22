@@ -3,959 +3,105 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>omoshiku | 想いを、仕組みに。</title>
-<meta name="description" content="コーチング×コンサル×エンジニアリングの三刀流で、ビジョン策定からHP・SNS・集客導線、データ活用まで一気通貫で支援するグロースパートナー。">
+<title>omoshiku | 想いと仕組みで面白く</title>
+<meta name="description" content="「何をつくるべきか」を戦略から一緒に考え実装する。経営と現場とシステムのブリッジ役。">
 <!-- OGP -->
-<meta property="og:title" content="omoshiku | 想いを、仕組みに。">
-<meta property="og:description" content="コーチング×コンサル×エンジニアリングの三刀流で、ビジョン策定からHP・SNS・集客導線、データ活用まで一気通貫で支援。">
+<meta property="og:title" content="omoshiku | 想いと仕組みで面白く">
+<meta property="og:description" content="「何をつくるべきか」を戦略から一緒に考え実装する。経営と現場とシステムのブリッジ役。">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://omoshiku.co.jp/">
-<meta property="og:image" content="https://omoshiku.co.jp/images/og-home.jpg">
+<meta property="og:url" content="https://omoshiku.jp/">
 <meta property="og:site_name" content="omoshiku">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="omoshiku | 想いを、仕組みに。">
-<meta name="twitter:description" content="コーチング×コンサル×エンジニアリングの三刀流で、ビジョン策定からHP・SNS・集客導線、データ活用まで一気通貫で支援。">
-<meta name="twitter:image" content="https://omoshiku.co.jp/images/og-home.jpg">
+<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Antique&family=Sora:wght@300;400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/main.css?v=1.0.0">
-<style>
-.nav-inner {
-  max-width: var(--max-width); margin: 0 auto; padding: 0 40px;
-  display: flex; justify-content: space-between; align-items: center;
-}
-.nav-logo {
-  font-family: var(--font-head); font-weight: 800; font-size: 1.5rem;
-  letter-spacing: 0.08em;
-  background: var(--gradient-hero); -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; background-clip: text;
-}
-.nav-links { display: flex; gap: 36px; }
-.nav-links a {
-  font-size: 0.82rem; font-weight: 500; color: var(--text-muted);
-  letter-spacing: 0.06em; transition: color 0.3s; font-family: var(--font-en); text-transform: uppercase;
-}
-.nav-links a:hover { color: var(--accent); }
-.nav-contact {
-  padding: 12px 28px;
-  min-height: 44px;
-  min-width: 120px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center; border: 1px solid var(--accent);
-  color: var(--accent) !important; border-radius: 4px; transition: all 0.3s;
-  -webkit-text-fill-color: var(--accent) !important; background: transparent !important;
-  font-family: var(--font-en);
-}
-.nav-contact:hover {
-  background: var(--accent) !important; color: #fff !important;
-  -webkit-text-fill-color: #fff !important;
-}
-.hamburger {
-  display: none; cursor: pointer; flex-direction: column; gap: 5px;
-  background: transparent; border: none; padding: 8px;
-}
-.hamburger span { display: block; width: 24px; height: 2px; background: var(--text-primary); transition: all 0.3s; }
-
-/* ========================================
-   Hero
-   ======================================== */
-.hero {
-  position: relative; min-height: 100vh; display: flex; align-items: center;
-  background: var(--bg-hero); overflow: hidden;
-}
-
-.hero-bg { position: absolute; inset: 0; z-index: 0; }
-.hero-bg::before {
-  content: ''; position: absolute; top: -40%; right: -20%;
-  width: 900px; height: 900px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(232,148,74,0.18) 0%, transparent 65%);
-  animation: float-orb 10s ease-in-out infinite;
-}
-.hero-bg::after {
-  content: ''; position: absolute; bottom: -25%; left: -15%;
-  width: 750px; height: 750px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(192,64,64,0.12) 0%, transparent 65%);
-  animation: float-orb 13s ease-in-out infinite reverse;
-}
-.hero-bg-extra {
-  position: absolute; top: 30%; left: 40%;
-  width: 500px; height: 500px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(42,122,110,0.1) 0%, transparent 60%);
-  animation: float-orb 16s ease-in-out infinite 3s;
-  z-index: 0;
-}
-@keyframes float-orb {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(50px, -40px) scale(1.08); }
-  66% { transform: translate(-30px, 30px) scale(0.94); }
-}
-
-.hero-particles { position: absolute; inset: 0; overflow: hidden; z-index: 0; }
-.particle {
-  position: absolute; border-radius: 50%; opacity: 0;
-  animation: particle-drift 8s linear infinite;
-}
-.particle-amber { background: var(--accent-light); }
-.particle-white { background: rgba(255,255,255,0.5); }
-@keyframes particle-drift {
-  0% { opacity: 0; transform: translateY(0) scale(1); }
-  10% { opacity: 0.7; }
-  85% { opacity: 0.5; }
-  100% { opacity: 0; transform: translateY(-100vh) scale(0.4); }
-}
-
-.hero-mesh {
-  position: absolute; inset: 0; z-index: 0; opacity: 0.06;
-  background-image:
-    linear-gradient(30deg, transparent 48%, rgba(232,148,74,0.4) 49%, rgba(232,148,74,0.4) 51%, transparent 52%),
-    linear-gradient(150deg, transparent 48%, rgba(255,255,255,0.15) 49%, rgba(255,255,255,0.15) 51%, transparent 52%);
-  background-size: 80px 80px;
-  animation: mesh-drift 25s linear infinite;
-}
-@keyframes mesh-drift {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(80px, 80px); }
-}
-
-.hero-scanlines {
-  position: absolute; inset: 0; z-index: 0; pointer-events: none;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent, transparent 2px,
-    rgba(255,255,255,0.008) 2px, rgba(255,255,255,0.008) 4px
-  );
-}
-
-.hero-content {
-  position: relative; z-index: 1; max-width: var(--max-width);
-  margin: 0 auto; padding: 0 40px; padding-top: 120px;
-}
-.hero-label {
-  display: inline-block; font-family: var(--font-head);
-  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2em;
-  text-transform: uppercase; color: var(--accent-light);
-  margin-bottom: 32px; opacity: 0; animation: hero-fade-in 1s 0.3s forwards;
-}
-.hero-label::before {
-  content: ''; display: inline-block; width: 40px; height: 1px;
-  background: var(--accent-light); margin-right: 16px; vertical-align: middle;
-}
-.hero-catch {
-  font-family: var(--font-head);
-  font-size: clamp(2.4rem, 5.5vw, 4.2rem); font-weight: 800;
-  line-height: 1.3; letter-spacing: -0.02em; color: var(--text-on-dark);
-  margin-bottom: 32px; opacity: 0; animation: hero-fade-in 1s 0.5s forwards;
-}
-.hero-catch .br-desktop { display: inline; }
-.hero-catch .br-mobile { display: none; }
-.hero-catch .accent-text {
-  background: var(--gradient-hero); -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; background-clip: text;
-}
-.hero-sub {
-  font-size: clamp(1rem, 1.8vw, 1.15rem); color: var(--text-on-dark-sub);
-  line-height: 2; max-width: 640px; margin-bottom: 48px;
-  opacity: 0; animation: hero-fade-in 1s 0.7s forwards;
-}
-.hero-cta-group {
-  display: flex; gap: 16px; flex-wrap: wrap;
-  opacity: 0; animation: hero-fade-in 1s 0.9s forwards;
-}
-.hero-cta {
-  display: inline-flex; align-items: center; gap: 12px;
-  padding: 16px 40px; background: var(--gradient-hero); color: #fff;
-  font-family: var(--font-head);
-  font-weight: 700; font-size: 0.95rem; border-radius: 4px;
-  transition: all 0.3s;
-}
-.hero-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(232,148,74,0.35); }
-.hero-cta svg { transition: transform 0.3s; }
-.hero-cta:hover svg { transform: translateX(4px); }
-.hero-cta-secondary {
-  display: inline-flex; align-items: center; gap: 12px;
-  padding: 16px 40px; border: 1px solid rgba(255,255,255,0.3);
-  color: #fff; font-family: var(--font-head);
-  font-weight: 600; font-size: 0.95rem; border-radius: 4px;
-  transition: all 0.3s;
-}
-.hero-cta-secondary:hover {
-  border-color: var(--accent-light); background: rgba(255,255,255,0.08);
-}
-@keyframes hero-fade-in {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.scroll-indicator {
-  position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
-  display: flex; flex-direction: column; align-items: center; gap: 8px; z-index: 1;
-}
-.scroll-indicator span {
-  font-family: var(--font-en); font-size: 0.65rem; letter-spacing: 0.2em;
-  text-transform: uppercase; color: rgba(240,236,230,0.35);
-}
-.scroll-line {
-  width: 1px; height: 60px; background: rgba(255,255,255,0.1);
-  position: relative; overflow: hidden;
-}
-.scroll-line::after {
-  content: ''; position: absolute; top: -60px; width: 100%; height: 60px;
-  background: var(--accent-light); animation: scroll-down 2s ease-in-out infinite;
-}
-@keyframes scroll-down { 0% { top: -60px; } 100% { top: 60px; } }
-
-/* ========================================
-   Section Common
-   ======================================== */
-.section { padding: var(--section-padding); position: relative; }
-.section-light { background: var(--bg-primary); }
-.section-warm { background: var(--bg-secondary); }
-.section-dark { background: var(--bg-dark); color: var(--text-on-dark); }
-
-.section-header { margin-bottom: 72px; }
-.section-label {
-  font-family: var(--font-head); font-size: 0.72rem; font-weight: 600;
-  letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent);
-  margin-bottom: 16px;
-}
-.section-label::before {
-  content: ''; display: inline-block; width: 24px; height: 1px;
-  background: var(--accent); margin-right: 12px; vertical-align: middle;
-}
-.section-title {
-  font-family: var(--font-head);
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 800;
-  line-height: 1.35; letter-spacing: -0.01em;
-}
-.section-title .thin { font-weight: 300; color: var(--text-secondary); }
-
-/* ========================================
-   Pain & Solution
-   ======================================== */
-.problem-row { margin-bottom: 40px; }
-.problem-row:last-of-type { margin-bottom: 0; }
-.problem-row-label {
-  display: inline-block;
-  font-family: var(--font-head); font-size: 0.72rem; font-weight: 700;
-  letter-spacing: 0.12em; text-transform: uppercase;
-  padding: 8px 18px;
-  background: var(--accent);
-  color: #fff;
-  border-radius: 4px;
-  margin-bottom: 16px;
-}
-.problem-row-label.enterprise { background: var(--accent2); color: #fff; }
-
-.problem-cards {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
-}
-.problem-card {
-  background: #fff; border: 1px solid var(--border);
-  border-top: 3px solid var(--accent);
-  border-radius: 0 0 12px 12px; padding: 28px 24px;
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.problem-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
-.problem-card-num {
-  font-family: var(--font-head); font-size: 0.7rem; font-weight: 700;
-  color: var(--accent); letter-spacing: 0.1em; margin-bottom: 12px;
-}
-.problem-card h4 {
-  font-family: var(--font-head); font-size: 0.95rem; font-weight: 700;
-  line-height: 1.5; margin-bottom: 14px;
-}
-.problem-card p {
-  font-size: 0.85rem; color: var(--text-secondary);
-  line-height: 1.8; font-style: italic;
-}
-
-.problem-cards.enterprise .problem-card { border-top-color: var(--accent2); }
-.problem-cards.enterprise .problem-card-num { color: var(--accent2); }
-
-.principle-box {
-  background: var(--bg-dark); color: var(--text-on-dark);
-  border-radius: 16px; padding: 48px 40px;
-  margin: 56px 0 48px; position: relative; overflow: hidden;
-}
-.principle-box::before {
-  content: ''; position: absolute; top: -30%; right: -10%;
-  width: 400px; height: 400px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(232,148,74,0.1) 0%, transparent 65%);
-}
-.principle-box p {
-  position: relative; z-index: 1;
-  font-family: var(--font-head);
-  font-size: clamp(1rem, 2.5vw, 1.3rem); font-weight: 700;
-  line-height: 1.8; color: var(--text-on-dark);
-}
-.principle-box .em { color: var(--accent-light); }
-
-.solution-pillars {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
-}
-.solution-pillar {
-  background: #fff; border: 1px solid var(--border);
-  border-radius: 12px; padding: 28px 24px; text-align: center;
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.solution-pillar:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
-.solution-pillar-icon {
-  width: 52px; height: 52px; border-radius: 50%;
-  background: var(--accent-glow); color: var(--accent);
-  display: flex; align-items: center; justify-content: center;
-  margin: 0 auto 16px; font-size: 1.2rem;
-}
-.solution-pillar h4 {
-  font-family: var(--font-head); font-size: 0.92rem; font-weight: 700;
-  margin-bottom: 8px;
-}
-.solution-pillar p {
-  font-size: 0.82rem; color: var(--text-secondary); line-height: 1.7;
-}
-
-/* ========================================
-   Service — 2-Path Design
-   ======================================== */
-.service-section {
-  background: var(--bg-dark); position: relative; overflow: hidden;
-  color: var(--text-on-dark);
-}
-.service-ambient {
-  position: absolute; inset: 0; z-index: 0; overflow: hidden;
-}
-.service-ambient::before {
-  content: ''; position: absolute; top: -20%; right: -10%;
-  width: 700px; height: 700px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(212,120,47,0.08) 0%, transparent 65%);
-  animation: float-orb 12s ease-in-out infinite;
-}
-.service-ambient::after {
-  content: ''; position: absolute; bottom: -20%; left: -10%;
-  width: 600px; height: 600px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(42,122,110,0.06) 0%, transparent 65%);
-  animation: float-orb 15s ease-in-out infinite reverse;
-}
-
-.service-section .section-label { color: var(--accent-light); }
-.service-section .section-label::before { background: var(--accent-light); }
-.service-section .section-title { color: #fff; }
-
-/* Quick Launch Entry Card */
-.service-entry-card {
-  position: relative; z-index: 1;
-  display: flex; align-items: center; gap: 32px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 16px; padding: 28px 32px;
-  margin-bottom: 28px;
-  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-  transition: all 0.5s cubic-bezier(0.16,1,0.3,1);
-  color: inherit;
-}
-.service-entry-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 48px rgba(0,0,0,0.3), 0 0 32px rgba(212,120,47,0.06);
-  border-color: rgba(212,120,47,0.2);
-  background: rgba(255,255,255,0.06);
-}
-.service-entry-icon {
-  width: 56px; height: 56px; border-radius: 14px; flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center;
-  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-}
-.service-entry-icon svg { color: var(--accent-light); }
-.service-entry-body { flex: 1; min-width: 0; }
-.service-entry-num {
-  font-family: var(--font-head); font-size: 0.6rem; font-weight: 800;
-  letter-spacing: 0.15em; color: var(--accent-light); margin-bottom: 4px;
-}
-.service-entry-title {
-  font-family: var(--font-head); font-size: 1.1rem; font-weight: 800;
-  color: #fff; margin-bottom: 6px;
-}
-.service-entry-desc {
-  font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.7;
-}
-.service-entry-right {
-  display: flex; flex-direction: column; align-items: flex-end; gap: 8px;
-  flex-shrink: 0;
-}
-.service-entry-price {
-  font-family: var(--font-head); font-size: 1.2rem; font-weight: 800;
-  color: var(--accent-light);
-}
-.service-entry-cta {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-family: var(--font-head); font-size: 0.78rem; font-weight: 600;
-  color: rgba(255,255,255,0.45); transition: gap 0.3s, color 0.3s;
-}
-.service-entry-card:hover .service-entry-cta { gap: 10px; color: var(--accent-light); }
-
-.service-path-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
-  position: relative; z-index: 1;
-}
-
-.service-path-card {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 16px; overflow: hidden;
-  transition: all 0.5s cubic-bezier(0.16,1,0.3,1);
-  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-}
-.service-path-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(212,120,47,0.08);
-  border-color: rgba(212,120,47,0.2);
-  background: rgba(255,255,255,0.06);
-}
-
-.service-card-header {
-  position: relative; height: 220px; overflow: hidden;
-}
-.service-card-header-bg {
-  position: absolute; inset: 0;
-  background-size: cover; background-position: center;
-  transition: transform 0.6s cubic-bezier(0.16,1,0.3,1);
-}
-.service-path-card:hover .service-card-header-bg { transform: scale(1.08); }
-.service-card-header-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(11,11,18,0.35) 0%, rgba(11,11,18,0.92) 85%, rgba(11,11,18,0.97) 100%);
-}
-.service-card-header-content {
-  position: relative; z-index: 1; padding: 28px 28px 24px;
-  height: 100%; display: flex; flex-direction: column; justify-content: flex-end;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
-}
-.service-card-icon-large {
-  width: 52px; height: 52px; border-radius: 14px;
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 16px;
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
-}
-.service-card-icon-large svg { color: #fff; }
-.service-card-num {
-  display: inline-block;
-  font-family: var(--font-head); font-size: 0.62rem; font-weight: 700;
-  letter-spacing: 0.12em; margin-bottom: 12px;
-  padding: 8px 18px;
-  background: var(--accent);
-  color: #fff;
-  border-radius: 4px;
-  text-transform: uppercase;
-}
-.service-card-title-main {
-  font-family: var(--font-head);
-  font-size: 1.3rem; font-weight: 800; line-height: 1.4; color: #fff;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-}
-.service-card-en-sub {
-  font-family: var(--font-en); font-size: 0.72rem; font-weight: 500;
-  color: rgba(255,255,255,0.45); letter-spacing: 0.03em; margin-top: 4px;
-}
-
-.service-card-body { padding: 28px 28px 32px; }
-.service-card-desc-text {
-  font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.85; margin-bottom: 20px;
-}
-.service-tag-list { display: flex; flex-wrap: wrap; gap: 8px; }
-.service-tag {
-  display: inline-block; padding: 6px 14px; border-radius: 20px;
-  font-size: 0.78rem; font-weight: 500;
-  border: 1px solid rgba(255,255,255,0.1);
-  color: rgba(255,255,255,0.5); transition: all 0.3s;
-  background: rgba(255,255,255,0.03);
-}
-.service-path-card:hover .service-tag {
-  border-color: rgba(212,120,47,0.3);
-  color: rgba(255,255,255,0.7);
-}
-.service-path-price {
-  font-family: var(--font-head); font-size: 0.9rem; font-weight: 700;
-  color: var(--accent-light); margin-top: 20px; margin-bottom: 4px;
-}
-.service-path-cta {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-family: var(--font-head); font-size: 0.82rem; font-weight: 600;
-  color: rgba(255,255,255,0.5); transition: gap 0.3s, color 0.3s;
-  margin-top: 8px;
-}
-.service-path-cta svg { transition: transform 0.3s; }
-.service-path-card:hover .service-path-cta { gap: 12px; color: var(--accent-light); }
-.service-path-card:hover .service-path-cta svg { transform: translateX(3px); }
-
-/* ========================================
-   Numbers / RTB
-   ======================================== */
-.stat-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
-  margin-bottom: 48px;
-}
-.stat-card {
-  background: #fff; border: 1px solid var(--border);
-  border-radius: 12px; padding: 28px 20px; text-align: center;
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.stat-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-}
-.stat-number {
-  font-family: var(--font-head); font-weight: 800;
-  font-size: clamp(1.4rem, 3vw, 1.8rem);
-  background: var(--gradient-hero); -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; background-clip: text;
-  margin-bottom: 8px; line-height: 1.2;
-}
-.stat-desc {
-  font-size: 0.78rem; color: var(--text-secondary); line-height: 1.6;
-}
-
-.rtb-table {
-  width: 100%; border-collapse: collapse;
-  font-size: 0.85rem; max-width: 900px; margin: 0 auto;
-}
-.rtb-table th {
-  background: var(--bg-dark); color: var(--text-on-dark);
-  font-family: var(--font-head); font-weight: 600;
-  padding: 12px 14px; text-align: center;
-  font-size: 0.78rem; letter-spacing: 0.05em;
-}
-.rtb-table th:first-child { text-align: left; border-radius: 8px 0 0 0; }
-.rtb-table th:last-child { border-radius: 0 8px 0 0; }
-.rtb-table td {
-  padding: 12px 14px; border-bottom: 1px solid var(--border);
-  text-align: center; vertical-align: middle;
-}
-.rtb-table td:first-child {
-  text-align: left; font-weight: 600; color: var(--text-primary);
-  background: var(--bg-secondary);
-}
-.rtb-table td:last-child {
-  background: rgba(212,120,47,0.06); font-weight: 700; color: var(--accent-dark);
-}
-.rtb-table tr:last-child td { border-bottom: none; }
-.rtb-table .check { color: #fff; font-size: 0.75rem; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: var(--accent2); }
-.rtb-table .partial { color: #fff; font-size: 0.75rem; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: #c4a840; }
-.rtb-table .none { color: #fff; font-size: 0.75rem; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: #d4d4d4; }
-.rtb-table .raftel { color: #fff; font-size: 0.75rem; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: var(--accent); }
-
-/* ========================================
-   Profile
-   ======================================== */
-.profile-section { background: var(--bg-secondary); }
-
-.profile-content {
-  display: grid; grid-template-columns: 320px 1fr; gap: 80px; align-items: start;
-}
-.profile-photo-area { position: sticky; top: 120px; }
-.profile-photo-placeholder {
-  width: 100%; aspect-ratio: 3/4; background: var(--bg-tertiary); border-radius: 12px;
-  border: 1px solid var(--border); display: flex; align-items: center; justify-content: center;
-  overflow: hidden; position: relative; box-shadow: var(--shadow-md);
-}
-.profile-photo-placeholder::before {
-  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 40%;
-  background: linear-gradient(to top, var(--bg-tertiary), transparent);
-}
-.photo-text {
-  font-family: var(--font-head); font-size: 5rem; font-weight: 900;
-  color: rgba(26,26,36,0.06); letter-spacing: -0.05em;
-}
-.profile-name-card { margin-top: 24px; }
-.profile-role {
-  font-family: var(--font-head);
-  font-size: 0.8rem; color: var(--accent); font-weight: 600; margin-bottom: 8px;
-}
-.profile-name-ja {
-  font-family: var(--font-head);
-  font-size: 1.4rem; font-weight: 800; margin-bottom: 4px;
-}
-.profile-name-en {
-  font-family: var(--font-head); font-size: 0.8rem; font-weight: 500;
-  color: var(--text-muted); letter-spacing: 0.1em;
-}
-
-.profile-quote {
-  font-family: var(--font-head);
-  font-size: clamp(1.2rem, 2vw, 1.5rem); font-weight: 700; line-height: 1.7;
-  margin-bottom: 48px; padding-left: 24px; border-left: 4px solid var(--accent);
-}
-
-.profile-subsection { margin-bottom: 48px; }
-.profile-subsection-title {
-  font-family: var(--font-head); font-size: 0.7rem; font-weight: 700;
-  letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent);
-  margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid var(--border);
-}
-.profile-career-text {
-  font-size: 0.9rem; color: var(--text-secondary); line-height: 2;
-}
-
-.strengths-grid { display: grid; gap: 16px; }
-.strength-item {
-  background: #fff; border: 1px solid var(--border); border-radius: 12px;
-  padding: 24px 28px; transition: all 0.3s; box-shadow: var(--shadow-sm);
-}
-.strength-item:hover { border-color: var(--border-accent); box-shadow: var(--shadow-md); }
-.strength-en {
-  font-family: var(--font-head); font-size: 0.7rem; font-weight: 700;
-  letter-spacing: 0.15em; color: var(--accent); margin-bottom: 6px;
-}
-.strength-text { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.85; }
-
-/* Personal Why */
-.personal-why {
-  background: var(--bg-dark); color: var(--text-on-dark);
-  border-radius: 16px; padding: 56px 48px;
-  position: relative; overflow: hidden;
-}
-.personal-why::before {
-  content: ''; position: absolute; bottom: -30%; left: -10%;
-  width: 500px; height: 500px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(232,148,74,0.08) 0%, transparent 65%);
-}
-.personal-why-inner { position: relative; z-index: 1; }
-.personal-why-title {
-  font-family: var(--font-brush); font-size: clamp(1.4rem, 3vw, 1.8rem);
-  color: var(--accent-light); margin-bottom: 32px;
-  line-height: 1.6;
-}
-.personal-why p {
-  font-size: 0.95rem; color: var(--text-on-dark-sub);
-  line-height: 2.1; margin-bottom: 20px;
-}
-.personal-why p:last-child { margin-bottom: 0; }
-.personal-why p strong {
-  color: var(--text-on-dark); font-weight: 700;
-}
-
-/* ========================================
-   Featured Content
-   ======================================== */
-.content-section-home { background: var(--bg-primary); }
-.content-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 28px;
-}
-.content-card {
-  background: #fff; border: 1px solid var(--border); border-radius: 16px;
-  overflow: hidden; transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
-  box-shadow: var(--shadow-sm); display: flex; flex-direction: column;
-}
-.content-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-lg); border-color: var(--border-accent);
-}
-.content-card-thumb {
-  height: 180px; background: var(--bg-dark); position: relative; overflow: hidden;
-  display: flex; align-items: center; justify-content: center;
-  background-size: cover; background-position: center;
-}
-.content-card-thumb-overlay {
-  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(180deg, rgba(11,11,18,0.3) 0%, rgba(11,11,18,0.7) 100%);
-  z-index: 0;
-}
-.content-card:hover .content-card-thumb-overlay {
-  background: linear-gradient(180deg, rgba(11,11,18,0.2) 0%, rgba(11,11,18,0.6) 100%);
-}
-.content-card-thumb-inner {
-  font-family: var(--font-head); font-size: 2.8rem; font-weight: 800;
-  color: rgba(255,255,255,0.1); letter-spacing: -0.03em;
-  position: absolute; white-space: nowrap; z-index: 1;
-}
-.content-card-thumb-icon {
-  position: relative; z-index: 2; width: 64px; height: 64px; border-radius: 16px;
-  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
-  backdrop-filter: blur(12px); display: flex; align-items: center; justify-content: center;
-  color: var(--accent-light);
-}
-.content-card-body { padding: 28px; flex: 1; display: flex; flex-direction: column; }
-.content-card-tag {
-  display: inline-block; font-family: var(--font-head);
-  font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--accent); background: var(--accent-glow);
-  padding: 4px 12px; border-radius: 12px; margin-bottom: 14px; width: fit-content;
-}
-.content-card-title {
-  font-family: var(--font-head); font-size: 1.05rem; font-weight: 700;
-  line-height: 1.5; margin-bottom: 12px;
-}
-.content-card-desc {
-  font-size: 0.85rem; color: var(--text-secondary); line-height: 1.85;
-  margin-bottom: 20px; flex: 1;
-}
-.content-card-meta {
-  font-family: var(--font-en); font-size: 0.75rem; color: var(--text-muted);
-  display: flex; justify-content: space-between; align-items: center;
-}
-.content-card-link {
-  font-family: var(--font-head); font-size: 0.78rem; font-weight: 600;
-  color: var(--accent); display: flex; align-items: center; gap: 4px;
-  transition: gap 0.3s;
-}
-.content-card:hover .content-card-link { gap: 8px; }
-.content-more-wrap { text-align: center; margin-top: 48px; }
-.content-more {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-family: var(--font-head); font-size: 0.88rem; font-weight: 600;
-  color: var(--accent); padding: 12px 32px;
-  border: 1px solid var(--border-accent); border-radius: 4px;
-  transition: all 0.3s;
-}
-.content-more:hover {
-  background: var(--accent); color: #fff;
-  box-shadow: 0 4px 20px rgba(212,120,47,0.25);
-}
-
-/* ========================================
-   CTA
-   ======================================== */
-.cta-section {
-  padding: 120px 0; text-align: center; position: relative; overflow: hidden;
-  background: var(--bg-hero); color: var(--text-on-dark);
-}
-.cta-section::before {
-  content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-  width: 700px; height: 700px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(232,148,74,0.12) 0%, transparent 65%);
-}
-.cta-title {
-  font-family: var(--font-head);
-  font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800;
-  margin-bottom: 24px; position: relative;
-}
-.cta-desc {
-  font-size: 1rem; color: var(--text-on-dark-sub); margin-bottom: 32px;
-  position: relative; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 2;
-}
-.cta-details {
-  display: flex; justify-content: center; gap: 16px;
-  margin-bottom: 40px; position: relative;
-}
-.cta-details span {
-  font-family: var(--font-head); font-size: 0.82rem; font-weight: 600;
-  color: var(--accent-light); letter-spacing: 0.05em;
-  padding: 8px 20px; border: 1px solid rgba(232,148,74,0.3);
-  border-radius: 20px;
-}
-.cta-button {
-  display: inline-flex; align-items: center; gap: 12px;
-  padding: 20px 56px; background: var(--gradient-hero); color: #fff;
-  font-family: var(--font-head);
-  font-weight: 700; font-size: 1.05rem; border-radius: 4px;
-  transition: all 0.3s; position: relative;
-}
-.cta-button:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(232,148,74,0.35); }
-
-/* ========================================
-   Footer
-   ======================================== */
-.footer {
-  padding: 48px 0 36px; border-top: 1px solid var(--border); background: var(--bg-primary);
-}
-.footer-inner { display: flex; justify-content: space-between; align-items: center; }
-.footer-logo {
-  font-family: var(--font-head); font-weight: 800; font-size: 1.2rem;
-  letter-spacing: 0.08em; background: var(--gradient-hero);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-}
-.footer-copy {
-  font-family: var(--font-en); font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.05em;
-}
-
-/* ========================================
-   Responsive
-   ======================================== */
-@media (max-width: 1024px) {
-  .service-path-grid { grid-template-columns: 1fr; max-width: 560px; }
-  .service-entry-card { max-width: 560px; }
-  .profile-content { grid-template-columns: 1fr; }
-  .profile-photo-area { position: static; max-width: 280px; }
-}
-
-@media (max-width: 768px) {
-  :root { --section-padding: 80px 0; }
-  .container { padding: 0 24px; }
-  .nav-links { display: none; }
-  .hamburger { display: flex; }
-  .nav-links.active {
-    display: flex; flex-direction: column; position: absolute;
-    top: 100%; left: 0; right: 0; background: rgba(246,243,238,0.98);
-    backdrop-filter: blur(20px); padding: 24px 40px 32px; gap: 20px;
-    border-bottom: 1px solid var(--border);
-  }
-  .nav:not(.scrolled) .nav-links.active { background: rgba(28,30,42,0.98); }
-  .hero-content { padding-top: 100px; padding-bottom: 120px; }
-  .hero-catch { font-size: clamp(1.7rem, 7vw, 2.4rem); line-height: 1.45; text-align: center; }
-  .hero-catch .br-desktop { display: none; }
-  .hero-catch .br-mobile { display: inline; }
-  .hero-sub { text-align: center; }
-  .hero-sub br { display: none; }
-  .hero-cta-group { justify-content: center; }
-  .scroll-indicator { bottom: 24px; }
-  .section-header { text-align: center; }
-  .problem-cards { grid-template-columns: 1fr; }
-  .problem-row-label { text-align: center; }
-  .solution-pillars { grid-template-columns: 1fr; }
-  .principle-box { padding: 36px 24px; }
-  .principle-box p { font-size: 1.05rem; }
-  .problem-card h4 { font-size: 1rem; }
-  .problem-card p { font-size: 0.92rem; }
-  .solution-pillar p { font-size: 0.95rem; }
-  .service-path-grid { grid-template-columns: 1fr; max-width: 100%; }
-  .service-entry-card { flex-direction: column; align-items: flex-start; gap: 20px; max-width: 100%; }
-  .service-entry-right { flex-direction: row; align-items: center; gap: 16px; }
-  .service-card-desc-text { font-size: 1rem; }
-  .stat-grid { grid-template-columns: 1fr; 1fr; }
-  .stat-desc { font-size: 0.9rem; }
-  .rtb-table { font-size: 0.82rem; }
-  .rtb-table th, .rtb-table td { padding: 8px 8px; }
-  .profile-career-text { font-size: 0.95rem; }
-  .strength-text { font-size: 0.95rem; }
-  .content-card-desc { font-size: 0.9rem; }
-  .personal-why p { font-size: 1rem; }
-  .cta-desc { font-size: 1.05rem; }
-  .profile-content { gap: 40px; }
-  .profile-photo-area { max-width: 220px; margin: 0 auto; }
-  .profile-name-card { text-align: center; }
-  .profile-quote { font-size: 1.1rem; padding-left: 16px; }
-  .personal-why { padding: 40px 24px; }
-  .cta-details { flex-direction: column; align-items: center; gap: 12px; }
-  .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
-  .nav-inner { padding: 0 24px; }
-}
-
-@media (max-width: 375px) {
-  .hero-catch { font-size: 1.55rem; }
-}
-
-/* ========================================
-   Project Experience
-   ======================================== */
-.project-company-block {
-  margin-bottom: 48px;
-}
-.project-company-block:last-child {
-  margin-bottom: 0;
-}
-.project-company-title {
-  font-family: var(--font-head);
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 24px;
-  padding-bottom: 12px;
-  border-bottom: 2px solid var(--accent);
-}
-.project-item {
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 24px;
-  margin-bottom: 16px;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.project-item:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-.project-item:last-child {
-  margin-bottom: 0;
-}
-.project-name {
-  font-family: var(--font-head);
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 12px;
-}
-.project-desc {
-  font-size: 0.92rem;
-  line-height: 1.8;
-  color: var(--text-secondary);
-}
-
-@media (max-width: 768px) {
-  .project-company-title {
-    font-size: 1.1rem;
-  }
-  .project-name {
-    font-size: 0.95rem;
-  }
-  .project-desc {
-    font-size: 0.88rem;
-  }
-  .project-item {
-    padding: 20px;
-  }
-}
-
-</style>
+<!-- Styles -->
+<link rel="stylesheet" href="css/style.css">
+<!-- GSAP -->
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/gsap.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/ScrollTrigger.min.js"></script>
+<script defer src="js/main.js"></script>
 </head>
 <body>
+
+<div class="mouse-glow" id="mouseGlow"></div>
 
 <!-- ========================================
      Navigation
      ======================================== -->
 <nav class="nav" id="nav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo">omoshiku</a>
+    <a href="#hero" class="nav-logo">omoshiku</a>
     <div class="nav-links" id="navLinks">
-      <a href="#solution">課題と解決</a>
-      <a href="#service">サービス</a>
-      <a href="#profile">代表紹介</a>
-      <a href="content/">ナレッジ</a>
-      <a href="#contact" class="nav-contact">お問い合わせ</a>
+      <a href="#problem">Problem</a>
+      <a href="#approach">Approach</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#results">Results</a>
+      <a href="#contact" class="nav-contact">Contact</a>
     </div>
-    <button class="hamburger"
-            id="hamburger"
-            aria-label="メニューを開く"
-            aria-expanded="false"
-            aria-controls="navLinks">
+    <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
+  </div>
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#problem">Problem</a>
+    <a href="#approach">Approach</a>
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#results">Results</a>
+    <a href="#contact">Contact</a>
   </div>
 </nav>
 
 <!-- ========================================
-     Hero
+     Section 1: Hero (FV)
      ======================================== -->
 <section class="hero" id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-bg-extra"></div>
+  <!-- Background Layers -->
+  <div class="hero-bg">
+    <div class="hero-orb hero-orb--1"></div>
+    <div class="hero-orb hero-orb--2"></div>
+    <div class="hero-orb hero-orb--3"></div>
+  </div>
+  <!-- Pulse Rings (from each orb center) -->
+  <div class="pulse-ring pulse-ring--1"></div>
+  <div class="pulse-ring pulse-ring--2"></div>
+  <div class="pulse-ring pulse-ring--3"></div>
+
+  <!-- Particles Container (JS-generated) -->
+  <div class="hero-particles" id="heroParticles"></div>
+
+  <!-- Constellation Canvas -->
+  <canvas class="constellation-canvas" id="constellationCanvas"></canvas>
+
   <div class="hero-mesh"></div>
   <div class="hero-scanlines"></div>
-  <div class="hero-particles" id="particles"></div>
+
+  <!-- Content -->
   <div class="hero-content">
+    <span class="typewriter-label"><span id="typewriterText"></span><span class="typewriter-cursor"></span></span>
     <h1 class="hero-catch">
-      根拠のない<span class="accent-text">確信</span>を育て、<br>論理的な<span class="accent-text">熱狂</span>でぶち抜く。
+      <span class="line-mask">
+        <span class="line-inner"><span class="accent-text">想い</span>を<span class="accent-text">仕組み</span>で<span class="shimmer-text">面白く</span></span>
+      </span>
     </h1>
-    <p class="hero-sub">
-      ビジョンの言語化から、戦略設計、HP・データ基盤の構築まで。<br>
-      コーチング × コンサル × エンジニアリングの三刀流で、<br>
-      事業の成長と組織の熱量を、仕組みで一気通貫に構築します。
-    </p>
+    <p class="hero-sub">「何をつくるべきか」を戦略から一緒に考え実装する。<br>経営と現場とシステムのブリッジ役。</p>
     <div class="hero-cta-group">
-      <a href="#contact" class="hero-cta">
-        無料相談に申し込む
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      <a href="#contact" class="hero-cta magnetic" data-strength="0.3">
+        まずは相談する
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
       </a>
-      <a href="#service" class="hero-cta-secondary">
-        サービス詳細を見る
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      <a href="#services" class="hero-cta-secondary magnetic" data-strength="0.2">
+        サービスを見る
       </a>
     </div>
   </div>
+
+  <!-- Scroll Indicator -->
   <div class="scroll-indicator">
     <span>Scroll</span>
     <div class="scroll-line"></div>
@@ -963,461 +109,344 @@
 </section>
 
 <!-- ========================================
-     Pain & Solution
+     Section 2: Problem
      ======================================== -->
-<section class="section section-light" id="solution">
+<section class="section section-light" id="problem">
   <div class="container">
-    <div class="section-header reveal">
-      <h2 class="section-title">こんな課題に、心当たりはありませんか？</h2>
+    <div class="section-header">
+      <span class="section-number">01</span>
+      <span class="section-label">Problem</span>
+      <h2 class="section-title">こんな課題、<br class="br-mobile">ありませんか？</h2>
     </div>
-
-    <!-- Founders Pain -->
-    <div class="problem-row reveal">
-      <p class="problem-row-label">起業・創業期の方へ</p>
-      <div class="problem-cards">
-        <div class="problem-card">
-          <div class="problem-card-num">01</div>
-          <h4>サービスには自信がある。<br>でも「何がいいの？」に答えられない。</h4>
-          <p>価値はわかっている。でも、それを端的に言葉にして 相手に伝える方法が見つからない。</p>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
         </div>
-        <div class="problem-card">
-          <div class="problem-card-num">02</div>
-          <h4>HP・SNS、やらなきゃと思いつつ、<br>何も進んでいない。</h4>
-          <p>作らなきゃ。始めなきゃ。 でも、何を・どう・どの順番でやるべきか、手が止まっている。</p>
-        </div>
-        <div class="problem-card">
-          <div class="problem-card-num">03</div>
-          <h4>本業に集中したいのに、<br>デジタル周りで手が止まる。</h4>
-          <p>商品づくりと営業に時間を使いたい。 なのに「わからない」に、時間も判断力も奪われていく。</p>
-        </div>
+        <h3>ツールを入れたのに、誰も使っていない</h3>
+        <p>業務管理ツール、顧客管理システム…導入したはずなのに、月額費用だけが積み上がっている。「支出」が「投資」に変わらない。</p>
       </div>
-    </div>
-
-    <!-- Enterprise Pain -->
-    <div class="problem-row reveal reveal-delay-1">
-      <p class="problem-row-label enterprise">成長企業・中堅企業の方へ</p>
-      <div class="problem-cards enterprise">
-        <div class="problem-card">
-          <div class="problem-card-num">04</div>
-          <h4>データは集まっている。<br>でも、意思決定に使えていない。</h4>
-          <p>分析→施策→検証のループが回っていない。 数字はあるのに、次の一手に確信が持てない状態。</p>
+      <div class="problem-card">
+        <div class="problem-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
-        <div class="problem-card">
-          <div class="problem-card-num">05</div>
-          <h4>外注の納品物はきれい。<br>でも、売上は動かない。</h4>
-          <p>戦略と実装が分断され、現場との温度差が埋まらない。 「で、結局どうすればいいの？」が残り続ける。</p>
-        </div>
-        <div class="problem-card">
-          <div class="problem-card-num">06</div>
-          <h4>DX推進の号令はかけた。<br>でも、現場が動かない。</h4>
-          <p>ツールは入れた。推進チームも作った。 でも「何のために・何をすべきか」が現場に届いていない。</p>
-        </div>
+        <h3>「ベテランの勘頼み」から抜け出せない</h3>
+        <p>トップ営業のやり方が言語化されず、組織に残らない。「あの人だからできる」で終わってしまい、チーム全体の底上げにつながらない。</p>
       </div>
-    </div>
-
-    <!-- Solution -->
-    <div class="principle-box reveal">
-      <p>
-        コーチに頼むと、言葉にはなる。でも形にならない。<br>
-        コンサルに頼むと、戦略はできる。でも実装されない。<br>
-        制作会社に頼むと、形にはなる。でも戦略が抜ける。<br>
-        エンジニアに頼むと、仕組みはできる。でも使われない。<br><br>
-        <span class="em">omoshikuは、言語化から戦略、実装まで、すべてを一人で一気通貫。<br>
-        だから、途中で意図が抜け落ちない。</span>
-      </p>
-    </div>
-
-    <div class="solution-pillars reveal">
-      <div class="solution-pillar">
-        <div class="solution-pillar-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <div class="problem-card">
+        <div class="problem-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
         </div>
-        <h4>Coaching</h4>
-        <h5>確信を、つくる。</h5>
-        <p>認知科学ベースのコーチングで、創業者の中にある想いを<br>言語化・構造化し、組織が共有できるビジョンに変える。</p>
-      </div>
-      <div class="solution-pillar">
-        <div class="solution-pillar-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/><path d="M9 6v12M15 6v12"/><circle cx="12" cy="12" r="2"/></svg>
-        </div>
-        <h4>Consulting</h4>
-        <h5>確信を、科学する。</h5>
-        <p>市場調査・データ分析・KPI設計で勝ち筋を特定。<br>感覚ではなくエビデンスに基づく意思決定基盤を構築する。</p>
-      </div>
-      <div class="solution-pillar">
-        <div class="solution-pillar-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 6v6M5.64 5.64l4.24 4.24m4.24 4.24l4.24 4.24M1 12h6m6 0h6M5.64 18.36l4.24-4.24m4.24-4.24l4.24-4.24"/></svg>
-        </div>
-        <h4>Engineering</h4>
-        <h5>熱狂を、実装する。</h5>
-        <p>HP制作・データ基盤・DX・プロセス自動化。<br>戦略が現場で回り続ける仕組みを構築する。</p>
+        <h3>システム会社に何を頼めばいいかわからない</h3>
+        <p>課題はぼんやりある。でも、技術で何ができるのか見えない。「で、何を作りますか？」と聞かれて止まってしまう。</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ========================================
-     Service — 2-Path Design
+     Section 3: What We Do (Approach)
      ======================================== -->
-<section class="section section-dark service-section" id="service">
+<section class="section section-warm" id="approach">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <span class="section-label">Approach</span>
+      <h2 class="section-title">一人の専門家が、<br class="br-mobile">一気通貫で伴走する</h2>
+    </div>
+
+    <!-- Principle Box -->
+    <div class="principle-box">
+      <div class="principle-orb"></div>
+      <div class="principle-text">
+        <p>システム会社に頼むと、言われたものは作ってくれる。<span class="em">でも「何を作るべきか」は教えてくれない。</span></p>
+        <p>コンサルに頼むと、立派な資料はできる。<span class="em">でも現場に実装されない。</span></p>
+        <p class="principle-conclusion">omoshikuは、「何を・なぜ作るべきか」を戦略から一緒に考え、<br>システム翻訳・実装まで一気通貫。</p>
+      </div>
+    </div>
+
+    <!-- Three Pillars -->
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <span class="pillar-label">Coaching</span>
+        <h3>想いをゴールに変換する</h3>
+        <p>「内部の人同士だと当たり前すぎて言語化できない」。外部からの問いかけで、想いを事業のゴールと優先順位に変換する。</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <span class="pillar-label">Consulting</span>
+        <h3>勝ちパターンを見つける</h3>
+        <p>事業のボトルネックを特定し、トップパフォーマーの暗黙知をデータで裏付け、チーム全員が再現できる形に変換する。</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <span class="pillar-label">Engineering</span>
+        <h3>その場で実装する</h3>
+        <p>業務自動化、レポート生成、管理ツール構築。「作りたいイメージはあるが手が動かない」を即解決。</p>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <div class="compare-section">
+      <h3 class="compare-title">なぜ、omoshikuなのか</h3>
+      <div class="compare-table-wrap">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th class="compare-highlight">omoshiku</th>
+              <th>システム会社 / SIer</th>
+              <th>コンサル会社</th>
+              <th>フリーランスエンジニア</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="compare-row-label">業務理解</td>
+              <td class="compare-highlight"><span class="compare-best">&#9678;</span></td>
+              <td><span class="compare-mid">&#9651;</span></td>
+              <td><span class="compare-best">&#9678;</span></td>
+              <td><span class="compare-low">&#10005;</span></td>
+            </tr>
+            <tr>
+              <td class="compare-row-label">要件定義</td>
+              <td class="compare-highlight"><span class="compare-best">&#9678;</span></td>
+              <td><span class="compare-mid">&#9651;</span></td>
+              <td><span class="compare-good">&#9675;</span></td>
+              <td><span class="compare-low">&#10005;</span></td>
+            </tr>
+            <tr>
+              <td class="compare-row-label">直接実装</td>
+              <td class="compare-highlight"><span class="compare-best">&#9678;</span></td>
+              <td><span class="compare-best">&#9678;</span></td>
+              <td><span class="compare-low">&#10005;</span></td>
+              <td><span class="compare-best">&#9678;</span></td>
+            </tr>
+            <tr>
+              <td class="compare-row-label">継続伴走</td>
+              <td class="compare-highlight"><span class="compare-best">&#9678;</span></td>
+              <td><span class="compare-good">&#9675;</span></td>
+              <td><span class="compare-mid">&#9651;</span></td>
+              <td><span class="compare-low">&#10005;</span></td>
+            </tr>
+            <tr>
+              <td class="compare-row-label">コスト効率</td>
+              <td class="compare-highlight"><span class="compare-best">&#9678;</span></td>
+              <td><span class="compare-mid">&#9651;</span></td>
+              <td><span class="compare-mid">&#9651;</span></td>
+              <td><span class="compare-good">&#9675;</span></td>
+            </tr>
+            <tr>
+              <td class="compare-row-label">スピード</td>
+              <td class="compare-highlight"><span class="compare-best">&#9678;</span></td>
+              <td><span class="compare-mid">&#9651;</span></td>
+              <td><span class="compare-mid">&#9651;</span></td>
+              <td><span class="compare-good">&#9675;</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     Section 4: Services
+     ======================================== -->
+<section class="section section-dark" id="services">
   <div class="service-ambient"></div>
   <div class="container">
-    <div class="section-header reveal">
-      <p class="section-label">Service</p>
-      <h2 class="section-title">サービス</h2>
+    <div class="section-header">
+      <span class="section-number">03</span>
+      <span class="section-label">Services</span>
+      <h2 class="section-title">課題のフェーズに合わせた<br class="br-mobile">2つの支援メニュー</h2>
     </div>
-
-    <!-- Entry: Quick Launch -->
-    <a href="service/quick-launch.html" class="service-entry-card reveal">
-      <div class="service-entry-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4z"/></svg>
-      </div>
-      <div class="service-entry-body">
-        <h3 class="service-entry-title">Quick Launch &mdash; 3日HP制作プラン</h3>
-        <p class="service-entry-desc">1.5時間の壁打ちで事業の強みを言語化し、プロ品質のHPを3日以内に初稿納品。まずはここから。</p>
-      </div>
-      <div class="service-entry-right">
-        <span class="service-entry-price">&yen;30,000</span>
-        <span class="service-entry-cta">
-          詳しく見る
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </span>
-      </div>
-    </a>
-
-    <div class="service-path-grid">
-      <!-- Path A: Growth Sprint -->
-      <a href="service/growth-partner.html" class="service-path-card reveal reveal-delay-1">
-        <div class="service-card-header">
-          <div class="service-card-header-bg" style="background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&q=80&fm=webp'); background-color: #1a2030;"></div>
-          <div class="service-card-header-overlay"></div>
-          <div class="service-card-header-content">
-            <div class="service-card-icon-large">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-            </div>
-            <p class="service-card-num">起業・創業期の方へ</p>
-            <h3 class="service-card-title-main">創業3ヶ月集中 デジタル戦略パートナー</h3>
-            <p class="service-card-en-sub">Growth Partner</p>
+    <div class="service-grid service-grid--two">
+      <!-- 月額パートナー -->
+      <a href="#contact" class="service-card service-card--featured">
+        <div class="service-card-badge service-card-badge--featured">Popular</div>
+        <div class="service-card-content">
+          <span class="service-card-num">SERVICE 01</span>
+          <h3 class="service-card-title">月額パートナー</h3>
+          <p class="service-card-desc">月3-4回の定例 + チャット随時対応。<br>業務課題の整理から要件定義、ツール活用、実装まで伴走。</p>
+          <div class="service-card-meta">
+            <span class="service-card-price">¥200,000〜/月</span>
+            <span class="service-card-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </span>
           </div>
-        </div>
-        <div class="service-card-body">
-          <p class="service-card-desc-text">
-            想いの言語化からHP制作・SNS構築・集客導線まで、デジタル領域をすべて整える3ヶ月伴走型プログラム。間に誰も挟まないから、意図がそのまま形になる。
-          </p>
-          <div class="service-tag-list">
-            <span class="service-tag">ビジョン言語化</span>
-            <span class="service-tag">HP制作</span>
-            <span class="service-tag">SNS構築</span>
-            <span class="service-tag">自走化</span>
-          </div>
-          <p class="service-path-price">&yen;200,000/月 &times; 3ヶ月</p>
-          <span class="service-path-cta">
-            詳しく見る
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </span>
         </div>
       </a>
-
-      <!-- Path B: Growth Advisory -->
-      <a href="#contact" class="service-path-card reveal reveal-delay-2">
-        <div class="service-card-header">
-          <div class="service-card-header-bg" style="background-image: url('https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&q=80&fm=webp'); background-color: #1a2e2a;"></div>
-          <div class="service-card-header-overlay"></div>
-          <div class="service-card-header-content">
-            <div class="service-card-icon-large">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><path d="M6 10l3 3 4-5 5 4"/></svg>
-            </div>
-            <p class="service-card-num">成長企業・中堅企業の方へ</p>
-            <h3 class="service-card-title-main">データ駆動型グロース支援</h3>
-            <p class="service-card-en-sub">Growth Advisory</p>
+      <!-- スポット相談 -->
+      <a href="#contact" class="service-card">
+        <div class="service-card-badge">Spot</div>
+        <div class="service-card-content">
+          <span class="service-card-num">SERVICE 02</span>
+          <h3 class="service-card-title">スポット相談</h3>
+          <p class="service-card-desc">単発の壁打ち・セカンドオピニオン。<br>「まず一度話してみたい」方向け。</p>
+          <div class="service-card-meta">
+            <span class="service-card-price">¥50,000〜/回</span>
+            <span class="service-card-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </span>
           </div>
-        </div>
-        <div class="service-card-body">
-          <p class="service-card-desc-text">
-            KPI設計・BI構築・CRM最適化・AI実装で、成長企業のグロースを加速。戦略から実装、組織の自走化まで一気通貫で伴走します。
-          </p>
-          <div class="service-tag-list">
-            <span class="service-tag">KPI設計</span>
-            <span class="service-tag">BI構築</span>
-            <span class="service-tag">CRM最適化</span>
-            <span class="service-tag">AI実装</span>
-          </div>
-          <p class="service-path-price">月次顧問 &yen;300,000〜</p>
-          <span class="service-path-cta">
-            お問い合わせ
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </span>
         </div>
       </a>
     </div>
+    <p style="text-align:center; color: var(--text-on-dark); opacity: 0.5; font-size: 0.85rem; margin-top: 1.5rem;">※ 大型案件（システム構築等）は別途お見積り</p>
   </div>
 </section>
 
 <!-- ========================================
-     Numbers / RTB
+     Section 5: About
      ======================================== -->
-<section class="section section-light" id="numbers">
+<section class="section section-warm" id="about">
   <div class="container">
-    <div class="section-header reveal">
-      <h2 class="section-title">支援実績</h2>
+    <div class="section-header">
+      <span class="section-number">04</span>
+      <span class="section-label">About</span>
+      <h2 class="section-title">代表プロフィール</h2>
     </div>
-
-    <div class="stat-grid reveal">
-      <div class="stat-card">
-        <div class="stat-number">0&rarr;10億</div>
-        <div class="stat-desc">新規ブランドを立ち上げから<br>初年度10億円規模に成長（事業会社）</div>
+    <div class="about-split">
+      <div class="about-photo">
+        <img class="about-photo-img" src="images/profile.jpg" alt="西川太雄 プロフィール写真" width="300" height="400" loading="lazy">
       </div>
-      <div class="stat-card">
-        <div class="stat-number">+7億円</div>
-        <div class="stat-desc">YoY -4%の売上を+35%にV字回復<br>（外資コンサル案件）</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">LTV 1.4x</div>
-        <div class="stat-desc">年商数十億規模の事業で<br>データ&times;CRM施策によりLTV1.4倍に改善</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">年4000万円<br>2年継続</div>
-        <div class="stat-desc">コンサルタントとして一人常駐し、<br>年4,000万円（月340万円）で2年更新</div>
-      </div>
-    </div>
-
-    <p class="reveal" style="margin: 3rem 0 2rem; text-align: center; font-size: 1.05rem; line-height: 1.8; color: var(--text);">
-      通常、これらの領域は別々の専門家に依頼します。<br>
-      omoshikuはすべてを一人で完結させるため、<br>
-      戦略と実装の間に断絶が生まれません。
-    </p>
-
-    <table class="rtb-table reveal">
-      <thead>
-        <tr>
-          <th></th>
-          <th>コーチ</th>
-          <th>コンサル</th>
-          <th>制作会社</th>
-          <th>omoshiku</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>ビジョン・MVV策定</td>
-          <td><span class="check">&#9675;</span></td>
-          <td><span class="partial">&#9651;</span></td>
-          <td><span class="none">&times;</span></td>
-          <td><span class="raftel">&#9675;</span></td>
-        </tr>
-        <tr>
-          <td>市場調査・競合分析</td>
-          <td><span class="none">&times;</span></td>
-          <td><span class="check">&#9675;</span></td>
-          <td><span class="none">&times;</span></td>
-          <td><span class="raftel">&#9675;</span></td>
-        </tr>
-        <tr>
-          <td>戦略・ロードマップ</td>
-          <td><span class="none">&times;</span></td>
-          <td><span class="check">&#9675;</span></td>
-          <td><span class="none">&times;</span></td>
-          <td><span class="raftel">&#9675;</span></td>
-        </tr>
-        <tr>
-          <td>HP・SNS実装</td>
-          <td><span class="none">&times;</span></td>
-          <td><span class="none">&times;</span></td>
-          <td><span class="check">&#9675;</span></td>
-          <td><span class="raftel">&#9675;</span></td>
-        </tr>
-        <tr>
-          <td>データ分析・KPI設計</td>
-          <td><span class="none">&times;</span></td>
-          <td><span class="check">&#9675;</span></td>
-          <td><span class="none">&times;</span></td>
-          <td><span class="raftel">&#9675;</span></td>
-        </tr>
-        <tr>
-          <td>DX・プロセス自動化</td>
-          <td><span class="none">&times;</span></td>
-          <td><span class="partial">&#9651;</span></td>
-          <td><span class="none">&times;</span></td>
-          <td><span class="raftel">&#9675;</span></td>
-        </tr>
-        <tr>
-          <td>価格</td>
-          <td><span class="partial">&#9651;</span></td>
-          <td><span class="none">&times;</span></td>
-          <td><span class="partial">&#9651;</span></td>
-          <td><span class="raftel">&#9675;</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<!-- ========================================
-     Project Experience
-     ======================================== -->
-<section class="section section-light" id="projects">
-  <div class="container">
-    <div class="section-header reveal">
-      <h2 class="section-title">プロジェクト実績</h2>
-      <p class="section-subtitle" style="font-size: 0.92rem; color: var(--text-secondary); margin-top: 8px;">マクロミル・MTG・アクセンチュアを経て</p>
-    </div>
-
-    <p class="reveal" style="text-align: center; font-size: 1rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 48px;">
-      リサーチ・事業会社・外資コンサルの3領域で、<br>
-      戦略策定からデータ分析、実装・内製化支援まで一貫して手を動かしてきました。
-    </p>
-
-    <!-- Accenture Projects -->
-    <div class="project-company-block reveal">
-      <h3 class="project-company-title">アクセンチュア（2022年〜2025年）</h3>
-
-      <div class="project-item">
-        <h4 class="project-name">外資ペットフード D2C｜グロース＆データ基盤構築</h4>
-        <p class="project-desc">
-          一人常駐で、データ分析・CRM戦略・MA実装・BI構築を一気通貫で推進。<br>
-          売上YoY+35%、新規LTV1.4倍、定期注文率1.5倍。2年契約更新中。
-        </p>
-      </div>
-
-      <div class="project-item">
-        <h4 class="project-name">健康食品・化粧品EC｜サイトUI改善</h4>
-        <p class="project-desc">
-          サイト分析→課題優先順位付け→ABテスト実装を3ヶ月で完結。<br>
-          6施策中4施策でCVRリフト。年間売上効果+7億円。内製化フローも整備。
-        </p>
-      </div>
-
-      <div class="project-item">
-        <h4 class="project-name">食品EC｜顧客育成戦略策定</h4>
-        <p class="project-desc">
-          購買データ分析でLTV向上のゴールデンパスを定義。<br>
-          役員報告で方針合意を得た上で、次フェーズの施策実行も受注。
-        </p>
-      </div>
-
-      <div class="project-item">
-        <h4 class="project-name">通信企業｜KPI設計＆ダッシュボード構築</h4>
-        <p class="project-desc">
-          事業移管直後の回線サービスでPDCA基盤を構築。<br>
-          KPI設計からTableauダッシュボード開発まで担当。
-        </p>
-      </div>
-
-      <div class="project-item">
-        <h4 class="project-name">大手通信キャリア｜次世代DMP構想・要件定義</h4>
-        <p class="project-desc">
-          PMOとして5部門以上のステークホルダーを取りまとめ。<br>
-          経営会議にて5億円の開発予算承認を獲得。
-        </p>
-      </div>
-    </div>
-
-    <!-- MTG Projects -->
-    <div class="project-company-block reveal">
-      <h3 class="project-company-title">MTG（2019年〜2022年）</h3>
-
-      <div class="project-item">
-        <h4 class="project-name">新規事業立ち上げ〜グロース</h4>
-        <p class="project-desc">
-          市場調査・GTM戦略からマーケ実行・リテンション改善まで一気通貫。<br>
-          初年度売上10億円規模を達成。チームMVP・個人MVP受賞。<br>
-          CAC▲70%、新規購入者数+300%、月解約率10%→6%。
-        </p>
-      </div>
-    </div>
-
-    <!-- Macromill Projects -->
-    <div class="project-company-block reveal">
-      <h3 class="project-company-title">マクロミル（〜2019年）</h3>
-
-      <div class="project-item">
-        <h4 class="project-name">リサーチ・顧客理解</h4>
-        <p class="project-desc">
-          顧客調査・市場調査を通じて、データに基づく意思決定の基盤を築く。
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ========================================
-     Profile
-     ======================================== -->
-<section class="section section-warm profile-section" id="profile">
-  <div class="container">
-    <div class="section-header reveal">
-      <p class="section-label">Profile</p>
-      <h2 class="section-title">代表紹介</h2>
-    </div>
-
-    <div class="profile-content">
-      <div class="profile-photo-area reveal">
-        <div class="profile-photo-placeholder">
-          <span class="photo-text">TN</span>
+      <div class="about-detail">
+        <h3 class="about-name">西川 太雄<span class="about-name-en">Takao Nishikawa</span></h3>
+        <p class="about-role">omoshiku 代表 / DXマネージャー</p>
+        <div class="about-career">
+          <div class="career-step">
+            <span class="career-company">マクロミル</span>
+            <span class="career-desc">リサーチ・データ分析の基礎</span>
+          </div>
+          <div class="career-step">
+            <span class="career-company">MTG</span>
+            <span class="career-desc">事業成長・マーケティング戦略</span>
+          </div>
+          <div class="career-step">
+            <span class="career-company">アクセンチュア</span>
+            <span class="career-desc">DX・テクノロジーコンサルティング</span>
+          </div>
+          <div class="career-step career-step--current">
+            <span class="career-company">年商25億円スタートアップ<br>DXマネージャー &amp; omoshiku 代表</span>
+            <span class="career-desc">現在も事業会社でデジタル戦略を推進しながら、その実践知を外部企業にも展開</span>
+          </div>
         </div>
-        <div class="profile-name-card">
-          <p class="profile-role">代表取締役 / Growth Architect</p>
-          <p class="profile-name-ja">西川 太雄</p>
-          <p class="profile-name-en">Tao Nishikawa</p>
-        </div>
-      </div>
-
-      <div class="profile-detail">
-        <blockquote class="profile-quote reveal">
-          戦略だけでは動かない。実装だけでは方向を見失う。<br>その両方を、一人で貫く。
+        <blockquote class="about-quote">
+          「根拠のない確信を育て、論理的な熱狂でぶち抜く。」
         </blockquote>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <div class="profile-subsection reveal">
-          <h3 class="profile-subsection-title">Career</h3>
-          <p class="profile-career-text">
-            マクロミルでリサーチャーとして顧客理解・市場調査の基盤を築き、MTGにて新規事業の立ち上げからグロースまでを一気通貫で推進、初年度10億円を達成（MVP受賞）。アクセンチュアではDX戦略&times;データ活用で複数のEC事業を支援し、売上V字回復・LTV改善などの成果を上げた後、独立。一貫して「戦略と実装の両輪」でリードしてきた経験が、omoshikuのサービスの基盤です。
-          </p>
-        </div>
+<!-- ========================================
+     Section 6: Results (Numbers + Projects)
+     ======================================== -->
+<section class="section section-light" id="results">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">05</span>
+      <span class="section-label">Results</span>
+      <h2 class="section-title">プロジェクト実績</h2>
+    </div>
+    <div class="numbers-grid">
+      <div class="number-card">
+        <div class="number-value" data-count="10" data-prefix="0→" data-suffix="億">0</div>
+        <div class="number-label">売上成長</div>
+        <p class="number-desc">新規事業のマーケ責任者として<br>初年度10億円達成</p>
+      </div>
+      <div class="number-card">
+        <div class="number-value" data-count="7" data-prefix="+" data-suffix="億円">0</div>
+        <div class="number-label">売上インパクト</div>
+        <p class="number-desc">埋もれていた顧客データから<br>追加売上を創出</p>
+      </div>
+      <div class="number-card">
+        <div class="number-value" data-count="1.4" data-prefix="" data-suffix="x" data-decimals="1">0</div>
+        <div class="number-label">リピート率 改善</div>
+        <p class="number-desc">データで離脱原因を特定し<br>継続率を1.4倍に改善</p>
+      </div>
+      <div class="number-card">
+        <div class="number-value" data-count="10" data-prefix="" data-suffix="+">0</div>
+        <div class="number-label">支援プロジェクト</div>
+        <p class="number-desc">小売・D2C・SaaSなど<br>業種横断で伴走</p>
+      </div>
+    </div>
 
-        <div class="profile-subsection reveal">
-          <h3 class="profile-subsection-title">Why omoshiku Can</h3>
-          <div class="strengths-grid">
-            <div class="strength-item">
-              <p class="strength-en">Cross-Functional</p>
-              <p class="strength-text">ビジネス・クリエイティブ・テクノロジーを一人で横断。プロジェクトが分断されないから、伝言ゲームが発生しない。</p>
-            </div>
-            <div class="strength-item">
-              <p class="strength-en">Strategy &times; Execution</p>
-              <p class="strength-text">マーケティング戦略からデータ分析、プロトタイプ実装まで完結。戦略と実装のギャップが生まれない。</p>
-            </div>
-            <div class="strength-item">
-              <p class="strength-en">Outcome Driven</p>
-              <p class="strength-text">納品物ではなく事業成果にコミット。月次顧問・伴走型だからこそ、数字が動くまでやり切れる。</p>
+    <!-- Projects Accordion -->
+    <h3 class="results-sub-title">プロジェクト事例</h3>
+    <div class="project-list">
+      <div class="project-item">
+        <button class="project-header" aria-expanded="false">
+          <div class="project-header-content">
+            <span class="project-tag">D2C</span>
+            <span class="project-title">某D2Cブランド — 売上0→10億円の成長支援</span>
+          </div>
+          <svg class="project-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="project-body">
+          <div class="project-body-inner">
+            <p>事業会社にて、新サービス立ち上げと、マーケ推進を行い初年度10億円に貢献。MVP受賞。マーケティング戦略の策定から、広告運用・CRM構築・データ分析まで一気通貫で貢献。</p>
+            <div class="project-tags">
+              <span>戦略設計</span><span>広告運用</span><span>CRM構築</span><span>データ分析</span>
             </div>
           </div>
         </div>
-
-        <div class="profile-subsection reveal">
-          <h3 class="profile-subsection-title">Message</h3>
-          <div class="personal-why">
-            <div class="personal-why-inner">
-              <p>
-                創業者には、まだ誰にも見えていない未来が見えています。<br>
-                「これは絶対にいける」という確信がある。
-              </p>
-              <p>
-                でも、その確信を一人で抱えたままでは、組織は動かない。<br>
-                顧客には届かない。事業は伸びない。
-              </p>
-              <p>
-                確信を言語化し、データで道筋を照らし、<br>
-                仕組みとして組織に実装する。<br>
-                そうして初めて、一人の想いが全員の熱量に変わる。
-              </p>
-              <p>
-                コーチングで確信を育て、コンサルで道を敷き、<br>
-                エンジニアリングで仕組みをつくる。<br>
-                その全行程を、あなたの隣で。
-              </p>
-              <p>
-                根拠のない確信を育て、論理的な熱狂でぶち抜く。<br>
-                それが僕の信念であり、omoshikuの存在理由です。
-              </p>
+      </div>
+      <div class="project-item">
+        <button class="project-header" aria-expanded="false">
+          <div class="project-header-content">
+            <span class="project-tag">食品EC</span>
+            <span class="project-title">某食品EC企業 — LTV 1.4倍改善</span>
+          </div>
+          <svg class="project-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="project-body">
+          <div class="project-body-inner">
+            <p>ロイヤル化しやすい顧客の購買パターンをデータで特定。サイト改善とメール/LINEシナリオ実装でLTV1.4倍に改善。</p>
+            <div class="project-tags">
+              <span>購買データ分析</span><span>サイト改善</span><span>LINE/メール施策</span><span>LTV改善</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="project-item">
+        <button class="project-header" aria-expanded="false">
+          <div class="project-header-content">
+            <span class="project-tag">小売</span>
+            <span class="project-title">某小売チェーン — データドリブン経営の実現</span>
+          </div>
+          <svg class="project-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="project-body">
+          <div class="project-body-inner">
+            <p>店舗ごとにバラバラだったデータをBigQueryに統合し、リアルタイムダッシュボードを構築。経営会議の意思決定スピードが劇的に向上し、在庫最適化による利益率改善を実現。</p>
+            <div class="project-tags">
+              <span>BQ構築</span><span>ダッシュボード</span><span>在庫最適化</span><span>経営支援</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="project-item">
+        <button class="project-header" aria-expanded="false">
+          <div class="project-header-content">
+            <span class="project-tag">サブスク</span>
+            <span class="project-title">某サブスクサービス — 広告ROAS 3倍改善</span>
+          </div>
+          <svg class="project-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="project-body">
+          <div class="project-body-inner">
+            <p>Meta・Google広告のデータをBigQueryに統合し、クリエイティブ×オーディエンスの組み合わせ分析を自動化。勝ちパターンの特定と予算配分の最適化により、ROAS 3倍を達成。</p>
+            <div class="project-tags">
+              <span>広告分析</span><span>ROAS改善</span><span>データ統合</span><span>自動レポート</span>
             </div>
           </div>
         </div>
@@ -1427,104 +456,24 @@
 </section>
 
 <!-- ========================================
-     Featured Content
+     Section 7: Contact (CTA)
      ======================================== -->
-<section class="section content-section-home" id="content">
-  <div class="container">
-    <div class="section-header reveal">
-      <h2 class="section-title">ナレッジ</h2>
-      <p class="section-subtitle">AI活用・データドリブン経営・DXに関するナレッジを、実践に基づいて発信しています。</p>
-    </div>
-
-    <div class="content-grid">
-      <!-- Article 1 -->
-      <a href="content/ai-hp-guide.html" class="content-card reveal reveal-delay-1">
-        <div class="content-card-thumb" style="background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80&fm=webp'); background-color: #1a2030;">
-          <div class="content-card-thumb-overlay"></div>
-          <span class="content-card-thumb-inner">AI &times; HP</span>
-          <div class="content-card-thumb-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-          </div>
-        </div>
-        <div class="content-card-body">
-          <span class="content-card-tag">AI Knowledge</span>
-          <h3 class="content-card-title">AI&times;プロンプトだけで「プロ品質のHP」を作る完全ガイド</h3>
-          <p class="content-card-desc">コーディング知識ゼロでもAIとの対話だけで洗練されたHPを作る方法を、実際のプロセスとプロンプト例つきで解説。</p>
-          <div class="content-card-meta">
-            <span>2026.02</span>
-            <span class="content-card-link">Read more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Article 2 -->
-      <a href="content/ai-sns-strategy.html" class="content-card reveal reveal-delay-2">
-        <div class="content-card-thumb" style="background-image: url('https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80&fm=webp'); background-color: #1a2e2a;">
-          <div class="content-card-thumb-overlay"></div>
-          <span class="content-card-thumb-inner">AI &times; SNS</span>
-          <div class="content-card-thumb-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          </div>
-        </div>
-        <div class="content-card-body">
-          <span class="content-card-tag">Content Strategy</span>
-          <h3 class="content-card-title">1記事から5チャネルへ &mdash; AI&times;SNS集客の全体設計</h3>
-          <p class="content-card-desc">HP記事を起点にX・YouTube・Instagramへ自動展開。起業プロセスそのものをコンテンツにする集客戦略。</p>
-          <div class="content-card-meta">
-            <span>2026.02</span>
-            <span class="content-card-link">Read more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Article 3 -->
-      <a href="content/sns-account-design.html" class="content-card reveal reveal-delay-1">
-        <div class="content-card-thumb" style="background-image: url('https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=800&q=80&fm=webp'); background-color: #1a2030;">
-          <div class="content-card-thumb-overlay"></div>
-          <span class="content-card-thumb-inner">SNS Design</span>
-          <div class="content-card-thumb-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-          </div>
-        </div>
-        <div class="content-card-body">
-          <span class="content-card-tag">SNS Account Design</span>
-          <h3 class="content-card-title">起業SNS設計の全体像 &mdash; 5アカウント&times;不安解消リレー</h3>
-          <p class="content-card-desc">ターゲットの不安マッピングから各チャネルの役割分担、プロフィール設計、導線設計まで全公開。</p>
-          <div class="content-card-meta">
-            <span>2026.02</span>
-            <span class="content-card-link">Read more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <div class="content-more-wrap reveal">
-      <a href="content/" class="content-more">
-        すべての記事を見る
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-    </div>
+<section class="section section-cta" id="contact">
+  <div class="cta-bg">
+    <div class="cta-orb cta-orb--1"></div>
+    <div class="cta-orb cta-orb--2"></div>
   </div>
-</section>
-
-<!-- ========================================
-     CTA
-     ======================================== -->
-<section class="cta-section" id="contact">
-  <div class="container">
-    <h2 class="cta-title reveal">まずは30分、お話しませんか。</h2>
-    <p class="cta-desc reveal reveal-delay-1">
-      「何から始めればいいかわからない」で大丈夫です。<br>
-      現状をお聞きして、最適なアプローチをご提案します。相談だけでも構いません。
-    </p>
-    <div class="cta-details reveal reveal-delay-1">
-      <span>30分</span>
-      <span>オンライン</span>
-      <span>無料</span>
+  <div class="container cta-content">
+    <h2 class="cta-title">「何を頼めばいいかわからない」でOKです。</h2>
+    <p class="cta-desc">まずは30分、あなたの「なんとなく不便」を聞かせてください。<br>対話の中から、一緒に答えを見つけていきましょう。</p>
+    <div class="cta-details">
+      <span>初回相談 無料</span>
+      <span>オンライン対応</span>
+      <span>秘密厳守</span>
     </div>
-    <a href="mailto:info@omoshiku.co.jp" class="cta-button reveal reveal-delay-2">
-      無料相談に申し込む
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    <a href="https://forms.gle/placeholder" class="cta-button" target="_blank" rel="noopener">
+      無料相談を予約する
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
     </a>
   </div>
 </section>
@@ -1533,107 +482,24 @@
      Footer
      ======================================== -->
 <footer class="footer">
-  <div class="container">
-    <div class="footer-inner">
+  <div class="container footer-inner">
+    <div class="footer-brand">
       <span class="footer-logo">omoshiku</span>
-      <span class="footer-copy">&copy; 2026 omoshiku All Rights Reserved.</span>
+      <p class="footer-tagline">想いと仕組みで面白く</p>
+    </div>
+    <div class="footer-links">
+      <a href="#problem">Problem</a>
+      <a href="#approach">Approach</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#results">Results</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 omoshiku. All rights reserved.</p>
     </div>
   </div>
 </footer>
 
-<!-- ========================================
-     JavaScript
-     ======================================== -->
-<script>
-// Scroll reveal
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
-  });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-// Nav scroll effect
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 60);
-});
-
-// Hamburger menu with ARIA state management
-function toggleMenu() {
-  const navLinks = document.getElementById('navLinks');
-  const hamburger = document.getElementById('hamburger');
-  const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
-
-  // Toggle menu
-  navLinks.classList.toggle('active');
-
-  // Update ARIA state
-  hamburger.setAttribute('aria-expanded', !isExpanded);
-  hamburger.setAttribute('aria-label', !isExpanded ? 'メニューを閉じる' : 'メニューを開く');
-}
-
-// Hamburger menu toggle
-document.getElementById('hamburger')?.addEventListener('click', toggleMenu);
-
-// Keyboard support for hamburger menu
-document.addEventListener('DOMContentLoaded', function() {
-  const hamburger = document.getElementById('hamburger');
-  if (!hamburger) return;
-
-  hamburger.addEventListener('keydown', function(e) {
-    // Support Enter and Space keys
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      toggleMenu();
-    }
-
-    // ESC to close menu
-    if (e.key === 'Escape' && this.getAttribute('aria-expanded') === 'true') {
-      toggleMenu();
-    }
-  });
-
-  // Close menu on ESC from anywhere when menu is open
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-      const hamburger = document.getElementById('hamburger');
-      const navLinks = document.getElementById('navLinks');
-      if (navLinks && navLinks.classList.contains('active')) {
-        toggleMenu();
-        hamburger.focus(); // Return focus to hamburger
-      }
-    }
-  });
-});
-
-// Particles
-const pc = document.getElementById('particles');
-for (let i = 0; i < 50; i++) {
-  const p = document.createElement('div');
-  const isAmber = Math.random() > 0.4;
-  p.className = 'particle ' + (isAmber ? 'particle-amber' : 'particle-white');
-  p.style.left = Math.random() * 100 + '%';
-  p.style.bottom = '-10px';
-  p.style.animationDelay = Math.random() * 8 + 's';
-  p.style.animationDuration = (5 + Math.random() * 7) + 's';
-  const size = 1.5 + Math.random() * 2.5;
-  p.style.width = size + 'px';
-  p.style.height = size + 'px';
-  pc.appendChild(p);
-}
-
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      document.getElementById('navLinks').classList.remove('active');
-    }
-  });
-});
-</script>
 </body>
 </html>
