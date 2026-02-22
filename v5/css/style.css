@@ -193,7 +193,7 @@ img { max-width: 100%; height: auto; display: block; }
   background: transparent;
   border: none;
   padding: 8px;
-  z-index: 101;
+  z-index: 201;
 }
 
 .hamburger span {
@@ -225,7 +225,7 @@ img { max-width: 100%; height: auto; display: block; }
   align-items: center;
   justify-content: center;
   gap: 32px;
-  z-index: 99;
+  z-index: 200;
 }
 
 .mobile-menu.active {
@@ -1077,6 +1077,7 @@ img { max-width: 100%; height: auto; display: block; }
   font-size: 0.9rem;
   font-weight: 700;
   min-width: 120px;
+  max-width: 200px;
 }
 
 .career-desc {
@@ -1103,7 +1104,7 @@ img { max-width: 100%; height: auto; display: block; }
   text-align: center;
   position: relative;
   overflow: hidden;
-  padding: 100px 0 40px;
+  padding: 100px 0 20px;
 }
 
 .cta-bg {
@@ -1207,7 +1208,7 @@ img { max-width: 100%; height: auto; display: block; }
 .footer {
   background: #060610;
   color: var(--text-on-dark-sub);
-  padding: 40px 0 32px;
+  padding: 20px 0 32px;
 }
 
 .footer-inner {
@@ -1639,13 +1640,22 @@ tbody tr:last-child td.compare-highlight {
   .nav-inner { padding: 0 24px; }
 
   /* Hero */
+  .hero {
+    align-items: flex-start;
+  }
   .hero-content {
     padding: 0 24px;
-    padding-top: 120px;
+    padding-top: 18vh;
   }
-
   .hero-catch {
     font-size: clamp(2rem, 8vw, 3rem);
+    margin-bottom: 24px;
+  }
+  .hero-label {
+    margin-bottom: 24px;
+  }
+  .hero-sub {
+    margin-bottom: 32px;
   }
 
   .hero-cta-group {
