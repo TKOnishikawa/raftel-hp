@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>omoshiku — Night Horizon 演出バリエーション</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Antique&family=Sora:wght@300;400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ========================================
+   Reset & Base
+   ======================================== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+a { text-decoration: none; color: inherit; }
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: #0a0a14; color: #f0ece6; overflow-x: hidden;
+}
+
+/* ========================================
+   Toggle Bar
+   ======================================== */
+.toggle-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  background: rgba(10,10,20,0.94);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex; flex-direction: column; align-items: center; gap: 0;
+  padding: 10px 16px;
+}
+.toggle-title {
+  font-family: 'Sora', sans-serif; font-size: 0.65rem; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(240,236,230,0.35); margin-bottom: 8px;
+}
+.toggle-row {
+  display: flex; gap: 4px;
+  background: rgba(255,255,255,0.06); border-radius: 8px; padding: 3px;
+}
+.toggle-btn {
+  padding: 8px 18px;
+  font-family: 'Sora', sans-serif; font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.04em; color: rgba(240,236,230,0.4);
+  border: none; background: transparent; cursor: pointer;
+  border-radius: 6px; transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+  white-space: nowrap;
+}
+.toggle-btn:hover { color: rgba(240,236,230,0.7); }
+.toggle-btn.active {
+  background: rgba(255,255,255,0.1);
+  color: #ff7eb3; box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* ========================================
+   Demo Section
+   ======================================== */
+.demo { display: none; }
+.demo.active { display: block; }
+
+/* ========================================
+   Night Horizon Base Colors
+   ======================================== */
+:root {
+  --nh-dark: #0a0a14;
+  --nh-dark2: #0b0b12;
+  --nh-warm: #f6f3ee;
+  --nh-amber: #e8944a;
+  --nh-rose: #d4627a;
+  --nh-pink: #ff7eb3;
+  --nh-blue: #4a9eff;
+  --nh-text: #f0ece6;
+  --nh-text-sub: rgba(240,236,230,0.7);
+  --nh-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ========================================
+   Hero Shared
+   ======================================== */
+.hero {
+  position: relative; min-height: 100vh; display: flex; align-items: center;
+  overflow: hidden; padding-top: 72px; background: var(--nh-dark);
+}
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 1200px; margin: 0 auto; padding: 0 40px; padding-top: 80px;
+}
+.hero-label {
+  font-family: 'Sora', sans-serif; font-size: 0.78rem; font-weight: 500;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--nh-amber); margin-bottom: 40px;
+  opacity: 0; animation: fade-up 0.6s 0.3s var(--nh-ease) forwards;
+}
+.hero-label::before {
+  content: ''; display: inline-block; width: 40px; height: 1px;
+  background: linear-gradient(90deg, var(--nh-amber), var(--nh-rose));
+  margin-right: 16px; vertical-align: middle;
+}
+.hero-catch {
+  font-family: 'Zen Antique', serif;
+  font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 400;
+  line-height: 1.5; letter-spacing: 0.08em;
+  color: var(--nh-text); margin-bottom: 40px;
+}
+.hero-catch .line-1 {
+  display: block;
+  opacity: 0; animation: fade-up 0.8s 0.5s var(--nh-ease) forwards;
+}
+.hero-catch .line-2 {
+  display: block;
+  opacity: 0; animation: fade-up 0.8s 0.7s var(--nh-ease) forwards;
+}
+.hero-catch .em {
+  background: linear-gradient(135deg, var(--nh-amber) 0%, var(--nh-rose) 60%, var(--nh-pink) 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero-sub {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: clamp(1rem, 1.6vw, 1.15rem); font-weight: 400;
+  color: var(--nh-text-sub); line-height: 2;
+  letter-spacing: 0.04em; max-width: 540px; margin-bottom: 56px;
+  opacity: 0; animation: fade-up 0.6s 0.9s var(--nh-ease) forwards;
+}
+.cta-group {
+  display: flex; gap: 16px; flex-wrap: wrap;
+  opacity: 0; animation: fade-up 0.6s 1.2s var(--nh-ease) forwards;
+}
+.cta-primary {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 18px 44px;
+  background: linear-gradient(135deg, var(--nh-amber) 0%, var(--nh-rose) 50%, #c04070 100%);
+  color: #fff; font-family: 'Sora', sans-serif; font-weight: 700;
+  font-size: 0.95rem; border-radius: 4px;
+  transition: transform 0.3s var(--nh-ease), box-shadow 0.3s var(--nh-ease);
+}
+.cta-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(212,98,122,0.35);
+}
+.cta-secondary {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 18px 44px; border: 1px solid rgba(212,98,122,0.3);
+  color: #fff; font-family: 'Sora', sans-serif;
+  font-weight: 600; font-size: 0.95rem; border-radius: 4px;
+  transition: all 0.3s;
+}
+.cta-secondary:hover { border-color: var(--nh-rose); background: rgba(212,98,122,0.06); }
+
+.scroll-ind {
+  position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px; z-index: 2;
+  opacity: 0; animation: fade-up 0.6s 1.8s ease-out forwards;
+}
+.scroll-ind span {
+  font-family: 'Sora', sans-serif; font-size: 0.65rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: rgba(240,236,230,0.35);
+}
+.scroll-line {
+  width: 1px; height: 60px; background: rgba(255,255,255,0.1);
+  position: relative; overflow: hidden;
+}
+.scroll-line::after {
+  content: ''; position: absolute; top: -60px; width: 100%; height: 60px;
+  background: linear-gradient(180deg, var(--nh-amber), var(--nh-rose));
+  animation: scroll-anim 2s ease-in-out infinite;
+}
+
+/* Base ambient glows */
+.glow-amber {
+  position: absolute; top: 10%; right: -8%;
+  width: 900px; height: 700px; border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(232,148,74,0.12) 0%, rgba(214,98,122,0.08) 40%, rgba(74,154,255,0.04) 70%, transparent 90%);
+  filter: blur(60px); pointer-events: none;
+  animation: breathe 10s ease-in-out infinite;
+}
+.glow-blue {
+  position: absolute; bottom: -15%; left: 0%;
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(74,154,255,0.1) 0%, transparent 65%);
+  filter: blur(50px); pointer-events: none;
+  animation: breathe 12s ease-in-out infinite 2s;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes scroll-anim { 0% { top: -60px; } 100% { top: 60px; } }
+@keyframes breathe {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+/* ========================================
+   Cards Section (shared)
+   ======================================== */
+.cards-sec {
+  padding: 120px 0 100px; background: var(--nh-warm); color: #1a1a24;
+}
+.cards-container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+.cards-header { margin-bottom: 64px; }
+.cards-label {
+  font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--nh-rose); margin-bottom: 16px;
+}
+.cards-label::before {
+  content: ''; display: inline-block; width: 24px; height: 1px;
+  background: linear-gradient(90deg, var(--nh-amber), var(--nh-rose));
+  margin-right: 12px; vertical-align: middle;
+}
+.cards-title {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(2rem, 3.5vw, 2.6rem); font-weight: 800;
+  line-height: 1.35; color: #1a1a24;
+}
+.cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.card {
+  padding: 40px 32px; border-radius: 12px;
+  background: rgba(255,255,255,0.7); border: 1px solid rgba(26,26,36,0.06);
+  transition: transform 0.3s var(--nh-ease), box-shadow 0.3s;
+}
+.card:hover { transform: translateY(-3px); box-shadow: 0 16px 48px rgba(212,98,122,0.1); }
+.card .num {
+  font-family: 'Inter', monospace; font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.1em; margin-bottom: 20px; color: var(--nh-blue);
+}
+.card h4 {
+  font-family: 'Noto Sans JP', sans-serif; font-size: 1rem; font-weight: 700;
+  line-height: 1.7; margin-bottom: 12px; color: #1a1a24;
+}
+.card p { font-size: 0.88rem; line-height: 1.8; color: #4a4a5a; }
+
+/* Pillars */
+.pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 80px; }
+.pillar {
+  padding: 48px 32px; border-radius: 12px; text-align: center;
+  background: rgba(255,255,255,0.5); border: 1px solid rgba(26,26,36,0.06);
+  transition: transform 0.3s var(--nh-ease);
+}
+.pillar:hover { transform: translateY(-3px); }
+.pillar .icon {
+  width: 56px; height: 56px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 24px; background: rgba(74,154,255,0.08);
+}
+.pillar .icon svg { width: 24px; height: 24px; stroke: var(--nh-blue); fill: none; stroke-width: 2; }
+.pillar h4 { font-family: 'Sora', sans-serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; color: #1a1a24; }
+.pillar h5 { font-size: 0.9rem; font-weight: 500; margin-bottom: 16px; color: var(--nh-rose); }
+.pillar p { font-size: 0.88rem; line-height: 1.8; color: #4a4a5a; }
+
+/* ========================================
+   Numbers Section (dark)
+   ======================================== */
+.numbers-sec {
+  padding: 100px 0; background: var(--nh-dark2); position: relative;
+}
+.numbers-container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+.numbers-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px;
+  text-align: center;
+}
+.num-item .value {
+  font-family: 'Inter', monospace; font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 800; letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+.num-item .unit {
+  font-family: 'Sora', sans-serif; font-size: 0.9rem; font-weight: 500;
+  margin-left: 4px;
+}
+.num-item .desc {
+  font-size: 0.82rem; color: rgba(240,236,230,0.5); letter-spacing: 0.04em;
+}
+
+/* ========================================
+   Variant Label Badge
+   ======================================== */
+.variant-badge {
+  position: absolute; top: 90px; right: 40px; z-index: 3;
+  font-family: 'Sora', sans-serif; font-size: 0.65rem; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  padding: 8px 16px; border-radius: 6px;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08);
+  color: rgba(240,236,230,0.5);
+}
+
+/* ========================================
+   ★ SHIMMER — Gradient text animation
+   ======================================== */
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    var(--nh-amber) 0%,
+    var(--nh-rose) 25%,
+    var(--nh-pink) 40%,
+    #fff 50%,
+    var(--nh-pink) 60%,
+    var(--nh-rose) 75%,
+    var(--nh-amber) 100%
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer-flow 4s ease-in-out infinite;
+}
+@keyframes shimmer-flow {
+  0% { background-position: 100% center; }
+  50% { background-position: 0% center; }
+  100% { background-position: 100% center; }
+}
+
+/* ========================================
+   ★ FLOWING MESH — Enhanced background
+   ======================================== */
+.mesh-bg {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse at 25% 30%, rgba(232,148,74,0.14) 0%, transparent 50%),
+    radial-gradient(ellipse at 75% 20%, rgba(212,98,122,0.1) 0%, transparent 45%),
+    radial-gradient(ellipse at 60% 70%, rgba(74,154,255,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 30% 80%, rgba(255,126,179,0.06) 0%, transparent 40%);
+  background-size: 200% 200%;
+  animation: mesh-flow 16s ease infinite alternate;
+  pointer-events: none;
+}
+@keyframes mesh-flow {
+  0%   { background-position: 0% 0%, 100% 0%, 60% 100%, 0% 80%; }
+  50%  { background-position: 50% 50%, 50% 50%, 30% 50%, 70% 20%; }
+  100% { background-position: 100% 100%, 0% 100%, 0% 0%, 100% 50%; }
+}
+
+/* ========================================
+   ★ MOUSE GLOW — Cursor-following light
+   ======================================== */
+.mouse-glow {
+  position: fixed; z-index: 1;
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(212,98,122,0.12) 0%,
+    rgba(232,148,74,0.06) 30%,
+    transparent 70%);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.4s;
+  opacity: 0;
+  will-change: left, top;
+}
+.mouse-glow.visible { opacity: 1; }
+
+/* ========================================
+   ★ MAGNETIC — Button attraction
+   ======================================== */
+.magnetic {
+  transition: transform 0.15s ease-out;
+}
+.magnetic.returning {
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* ========================================
+   ★ 3D TILT — Card perspective
+   ======================================== */
+.tilt-wrapper { perspective: 800px; }
+.tilt-card {
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out, box-shadow 0.3s;
+}
+.tilt-card.returning {
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.3s;
+}
+.tilt-card:hover {
+  box-shadow: 0 20px 60px rgba(212,98,122,0.15);
+}
+
+/* ========================================
+   ★ TYPEWRITER — Label typing animation
+   ======================================== */
+.typewriter-label {
+  font-family: 'Sora', sans-serif; font-size: 0.78rem; font-weight: 500;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--nh-amber); margin-bottom: 40px;
+  opacity: 0; animation: fade-up 0.6s 0.2s var(--nh-ease) forwards;
+}
+.typewriter-label::before {
+  content: ''; display: inline-block; width: 40px; height: 1px;
+  background: linear-gradient(90deg, var(--nh-amber), var(--nh-rose));
+  margin-right: 16px; vertical-align: middle;
+}
+.typewriter-cursor {
+  display: inline-block; width: 2px; height: 1em;
+  background: var(--nh-amber); vertical-align: text-bottom;
+  margin-left: 2px;
+  animation: cursor-blink 0.8s step-end infinite;
+}
+@keyframes cursor-blink { 50% { opacity: 0; } }
+
+/* ========================================
+   ★ NUMBER COUNTER — Animated values
+   ======================================== */
+.counter-value {
+  background: linear-gradient(135deg, var(--nh-amber), var(--nh-rose));
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ========================================
+   Reduced Motion
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+  .mouse-glow { display: none; }
+  .shimmer-text { animation: none; background-position: 0% center; }
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+@media (max-width: 768px) {
+  .toggle-row { flex-wrap: wrap; justify-content: center; }
+  .toggle-btn { padding: 6px 12px; font-size: 0.65rem; }
+  .hero-content { padding: 0 24px; padding-top: 60px; }
+  .cta-group { flex-direction: column; }
+  .cta-primary, .cta-secondary { width: 100%; justify-content: center; padding: 16px 32px; }
+  .cards-grid { grid-template-columns: 1fr; }
+  .pillars { grid-template-columns: 1fr; }
+  .numbers-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+  .cards-container, .numbers-container { padding: 0 24px; }
+  .variant-badge { top: 80px; right: 16px; font-size: 0.6rem; padding: 6px 12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Toggle Bar -->
+<div class="toggle-bar">
+  <div class="toggle-title">Night Horizon — 演出バリエーション比較</div>
+  <div class="toggle-row">
+    <button class="toggle-btn active" data-v="base" onclick="switchVariant('base')">C Base</button>
+    <button class="toggle-btn" data-v="shimmer" onclick="switchVariant('shimmer')">C + Shimmer &amp; Flow</button>
+    <button class="toggle-btn" data-v="interact" onclick="switchVariant('interact')">C + Interactive</button>
+    <button class="toggle-btn" data-v="full" onclick="switchVariant('full')">C + Full Craft</button>
+  </div>
+</div>
+
+<!-- Mouse glow element (shared, activated per variant) -->
+<div class="mouse-glow" id="mouseGlow"></div>
+
+<!-- ==========================================
+     BASE — Night Horizon そのまま
+     ========================================== -->
+<div class="demo active" id="demo-base">
+  <section class="hero">
+    <div class="variant-badge">Base — 現行 Night Horizon</div>
+    <div class="glow-amber"></div>
+    <div class="glow-blue"></div>
+    <div class="hero-content">
+      <p class="hero-label">DX / AI Growth Partner</p>
+      <h1 class="hero-catch">
+        <span class="line-1"><span class="em">"想い"</span>と<span class="em">"仕組み"</span>で</span>
+        <span class="line-2"><span class="em">"面白く"</span></span>
+      </h1>
+      <p class="hero-sub">データ / DX / AI で、中小企業の変革と熱狂を支援する</p>
+      <div class="cta-group">
+        <a href="#" class="cta-primary">無料相談に申し込む <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a href="#" class="cta-secondary">サービス詳細を見る <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+    <div class="scroll-ind"><span>Scroll</span><div class="scroll-line"></div></div>
+  </section>
+
+  <section class="cards-sec">
+    <div class="cards-container">
+      <div class="cards-header">
+        <p class="cards-label">Solution</p>
+        <h2 class="cards-title">こんな課題に、心当たりはありませんか？</h2>
+      </div>
+      <div class="cards-grid">
+        <div class="card"><div class="num">01</div><h4>サービスには自信がある。<br>でも「何がいいの？」に答えられない。</h4><p>価値はわかっている。でも、端的に伝える方法が見つからない。</p></div>
+        <div class="card"><div class="num">02</div><h4>データは集まっている。<br>でも、意思決定に使えていない。</h4><p>分析→施策→検証のループが回っていない。</p></div>
+        <div class="card"><div class="num">03</div><h4>外注の納品物はきれい。<br>でも、売上は動かない。</h4><p>戦略と実装が分断され、温度差が埋まらない。</p></div>
+      </div>
+      <div class="pillars">
+        <div class="pillar"><div class="icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h4>Coaching</h4><h5>確信を、つくる。</h5><p>認知科学ベースのコーチングで、想いを言語化・構造化する。</p></div>
+        <div class="pillar"><div class="icon"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/><circle cx="12" cy="12" r="2"/></svg></div><h4>Consulting</h4><h5>確信を、科学する。</h5><p>データ分析・KPI設計で勝ち筋を特定。エビデンスに基づく意思決定基盤。</p></div>
+        <div class="pillar"><div class="icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 6v6M1 12h6m6 0h6"/></svg></div><h4>Engineering</h4><h5>熱狂を、実装する。</h5><p>HP制作・データ基盤・DX。戦略が現場で回り続ける仕組み。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="numbers-sec">
+    <div class="numbers-container">
+      <div class="numbers-grid">
+        <div class="num-item"><div class="value" style="color: var(--nh-amber);">50<span class="unit">+</span></div><div class="desc">支援プロジェクト数</div></div>
+        <div class="num-item"><div class="value" style="color: var(--nh-rose);">3<span class="unit">ヶ月</span></div><div class="desc">平均ROI回収期間</div></div>
+        <div class="num-item"><div class="value" style="color: var(--nh-blue);">98<span class="unit">%</span></div><div class="desc">継続率</div></div>
+        <div class="num-item"><div class="value" style="color: var(--nh-pink);">15<span class="unit">年</span></div><div class="desc">デジタル領域の実務経験</div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==========================================
+     SHIMMER & FLOW — テキストシマー + メッシュ背景
+     ========================================== -->
+<div class="demo" id="demo-shimmer">
+  <section class="hero">
+    <div class="variant-badge">Shimmer &amp; Flow — テキスト輝き + 流動メッシュ</div>
+    <div class="mesh-bg"></div>
+    <div class="glow-amber"></div>
+    <div class="glow-blue"></div>
+    <div class="hero-content">
+      <p class="hero-label">DX / AI Growth Partner</p>
+      <h1 class="hero-catch">
+        <span class="line-1"><span class="em">"想い"</span>と<span class="em">"仕組み"</span>で</span>
+        <span class="line-2"><span class="shimmer-text">"面白く"</span></span>
+      </h1>
+      <p class="hero-sub">データ / DX / AI で、中小企業の変革と熱狂を支援する</p>
+      <div class="cta-group">
+        <a href="#" class="cta-primary">無料相談に申し込む <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a href="#" class="cta-secondary">サービス詳細を見る <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+    <div class="scroll-ind"><span>Scroll</span><div class="scroll-line"></div></div>
+  </section>
+
+  <section class="cards-sec">
+    <div class="cards-container">
+      <div class="cards-header">
+        <p class="cards-label">Solution</p>
+        <h2 class="cards-title">こんな課題に、心当たりはありませんか？</h2>
+      </div>
+      <div class="cards-grid">
+        <div class="card"><div class="num">01</div><h4>サービスには自信がある。<br>でも「何がいいの？」に答えられない。</h4><p>価値はわかっている。でも、端的に伝える方法が見つからない。</p></div>
+        <div class="card"><div class="num">02</div><h4>データは集まっている。<br>でも、意思決定に使えていない。</h4><p>分析→施策→検証のループが回っていない。</p></div>
+        <div class="card"><div class="num">03</div><h4>外注の納品物はきれい。<br>でも、売上は動かない。</h4><p>戦略と実装が分断され、温度差が埋まらない。</p></div>
+      </div>
+      <div class="pillars">
+        <div class="pillar"><div class="icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h4>Coaching</h4><h5>確信を、つくる。</h5><p>認知科学ベースのコーチングで、想いを言語化・構造化する。</p></div>
+        <div class="pillar"><div class="icon"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/><circle cx="12" cy="12" r="2"/></svg></div><h4>Consulting</h4><h5>確信を、科学する。</h5><p>データ分析・KPI設計で勝ち筋を特定。エビデンスに基づく意思決定基盤。</p></div>
+        <div class="pillar"><div class="icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 6v6M1 12h6m6 0h6"/></svg></div><h4>Engineering</h4><h5>熱狂を、実装する。</h5><p>HP制作・データ基盤・DX。戦略が現場で回り続ける仕組み。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="numbers-sec">
+    <div class="numbers-container">
+      <div class="numbers-grid">
+        <div class="num-item"><div class="value" style="color: var(--nh-amber);">50<span class="unit">+</span></div><div class="desc">支援プロジェクト数</div></div>
+        <div class="num-item"><div class="value" style="color: var(--nh-rose);">3<span class="unit">ヶ月</span></div><div class="desc">平均ROI回収期間</div></div>
+        <div class="num-item"><div class="value" style="color: var(--nh-blue);">98<span class="unit">%</span></div><div class="desc">継続率</div></div>
+        <div class="num-item"><div class="value" style="color: var(--nh-pink);">15<span class="unit">年</span></div><div class="desc">デジタル領域の実務経験</div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==========================================
+     INTERACTIVE — マウスグロー + マグネティック + 3Dチルト
+     ========================================== -->
+<div class="demo" id="demo-interact">
+  <section class="hero">
+    <div class="variant-badge">Interactive — マウス追従 + マグネティック + 3Dチルト</div>
+    <div class="glow-amber"></div>
+    <div class="glow-blue"></div>
+    <div class="hero-content">
+      <p class="hero-label">DX / AI Growth Partner</p>
+      <h1 class="hero-catch">
+        <span class="line-1"><span class="em">"想い"</span>と<span class="em">"仕組み"</span>で</span>
+        <span class="line-2"><span class="em">"面白く"</span></span>
+      </h1>
+      <p class="hero-sub">データ / DX / AI で、中小企業の変革と熱狂を支援する</p>
+      <div class="cta-group">
+        <a href="#" class="cta-primary magnetic" data-strength="0.3">無料相談に申し込む <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a href="#" class="cta-secondary magnetic" data-strength="0.2">サービス詳細を見る <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+    <div class="scroll-ind"><span>Scroll</span><div class="scroll-line"></div></div>
+  </section>
+
+  <section class="cards-sec">
+    <div class="cards-container">
+      <div class="cards-header">
+        <p class="cards-label">Solution</p>
+        <h2 class="cards-title">こんな課題に、心当たりはありませんか？</h2>
+      </div>
+      <div class="cards-grid">
+        <div class="tilt-wrapper"><div class="card tilt-card"><div class="num">01</div><h4>サービスには自信がある。<br>でも「何がいいの？」に答えられない。</h4><p>価値はわかっている。でも、端的に伝える方法が見つからない。</p></div></div>
+        <div class="tilt-wrapper"><div class="card tilt-card"><div class="num">02</div><h4>データは集まっている。<br>でも、意思決定に使えていない。</h4><p>分析→施策→検証のループが回っていない。</p></div></div>
+        <div class="tilt-wrapper"><div class="card tilt-card"><div class="num">03</div><h4>外注の納品物はきれい。<br>でも、売上は動かない。</h4><p>戦略と実装が分断され、温度差が埋まらない。</p></div></div>
+      </div>
+      <div class="pillars">
+        <div class="tilt-wrapper"><div class="pillar tilt-card"><div class="icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h4>Coaching</h4><h5>確信を、つくる。</h5><p>認知科学ベースのコーチングで、想いを言語化・構造化する。</p></div></div>
+        <div class="tilt-wrapper"><div class="pillar tilt-card"><div class="icon"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/><circle cx="12" cy="12" r="2"/></svg></div><h4>Consulting</h4><h5>確信を、科学する。</h5><p>データ分析・KPI設計で勝ち筋を特定。エビデンスに基づく意思決定基盤。</p></div></div>
+        <div class="tilt-wrapper"><div class="pillar tilt-card"><div class="icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 6v6M1 12h6m6 0h6"/></svg></div><h4>Engineering</h4><h5>熱狂を、実装する。</h5><p>HP制作・データ基盤・DX。戦略が現場で回り続ける仕組み。</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="numbers-sec">
+    <div class="numbers-container">
+      <div class="numbers-grid">
+        <div class="num-item"><div class="value" style="color: var(--nh-amber);">50<span class="unit">+</span></div><div class="desc">支援プロジェクト数</div></div>
+        <div class="num-item"><div class="value" style="color: var(--nh-rose);">3<span class="unit">ヶ月</span></div><div class="desc">平均ROI回収期間</div></div>
+        <div class="num-item"><div class="value" style="color: var(--nh-blue);">98<span class="unit">%</span></div><div class="desc">継続率</div></div>
+        <div class="num-item"><div class="value" style="color: var(--nh-pink);">15<span class="unit">年</span></div><div class="desc">デジタル領域の実務経験</div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==========================================
+     FULL CRAFT — 全部乗せ
+     ========================================== -->
+<div class="demo" id="demo-full">
+  <section class="hero">
+    <div class="variant-badge">Full Craft — 全演出統合</div>
+    <div class="mesh-bg"></div>
+    <div class="glow-amber"></div>
+    <div class="glow-blue"></div>
+    <div class="hero-content">
+      <p class="typewriter-label"><span id="typewriterText"></span><span class="typewriter-cursor"></span></p>
+      <h1 class="hero-catch">
+        <span class="line-1"><span class="em">"想い"</span>と<span class="em">"仕組み"</span>で</span>
+        <span class="line-2"><span class="shimmer-text">"面白く"</span></span>
+      </h1>
+      <p class="hero-sub">データ / DX / AI で、中小企業の変革と熱狂を支援する</p>
+      <div class="cta-group">
+        <a href="#" class="cta-primary magnetic" data-strength="0.3">無料相談に申し込む <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a href="#" class="cta-secondary magnetic" data-strength="0.2">サービス詳細を見る <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+    <div class="scroll-ind"><span>Scroll</span><div class="scroll-line"></div></div>
+  </section>
+
+  <section class="cards-sec">
+    <div class="cards-container">
+      <div class="cards-header">
+        <p class="cards-label">Solution</p>
+        <h2 class="cards-title">こんな課題に、心当たりはありませんか？</h2>
+      </div>
+      <div class="cards-grid">
+        <div class="tilt-wrapper"><div class="card tilt-card"><div class="num">01</div><h4>サービスには自信がある。<br>でも「何がいいの？」に答えられない。</h4><p>価値はわかっている。でも、端的に伝える方法が見つからない。</p></div></div>
+        <div class="tilt-wrapper"><div class="card tilt-card"><div class="num">02</div><h4>データは集まっている。<br>でも、意思決定に使えていない。</h4><p>分析→施策→検証のループが回っていない。</p></div></div>
+        <div class="tilt-wrapper"><div class="card tilt-card"><div class="num">03</div><h4>外注の納品物はきれい。<br>でも、売上は動かない。</h4><p>戦略と実装が分断され、温度差が埋まらない。</p></div></div>
+      </div>
+      <div class="pillars">
+        <div class="tilt-wrapper"><div class="pillar tilt-card"><div class="icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h4>Coaching</h4><h5>確信を、つくる。</h5><p>認知科学ベースのコーチングで、想いを言語化・構造化する。</p></div></div>
+        <div class="tilt-wrapper"><div class="pillar tilt-card"><div class="icon"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/><circle cx="12" cy="12" r="2"/></svg></div><h4>Consulting</h4><h5>確信を、科学する。</h5><p>データ分析・KPI設計で勝ち筋を特定。エビデンスに基づく意思決定基盤。</p></div></div>
+        <div class="tilt-wrapper"><div class="pillar tilt-card"><div class="icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 6v6M1 12h6m6 0h6"/></svg></div><h4>Engineering</h4><h5>熱狂を、実装する。</h5><p>HP制作・データ基盤・DX。戦略が現場で回り続ける仕組み。</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="numbers-sec">
+    <div class="numbers-container">
+      <div class="numbers-grid">
+        <div class="num-item"><div class="value counter-value" data-target="50">0</div><div class="desc">支援プロジェクト数</div></div>
+        <div class="num-item"><div class="value counter-value" data-target="3">0</div><div class="desc">平均ROI回収期間</div></div>
+        <div class="num-item"><div class="value counter-value" data-target="98">0</div><div class="desc">継続率</div></div>
+        <div class="num-item"><div class="value counter-value" data-target="15">0</div><div class="desc">デジタル領域の実務経験</div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ========================================
+     JavaScript
+     ======================================== -->
+<script>
+// === Tab switching ===
+let currentVariant = 'base';
+const mouseGlow = document.getElementById('mouseGlow');
+let mouseGlowActive = false;
+let typewriterInterval = null;
+
+function switchVariant(v) {
+  // Cleanup
+  stopTypewriter();
+  mouseGlowActive = false;
+  mouseGlow.classList.remove('visible');
+
+  document.querySelectorAll('.demo').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.toggle-btn').forEach(el => el.classList.remove('active'));
+
+  document.getElementById('demo-' + v).classList.add('active');
+  document.querySelector('.toggle-btn[data-v="' + v + '"]').classList.add('active');
+  currentVariant = v;
+
+  // Re-trigger fade-in animations
+  const demo = document.getElementById('demo-' + v);
+  const animEls = demo.querySelectorAll('.hero-label, .typewriter-label, .hero-catch .line-1, .hero-catch .line-2, .hero-sub, .cta-group, .scroll-ind');
+  animEls.forEach(el => {
+    el.style.animation = 'none';
+    el.offsetHeight;
+    el.style.animation = '';
+  });
+
+  // Activate features per variant
+  if (v === 'interact' || v === 'full') {
+    mouseGlowActive = true;
+    initMagnetic(demo);
+    initTilt(demo);
+  }
+  if (v === 'full') {
+    startTypewriter();
+    initCounters(demo);
+  }
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// === Mouse-following glow ===
+let glowRaf;
+document.addEventListener('mousemove', (e) => {
+  if (!mouseGlowActive) return;
+  cancelAnimationFrame(glowRaf);
+  glowRaf = requestAnimationFrame(() => {
+    mouseGlow.style.left = e.clientX + 'px';
+    mouseGlow.style.top = e.clientY + 'px';
+    if (!mouseGlow.classList.contains('visible')) {
+      mouseGlow.classList.add('visible');
+    }
+  });
+});
+
+// === Magnetic buttons ===
+function initMagnetic(container) {
+  container.querySelectorAll('.magnetic').forEach(btn => {
+    // Remove old listeners by cloning
+    const newBtn = btn.cloneNode(true);
+    btn.parentNode.replaceChild(newBtn, btn);
+
+    newBtn.addEventListener('mousemove', (e) => {
+      const rect = newBtn.getBoundingClientRect();
+      const dx = e.clientX - (rect.left + rect.width / 2);
+      const dy = e.clientY - (rect.top + rect.height / 2);
+      const strength = parseFloat(newBtn.dataset.strength) || 0.3;
+      newBtn.classList.remove('returning');
+      newBtn.style.transform = `translate(${dx * strength}px, ${dy * strength}px)`;
+    });
+    newBtn.addEventListener('mouseleave', () => {
+      newBtn.classList.add('returning');
+      newBtn.style.transform = 'translate(0, 0)';
+    });
+  });
+}
+
+// === 3D card tilt ===
+function initTilt(container) {
+  container.querySelectorAll('.tilt-wrapper').forEach(wrapper => {
+    const card = wrapper.querySelector('.tilt-card');
+    if (!card) return;
+
+    wrapper.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      card.classList.remove('returning');
+      card.style.transform = `rotateY(${x * 15}deg) rotateX(${-y * 15}deg) translateY(-3px)`;
+    });
+    wrapper.addEventListener('mouseleave', () => {
+      card.classList.add('returning');
+      card.style.transform = 'rotateY(0deg) rotateX(0deg) translateY(0)';
+    });
+  });
+}
+
+// === Typewriter ===
+const phrases = ['DX / AI GROWTH PARTNER', 'DATA-DRIVEN TRANSFORMATION', 'COACHING × CONSULTING × ENGINEERING'];
+let phraseIdx = 0, charIdx = 0, isDeleting = false;
+
+function typeStep() {
+  const el = document.getElementById('typewriterText');
+  if (!el) return;
+  const current = phrases[phraseIdx];
+
+  if (isDeleting) {
+    charIdx--;
+    el.textContent = current.substring(0, charIdx);
+  } else {
+    charIdx++;
+    el.textContent = current.substring(0, charIdx);
+  }
+
+  let delay = isDeleting ? 40 : 80;
+
+  if (!isDeleting && charIdx === current.length) {
+    delay = 2500;
+    isDeleting = true;
+  } else if (isDeleting && charIdx === 0) {
+    isDeleting = false;
+    phraseIdx = (phraseIdx + 1) % phrases.length;
+    delay = 500;
+  }
+
+  typewriterInterval = setTimeout(typeStep, delay);
+}
+function startTypewriter() {
+  phraseIdx = 0; charIdx = 0; isDeleting = false;
+  const el = document.getElementById('typewriterText');
+  if (el) el.textContent = '';
+  typeStep();
+}
+function stopTypewriter() {
+  if (typewriterInterval) { clearTimeout(typewriterInterval); typewriterInterval = null; }
+}
+
+// === Number counter ===
+function initCounters(container) {
+  const units = ['+', 'ヶ月', '%', '年'];
+  container.querySelectorAll('.counter-value').forEach((el, i) => {
+    const target = parseInt(el.dataset.target);
+    el.textContent = '0';
+    const duration = 2000;
+    const start = performance.now();
+
+    function step(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 4);
+      const val = Math.floor(eased * target);
+      el.innerHTML = val + '<span class="unit">' + units[i] + '</span>';
+      if (progress < 1) requestAnimationFrame(step);
+    }
+
+    // Use IntersectionObserver to trigger when visible
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          requestAnimationFrame(step);
+          obs.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    obs.observe(el);
+  });
+}
+
+// === Init: start with base ===
+// (already active via HTML class)
+</script>
+</body>
+</html>
