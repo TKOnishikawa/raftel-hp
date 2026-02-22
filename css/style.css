@@ -986,18 +986,20 @@ img { max-width: 100%; height: auto; display: block; }
 .numbers-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto auto;
   gap: 28px;
 }
 
 .number-card {
+  display: grid;
+  grid-row: span 3;
+  grid-template-rows: subgrid;
   text-align: center;
   padding: 40px 20px;
   border-radius: 16px;
   background: #fff;
   border: 1px solid var(--border);
   transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s;
-  display: flex;
-  flex-direction: column;
   align-items: center;
 }
 
@@ -1014,26 +1016,21 @@ img { max-width: 100%; height: auto; display: block; }
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 8px;
   line-height: 1.2;
-  min-height: 4.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  align-self: end;
 }
 
 .number-label {
   font-family: var(--font-head);
   font-size: 0.85rem;
   font-weight: 700;
-  margin-bottom: 8px;
 }
 
 .number-desc {
   font-size: 0.8rem;
   color: var(--text-secondary);
   line-height: 1.6;
-  flex: 1;
+  align-self: start;
 }
 
 /* ========================================
