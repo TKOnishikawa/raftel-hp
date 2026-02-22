@@ -88,6 +88,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .br-mobile { display: none; }
+.br-desktop { display: inline; }
 
 /* ========================================
    Navigation
@@ -1015,7 +1016,7 @@ img { max-width: 100%; height: auto; display: block; }
   -webkit-text-fill-color: transparent;
   margin-bottom: 8px;
   line-height: 1.2;
-  min-height: 3.6rem;
+  min-height: 4.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1032,6 +1033,7 @@ img { max-width: 100%; height: auto; display: block; }
   font-size: 0.8rem;
   color: var(--text-secondary);
   line-height: 1.6;
+  flex: 1;
 }
 
 /* ========================================
@@ -1662,6 +1664,7 @@ tbody tr:last-child td.compare-highlight {
   }
 
   .br-mobile { display: inline; }
+  .br-desktop { display: none; }
 
   /* Nav */
   .nav-links { display: none; }
