@@ -189,8 +189,7 @@ function initTypewriter() {
 
   const phrases = [
     "STRATEGY \u00d7 IMPLEMENTATION",
-    "BUSINESS \u00d7 SYSTEM BRIDGE",
-    "COACHING \u00d7 CONSULTING \u00d7 ENGINEERING"
+    "BUSINESS \u00d7 SYSTEM BRIDGE"
   ];
   let phraseIndex = 0, charIndex = 0, isDeleting = false;
 
@@ -269,23 +268,36 @@ function initNavigation() {
     });
   }
 
-  // Hamburger
+  // Hamburger + Mobile Menu
   const hamburger = document.getElementById("hamburger");
   const mobileMenu = document.getElementById("mobileMenu");
+  const mobileMenuClose = document.getElementById("mobileMenuClose");
+
+  function openMobileMenu() {
+    hamburger.classList.add("active");
+    mobileMenu.classList.add("active");
+    document.body.style.overflow = "hidden";
+    hamburger.setAttribute("aria-expanded", "true");
+  }
+
+  function closeMobileMenu() {
+    hamburger.classList.remove("active");
+    mobileMenu.classList.remove("active");
+    document.body.style.overflow = "";
+    hamburger.setAttribute("aria-expanded", "false");
+  }
+
   if (hamburger && mobileMenu) {
     hamburger.addEventListener("click", () => {
-      hamburger.classList.toggle("active");
-      mobileMenu.classList.toggle("active");
-      document.body.style.overflow = mobileMenu.classList.contains("active") ? "hidden" : "";
-      hamburger.setAttribute("aria-expanded", mobileMenu.classList.contains("active"));
+      mobileMenu.classList.contains("active") ? closeMobileMenu() : openMobileMenu();
     });
 
+    if (mobileMenuClose) {
+      mobileMenuClose.addEventListener("click", closeMobileMenu);
+    }
+
     mobileMenu.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => {
-        hamburger.classList.remove("active");
-        mobileMenu.classList.remove("active");
-        document.body.style.overflow = "";
-      });
+      link.addEventListener("click", closeMobileMenu);
     });
   }
 

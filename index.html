@@ -46,16 +46,22 @@
       <span></span><span></span><span></span>
     </button>
   </div>
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobileMenu">
+</nav>
+
+<!-- Mobile Menu (navの外に配置 — will-change: transform回避) -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" id="mobileMenuClose" aria-label="メニューを閉じる">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <nav class="mobile-menu-nav">
     <a href="#problem">Problem</a>
     <a href="#approach">Approach</a>
     <a href="#services">Services</a>
     <a href="#about">About</a>
     <a href="#results">Results</a>
     <a href="#contact">Contact</a>
-  </div>
-</nav>
+  </nav>
+</div>
 
 <!-- ========================================
      Section 1: Hero (FV)
@@ -161,7 +167,7 @@
       <div class="principle-text">
         <p>システム会社に頼むと、言われたものは作ってくれる。<span class="em">でも「何を作るべきか」は教えてくれない。</span></p>
         <p>コンサルに頼むと、立派な資料はできる。<span class="em">でも現場に実装されない。</span></p>
-        <p class="principle-conclusion">omoshikuは、「何を・なぜ作るべきか」を戦略から一緒に考え、<br>システム翻訳・実装まで一気通貫。</p>
+        <p class="principle-conclusion">omoshikuは、「何を・なぜ作るべきか」を戦略から一緒に考え、<br>システムとの翻訳・実装まで一気通貫で伴走します。</p>
       </div>
     </div>
 
@@ -336,7 +342,7 @@
           </div>
           <div class="career-step career-step--current">
             <span class="career-company">年商25億円スタートアップ<br>DXマネージャー &amp; omoshiku 代表</span>
-            <span class="career-desc">現在も事業会社でデジタル戦略を推進しながら、その実践知を外部企業にも展開</span>
+            <span class="career-desc">現在も事業会社でデジタル戦略を推進。AI駆動開発を推進し、チームの生産性を2倍以上に向上。その実践知を外部企業にも展開。</span>
           </div>
         </div>
         <blockquote class="about-quote">
@@ -374,9 +380,9 @@
         <p class="number-desc">データで離脱原因を特定し<br>継続率を1.4倍に改善</p>
       </div>
       <div class="number-card">
-        <div class="number-value" data-count="10" data-prefix="" data-suffix="+">0</div>
-        <div class="number-label">支援プロジェクト</div>
-        <p class="number-desc">小売・D2C・SaaSなど<br>業種横断で伴走</p>
+        <div class="number-value" data-count="2" data-prefix="" data-suffix="x">0</div>
+        <div class="number-label">開発生産性</div>
+        <p class="number-desc">AI駆動開発の導入設計で<br>チーム生産性を2倍に向上</p>
       </div>
     </div>
 
