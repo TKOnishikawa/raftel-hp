@@ -9,7 +9,7 @@
 <meta property="og:title" content="omoshiku | 想いと仕組みで面白く">
 <meta property="og:description" content="データ / DX / AI で、中小企業の変革と熱狂を支援する。">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://tkonishikawa.github.io/raftel-hp/v3/">
+<meta property="og:url" content="https://tkonishikawa.github.io/raftel-hp/v4/">
 <meta property="og:site_name" content="omoshiku">
 <meta name="twitter:card" content="summary_large_image">
 <!-- Fonts -->
@@ -25,6 +25,8 @@
 <script defer src="js/main.js"></script>
 </head>
 <body>
+
+<div class="mouse-glow" id="mouseGlow"></div>
 
 <!-- ========================================
      Navigation
@@ -65,25 +67,24 @@
     <div class="hero-orb hero-orb--2"></div>
     <div class="hero-orb hero-orb--3"></div>
   </div>
-  <canvas class="hero-particles" id="particles"></canvas>
   <div class="hero-mesh"></div>
   <div class="hero-scanlines"></div>
 
   <!-- Content -->
   <div class="hero-content">
-    <span class="hero-label">Growth Partner for SMBs</span>
+    <span class="typewriter-label"><span id="typewriterText"></span><span class="typewriter-cursor"></span></span>
     <h1 class="hero-catch">
       <span class="line-mask">
-        <span class="line-inner"><span class="accent-text">想い</span>と<span class="accent-text">仕組み</span>で<span class="accent-text">面白く</span></span>
+        <span class="line-inner"><span class="accent-text">想い</span>と<span class="accent-text">仕組み</span>で<span class="shimmer-text">面白く</span></span>
       </span>
     </h1>
     <p class="hero-sub">データ / DX / AI で、中小企業の変革と熱狂を支援する</p>
     <div class="hero-cta-group">
-      <a href="#contact" class="hero-cta">
+      <a href="#contact" class="hero-cta magnetic" data-strength="0.3">
         まずは相談する
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
       </a>
-      <a href="#services" class="hero-cta-secondary">
+      <a href="#services" class="hero-cta-secondary magnetic" data-strength="0.2">
         サービスを見る
       </a>
     </div>
