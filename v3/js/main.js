@@ -39,6 +39,13 @@ function initHeroEntrance() {
     ease: EASE.snappy,
     stagger: 0.18
   })
+  // Gradient swipe on accent text
+  .to(".accent-text", {
+    backgroundPosition: "0% 50%",
+    duration: 0.9,
+    ease: "power2.inOut",
+    stagger: 0.1
+  }, "-=0.5")
   // Label
   .fromTo(".hero-label",
     { opacity: 0, x: -20 },
@@ -248,7 +255,7 @@ function initNavigation() {
   });
 
   // Active section highlight
-  const sections = ["#hero", "#problem", "#approach", "#services", "#numbers", "#projects", "#about", "#contact"];
+  const sections = ["#hero", "#problem", "#approach", "#services", "#about", "#results", "#contact"];
   sections.forEach(id => {
     const el = document.querySelector(id);
     if (!el) return;
