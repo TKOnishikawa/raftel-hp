@@ -45,4 +45,14 @@
 
   --max-width: 1200px;
   --section-padding: 140px 0;
+
+  /* v2 additions */
+  --bg-dark-elevated: #12121e;
+  --glow-amber: rgba(232, 148, 74, 0.12);
+  --glow-teal: rgba(42, 122, 110, 0.08);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 0.2s;
+  --duration-normal: 0.3s;
+  --duration-slow: 0.5s;
+  --section-padding-v2: 160px 0;
 }
