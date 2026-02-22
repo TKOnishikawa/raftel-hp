@@ -159,8 +159,9 @@ function initParticles() {
 
   const colors = [
     [232, 148, 74],   // amber
-    [255, 255, 255],  // white
-    [212, 88, 47]     // deep orange
+    [212, 98, 122],   // rose
+    [255, 126, 179],  // pink
+    [74, 158, 255]    // electric blue
   ];
 
   function resize() {
