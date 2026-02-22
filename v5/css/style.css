@@ -294,7 +294,7 @@ img { max-width: 100%; height: auto; display: block; }
   left: 45%;
   width: 450px;
   height: 450px;
-  background: radial-gradient(circle, rgba(255,126,179,0.06) 0%, transparent 60%);
+  background: radial-gradient(circle, rgba(42,122,110,0.10) 0%, transparent 60%);
   animation: float-orb 18s ease-in-out infinite 2s;
 }
 
@@ -304,25 +304,95 @@ img { max-width: 100%; height: auto; display: block; }
   66% { transform: translate(-25px, 20px) scale(0.95); }
 }
 
+/* --- Pulse Rings (from each orb center) --- */
+.pulse-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  pointer-events: none;
+  animation: pulse-expand ease-out infinite;
+  will-change: transform, opacity;
+}
+.pulse-ring--1 {
+  top: -30%;
+  right: -15%;
+  width: 800px;
+  height: 800px;
+  border-color: rgba(232,148,74,0.15);
+  animation-duration: 6s;
+  z-index: 1;
+}
+.pulse-ring--2 {
+  bottom: -20%;
+  left: -10%;
+  width: 650px;
+  height: 650px;
+  border-color: rgba(192,64,64,0.10);
+  animation-duration: 8s;
+  animation-delay: 2s;
+  z-index: 1;
+}
+.pulse-ring--3 {
+  top: 35%;
+  left: 45%;
+  width: 450px;
+  height: 450px;
+  border-color: rgba(42,122,110,0.08);
+  animation-duration: 10s;
+  animation-delay: 4s;
+  z-index: 1;
+}
+@keyframes pulse-expand {
+  0% { transform: scale(0); opacity: 1; }
+  100% { transform: scale(1.2); opacity: 0; }
+}
+
+/* --- Particles Container --- */
 .hero-particles {
   position: absolute;
   inset: 0;
-  z-index: 0;
+  z-index: 2;
   width: 100%;
   height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+.particle {
+  position: absolute;
+  bottom: -10px;
+  border-radius: 50%;
+  will-change: transform, opacity;
+  animation: particle-rise linear infinite;
+}
+@keyframes particle-rise {
+  0%   { transform: translateY(0) scale(1); opacity: 0; }
+  10%  { opacity: 0.7; }
+  85%  { opacity: 0.5; }
+  100% { transform: translateY(-100vh) scale(0.4); opacity: 0; }
 }
 
+/* --- Constellation Canvas --- */
+.constellation-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* --- Mesh Grid --- */
 .hero-mesh {
   position: absolute;
   inset: 0;
-  z-index: 0;
-  opacity: 0.05;
+  z-index: 4;
+  opacity: 0.06;
   will-change: transform;
   background-image:
-    linear-gradient(30deg, transparent 48%, rgba(232,148,74,0.35) 49%, rgba(232,148,74,0.35) 51%, transparent 52%),
-    linear-gradient(150deg, transparent 48%, rgba(255,255,255,0.12) 49%, rgba(255,255,255,0.12) 51%, transparent 52%);
+    linear-gradient(30deg, transparent 48%, rgba(232,148,74,0.40) 49%, rgba(232,148,74,0.40) 51%, transparent 52%),
+    linear-gradient(150deg, transparent 48%, rgba(255,255,255,0.15) 49%, rgba(255,255,255,0.15) 51%, transparent 52%);
   background-size: 80px 80px;
-  animation: mesh-drift 30s linear infinite;
+  animation: mesh-drift 25s linear infinite;
 }
 
 @keyframes mesh-drift {
@@ -330,21 +400,22 @@ img { max-width: 100%; height: auto; display: block; }
   100% { transform: translate(80px, 80px); }
 }
 
+/* --- Scanlines --- */
 .hero-scanlines {
   position: absolute;
   inset: 0;
-  z-index: 0;
+  z-index: 5;
   pointer-events: none;
   background: repeating-linear-gradient(
     0deg,
     transparent, transparent 2px,
-    rgba(255,255,255,0.006) 2px, rgba(255,255,255,0.006) 4px
+    rgba(255,255,255,0.008) 2px, rgba(255,255,255,0.008) 4px
   );
 }
 
 .hero-content {
   position: relative;
-  z-index: 1;
+  z-index: 10;
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 40px;
@@ -1672,5 +1743,31 @@ tbody tr:last-child td.compare-highlight {
     flex-direction: column;
     align-items: center;
     gap: 16px;
+  }
+
+  /* Hero Effects - mobile */
+  .pulse-ring--1 { width: 480px; height: 480px; margin-left: -240px; margin-top: -240px; }
+  .pulse-ring--2 { width: 390px; height: 390px; margin-left: -195px; margin-top: -195px; }
+  .pulse-ring--3 { width: 270px; height: 270px; margin-left: -135px; margin-top: -135px; }
+  .constellation-canvas { display: none; }
+}
+
+/* ========================================
+   Reduced Motion
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+  .pulse-ring,
+  .particle {
+    animation: none !important;
+    opacity: 0 !important;
+  }
+  .hero-orb {
+    animation: none !important;
+  }
+  .constellation-canvas {
+    display: none !important;
+  }
+  .hero-mesh {
+    animation: none !important;
   }
 }

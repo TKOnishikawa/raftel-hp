@@ -479,6 +479,113 @@ function countUp(el, end, opts = {}) {
 }
 
 // ========================================
+// Particles (DOM-based, bottom-to-top)
+// ========================================
+function initParticles() {
+  const container = document.getElementById("heroParticles");
+  if (!container) return;
+
+  const isMobile = window.innerWidth <= 768;
+  const count = isMobile ? 25 : 50;
+  const particles = [];
+
+  for (let i = 0; i < count; i++) {
+    const el = document.createElement("div");
+    el.classList.add("particle");
+
+    const size = 1.5 + Math.random() * 2.5; // 1.5-4px
+    const isAmber = Math.random() < 0.6;
+    const color = isAmber ? "rgba(232,148,74,0.8)" : "rgba(255,255,255,0.7)";
+    const duration = 5 + Math.random() * 7; // 5-12s
+    const delay = Math.random() * 8; // 0-8s
+    const left = Math.random() * 100; // 0-100%
+
+    el.style.width = size + "px";
+    el.style.height = size + "px";
+    el.style.backgroundColor = color;
+    el.style.left = left + "%";
+    el.style.animationDuration = duration + "s";
+    el.style.animationDelay = delay + "s";
+
+    container.appendChild(el);
+    particles.push(el);
+  }
+
+  return particles;
+}
+
+// ========================================
+// Constellation (Canvas, connecting lines)
+// ========================================
+function initConstellation() {
+  if (window.innerWidth <= 768) return; // skip on mobile
+
+  const canvas = document.getElementById("constellationCanvas");
+  if (!canvas) return;
+
+  const hero = canvas.closest(".hero");
+  if (!hero) return;
+
+  const ctx = canvas.getContext("2d");
+  const dpr = window.devicePixelRatio || 1;
+  const maxDist = 120;
+
+  function resize() {
+    const rect = hero.getBoundingClientRect();
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    canvas.style.width = rect.width + "px";
+    canvas.style.height = rect.height + "px";
+    ctx.scale(dpr, dpr);
+  }
+  resize();
+  window.addEventListener("resize", resize);
+
+  function draw() {
+    const particles = hero.querySelectorAll(".particle");
+    if (particles.length === 0) { requestAnimationFrame(draw); return; }
+
+    const heroRect = hero.getBoundingClientRect();
+    ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr);
+
+    // Collect particle positions
+    const positions = [];
+    particles.forEach(p => {
+      const r = p.getBoundingClientRect();
+      const op = parseFloat(getComputedStyle(p).opacity);
+      if (op > 0.05) {
+        positions.push({
+          x: r.left - heroRect.left + r.width / 2,
+          y: r.top - heroRect.top + r.height / 2,
+          op
+        });
+      }
+    });
+
+    // Draw connections
+    for (let i = 0; i < positions.length; i++) {
+      for (let j = i + 1; j < positions.length; j++) {
+        const a = positions[i], b = positions[j];
+        const dx = a.x - b.x, dy = a.y - b.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < maxDist) {
+          const alpha = (1 - dist / maxDist) * 0.12 * Math.min(a.op, b.op);
+          ctx.strokeStyle = "rgba(232,148,74," + alpha + ")";
+          ctx.lineWidth = 0.5;
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+}
+
+// ========================================
 // INIT
 // ========================================
 const mm = gsap.matchMedia();
@@ -488,6 +595,7 @@ initHeroEntrance();
 initNavigation();
 initAccordion();
 initTypewriter();
+initParticles();
 
 mm.add("(min-width: 769px)", () => {
   initHeroParallax();
@@ -496,6 +604,7 @@ mm.add("(min-width: 769px)", () => {
   initMagnetic();
   initSectionAnimations();
   initHoverEffects();
+  initConstellation();
 });
 
 mm.add("(max-width: 768px)", () => {
