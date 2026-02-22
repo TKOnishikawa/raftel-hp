@@ -46,8 +46,8 @@ function initHeroEntrance() {
     ease: "power2.inOut",
     stagger: 0.1
   }, "-=0.5")
-  // Label
-  .fromTo(".hero-label",
+  // Typewriter label
+  .fromTo(".typewriter-label",
     { opacity: 0, x: -20 },
     { opacity: 1, x: 0, duration: 0.6, ease: EASE.smooth },
     "-=0.6"
@@ -146,75 +146,136 @@ function initHeroMouse() {
 }
 
 // ========================================
-// 4. Canvas Particles
+// 4. Typewriter
 // ========================================
-function initParticles() {
-  const canvas = document.getElementById("particles");
-  if (!canvas) return;
+function initTypewriter() {
+  const el = document.getElementById("typewriterText");
+  if (!el) return;
 
-  const ctx = canvas.getContext("2d");
-  const isMobile = window.innerWidth < 769;
-  const count = isMobile ? 20 : 40;
-  const particles = [];
-
-  const colors = [
-    [232, 148, 74],   // amber
-    [255, 255, 255],  // white
-    [212, 88, 47]     // deep orange
+  const phrases = [
+    "DX / AI GROWTH PARTNER",
+    "DATA-DRIVEN TRANSFORMATION",
+    "COACHING \u00d7 CONSULTING \u00d7 ENGINEERING"
   ];
+  let phraseIndex = 0, charIndex = 0, isDeleting = false;
 
-  function resize() {
-    const dpr = window.devicePixelRatio || 1;
-    canvas.width = canvas.offsetWidth * dpr;
-    canvas.height = canvas.offsetHeight * dpr;
-    ctx.scale(dpr, dpr);
+  function step() {
+    const current = phrases[phraseIndex];
+    isDeleting ? charIndex-- : charIndex++;
+    el.textContent = current.substring(0, charIndex);
+
+    let delay = isDeleting ? 40 : 80;
+    if (!isDeleting && charIndex === current.length) {
+      delay = 2500;
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+      delay = 500;
+    }
+
+    setTimeout(step, delay);
   }
 
-  function init() {
-    resize();
+  step();
+}
+
+// ========================================
+// 5. DOM Particles + Constellation Canvas
+// ========================================
+function initParticlesAndConstellation() {
+  const container = document.getElementById("domParticles");
+  const canvas = document.getElementById("constellation");
+  if (!container || !canvas) return;
+
+  const ctx = canvas.getContext("2d");
+  const hero = container.closest(".hero");
+  const isMobile = window.innerWidth < 769;
+  const count = isMobile ? 25 : 50;
+  const connectionDistance = 120;
+  const particles = [];
+
+  function resize() {
+    const rect = hero.getBoundingClientRect();
+    canvas.width = rect.width;
+    canvas.height = rect.height;
+  }
+
+  function createParticles() {
+    const w = hero.offsetWidth;
+    const h = hero.offsetHeight;
+
     for (let i = 0; i < count; i++) {
+      const isAmber = Math.random() < 0.6;
+      const color = isAmber
+        ? { r: 232, g: 148, b: 74 }
+        : { r: 255, g: 255, b: 255 };
+      const size = 1.5 + Math.random() * 2.5;
+      const duration = 5 + Math.random() * 7;
+      const speed = h / (duration * 60);
+
+      const el = document.createElement("div");
+      el.className = "hero-particle";
+      el.style.width = size + "px";
+      el.style.height = size + "px";
+      el.style.background = `rgba(${color.r},${color.g},${color.b},0.6)`;
+      el.style.boxShadow = `0 0 ${size * 2}px rgba(${color.r},${color.g},${color.b},0.3)`;
+      container.appendChild(el);
+
       particles.push({
-        x: Math.random() * canvas.offsetWidth,
-        y: Math.random() * canvas.offsetHeight,
-        vx: (Math.random() - 0.5) * 0.25,
-        vy: -(0.12 + Math.random() * 0.35),
-        size: 0.8 + Math.random() * 1.8,
-        color: colors[Math.floor(Math.random() * colors.length)],
-        phase: Math.random() * Math.PI * 2
+        el,
+        x: Math.random() * w,
+        y: Math.random() * h,
+        speed,
+        drift: (Math.random() - 0.5) * 0.3,
+        color
       });
     }
   }
 
   function animate() {
-    const w = canvas.offsetWidth;
-    const h = canvas.offsetHeight;
+    const w = canvas.width;
+    const h = canvas.height;
     ctx.clearRect(0, 0, w, h);
-    const t = Date.now() * 0.001;
 
+    // Update particle positions
     for (const p of particles) {
-      p.x += p.vx;
-      p.y += p.vy;
-      const alpha = 0.15 + Math.sin(t + p.phase) * 0.2;
+      p.y -= p.speed;
+      p.x += p.drift;
 
-      if (p.y < -10) { p.y = h + 10; p.x = Math.random() * w; }
-      if (p.x < -10) p.x = w + 10;
-      if (p.x > w + 10) p.x = -10;
+      if (p.y < -20) { p.y = h + 20; p.x = Math.random() * w; }
+      if (p.x < -20) p.x = w + 20;
+      if (p.x > w + 20) p.x = -20;
 
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${p.color[0]},${p.color[1]},${p.color[2]},${alpha})`;
-      ctx.fill();
+      p.el.style.transform = `translate(${p.x}px, ${p.y}px)`;
+    }
+
+    // Draw constellation lines
+    ctx.lineWidth = 0.5;
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < connectionDistance) {
+          const opacity = (1 - dist / connectionDistance) * 0.15;
+          ctx.strokeStyle = `rgba(232,148,74,${opacity})`;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.stroke();
+        }
+      }
     }
 
     requestAnimationFrame(animate);
   }
 
-  init();
+  resize();
+  createParticles();
   animate();
-
-  window.addEventListener("resize", () => {
-    resize();
-  });
+  window.addEventListener("resize", resize);
 }
 
 // ========================================
@@ -573,8 +634,9 @@ const mm = gsap.matchMedia();
 // All devices
 initHeroEntrance();
 initNavigation();
-initParticles();
 initAccordion();
+initTypewriter();
+initParticlesAndConstellation();
 
 mm.add("(min-width: 769px)", () => {
   initHeroParallax();
@@ -584,13 +646,12 @@ mm.add("(min-width: 769px)", () => {
 });
 
 mm.add("(max-width: 768px)", () => {
-  // Mobile: simplified section animations, no parallax/tilt
   initSectionAnimations();
 });
 
 mm.add("(prefers-reduced-motion: reduce)", () => {
   ScrollTrigger.getAll().forEach(st => st.kill());
   gsap.set(".line-inner", { y: 0 });
-  gsap.set(".hero-label, .hero-sub, .hero-cta-group, .scroll-indicator", { opacity: 1 });
+  gsap.set(".typewriter-label, .hero-sub, .hero-cta-group, .scroll-indicator", { opacity: 1 });
   gsap.set(".service-card", { autoAlpha: 1 });
 });

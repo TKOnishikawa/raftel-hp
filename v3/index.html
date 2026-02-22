@@ -61,17 +61,27 @@
 <section class="hero" id="hero">
   <!-- Background Layers -->
   <div class="hero-bg">
+    <!-- Layer 1: Energy Orbs -->
     <div class="hero-orb hero-orb--1"></div>
     <div class="hero-orb hero-orb--2"></div>
     <div class="hero-orb hero-orb--3"></div>
+    <!-- Layer 2: Pulse Rings -->
+    <div class="hero-pulse hero-pulse--1"></div>
+    <div class="hero-pulse hero-pulse--2"></div>
+    <div class="hero-pulse hero-pulse--3"></div>
   </div>
-  <canvas class="hero-particles" id="particles"></canvas>
+  <!-- Layer 3: DOM Particles -->
+  <div class="hero-dom-particles" id="domParticles"></div>
+  <!-- Layer 4: Constellation -->
+  <canvas class="hero-constellation" id="constellation"></canvas>
+  <!-- Layer 5: Mesh Grid -->
   <div class="hero-mesh"></div>
+  <!-- Layer 6: Scanlines -->
   <div class="hero-scanlines"></div>
 
   <!-- Content -->
   <div class="hero-content">
-    <span class="hero-label">Growth Partner for SMBs</span>
+    <span class="typewriter-label"><span id="typewriterText"></span><span class="typewriter-cursor"></span></span>
     <h1 class="hero-catch">
       <span class="line-mask">
         <span class="line-inner"><span class="accent-text">想い</span>と<span class="accent-text">仕組み</span>で<span class="accent-text">面白く</span></span>
