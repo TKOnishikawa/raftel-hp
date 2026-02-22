@@ -1010,16 +1010,12 @@ img { max-width: 100%; height: auto; display: block; }
   align-items: start;
 }
 
-.about-photo-placeholder {
+.about-photo-img {
   width: 100%;
-  aspect-ratio: 3/4;
-  background: var(--bg-primary);
+  height: auto;
   border-radius: 16px;
-  border: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-muted);
+  object-fit: cover;
+  aspect-ratio: 3/4;
 }
 
 .about-name {
@@ -1697,7 +1693,7 @@ tbody tr:last-child td.compare-highlight {
     gap: 36px;
   }
 
-  .about-photo-placeholder {
+  .about-photo-img {
     max-width: 240px;
     margin: 0 auto;
   }
