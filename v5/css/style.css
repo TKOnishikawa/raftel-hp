@@ -1693,20 +1693,20 @@ tbody tr:last-child td.compare-highlight {
     gap: 36px;
   }
 
-  .about-photo {
-    display: flex;
-    justify-content: center;
-  }
-
   .about-photo-img {
+    display: block;
     width: 240px;
     max-width: 100%;
+    margin: 0 auto;
   }
 
-  .about-detail {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  .about-name {
+    text-align: center;
+    display: block;
+  }
+
+  .about-role {
+    text-align: center;
   }
 
   /* CTA */
