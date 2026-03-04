@@ -1472,6 +1472,45 @@ img { max-width: 100%; height: auto; display: block; }
   color: var(--accent-light);
 }
 
+.footer-info {
+  width: 100%;
+  text-align: center;
+  padding: 20px 0;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.footer-info-label {
+  font-family: var(--font-head, 'Sora', sans-serif);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.footer-info p {
+  font-size: 0.78rem;
+  color: rgba(240,236,230,0.5);
+  line-height: 1.6;
+}
+
+.footer-legal {
+  width: 100%;
+  text-align: center;
+  padding: 12px 0;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+.footer-legal a {
+  font-size: 0.72rem;
+  color: rgba(240,236,230,0.4);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.footer-legal a:hover {
+  color: var(--accent);
+}
+
 .footer-bottom {
   padding-top: 24px;
   border-top: 1px solid rgba(255,255,255,0.06);
